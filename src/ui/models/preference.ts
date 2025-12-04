@@ -41,6 +41,7 @@ interface PreferenceState {
   rateGuideLastExposure?: RateGuideLastExposure;
 
   desktopTokensAllMode?: boolean;
+  defiInteractorModule?: string;
 }
 
 export const preference = createModel<RootModel>()({
@@ -70,6 +71,7 @@ export const preference = createModel<RootModel>()({
     isEnabledDappAccount: false,
     rateGuideLastExposure: getDefaultRateGuideLastExposure(),
     desktopTokensAllMode: false,
+    defiInteractorModule: undefined,
   } as PreferenceState,
 
   reducers: {
@@ -316,6 +318,14 @@ export const preference = createModel<RootModel>()({
           },
         },
       });
+    },
+
+    async setDefiInteractorModule(address: string | undefined, store) {
+      dispatch.preference.setField({
+        defiInteractorModule: address,
+      });
+      await store.app.wallet.setDefiInteractorModule(address);
+      dispatch.preference.getPreference('defiInteractorModule');
     },
   }),
 });

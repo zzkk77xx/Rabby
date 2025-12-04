@@ -146,6 +146,8 @@ export interface PreferenceStore {
   desktopTabId?: number;
 
   desktopTokensAllMode?: boolean;
+
+  defiInteractorModule?: string;
 }
 
 export interface AddressSortStore {
@@ -224,6 +226,7 @@ class PreferenceService {
         rateGuideLastExposure: getDefaultRateGuideLastExposure(),
         desktopTabId: undefined,
         desktopTokensAllMode: false,
+        defiInteractorModule: undefined,
       },
     });
 
@@ -937,6 +940,14 @@ class PreferenceService {
         ...exposure[LAST_EXPOSURE_VERSIONED_KEY],
       },
     };
+  };
+
+  getDefiInteractorModule = () => {
+    return this.store.defiInteractorModule;
+  };
+
+  setDefiInteractorModule = (address?: string) => {
+    this.store.defiInteractorModule = address;
   };
 }
 

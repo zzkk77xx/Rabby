@@ -1840,6 +1840,10 @@ export class WalletController extends BaseController {
   setThemeMode = (themeMode: DARK_MODE_TYPE) =>
     preferenceService.setThemeMode(themeMode);
 
+  getDefiInteractorModule = () => preferenceService.getDefiInteractorModule();
+  setDefiInteractorModule = (address?: string) =>
+    preferenceService.setDefiInteractorModule(address);
+
   isReserveGasOnSendToken = () => preferenceService.isReserveGasOnSendToken();
   setReserveGasOnSendToken = (val: boolean) =>
     preferenceService.setPreferencePartials({ reserveGasOnSendToken: val });

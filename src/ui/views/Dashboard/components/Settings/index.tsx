@@ -210,6 +210,101 @@ const OpenApiModal = ({
   );
 };
 
+const DefiModuleModal = ({
+  visible,
+  onFinish,
+  onCancel,
+  value,
+}: {
+  visible: boolean;
+  onFinish(address: string): void;
+  value?: string;
+  onCancel(): void;
+}) => {
+  const { useForm } = Form;
+  const [isVisible, setIsVisible] = useState(false);
+  const [form] = useForm<{ address: string }>();
+  const dispatch = useRabbyDispatch();
+
+  const handleSubmit = async ({ address }: { address: string }) => {
+    setIsVisible(false);
+    setTimeout(() => {
+      onFinish(address);
+    }, 500);
+  };
+
+  const handleCancel = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      onCancel();
+    }, 500);
+  };
+
+  const handleClear = () => {
+    form.setFieldsValue({
+      address: '',
+    });
+  };
+
+  useEffect(() => {
+    form.setFieldsValue({
+      address: value || '',
+    });
+  }, [form, value]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(visible);
+    }, 100);
+  }, [visible]);
+
+  return (
+    <div
+      className={clsx('openapi-modal', { show: isVisible, hidden: !visible })}
+    >
+      <PageHeader forceShowBack onBack={handleCancel}>
+        DeFi Interactor Module
+      </PageHeader>
+      <Form onFinish={handleSubmit} form={form}>
+        <Form.Item
+          name="address"
+          rules={[
+            {
+              pattern: /^0x[a-fA-F0-9]{40}$/,
+              message: 'Please enter a valid Ethereum address',
+            },
+          ]}
+        >
+          <Input
+            className="popup-input"
+            placeholder="Enter module contract address (0x...)"
+            size="large"
+            autoFocus
+            spellCheck={false}
+          />
+        </Form.Item>
+        {form.getFieldValue('address') && (
+          <div className="flex justify-end">
+            <Button type="link" onClick={handleClear} className="restore">
+              Clear
+            </Button>
+          </div>
+        )}
+        <div className="flex justify-center mt-24 popup-footer">
+          <Button
+            type="primary"
+            size="large"
+            htmlType="submit"
+            className="w-[200px]"
+          >
+            Save
+          </Button>
+        </div>
+      </Form>
+    </div>
+  );
+};
+
 const DappAccountModal = ({
   visible,
   onFinish,
@@ -592,6 +687,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
   const [connectedDappsVisible, setConnectedDappsVisible] = useState(false);
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [isShowDappAccountModal, setIsShowDappAccountModal] = useState(false);
+  const [isShowDefiModuleModal, setIsShowDefiModuleModal] = useState(false);
 
   const autoLockTime = useRabbySelector(
     (state) => state.preference.autoLockTime || 0
@@ -607,6 +703,9 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
     (state) => state.preference.isShowTestnet
   );
   const themeMode = useRabbySelector((state) => state.preference.themeMode);
+  const defiInteractorModule = useRabbySelector(
+    (state) => state.preference.defiInteractorModule
+  );
 
   const openapiStore = useRabbySelector((state) => state.openapi);
 
@@ -1026,6 +1125,29 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
               src={RcIconArrowRight}
               className="icon icon-arrow-right"
             />
+          ),
+        },
+        {
+          leftIcon: RcIconServerCC,
+          leftIconClassName: 'text-r-neutral-body',
+          content: 'DeFi Interactor Module',
+          onClick: () => {
+            setIsShowDefiModuleModal(true);
+          },
+          rightIcon: (
+            <>
+              <span
+                className="text-14 mr-[8px] text-r-neutral-title-1 max-w-[120px] truncate"
+                role="button"
+                title={defiInteractorModule}
+              >
+                {defiInteractorModule || 'Not set'}
+              </span>
+              <ThemeIcon
+                src={RcIconArrowRight}
+                className="icon icon-arrow-right"
+              />
+            </>
           ),
         },
       ] as SettingItem[],
@@ -1460,6 +1582,15 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
         visible={isShowThemeModeModal}
         onFinish={() => setIsShowThemeModeModal(false)}
         onCancel={() => setIsShowThemeModeModal(false)}
+      />
+      <DefiModuleModal
+        visible={isShowDefiModuleModal}
+        value={defiInteractorModule}
+        onFinish={(address) => {
+          dispatch.preference.setDefiInteractorModule(address);
+          setIsShowDefiModuleModal(false);
+        }}
+        onCancel={() => setIsShowDefiModuleModal(false)}
       />
       <RecentConnections
         canBack={true}
