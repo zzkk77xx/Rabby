@@ -42,6 +42,7 @@ interface PreferenceState {
 
   desktopTokensAllMode?: boolean;
   defiInteractorModule?: string;
+  defiInteractorSafe?: string;
 }
 
 export const preference = createModel<RootModel>()({
@@ -72,6 +73,7 @@ export const preference = createModel<RootModel>()({
     rateGuideLastExposure: getDefaultRateGuideLastExposure(),
     desktopTokensAllMode: false,
     defiInteractorModule: undefined,
+    defiInteractorSafe: undefined,
   } as PreferenceState,
 
   reducers: {
@@ -326,6 +328,29 @@ export const preference = createModel<RootModel>()({
       });
       await store.app.wallet.setDefiInteractorModule(address);
       dispatch.preference.getPreference('defiInteractorModule');
+
+      // Fetch and store the Safe address from the module contract
+      if (address) {
+        try {
+          const safeAddress = await store.app.wallet.fetchDefiInteractorSafe(address);
+          if (safeAddress) {
+            dispatch.preference.setField({
+              defiInteractorSafe: safeAddress,
+            });
+            await store.app.wallet.setDefiInteractorSafe(safeAddress);
+            dispatch.preference.getPreference('defiInteractorSafe');
+          }
+        } catch (error) {
+          console.error('Failed to fetch Safe address from module:', error);
+        }
+      } else {
+        // Clear Safe address if module is cleared
+        dispatch.preference.setField({
+          defiInteractorSafe: undefined,
+        });
+        await store.app.wallet.setDefiInteractorSafe(undefined);
+        dispatch.preference.getPreference('defiInteractorSafe');
+      }
     },
   }),
 });

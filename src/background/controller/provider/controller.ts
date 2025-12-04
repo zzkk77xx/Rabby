@@ -295,7 +295,17 @@ class ProviderController extends BaseController {
       return [];
     }
 
-    return account ? [account.address.toLowerCase()] : [];
+    if (!account) {
+      return [];
+    }
+
+    // Return Safe address if DeFiInteractorModule is configured
+    const safeAddress = preferenceService.getDefiInteractorSafe();
+    if (safeAddress) {
+      return [safeAddress.toLowerCase()];
+    }
+
+    return [account.address.toLowerCase()];
   };
 
   ethCoinbase = async ({ session: { origin }, account }) => {
@@ -303,7 +313,17 @@ class ProviderController extends BaseController {
       return null;
     }
 
-    return account ? account.address.toLowerCase() : null;
+    if (!account) {
+      return null;
+    }
+
+    // Return Safe address if DeFiInteractorModule is configured
+    const safeAddress = preferenceService.getDefiInteractorSafe();
+    if (safeAddress) {
+      return safeAddress.toLowerCase();
+    }
+
+    return account.address.toLowerCase();
   };
 
   @Reflect.metadata('SAFE', true)

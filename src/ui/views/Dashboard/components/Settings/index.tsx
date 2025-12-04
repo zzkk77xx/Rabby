@@ -706,6 +706,9 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
   const defiInteractorModule = useRabbySelector(
     (state) => state.preference.defiInteractorModule
   );
+  const defiInteractorSafe = useRabbySelector(
+    (state) => state.preference.defiInteractorSafe
+  );
 
   const openapiStore = useRabbySelector((state) => state.openapi);
 
@@ -1131,6 +1134,11 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconServerCC,
           leftIconClassName: 'text-r-neutral-body',
           content: 'DeFi Interactor Module',
+          description: defiInteractorSafe ? (
+            <span className="text-12 text-r-neutral-body">
+              Safe: {defiInteractorSafe.slice(0, 6)}...{defiInteractorSafe.slice(-4)}
+            </span>
+          ) : undefined,
           onClick: () => {
             setIsShowDefiModuleModal(true);
           },

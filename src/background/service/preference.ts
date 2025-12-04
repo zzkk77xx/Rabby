@@ -148,6 +148,7 @@ export interface PreferenceStore {
   desktopTokensAllMode?: boolean;
 
   defiInteractorModule?: string;
+  defiInteractorSafe?: string;
 }
 
 export interface AddressSortStore {
@@ -948,6 +949,14 @@ class PreferenceService {
 
   setDefiInteractorModule = (address?: string) => {
     this.store.defiInteractorModule = address;
+  };
+
+  getDefiInteractorSafe = () => {
+    return this.store.defiInteractorSafe;
+  };
+
+  setDefiInteractorSafe = (address?: string) => {
+    this.store.defiInteractorSafe = address;
   };
 }
 
