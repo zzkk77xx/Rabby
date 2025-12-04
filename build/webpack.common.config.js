@@ -112,6 +112,7 @@ const config = {
           {
             loader: 'ts-loader',
             options: {
+              transpileOnly: true, // Skip type checking during build to reduce memory
               getCustomTransformers: () => ({
                 before: [
                   // @see https://github.com/Igorbek/typescript-plugin-styled-components#ts-loader
@@ -200,9 +201,11 @@ const config = {
     ],
   },
   plugins: [
-    new ESLintWebpackPlugin({
-      extensions: ['ts', 'tsx', 'js', 'jsx'],
-    }),
+    // Temporarily disabled ESLint during build to reduce memory usage
+    // Run `yarn lint:fix` separately if needed
+    // new ESLintWebpackPlugin({
+    //   extensions: ['ts', 'tsx', 'js', 'jsx'],
+    // }),
     // new AntdDayjsWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 // for extension local test, can build each time
 const config = {
   mode: 'development',
-  devtool: 'inline-cheap-module-source-map',
+  devtool: 'cheap-module-source-map', // CSP-compliant for Chrome extensions, better memory usage than inline
   watch: true,
   watchOptions: {
     ignored: ['**/public', '**/node_modules'],
