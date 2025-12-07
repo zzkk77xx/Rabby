@@ -875,23 +875,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             reportSettings('Manage Address');
           },
         },
-        {
-          leftIcon: RcIconEcosystemCC,
-          leftIconClassName: 'text-r-neutral-body',
-          content: t('page.dashboard.settings.features.ecosystem'),
-          onClick: () => {
-            setIsShowEcologyModal(true);
-          },
-        },
-        {
-          leftIcon: RcIconRabbyMobileCC,
-          leftIconClassName: 'text-r-neutral-body w-24 h-24',
-          leftIconStyle: { marginRight: '-2px', marginLeft: '-2px' },
-          content: t('page.dashboard.home.panel.mobile'),
-          onClick: () => {
-            openInternalPageInTab('sync');
-          },
-        },
         // {
         //   leftIcon: RcIconPoints,
         //   content: t('page.dashboard.settings.features.rabbyPoints'),
@@ -1136,7 +1119,8 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: 'DeFi Interactor Module',
           description: defiInteractorSafe ? (
             <span className="text-12 text-r-neutral-body">
-              Safe: {defiInteractorSafe.slice(0, 6)}...{defiInteractorSafe.slice(-4)}
+              Safe: {defiInteractorSafe.slice(0, 6)}...
+              {defiInteractorSafe.slice(-4)}
             </span>
           ) : undefined,
           onClick: () => {
@@ -1383,71 +1367,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
                 src={RcIconArrowRight}
                 className="icon icon-arrow-right"
               />
-            </>
-          ),
-        },
-        {
-          leftIcon: RcIconSettingsAboutFollowUs,
-          content: t('page.dashboard.settings.followUs'),
-          // onClick: () => {},
-          rightIcon: (
-            <>
-              <a
-                href="https://twitter.com/rabby_io"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => {
-                  matomoRequestEvent({
-                    category: 'Setting',
-                    action: 'clickToUse',
-                    label: 'Find us|Twitter',
-                  });
-
-                  ga4.fireEvent('More_FindUsTwitter', {
-                    event_category: 'Click More',
-                  });
-
-                  reportSettings('twitter');
-                }}
-                className="ml-12 group"
-              >
-                <ThemeIcon
-                  src={RcIconTwitter}
-                  className="w-20 group-hover:w-0 group-hover:h-0 group-hover:overflow-hidden"
-                />
-                <ThemeIcon
-                  src={IconTwitterHover}
-                  className="w-0 h-0 overflow-hidden group-hover:w-20 group-hover:h-20"
-                />
-              </a>
-              <a
-                href="https://discord.com/invite/seFBCWmUre"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => {
-                  matomoRequestEvent({
-                    category: 'Setting',
-                    action: 'clickToUse',
-                    label: 'Find us|Discord',
-                  });
-
-                  ga4.fireEvent('More_FindUsDiscord', {
-                    event_category: 'Click More',
-                  });
-
-                  reportSettings('discord');
-                }}
-                className="ml-12 group"
-              >
-                <ThemeIcon
-                  src={RcIconDiscord}
-                  className="w-20 overflow-hidden group-hover:w-0 group-hover:h-0 "
-                />
-                <ThemeIcon
-                  src={IconDiscordHover}
-                  className="w-0 h-0 overflow-hidden group-hover:w-20 group-hover:h-20"
-                />
-              </a>
             </>
           ),
         },

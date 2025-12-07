@@ -248,38 +248,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
   }, [giftUsdValue, hasClaimedGift]);
 
   const panelItems = {
-    swap: {
-      icon: RcIconSwapCC,
-      eventKey: 'Swap',
-      content: t('page.dashboard.home.panel.swap'),
-      onClick: () => {
-        history.push('/dex-swap?rbisource=dashboard');
-      },
-    } as IPanelItem,
-    send: {
-      icon: RcIconSendCC,
-      eventKey: 'Send',
-      content: t('page.dashboard.home.panel.send'),
-      onClick: () => {
-        history.push('/send-token?rbisource=dashboard');
-      },
-    } as IPanelItem,
-    bridge: {
-      icon: RcIconBridgeCC,
-      eventKey: 'Bridge',
-      content: t('page.dashboard.home.panel.bridge'),
-      onClick: () => {
-        history.push('/bridge');
-      },
-    } as IPanelItem,
-    receive: {
-      icon: RcIconReceiveCC,
-      eventKey: 'Receive',
-      content: t('page.dashboard.home.panel.receive'),
-      onClick: () => {
-        setIsShowReceiveModal(true);
-      },
-    } as IPanelItem,
     // queue: {
     //   icon: RcIconTransactionsCC,
     //   eventKey: 'Queue',
@@ -316,14 +284,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
       content: t('page.dashboard.home.panel.settings'),
       onClick: onSettingClick,
     } as IPanelItem,
-    nft: {
-      icon: RcIconNftCC,
-      eventKey: 'NFT',
-      content: t('page.dashboard.home.panel.nft'),
-      onClick: () => {
-        history.push('/nft');
-      },
-    } as IPanelItem,
     ecology: {
       icon: RcIconEco,
       eventKey: 'Ecology',
@@ -355,59 +315,12 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
         </div>
       ) : null,
     } as IPanelItem,
-    points: {
-      icon: RcIconPointsCC,
-      eventKey: 'Rabby Points',
-      content: t('page.dashboard.home.panel.rabbyPoints'),
-      onClick: () => {
-        setIsShowRabbyPoints(true);
-      },
-    } as IPanelItem,
     mobile: {
       icon: RcIconMobileSyncCC,
       eventKey: 'Rabby Mobile',
       content: t('page.dashboard.home.panel.mobile'),
       onClick: () => {
         openInternalPageInTab('sync');
-      },
-      isFullscreen: true,
-    } as IPanelItem,
-    perps: {
-      icon: RcIconPerpsCC,
-      eventKey: 'Perps',
-      iconClassName: 'icon-perps',
-      subContent: perpsPositionInfo.show ? (
-        <div
-          className={clsx(
-            'absolute bottom-[4px] text-[11px] leading-[13px] font-medium',
-            perpsPositionInfo.pnl > 0
-              ? 'text-r-green-default'
-              : 'text-r-red-default'
-          )}
-        >
-          {perpsPositionInfo.pnl >= 0 ? '+' : '-'}$
-          {splitNumberByStep(Math.abs(perpsPositionInfo.pnl).toFixed(2))}
-        </div>
-      ) : isFetching ? (
-        <div className="absolute bottom-[4px] text-[11px] font-medium">
-          <Skeleton.Button
-            active={true}
-            className="h-[10px] block rounded-[2px]"
-            style={{ width: 42 }}
-          />
-        </div>
-      ) : null,
-      content: t('page.dashboard.home.panel.perps'),
-      onClick: () => {
-        history.push('/perps');
-      },
-    } as IPanelItem,
-    searchDapp: {
-      icon: RcIconSearchCC,
-      eventKey: 'Search Dapp',
-      content: t('page.dashboard.home.panel.searchDapp'),
-      onClick: () => {
-        openInternalPageInTab('dapp-search');
       },
       isFullscreen: true,
     } as IPanelItem,
@@ -432,35 +345,17 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
   const pickedPanelKeys = useMemo<(keyof typeof panelItems)[]>(() => {
     return isGnosis
       ? [
-          'swap',
-          'send',
-          'bridge',
-          'receive',
           'transactions',
           'security',
-          'perps',
-          'points',
-          'mobile',
-          'nft',
           'gasAccount',
-          'searchDapp',
           'dapps',
           'manageAddress',
           'more',
         ]
       : [
-          'swap',
-          'send',
-          'bridge',
-          'receive',
           'transactions',
           'security',
-          'perps',
-          'points',
-          'mobile',
-          'nft',
           'gasAccount',
-          'searchDapp',
           'dapps',
           'manageAddress',
           'more',
