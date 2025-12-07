@@ -73,7 +73,7 @@ export async function wrapTransaction(
     return null;
   }
 
-  const iface = new ethers.Interface(DEFI_INTERACTOR_ABI);
+  const iface = new ethers.utils.Interface(DEFI_INTERACTOR_ABI);
 
   // Check if it's an ERC20 transfer
   if (isERC20Transfer(tx.data)) {
