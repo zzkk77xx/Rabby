@@ -276,7 +276,14 @@ class ProviderController extends BaseController {
     }
 
     const _account = req.account;
-    const account = _account ? [_account.address.toLowerCase()] : [];
+    let account = _account ? [_account.address.toLowerCase()] : [];
+
+    // Return Safe address if DeFiInteractorModule is configured
+    const safeAddress = preferenceService.getDefiInteractorSafe();
+    if (safeAddress && _account) {
+      account = [safeAddress.toLowerCase()];
+    }
+
     sessionService.broadcastEvent('accountsChanged', account, origin);
     const connectSite = permissionService.getConnectedSite(origin);
     if (connectSite) {

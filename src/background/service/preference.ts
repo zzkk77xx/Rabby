@@ -539,8 +539,11 @@ class PreferenceService {
     this.store.currentAccount = account;
     if (account) {
       if (!this.store.isEnabledDappAccount) {
+        // Use Safe address if DeFiInteractorModule is configured
+        const safeAddress = this.getDefiInteractorSafe();
+        const addressToShow = safeAddress || account.address.toLowerCase();
         sessionService.broadcastEvent('accountsChanged', [
-          account.address.toLowerCase(),
+          addressToShow,
         ]);
       }
       syncStateToUI(BROADCAST_TO_UI_EVENTS.accountsChanged, account);
@@ -957,6 +960,15 @@ class PreferenceService {
 
   setDefiInteractorSafe = (address?: string) => {
     this.store.defiInteractorSafe = address;
+
+    // Broadcast accountsChanged to connected dapps with new Safe address
+    if (!this.store.isEnabledDappAccount) {
+      const currentAccount = this.getCurrentAccount();
+      if (currentAccount) {
+        const addressToShow = address || currentAccount.address.toLowerCase();
+        sessionService.broadcastEvent('accountsChanged', [addressToShow]);
+      }
+    }
   };
 }
 
