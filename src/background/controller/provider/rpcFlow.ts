@@ -5,6 +5,10 @@ import {
   permissionService,
   preferenceService,
 } from 'background/service';
+import {
+  shouldWrapTransaction,
+  wrapTransaction,
+} from 'background/service/defiInteractor';
 import { PromiseFlow, underline2Camelcase } from 'background/utils';
 import { EVENTS } from 'consts';
 import providerController from './controller';
@@ -229,6 +233,44 @@ const flowContext = flow
           }
         }
       }
+
+      // Wrap transaction with DeFiInteractorModule before showing approval UI
+      if (approvalType === 'SignTx') {
+        const tx = params[0];
+        const safeAddress = preferenceService.getDefiInteractorSafe();
+
+        // Convert from address from Safe to EOA if needed
+        if (
+          safeAddress &&
+          tx.from?.toLowerCase() === safeAddress.toLowerCase()
+        ) {
+          const account = ctx.request.account;
+          if (account) {
+            params[0].from = account.address;
+          }
+        }
+
+        if (shouldWrapTransaction() && tx.to && tx.data) {
+          try {
+            const wrapped = await wrapTransaction({
+              to: tx.to,
+              data: tx.data,
+              value: tx.value,
+            });
+
+            if (wrapped) {
+              // Update transaction params with wrapped version
+              params[0].to = wrapped.to;
+              params[0].data = wrapped.data;
+              params[0].value = wrapped.value;
+            }
+          } catch (error) {
+            console.error('Failed to wrap transaction before approval:', error);
+            // Continue with original transaction if wrapping fails
+          }
+        }
+      }
+
       ctx.approvalRes = await notificationService.requestApproval(
         {
           approvalComponent: approvalType,

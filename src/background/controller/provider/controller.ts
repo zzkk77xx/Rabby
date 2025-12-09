@@ -31,10 +31,6 @@ import {
   bridgeService,
   gasAccountService,
 } from 'background/service';
-import {
-  wrapTransaction,
-  shouldWrapTransaction,
-} from 'background/service/defiInteractor';
 import { Session } from 'background/service/session';
 import { Tx, TxPushType } from 'background/service/openapi';
 import RpcCache from 'background/utils/rpcCache';
@@ -437,34 +433,10 @@ class ProviderController extends BaseController {
 
     // If txParams.from is the Safe address, update it to EOA address
     // since the EOA is what actually signs (Safe is just what dapps see)
+    // Note: Transaction wrapping happens earlier in rpcFlow.ts before approval
     const safeAddress = preferenceService.getDefiInteractorSafe();
     if (safeAddress && txParams.from.toLowerCase() === safeAddress.toLowerCase()) {
       txParams.from = account.address;
-    }
-
-    // Wrap transaction with DeFiInteractorModule if configured
-    if (shouldWrapTransaction() && txParams.to && txParams.data) {
-      try {
-        const wrapped = await wrapTransaction({
-          to: txParams.to,
-          data: txParams.data,
-          value: txParams.value,
-        });
-
-        if (wrapped) {
-          // Update transaction with wrapped version
-          txParams.to = wrapped.to;
-          txParams.data = wrapped.data;
-          txParams.value = wrapped.value;
-          approvalRes.to = wrapped.to;
-          approvalRes.data = wrapped.data;
-          approvalRes.value = wrapped.value;
-        }
-      } catch (error) {
-        console.error('Failed to wrap transaction:', error);
-        // If wrapping fails, continue with original transaction
-        // TODO: Decide if we should throw an error here instead
-      }
     }
 
     const currentAccount = account;

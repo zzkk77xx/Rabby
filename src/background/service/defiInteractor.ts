@@ -9,15 +9,13 @@ const ERC20_TRANSFER_SELECTOR = '0xa9059cbb';
  */
 const DEFI_INTERACTOR_ABI = [
   'function transferToken(address token, address recipient, uint256 amount) returns (bool)',
-  'function executeOnProtocol(address target, bytes calldata data, address tokenIn, uint256 amountIn) returns (bytes memory)',
+  'function executeOnProtocol(address target, bytes calldata data) returns (bytes memory)',
 ];
 
 export interface WrapTransactionParams {
   to: string;
   data: string;
   value?: string;
-  tokenIn?: string;
-  amountIn?: string;
 }
 
 export interface WrappedTransaction {
@@ -81,7 +79,7 @@ export async function wrapTransaction(
   if (isERC20Transfer(tx.data)) {
     const parsed = parseERC20Transfer(tx.data);
     if (!parsed) {
-      console.error('Failed to parse ERC20 transfer data');
+      console.error('[wrapTransaction] Failed to parse ERC20 transfer data');
       return null;
     }
 
@@ -98,19 +96,14 @@ export async function wrapTransaction(
       value: '0x0',
     };
   } else {
-    // For other transactions, require tokenIn and amountIn
-    if (!tx.tokenIn || !tx.amountIn) {
-      throw new Error(
-        'tokenIn and amountIn are required for non-transfer transactions'
-      );
-    }
+    console.log('[wrapTransaction] Wrapping with executeOnProtocol', {
+      target: tx.to,
+    });
 
-    // Wrap with executeOnProtocol(target, data, tokenIn, amountIn)
+    // Wrap with executeOnProtocol(target, data)
     const wrappedData = iface.encodeFunctionData('executeOnProtocol', [
       tx.to,
       tx.data,
-      tx.tokenIn,
-      tx.amountIn,
     ]);
 
     return {
