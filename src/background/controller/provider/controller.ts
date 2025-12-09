@@ -128,7 +128,11 @@ const v1SignTypedDataVlidation = ({
   account,
 }: ProviderRequest) => {
   const currentAddress = account?.address?.toLowerCase();
-  if (from.toLowerCase() !== currentAddress)
+  const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+  const fromLower = from.toLowerCase();
+
+  // Accept either EOA address or Safe address when DeFi Interactor is configured
+  if (fromLower !== currentAddress && (!safeAddress || fromLower !== safeAddress))
     throw ethErrors.rpc.invalidParams('from should be same as current address');
 };
 
@@ -160,7 +164,11 @@ const signTypedDataVlidation = ({
     }
   }
   const currentAddress = account?.address.toLowerCase();
-  if (from.toLowerCase() !== currentAddress)
+  const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+  const fromLower = from.toLowerCase();
+
+  // Accept either EOA address or Safe address when DeFi Interactor is configured
+  if (fromLower !== currentAddress && (!safeAddress || fromLower !== safeAddress))
     throw ethErrors.rpc.invalidParams('from should be same as current address');
 };
 
@@ -358,13 +366,17 @@ class ProviderController extends BaseController {
       const isSpeedUp = !!tx.isSpeedUp;
       const isCancel = !!tx.isCancel;
       const currentAddress = account?.address?.toLowerCase();
+      const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+      const fromLower = tx.from.toLowerCase();
       const currentChain =
         permissionService.isInternalOrigin(session.origin) ||
         isSpeedUp ||
         isCancel
           ? findChain({ id: tx.chainId })!.enum
           : permissionService.getConnectedSite(session.origin)?.chain;
-      if (tx.from.toLowerCase() !== currentAddress) {
+
+      // Accept either EOA address or Safe address when DeFi Interactor is configured
+      if (fromLower !== currentAddress && (!safeAddress || fromLower !== safeAddress)) {
         throw ethErrors.rpc.invalidParams(
           'from should be same as current address'
         );
@@ -423,6 +435,13 @@ class ProviderController extends BaseController {
       account,
     } = cloneDeep(options);
 
+    // If txParams.from is the Safe address, update it to EOA address
+    // since the EOA is what actually signs (Safe is just what dapps see)
+    const safeAddress = preferenceService.getDefiInteractorSafe();
+    if (safeAddress && txParams.from.toLowerCase() === safeAddress.toLowerCase()) {
+      txParams.from = account.address;
+    }
+
     // Wrap transaction with DeFiInteractorModule if configured
     if (shouldWrapTransaction() && txParams.to && txParams.data) {
       try {
@@ -430,8 +449,6 @@ class ProviderController extends BaseController {
           to: txParams.to,
           data: txParams.data,
           value: txParams.value,
-          tokenIn: approvalRes.tokenIn,
-          amountIn: approvalRes.amountIn,
         });
 
         if (wrapped) {
@@ -1077,7 +1094,11 @@ class ProviderController extends BaseController {
         account,
       } = req;
       const currentAddress = account.address.toLowerCase();
-      if (from.toLowerCase() !== currentAddress)
+      const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+      const fromLower = from.toLowerCase();
+
+      // Accept either EOA address or Safe address when DeFi Interactor is configured
+      if (fromLower !== currentAddress && (!safeAddress || fromLower !== safeAddress))
         throw ethErrors.rpc.invalidParams(
           'from should be same as current address'
         );
@@ -1594,9 +1615,13 @@ class ProviderController extends BaseController {
     // eslint-disable-next-line prefer-const
     let { address: currentAddress, type } = req.account || {};
     currentAddress = currentAddress?.toLowerCase();
+    const normalizedAddress = normalizeAddress(address)?.toLowerCase();
+    const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+
+    // Accept either EOA address or Safe address when DeFi Interactor is configured
     if (
       !currentAddress ||
-      currentAddress !== normalizeAddress(address)?.toLowerCase()
+      (currentAddress !== normalizedAddress && (!safeAddress || normalizedAddress !== safeAddress))
     ) {
       throw ethErrors.rpc.invalidParams({
         message:
@@ -1623,7 +1648,12 @@ class ProviderController extends BaseController {
         account,
       } = req;
 
-      if (address?.toLowerCase() !== account?.address?.toLowerCase()) {
+      const addressLower = address?.toLowerCase();
+      const currentAddress = account?.address?.toLowerCase();
+      const safeAddress = preferenceService.getDefiInteractorSafe()?.toLowerCase();
+
+      // Accept either EOA address or Safe address when DeFi Interactor is configured
+      if (addressLower !== currentAddress && (!safeAddress || addressLower !== safeAddress)) {
         throw ethErrors.rpc.invalidParams({
           message:
             'Invalid parameters: must use the current user address to sign',
