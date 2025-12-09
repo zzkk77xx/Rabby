@@ -38,7 +38,9 @@ function isERC20Transfer(data: string): boolean {
 /**
  * Parse ERC20 transfer data to extract recipient and amount
  */
-function parseERC20Transfer(data: string): { recipient: string; amount: string } | null {
+function parseERC20Transfer(
+  data: string
+): { recipient: string; amount: string } | null {
   try {
     if (!isERC20Transfer(data)) return null;
 
@@ -98,7 +100,9 @@ export async function wrapTransaction(
   } else {
     // For other transactions, require tokenIn and amountIn
     if (!tx.tokenIn || !tx.amountIn) {
-      throw new Error('tokenIn and amountIn are required for non-transfer transactions');
+      throw new Error(
+        'tokenIn and amountIn are required for non-transfer transactions'
+      );
     }
 
     // Wrap with executeOnProtocol(target, data, tokenIn, amountIn)

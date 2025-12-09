@@ -217,24 +217,79 @@ const DefiModuleModal = ({
   value,
 }: {
   visible: boolean;
-  onFinish(address: string): void;
+  onFinish(address: string, safeAddress?: string): void;
   value?: string;
   onCancel(): void;
 }) => {
   const { useForm } = Form;
   const [isVisible, setIsVisible] = useState(false);
-  const [form] = useForm<{ address: string }>();
+  const [form] = useForm<{ address: string; safeAddress?: string }>();
+  const [showSafeInput, setShowSafeInput] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useRabbyDispatch();
 
-  const handleSubmit = async ({ address }: { address: string }) => {
-    setIsVisible(false);
-    setTimeout(() => {
-      onFinish(address);
-    }, 500);
+  const handleSubmit = async ({
+    address,
+    safeAddress,
+  }: {
+    address: string;
+    safeAddress?: string;
+  }) => {
+    if (!address) {
+      setIsVisible(false);
+      setTimeout(() => {
+        onFinish('');
+      }, 500);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      // Try to fetch safe address automatically
+      const result = await dispatch.preference.setDefiInteractorModule(address);
+
+      if (result?.success === false) {
+        // Auto-fetch failed, show manual input
+        setShowSafeInput(true);
+        setIsLoading(false);
+        return;
+      }
+
+      // Success or cleared, close modal
+      setIsVisible(false);
+      setTimeout(() => {
+        onFinish(address, result?.safeAddress || undefined);
+      }, 500);
+    } catch (error) {
+      console.error('Error setting module:', error);
+      // Show manual input on error
+      setShowSafeInput(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSafeAddressSubmit = async () => {
+    const safeAddress = form.getFieldValue('safeAddress');
+    if (!safeAddress) {
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await dispatch.preference.setDefiInteractorSafe(safeAddress);
+      setIsVisible(false);
+      setTimeout(() => {
+        onFinish(form.getFieldValue('address'), safeAddress);
+      }, 500);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleCancel = () => {
     setIsVisible(false);
+    setShowSafeInput(false);
     setTimeout(() => {
       onCancel();
     }, 500);
@@ -243,13 +298,17 @@ const DefiModuleModal = ({
   const handleClear = () => {
     form.setFieldsValue({
       address: '',
+      safeAddress: '',
     });
+    setShowSafeInput(false);
   };
 
   useEffect(() => {
     form.setFieldsValue({
       address: value || '',
+      safeAddress: '',
     });
+    setShowSafeInput(false);
   }, [form, value]);
 
   useEffect(() => {
@@ -281,9 +340,41 @@ const DefiModuleModal = ({
             size="large"
             autoFocus
             spellCheck={false}
+            disabled={showSafeInput}
           />
         </Form.Item>
-        {form.getFieldValue('address') && (
+
+        {showSafeInput && (
+          <>
+            <div className="text-13 text-r-neutral-body mb-12">
+              Could not automatically fetch Safe address. Please enter it
+              manually:
+            </div>
+            <Form.Item
+              name="safeAddress"
+              rules={[
+                {
+                  required: true,
+                  message: 'Safe address is required',
+                },
+                {
+                  pattern: /^0x[a-fA-F0-9]{40}$/,
+                  message: 'Please enter a valid Ethereum address',
+                },
+              ]}
+            >
+              <Input
+                className="popup-input"
+                placeholder="Enter Safe address (0x...)"
+                size="large"
+                autoFocus
+                spellCheck={false}
+              />
+            </Form.Item>
+          </>
+        )}
+
+        {form.getFieldValue('address') && !showSafeInput && (
           <div className="flex justify-end">
             <Button type="link" onClick={handleClear} className="restore">
               Clear
@@ -291,14 +382,36 @@ const DefiModuleModal = ({
           </div>
         )}
         <div className="flex justify-center mt-24 popup-footer">
-          <Button
-            type="primary"
-            size="large"
-            htmlType="submit"
-            className="w-[200px]"
-          >
-            Save
-          </Button>
+          {showSafeInput ? (
+            <>
+              <Button
+                size="large"
+                onClick={() => setShowSafeInput(false)}
+                className="w-[200px] mr-12"
+              >
+                Back
+              </Button>
+              <Button
+                type="primary"
+                size="large"
+                onClick={handleSafeAddressSubmit}
+                className="w-[200px]"
+                loading={isLoading}
+              >
+                Save
+              </Button>
+            </>
+          ) : (
+            <Button
+              type="primary"
+              size="large"
+              htmlType="submit"
+              className="w-[200px]"
+              loading={isLoading}
+            >
+              Save
+            </Button>
+          )}
         </div>
       </Form>
     </div>
@@ -1513,8 +1626,8 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
       <DefiModuleModal
         visible={isShowDefiModuleModal}
         value={defiInteractorModule}
-        onFinish={(address) => {
-          dispatch.preference.setDefiInteractorModule(address);
+        onFinish={() => {
+          // Module and safe address are already set in the modal
           setIsShowDefiModuleModal(false);
         }}
         onCancel={() => setIsShowDefiModuleModal(false)}

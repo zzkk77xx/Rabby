@@ -332,16 +332,23 @@ export const preference = createModel<RootModel>()({
       // Fetch and store the Safe address from the module contract
       if (address) {
         try {
-          const safeAddress = await store.app.wallet.fetchDefiInteractorSafe(address);
+          const safeAddress = await store.app.wallet.fetchDefiInteractorSafe(
+            address
+          );
           if (safeAddress) {
             dispatch.preference.setField({
               defiInteractorSafe: safeAddress,
             });
             await store.app.wallet.setDefiInteractorSafe(safeAddress);
             dispatch.preference.getPreference('defiInteractorSafe');
+            return { success: true, safeAddress };
+          } else {
+            // Safe address could not be fetched automatically
+            return { success: false, safeAddress: null };
           }
         } catch (error) {
           console.error('Failed to fetch Safe address from module:', error);
+          return { success: false, safeAddress: null };
         }
       } else {
         // Clear Safe address if module is cleared
@@ -350,7 +357,16 @@ export const preference = createModel<RootModel>()({
         });
         await store.app.wallet.setDefiInteractorSafe(undefined);
         dispatch.preference.getPreference('defiInteractorSafe');
+        return { success: true, safeAddress: null };
       }
+    },
+
+    async setDefiInteractorSafe(address: string | undefined, store) {
+      dispatch.preference.setField({
+        defiInteractorSafe: address,
+      });
+      await store.app.wallet.setDefiInteractorSafe(address);
+      dispatch.preference.getPreference('defiInteractorSafe');
     },
   }),
 });

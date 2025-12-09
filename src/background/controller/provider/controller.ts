@@ -31,7 +31,10 @@ import {
   bridgeService,
   gasAccountService,
 } from 'background/service';
-import { wrapTransaction, shouldWrapTransaction } from 'background/service/defiInteractor';
+import {
+  wrapTransaction,
+  shouldWrapTransaction,
+} from 'background/service/defiInteractor';
 import { Session } from 'background/service/session';
 import { Tx, TxPushType } from 'background/service/openapi';
 import RpcCache from 'background/utils/rpcCache';

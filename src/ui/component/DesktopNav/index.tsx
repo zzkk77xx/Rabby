@@ -63,36 +63,6 @@ export const DesktopNav: React.FC<{
             )}
           </div>
         </div>
-        <div
-          className={clsx(
-            'flex items-center gap-[6px] py-[8px] px-[12px] min-w-[150px] rounded-[14px] cursor-pointer'
-          )}
-        >
-          <RcIconPerpsCC className="text-rb-neutral-secondary" />
-          <div>
-            <div className="text-rb-neutral-foot text-[16px] leading-[19px] font-bold">
-              {t('component.DesktopNav.perps')}
-            </div>
-            <div className="text-rb-neutral-secondary text-[12px] leading-[14px]">
-              {t('component.DesktopNav.comingSoon')}
-            </div>
-          </div>
-        </div>
-        <div
-          className={clsx(
-            'flex items-center gap-[6px] py-[8px] px-[12px] min-w-[150px] rounded-[14px] cursor-pointer'
-          )}
-        >
-          <RcIconLeadingCC className="text-rb-neutral-secondary" />
-          <div>
-            <div className="text-rb-neutral-foot text-[16px] leading-[19px] font-bold">
-              {t('component.DesktopNav.lending')}
-            </div>
-            <div className="text-rb-neutral-secondary text-[12px] leading-[14px]">
-              {t('component.DesktopNav.comingSoon')}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
