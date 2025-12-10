@@ -3,6 +3,7 @@ import React, { ReactNode, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { findChain } from '@/utils/chain';
 import BigNumber from 'bignumber.js';
+import { ethers } from 'ethers';
 import { FooterBar } from '../FooterBar/FooterBar';
 import {
   intToHex,
@@ -752,10 +753,6 @@ export const SignTestnetTx = ({
     // If transaction is wrapped and data changed, re-wrap it
     if (_originalTx && obj.data) {
       try {
-        const { wrapTransaction } = await import(
-          'background/service/defiInteractor'
-        );
-
         // Update the current original transaction with the modified data
         const newOriginalTx = {
           to: _originalTx.to,
@@ -763,23 +760,34 @@ export const SignTestnetTx = ({
           value: _originalTx.value,
         };
 
-        const wrapped = await wrapTransaction(newOriginalTx);
-        if (wrapped) {
-          console.log('[SignTestnetTx] Re-wrapped modified transaction', {
-            originalData: obj.data.slice(0, 10),
-            wrappedData: wrapped.data.slice(0, 10),
-          });
+        // Re-wrap using the module address from current tx.to
+        // The module address is preserved from the original wrapping
+        const moduleAddress = tx.to;
 
-          // Update the current original transaction state
-          setCurrentOriginalTx(newOriginalTx);
+        const DEFI_INTERACTOR_ABI = [
+          'function executeOnProtocol(address target, bytes calldata data) returns (bytes memory)',
+        ];
 
-          updatedTx = {
-            ...updatedTx,
-            to: wrapped.to,
-            data: wrapped.data,
-            value: wrapped.value,
-          };
-        }
+        const iface = new ethers.utils.Interface(DEFI_INTERACTOR_ABI);
+        const wrappedData = iface.encodeFunctionData('executeOnProtocol', [
+          newOriginalTx.to,
+          newOriginalTx.data,
+        ]);
+
+        console.log('[SignTestnetTx] Re-wrapped modified transaction', {
+          originalData: obj.data.slice(0, 10),
+          wrappedData: wrappedData.slice(0, 10),
+        });
+
+        // Update the current original transaction state
+        setCurrentOriginalTx(newOriginalTx);
+
+        updatedTx = {
+          ...updatedTx,
+          to: moduleAddress,
+          data: wrappedData,
+          value: newOriginalTx.value || '0x0',
+        };
       } catch (error) {
         console.error('[SignTestnetTx] Failed to re-wrap transaction:', error);
       }
@@ -941,12 +949,14 @@ export const SignTestnetTx = ({
           requireData={explainResult?.requiredData || null}
           isReady={isReady}
           chain={chain}
-          raw={{
-            ...tx,
-            nonce: realNonce || tx.nonce,
-            gas: gasLimit!,
-            _originalTx: currentOriginalTx,
-          }}
+          raw={
+            {
+              ...tx,
+              nonce: realNonce || tx.nonce,
+              gas: gasLimit!,
+              _originalTx: currentOriginalTx,
+            } as any
+          }
           isSpeedUp={isSpeedUp}
           originLogo={params.session.icon}
           origin={params.session.origin}
