@@ -229,7 +229,11 @@ const TokenApprove = ({
     const result = new BigNumber(value).isGreaterThan(Number.MAX_SAFE_INTEGER)
       ? String(Number.MAX_SAFE_INTEGER)
       : value;
-    const data = getCustomTxParamsData(raw.data as string, {
+
+    // Use original transaction data if wrapped by DefiInteractorModule
+    const dataToModify = (raw as any)._originalTx?.data || raw.data;
+
+    const data = getCustomTxParamsData(dataToModify as string, {
       customPermissionAmount: result,
       decimals: actionData.token.decimals,
     });

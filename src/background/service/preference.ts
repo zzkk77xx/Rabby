@@ -542,9 +542,7 @@ class PreferenceService {
         // Use Safe address if DeFiInteractorModule is configured
         const safeAddress = this.getDefiInteractorSafe();
         const addressToShow = safeAddress || account.address.toLowerCase();
-        sessionService.broadcastEvent('accountsChanged', [
-          addressToShow,
-        ]);
+        sessionService.broadcastEvent('accountsChanged', [addressToShow]);
       }
       syncStateToUI(BROADCAST_TO_UI_EVENTS.accountsChanged, account);
     }

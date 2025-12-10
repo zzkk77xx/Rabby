@@ -46,6 +46,14 @@ const Approval: React.FC<{
   const { approvalComponent, params, origin, account } = data;
   const CurrentApprovalComponent = ApprovalComponent[approvalComponent];
 
+  // Debug: Log approval data to check if _originalTx is present
+  if (approvalComponent === 'SignTx') {
+    console.log('[Approval] Rendering SignTx with params', {
+      hasOriginalTx: !!(params as any).data?.[0]?._originalTx,
+      paramsData: (params as any).data?.[0],
+    });
+  }
+
   return (
     <div className={clsx('approval', className)}>
       {approval && (

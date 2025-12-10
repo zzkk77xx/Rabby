@@ -252,6 +252,18 @@ const flowContext = flow
 
         if (shouldWrapTransaction() && tx.to && tx.data) {
           try {
+            // Store original transaction before wrapping
+            const originalTx = {
+              to: tx.to,
+              data: tx.data,
+              value: tx.value,
+            };
+
+            console.log('[rpcFlow] Wrapping transaction', {
+              originalTo: originalTx.to,
+              originalData: originalTx.data?.slice(0, 10),
+            });
+
             const wrapped = await wrapTransaction({
               to: tx.to,
               data: tx.data,
@@ -263,12 +275,29 @@ const flowContext = flow
               params[0].to = wrapped.to;
               params[0].data = wrapped.data;
               params[0].value = wrapped.value;
+              // Store original transaction for UI action parsing
+              params[0]._originalTx = originalTx;
+
+              console.log('[rpcFlow] Transaction wrapped successfully', {
+                wrappedTo: wrapped.to,
+                wrappedData: wrapped.data?.slice(0, 10),
+                storedOriginal: !!params[0]._originalTx,
+              });
             }
           } catch (error) {
             console.error('Failed to wrap transaction before approval:', error);
             // Continue with original transaction if wrapping fails
           }
         }
+      }
+
+      // Debug: Verify _originalTx is still present before approval request
+      if (approvalType === 'SignTx' && ctx.request.data.params[0]._originalTx) {
+        console.log('[rpcFlow] Sending approval request with original tx', {
+          hasOriginalTx: !!ctx.request.data.params[0]._originalTx,
+          paramsTo: ctx.request.data.params[0].to,
+          paramsData: ctx.request.data.params[0].data?.slice(0, 10),
+        });
       }
 
       ctx.approvalRes = await notificationService.requestApproval(

@@ -211,6 +211,13 @@ export const SignTestnetTx = ({
   const { isGnosis } = params;
   const currentAccount = params.isGnosis ? params.account! : $account;
 
+  console.log('[SignTestnetTx] Component mounted', {
+    hasOriginalTx: !!params.data[0]._originalTx,
+    to: params.data[0].to,
+    data: params.data[0].data?.slice(0, 10),
+  });
+
+  const normalizedParams = normalizeTxParams(params.data[0]);
   const {
     data = '0x',
     from,
@@ -229,7 +236,8 @@ export const SignTestnetTx = ({
     isViewGnosisSafe,
     reqId,
     safeTxGas,
-  } = normalizeTxParams(params.data[0]);
+    _originalTx,
+  } = normalizedParams;
 
   const wallet = useWallet();
   const chainId = +params?.data?.[0]?.chainId;
@@ -280,6 +288,30 @@ export const SignTestnetTx = ({
     to: to ? toChecksumAddress(to) : to,
     value,
   });
+
+  // Track the current original transaction (for wrapped txs)
+  const [currentOriginalTx, setCurrentOriginalTx] = useState<{
+    to: string;
+    data: string;
+    value: string;
+  } | null>(_originalTx || null);
+
+  // For action parsing, use original transaction if wrapped by DefiInteractorModule
+  const txForActionParsing = useMemo(() => {
+    if (currentOriginalTx) {
+      console.log('[SignTestnetTx] Using original tx for parsing', {
+        originalTo: currentOriginalTx.to,
+        wrappedTo: tx.to,
+      });
+      return {
+        ...tx,
+        to: currentOriginalTx.to,
+        data: currentOriginalTx.data,
+        value: currentOriginalTx.value,
+      };
+    }
+    return tx;
+  }, [currentOriginalTx, tx]);
 
   const { data: recommendNonce, runAsync: runGetNonce } = useRequest(
     async () => {
@@ -531,13 +563,28 @@ export const SignTestnetTx = ({
         if (!chain) {
           return;
         }
+
+        // Use original transaction for parsing if wrapped
+        const txForParsing =
+          currentOriginalTx &&
+          currentOriginalTx.to &&
+          tx.to &&
+          currentOriginalTx.to.toLowerCase() !== tx.to.toLowerCase()
+            ? {
+                ...tx,
+                to: currentOriginalTx.to,
+                data: currentOriginalTx.data,
+                value: currentOriginalTx.value,
+              }
+            : tx;
+
         const actionData = await wallet.parseCustomNetworkTx({
           chainId: chain.id,
           tx: {
-            ...tx,
+            ...txForParsing,
             gas: '0x0',
-            value: tx.value || '0x0',
-            to: tx.to || '',
+            value: txForParsing.value || '0x0',
+            to: txForParsing.to || '',
           },
           origin: origin || '',
           addr: currentAccount.address,
@@ -552,14 +599,14 @@ export const SignTestnetTx = ({
           data: actionData.action,
           balanceChange: {} as any,
           tx: {
-            ...tx,
+            ...txForParsing,
             gas: '0x0',
 
-            value: tx.value || '0x0',
+            value: txForParsing.value || '0x0',
           },
           preExecVersion: 'v0',
           gasUsed: gasUsed ? Number(gasUsed) : 0,
-          sender: tx.from,
+          sender: txForParsing.from,
         });
 
         const cexInfo = await getCexInfo(parsed.send?.to || '', wallet);
@@ -580,10 +627,10 @@ export const SignTestnetTx = ({
           },
           cex: cexInfo,
           tx: {
-            ...tx,
+            ...txForParsing,
             gas: '0x0',
-            // nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-            value: tx.value || '0x0',
+            // nonce: (updateNonce ? recommendNonce : txForParsing.nonce) || '0x1',
+            value: txForParsing.value || '0x0',
           },
           // todo fake api provider
           apiProvider: (wallet.fakeTestnetOpenapi as unknown) as any,
@@ -697,19 +744,54 @@ export const SignTestnetTx = ({
   };
 
   const handleTxChange = async (obj: Record<string, any>) => {
-    setTx({
+    let updatedTx = {
       ...tx,
       ...obj,
-    });
+    };
+
+    // If transaction is wrapped and data changed, re-wrap it
+    if (_originalTx && obj.data) {
+      try {
+        const { wrapTransaction } = await import(
+          'background/service/defiInteractor'
+        );
+
+        // Update the current original transaction with the modified data
+        const newOriginalTx = {
+          to: _originalTx.to,
+          data: obj.data,
+          value: _originalTx.value,
+        };
+
+        const wrapped = await wrapTransaction(newOriginalTx);
+        if (wrapped) {
+          console.log('[SignTestnetTx] Re-wrapped modified transaction', {
+            originalData: obj.data.slice(0, 10),
+            wrappedData: wrapped.data.slice(0, 10),
+          });
+
+          // Update the current original transaction state
+          setCurrentOriginalTx(newOriginalTx);
+
+          updatedTx = {
+            ...updatedTx,
+            to: wrapped.to,
+            data: wrapped.data,
+            value: wrapped.value,
+          };
+        }
+      } catch (error) {
+        console.error('[SignTestnetTx] Failed to re-wrap transaction:', error);
+      }
+    }
+
+    setTx(updatedTx);
     try {
       setIsReady(false);
       // trigger explain
       await explainTx({
         gasUsed,
-        tx: {
-          ...tx,
-          ...obj,
-        },
+        tx: updatedTx,
       });
     } catch (e) {
       console.error(e);
@@ -863,6 +945,7 @@ export const SignTestnetTx = ({
             ...tx,
             nonce: realNonce || tx.nonce,
             gas: gasLimit!,
+            _originalTx: currentOriginalTx,
           }}
           isSpeedUp={isSpeedUp}
           originLogo={params.session.icon}

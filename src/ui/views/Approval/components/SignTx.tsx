@@ -340,8 +340,19 @@ interface SignTxProps<TData extends any[] = any[]> {
 }
 
 const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
+  // Debug: Log immediately to verify component mounts
+  console.log('[SignTx] ===== COMPONENT MOUNTING =====');
+  console.log('[SignTx] Component mounted with params', {
+    hasOriginalTx: !!params.data[0]._originalTx,
+    to: params.data[0].to,
+    data: params.data[0].data?.slice(0, 10),
+    originalTx: params.data[0]._originalTx,
+    fullParams: params.data[0],
+  });
+
   const { isGnosis } = params;
   const currentAccount = params.isGnosis ? params.account! : $account;
+
   const renderStartAt = useRef(0);
   const reportedRenderDuration = useRef(false);
   const securityEngineCtx = useRef<any>(null);
@@ -577,6 +588,17 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     });
   };
 
+  const normalizedParams = useMemo(() => {
+    const normalized = normalizeTxParams(params.data[0]);
+    console.log('[SignTx] Normalized tx params', {
+      hasOriginalTx: !!normalized._originalTx,
+      to: normalized.to,
+      data: normalized.data?.slice(0, 10),
+      fullNormalized: normalized,
+    });
+    return normalized;
+  }, [params.data]);
+
   const {
     data = '0x',
     from,
@@ -596,9 +618,58 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     reqId,
     safeTxGas,
     authorizationList,
-  } = useMemo(() => {
-    return normalizeTxParams(params.data[0]);
-  }, [params.data]);
+    _originalTx,
+  } = normalizedParams;
+
+  // For action parsing, use original transaction if wrapped by DefiInteractorModule
+  const txForActionParsing = useMemo(() => {
+    if (_originalTx) {
+      // Transaction was wrapped - use original for action parsing
+      console.log(
+        '[SignTx] Detected wrapped transaction, using original for parsing',
+        {
+          originalTo: _originalTx.to,
+          wrappedTo: to,
+          originalData: _originalTx.data?.slice(0, 10),
+          wrappedData: data?.slice(0, 10),
+        }
+      );
+      return {
+        chainId,
+        from,
+        to: _originalTx.to,
+        data: _originalTx.data,
+        value: _originalTx.value,
+        gas,
+        gasPrice,
+        nonce,
+        maxFeePerGas,
+      };
+    }
+    // No wrapping - use current transaction
+    return {
+      chainId,
+      from,
+      to,
+      data,
+      value,
+      gas,
+      gasPrice,
+      nonce,
+      maxFeePerGas,
+    };
+  }, [
+    _originalTx,
+    chainId,
+    from,
+    to,
+    data,
+    value,
+    gas,
+    gasPrice,
+    nonce,
+    maxFeePerGas,
+  ]);
 
   const is7702 = is7702Tx({ authorizationList } as any);
 
@@ -805,14 +876,30 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     if (updateNonce && !isGnosisAccount && !isCoboArugsAccount) {
       setRealNonce(recommendNonce);
     } // do not overwrite nonce if from === to(cancel transaction)
+    // Use original transaction for simulation if wrapped by DefiInteractorModule
+    const txForSimulation =
+      txForActionParsing.to &&
+      tx.to &&
+      txForActionParsing.to.toLowerCase() !== tx.to.toLowerCase()
+        ? txForActionParsing
+        : tx;
+
+    if (txForSimulation !== tx) {
+      console.log('[SignTx] Using original transaction for simulation', {
+        original: txForActionParsing,
+        wrapped: tx,
+      });
+    }
+
     const preExecPromise = wallet.openapi
       .preExecTx({
         tx: {
-          ...tx,
-          nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1', // set a mock nonce for explain if dapp not set it
-          data: tx.data,
-          value: tx.value || '0x0',
-          gas: tx.gas || '', // set gas limit if dapp not set
+          ...txForSimulation,
+          nonce:
+            (updateNonce ? recommendNonce : txForSimulation.nonce) || '0x1', // set a mock nonce for explain if dapp not set it
+          data: txForSimulation.data,
+          value: txForSimulation.value || '0x0',
+          gas: txForSimulation.gas || '', // set gas limit if dapp not set
         },
         origin: origin || '',
         address,
@@ -821,7 +908,7 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
           recommendNonce,
           wallet,
           address,
-          chainId: tx.chainId,
+          chainId: txForSimulation.chainId,
         }),
         delegate_call: isGnosisAccount ? !!params?.data?.[0]?.operation : false,
       })
@@ -830,13 +917,20 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         if (res.gas.success) {
           estimateGas = res.gas.gas_limit || res.gas.gas_used;
         }
+        // For wrapped transactions, add extra gas buffer for the module overhead
+        const isWrapped =
+          txForActionParsing.to &&
+          tx.to &&
+          txForActionParsing.to.toLowerCase() !== tx.to.toLowerCase();
+        const gasMultiplier = isWrapped ? 1.2 : 1; // 20% buffer for wrapped txs
+
         const {
           gas: gasRaw,
           needRatio,
           gasUsed,
         } = await wallet.getRecommendGas({
-          gasUsed: res.gas.gas_used,
-          gas: estimateGas,
+          gasUsed: Math.floor(res.gas.gas_used * gasMultiplier),
+          gas: Math.floor(estimateGas * gasMultiplier),
           tx,
           chainId,
         });
@@ -870,12 +964,14 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         chainId: chain.serverId,
         tx: omit(
           {
-            ...tx,
+            ...txForActionParsing,
             gas: '0x0',
-            nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-            value: tx.value || '0x0',
+            nonce:
+              (updateNonce ? recommendNonce : txForActionParsing.nonce) ||
+              '0x1',
+            value: txForActionParsing.value || '0x0',
             // todo
-            to: tx.to || '',
+            to: txForActionParsing.to || '',
             type: is7702Tx(tx) ? 4 : support1559 ? 2 : undefined,
             authorizationList:
               params?.$ctx?.eip7702RevokeAuthorization ||
@@ -904,14 +1000,16 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
                 data: action,
                 balanceChange: res.balance_change,
                 tx: {
-                  ...tx,
+                  ...txForActionParsing,
                   gas: '0x0',
-                  nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-                  value: tx.value || '0x0',
+                  nonce:
+                    (updateNonce ? recommendNonce : txForActionParsing.nonce) ||
+                    '0x1',
+                  value: txForActionParsing.value || '0x0',
                 },
                 preExecVersion: res.pre_exec_version,
                 gasUsed: res.gas.gas_used,
-                sender: tx.from,
+                sender: txForActionParsing.from,
               })
             );
             const requireDataList = await Promise.all(
@@ -934,10 +1032,13 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
                   },
                   cex: cexInfo,
                   tx: {
-                    ...tx,
+                    ...txForActionParsing,
                     gas: '0x0',
-                    nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-                    value: tx.value || '0x0',
+                    nonce:
+                      (updateNonce
+                        ? recommendNonce
+                        : txForActionParsing.nonce) || '0x1',
+                    value: txForActionParsing.value || '0x0',
                   },
                   apiProvider: isTestnet(chain.serverId)
                     ? wallet.testnetOpenapi
@@ -974,14 +1075,16 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
               data: actionData.action,
               balanceChange: res.balance_change,
               tx: {
-                ...tx,
+                ...txForActionParsing,
                 gas: '0x0',
-                nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-                value: tx.value || '0x0',
+                nonce:
+                  (updateNonce ? recommendNonce : txForActionParsing.nonce) ||
+                  '0x1',
+                value: txForActionParsing.value || '0x0',
               },
               preExecVersion: res.pre_exec_version,
               gasUsed: res.gas.gas_used,
-              sender: tx.from,
+              sender: txForActionParsing.from,
             });
             const cexInfo = await getCexInfo(parsed.send?.to || '', wallet);
             requiredData = await fetchActionRequiredData({
@@ -1001,10 +1104,12 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
                 getPendingTxsByNonce: wallet.getPendingTxsByNonce,
               },
               tx: {
-                ...tx,
+                ...txForActionParsing,
                 gas: '0x0',
-                nonce: (updateNonce ? recommendNonce : tx.nonce) || '0x1',
-                value: tx.value || '0x0',
+                nonce:
+                  (updateNonce ? recommendNonce : txForActionParsing.nonce) ||
+                  '0x1',
+                value: txForActionParsing.value || '0x0',
               },
               apiProvider: isTestnet(chain.serverId)
                 ? wallet.testnetOpenapi
