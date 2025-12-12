@@ -55,7 +55,7 @@ index b2b6db9..0e8bd27 100644
          announceEip6963Provider(rabbyProvider, true);
      }
 diff --git a/node_modules/@rabby-wallet/page-provider/src/index.ts b/node_modules/@rabby-wallet/page-provider/src/index.ts
-index f0717d6..75b7097 100644
+index f0717d6..7052a1c 100644
 --- a/node_modules/@rabby-wallet/page-provider/src/index.ts
 +++ b/node_modules/@rabby-wallet/page-provider/src/index.ts
 @@ -105,7 +105,8 @@ export class EthereumProvider extends EventEmitter {
@@ -79,6 +79,26 @@ index f0717d6..75b7097 100644
    });
  
    constructor({
+@@ -404,8 +405,8 @@ declare global {
+   interface Window {
+     ethereum: EthereumProvider;
+     web3: any;
+-    rabby: EthereumProvider;
+-    rabbyWalletRouter: {
++    multisub: EthereumProvider;
++    multisubWalletRouter: {
+       rabbyProvider: EthereumProvider;
+       lastInjectedProvider?: EthereumProvider;
+       currentProvider: EthereumProvider;
+@@ -447,7 +448,7 @@ const rabbyProvider = new Proxy(provider, {
+ 
+ const requestProviderConfig = () => {
+   return provider.requestInternalMethods({
+-    method: "rabby:getProviderConfig",
++    method: "multisub:getProviderConfig",
+     params: [],
+   }) as Promise<{
+     rdns: string;
 @@ -462,9 +463,9 @@ const announceEip6963Provider = (
  ) => {
    let info: EIP6963ProviderInfo = {
@@ -91,6 +111,33 @@ index f0717d6..75b7097 100644
    };
  
    if (isMetamaskMode) {
+@@ -493,7 +494,7 @@ const announceMetamaskMode = () => {
+ const initOperaProvider = () => {
+   window.ethereum = rabbyProvider;
+   rabbyProvider._isReady = true;
+-  window.rabby = rabbyProvider;
++  window.multisub = rabbyProvider;
+   // patchProvider(rabbyProvider);
+   rabbyProvider.on("rabby:chainChanged", switchChainNotice);
+ };
+@@ -512,7 +513,7 @@ const initProvider = () => {
+   }
+   const descriptor = Object.getOwnPropertyDescriptor(window, "ethereum");
+   const canDefine = !descriptor || descriptor.configurable;
+-  Object.defineProperty(window, "rabbyWalletRouter", {
++  Object.defineProperty(window, "multisubWalletRouter", {
+     value: {
+       rabbyProvider,
+       rabbyEthereumProvider,
+@@ -523,7 +524,7 @@ const initProvider = () => {
+     configurable: false,
+     writable: false,
+   });
+-  Object.defineProperty(window, "rabby", {
++  Object.defineProperty(window, "multisub", {
+     value: rabbyProvider,
+     configurable: false,
+     writable: false,
 @@ -557,7 +558,7 @@ function onAnnounceProvider() {
      "eip6963:announceProvider",
      (event: EIP6963AnnounceProviderEvent) => {

@@ -6,7 +6,7 @@ const sentrySourceMap = !!process.env.sourcemap || false;
 
 const config = {
   mode: 'production',
-  devtool: sentrySourceMap ? 'hidden-source-map' : false,
+  devtool: sentrySourceMap ? 'cheap-module-source-map' : false,
   performance: {
     maxEntrypointSize: 2500000,
     maxAssetSize: 2500000,
