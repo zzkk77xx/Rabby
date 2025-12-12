@@ -30,7 +30,7 @@ export class EthereumProvider extends EventEmitter {
    */
   networkVersion: string | null = null;
   isMultiSub = true;
-  isRabby = true; // kept for backwards compatibility
+  isRabby = false; // kept for backwards compatibility
   isMetaMask = true;
 
   _isConnected = true;

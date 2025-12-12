@@ -40,8 +40,8 @@ let pm: PortMessage | null;
 let defer = createDefer<PortMessage>();
 
 const bcm = new BroadcastChannelMessage({
-  name: 'rabby-content-script',
-  target: 'rabby-page-provider',
+  name: 'multisub-content-script',
+  target: 'multisub-page-provider',
 }).listen((data) => {
   browser.runtime.sendMessage({ type: 'ping' });
   if (pm) {
@@ -83,7 +83,7 @@ const onMessageSetUpExtensionStreams = (msg) => {
     if (!pm) {
       setupExtensionStreams();
     }
-    return Promise.resolve(`Rabby: handled ${EXTENSION_MESSAGES.READY}`);
+    return Promise.resolve(`MultiSub: handled ${EXTENSION_MESSAGES.READY}`);
   }
   return undefined;
 };
