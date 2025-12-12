@@ -2309,7 +2309,7 @@
         "placeholder": "Enter the Password to Unlock",
         "error": "incorrect password"
       },
-      "title": "Rabby Wallet",
+      "title": "MultiSub Wallet",
       "description": "Your go-to wallet for Ethereum and EVM",
       "btnForgotPassword": "Forgot Password?"
     },
@@ -2957,7 +2957,7 @@
     },
     "newUserImport": {
       "guide": {
-        "title": "Welcome to Rabby Wallet",
+        "title": "Welcome to MultiSub Wallet",
         "desc": "Your go-to wallet for Ethereum and EVM",
         "createNewAddress": "Create a new address",
         "importAddress": "I already have an address"
@@ -3004,13 +3004,13 @@
         "addMoreFrom": "Add more addresses from {{name}}"
       },
       "readyToUse": {
-        "title": "Your Rabby Wallet is Ready !",
-        "desc": "Find Rabby Wallet and Pin it",
-        "pin": "Pin Rabby Wallet",
+        "title": "Your MultiSub Wallet is Ready !",
+        "desc": "Find MultiSub Wallet and Pin it",
+        "pin": "Pin MultiSub Wallet",
         "extensionTip": "Click <1/> and then <3/>",
         "guides": {
           "step1": "Click the browser extension icon",
-          "step2": "Pin Rabby Wallet"
+          "step2": "Pin MultiSub Wallet"
         }
       },
       "importSeedPhrase": {
@@ -3504,7 +3504,7 @@
     }
   },
   "global": {
-    "appName": "Rabby Wallet",
+    "appName": "MultiSub Wallet",
     "appDescription": "Your go-to wallet for Ethereum and EVM",
     "copied": "Copied",
     "confirm": "Confirm",

@@ -139,6 +139,10 @@ export default {
   providerOverwrite,
   hasOtherProvider,
   isDefaultWallet,
+  'multisub:getProviderConfig': getProviderConfig,
+  'multisub:resetProvider': resetProvider,
+  'multisub:openInDesktop': openInDesktop,
+  // kept for backwards compatibility
   'rabby:getProviderConfig': getProviderConfig,
   'rabby:resetProvider': resetProvider,
   'rabby:openInDesktop': openInDesktop,
