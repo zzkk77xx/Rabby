@@ -44,6 +44,7 @@ const flow = new PromiseFlow<{
   };
   mapMethod: string;
   approvalRes: any;
+  convertedPermit?: boolean;
 }>();
 const flowContext = flow
   .use(async (ctx, next) => {
@@ -220,23 +221,184 @@ const flowContext = flow
       ctx.request.data.params[0] = message;
       ctx.request.data.params[1] = from;
     }
-    if (approvalType && (!condition || !condition(ctx.request))) {
+
+    // Convert Permit signatures to approve transactions when using Safe
+    // This must happen BEFORE the wrapping logic so the approve tx gets wrapped
+    if (approvalType === 'SignTypedData') {
+      const safeAddress = preferenceService.getDefiInteractorSafe();
+      if (safeAddress && params && params.length >= 2) {
+        try {
+          const [from, data] = params;
+          if (!from || !data) {
+            throw new Error('Missing from or data parameter');
+          }
+
+          if (from?.toLowerCase() === safeAddress.toLowerCase()) {
+            let parsedData;
+            try {
+              parsedData = typeof data === 'string' ? JSON.parse(data) : data;
+            } catch (parseError) {
+              console.error(
+                '[Permit Fallback] Failed to parse typed data:',
+                parseError
+              );
+              throw parseError;
+            }
+
+            if (!parsedData || typeof parsedData !== 'object') {
+              throw new Error('Invalid parsed data');
+            }
+
+            console.log('[Permit Fallback] Checking typed data:', {
+              primaryType: parsedData.primaryType,
+              hasDomain: !!parsedData.domain,
+              hasMessage: !!parsedData.message,
+            });
+
+            // Detect Permit (EIP-2612) or Permit2 (PermitSingle/PermitBatch)
+            const isStandardPermit =
+              parsedData.primaryType === 'Permit' &&
+              parsedData.domain?.verifyingContract &&
+              parsedData.message?.spender &&
+              parsedData.message?.value !== undefined;
+
+            const isPermit2Single =
+              parsedData.primaryType === 'PermitSingle' &&
+              parsedData.message?.details?.token &&
+              parsedData.message?.details?.amount !== undefined &&
+              parsedData.message?.spender;
+
+            if (isStandardPermit || isPermit2Single) {
+              // Extract token, spender, and amount based on permit type
+              let tokenAddress: string;
+              let spender: string;
+              let value: string;
+
+              if (isStandardPermit) {
+                // Standard EIP-2612 Permit
+                tokenAddress = parsedData.domain.verifyingContract;
+                spender = parsedData.message.spender;
+                value = parsedData.message.value;
+              } else {
+                // Permit2 (PermitSingle)
+                tokenAddress = parsedData.message.details.token;
+                spender = parsedData.message.spender;
+                value = parsedData.message.details.amount;
+              }
+
+              console.log(
+                '[Permit Fallback] Converting Permit signature to approve transaction',
+                {
+                  token: tokenAddress,
+                  spender,
+                  value,
+                }
+              );
+
+              // Create ERC20 approve() calldata
+              // Function signature: approve(address spender, uint256 amount) = 0x095ea7b3
+              const approveData = `0x095ea7b3${spender
+                .replace('0x', '')
+                .padStart(64, '0')}${new BigNumber(value)
+                .toString(16)
+                .padStart(64, '0')}`;
+
+              // Convert to transaction request
+              ctx.request.data.method = 'eth_sendTransaction';
+              ctx.request.data.params = [
+                {
+                  from: safeAddress,
+                  to: tokenAddress,
+                  data: approveData,
+                  value: '0x0',
+                },
+              ];
+              ctx.mapMethod = 'ethSendTransaction';
+
+              // Add chainId if available
+              const site = permissionService.getConnectedSite(origin);
+              if (site) {
+                const chain = findChain({ enum: site.chain });
+                if (chain) {
+                  ctx.request.data.params[0].chainId = chain.id;
+                }
+              }
+
+              // Change approval type to transaction
+              const newApprovalMeta = Reflect.getMetadata(
+                'APPROVAL',
+                providerController,
+                'ethSendTransaction'
+              );
+              if (newApprovalMeta) {
+                [approvalType, condition, options = {}] = newApprovalMeta;
+              }
+
+              console.log(
+                '[Permit Fallback] Converted to approve transaction',
+                {
+                  newApprovalType: approvalType,
+                  newMethod: ctx.request.data.method,
+                  newMapMethod: ctx.mapMethod,
+                  params: ctx.request.data.params[0],
+                }
+              );
+
+              // Mark that we converted a Permit so we can return a dummy signature
+              ctx.convertedPermit = true;
+            }
+          }
+        } catch (e) {
+          console.error('[Permit Fallback] Failed to convert:', e);
+          console.error('[Permit Fallback] Error stack:', (e as Error).stack);
+          // Continue with normal flow if conversion fails
+        }
+      }
+    }
+
+    console.log('[rpcFlow] Before approval check:', {
+      approvalType,
+      hasCondition: !!condition,
+      mapMethod: ctx.mapMethod,
+      method: ctx.request.data.method,
+      convertedPermit: ctx.convertedPermit
+    });
+
+    // Check if condition passes or fails
+    let conditionResult = false;
+    if (condition) {
+      try {
+        conditionResult = condition(ctx.request);
+        console.log('[rpcFlow] Condition result:', conditionResult, 'for method:', ctx.mapMethod);
+      } catch (conditionError) {
+        console.error('[rpcFlow] Condition check failed:', conditionError);
+        throw conditionError;
+      }
+    }
+
+    if (approvalType && (!condition || !conditionResult)) {
+      console.log('[rpcFlow] Requesting approval for:', ctx.mapMethod);
       ctx.request.requestedApproval = true;
-      if (approvalType === 'SignTx' && !('chainId' in params[0])) {
+
+      // Use ctx.request.data.params instead of the destructured params
+      // because params may have been updated (e.g., Permit conversion)
+      const currentParams = ctx.request.data.params;
+
+      if (approvalType === 'SignTx' && !('chainId' in currentParams[0])) {
         const site = permissionService.getConnectedSite(origin);
         if (site) {
           const chain = findChain({
             enum: site.chain,
           });
           if (chain) {
-            params[0].chainId = chain.id;
+            currentParams[0].chainId = chain.id;
           }
         }
       }
 
       // Wrap transaction with DeFiInteractorModule before showing approval UI
       if (approvalType === 'SignTx') {
-        const tx = params[0];
+        const tx = currentParams[0];
         const safeAddress = preferenceService.getDefiInteractorSafe();
 
         // Convert from address from Safe to EOA if needed
@@ -246,7 +408,7 @@ const flowContext = flow
         ) {
           const account = ctx.request.account;
           if (account) {
-            params[0].from = account.address;
+            currentParams[0].from = account.address;
           }
         }
 
@@ -272,16 +434,16 @@ const flowContext = flow
 
             if (wrapped) {
               // Update transaction params with wrapped version
-              params[0].to = wrapped.to;
-              params[0].data = wrapped.data;
-              params[0].value = wrapped.value;
+              currentParams[0].to = wrapped.to;
+              currentParams[0].data = wrapped.data;
+              currentParams[0].value = wrapped.value;
               // Store original transaction for UI action parsing
-              params[0]._originalTx = originalTx;
+              currentParams[0]._originalTx = originalTx;
 
               console.log('[rpcFlow] Transaction wrapped successfully', {
                 wrappedTo: wrapped.to,
                 wrappedData: wrapped.data?.slice(0, 10),
-                storedOriginal: !!params[0]._originalTx,
+                storedOriginal: !!currentParams[0]._originalTx,
               });
             }
           } catch (error) {
@@ -291,138 +453,23 @@ const flowContext = flow
         }
       }
 
-      // Convert Permit signatures to approve transactions when using Safe
-      if (approvalType === 'SignTypedData') {
-        const safeAddress = preferenceService.getDefiInteractorSafe();
-        if (safeAddress && params && params.length >= 2) {
-          try {
-            const [from, data] = params;
-            if (!from || !data) {
-              throw new Error('Missing from or data parameter');
-            }
-
-            if (from?.toLowerCase() === safeAddress.toLowerCase()) {
-              let parsedData;
-              try {
-                parsedData = typeof data === 'string' ? JSON.parse(data) : data;
-              } catch (parseError) {
-                console.error('[Permit Fallback] Failed to parse typed data:', parseError);
-                throw parseError;
-              }
-
-              if (!parsedData || typeof parsedData !== 'object') {
-                throw new Error('Invalid parsed data');
-              }
-
-              console.log('[Permit Fallback] Checking typed data:', {
-                primaryType: parsedData.primaryType,
-                hasDomain: !!parsedData.domain,
-                hasMessage: !!parsedData.message
-              });
-
-              // Detect Permit (EIP-2612) or Permit2 (PermitSingle/PermitBatch)
-              const isStandardPermit =
-                parsedData.primaryType === 'Permit' &&
-                parsedData.domain?.verifyingContract &&
-                parsedData.message?.spender &&
-                parsedData.message?.value !== undefined;
-
-              const isPermit2Single =
-                parsedData.primaryType === 'PermitSingle' &&
-                parsedData.message?.details?.token &&
-                parsedData.message?.details?.amount !== undefined &&
-                parsedData.message?.spender;
-
-              if (isStandardPermit || isPermit2Single) {
-                // Extract token, spender, and amount based on permit type
-                let tokenAddress: string;
-                let spender: string;
-                let value: string;
-
-                if (isStandardPermit) {
-                  // Standard EIP-2612 Permit
-                  tokenAddress = parsedData.domain.verifyingContract;
-                  spender = parsedData.message.spender;
-                  value = parsedData.message.value;
-                } else {
-                  // Permit2 (PermitSingle)
-                  tokenAddress = parsedData.message.details.token;
-                  spender = parsedData.message.spender;
-                  value = parsedData.message.details.amount;
-                }
-
-                console.log(
-                  '[Permit Fallback] Converting Permit signature to approve transaction',
-                  {
-                    token: tokenAddress,
-                    spender,
-                    value,
-                  }
-                );
-
-                // Create ERC20 approve() calldata
-                // Function signature: approve(address spender, uint256 amount) = 0x095ea7b3
-                const approveData = `0x095ea7b3${spender
-                  .replace('0x', '')
-                  .padStart(64, '0')}${new BigNumber(value)
-                  .toString(16)
-                  .padStart(64, '0')}`;
-
-                // Convert to transaction request
-                ctx.request.data.method = 'eth_sendTransaction';
-                ctx.request.data.params = [
-                  {
-                    from: safeAddress,
-                    to: tokenAddress,
-                    data: approveData,
-                    value: '0x0',
-                  },
-                ];
-                ctx.mapMethod = 'ethSendTransaction';
-
-                // Add chainId if available
-                const site = permissionService.getConnectedSite(origin);
-                if (site) {
-                  const chain = findChain({ enum: site.chain });
-                  if (chain) {
-                    ctx.request.data.params[0].chainId = chain.id;
-                  }
-                }
-
-                // Change approval type to transaction
-                const newApprovalMeta = Reflect.getMetadata(
-                  'APPROVAL',
-                  providerController,
-                  'ethSendTransaction'
-                );
-                if (newApprovalMeta) {
-                  [approvalType, condition, options = {}] = newApprovalMeta;
-                }
-
-                console.log(
-                  '[Permit Fallback] Converted to approve transaction, new approvalType:',
-                  approvalType
-                );
-              }
-            }
-          } catch (e) {
-            console.error('[Permit Fallback] Failed to convert:', e);
-            // Continue with normal flow if conversion fails
-          }
-        }
-      }
-
       // Debug: Verify _originalTx is still present before approval request
       if (
         approvalType === 'SignTx' &&
-        ctx.request.data.params[0]?._originalTx
+        currentParams[0]?._originalTx
       ) {
         console.log('[rpcFlow] Sending approval request with original tx', {
-          hasOriginalTx: !!ctx.request.data.params[0]._originalTx,
-          paramsTo: ctx.request.data.params[0].to,
-          paramsData: ctx.request.data.params[0].data?.slice(0, 10),
+          hasOriginalTx: !!currentParams[0]._originalTx,
+          paramsTo: currentParams[0].to,
+          paramsData: currentParams[0].data?.slice(0, 10),
         });
       }
+
+      console.log('[rpcFlow] About to request approval:', {
+        approvalComponent: approvalType,
+        method: ctx.request.data.method,
+        convertedPermit: ctx.convertedPermit
+      });
 
       ctx.approvalRes = await notificationService.requestApproval(
         {
@@ -438,6 +485,10 @@ const flowContext = flow
         },
         { height: windowHeight }
       );
+      console.log('[rpcFlow] Approval received:', {
+        approvalRes: ctx.approvalRes,
+        convertedPermit: ctx.convertedPermit
+      });
       if (isSignApproval(approvalType)) {
         permissionService.updateConnectSite(origin, { isSigned: true }, true);
       } else {
@@ -538,6 +589,16 @@ const flowContext = flow
             })
           )
             .then((result) => {
+              // If we converted a Permit to a transaction, return a dummy signature
+              // instead of the transaction hash to satisfy the dApp's expectation
+              if (ctx.convertedPermit) {
+                console.log(
+                  '[Permit Fallback] Transaction successful, returning dummy signature'
+                );
+                // Return a valid but dummy signature (zeros)
+                return '0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+              }
+
               if (isSignApproval(approvalType)) {
                 eventBus.emit(EVENTS.broadcastToUI, {
                   method: EVENTS.SIGN_FINISHED,
