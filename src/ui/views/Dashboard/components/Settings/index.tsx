@@ -1037,6 +1037,35 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
       label: t('page.dashboard.settings.settings.label'),
       items: [
         {
+          leftIcon: RcIconServerCC,
+          leftIconClassName: 'text-r-neutral-body',
+          content: 'DeFi Interactor Module',
+          description: defiInteractorSafe ? (
+            <span className="text-12 text-r-neutral-body">
+              Safe: {defiInteractorSafe.slice(0, 6)}...
+              {defiInteractorSafe.slice(-4)}
+            </span>
+          ) : undefined,
+          onClick: () => {
+            setIsShowDefiModuleModal(true);
+          },
+          rightIcon: (
+            <>
+              <span
+                className="text-14 mr-[8px] text-r-neutral-title-1 max-w-[120px] truncate"
+                role="button"
+                title={defiInteractorModule}
+              >
+                {defiInteractorModule || 'Not set'}
+              </span>
+              <ThemeIcon
+                src={RcIconArrowRight}
+                className="icon icon-arrow-right"
+              />
+            </>
+          ),
+        },
+        {
           leftIcon: RcIconDappSwitchAddress,
           content: t('page.dashboard.settings.settings.enableDappAccount'),
           rightIcon: (
@@ -1224,35 +1253,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
               src={RcIconArrowRight}
               className="icon icon-arrow-right"
             />
-          ),
-        },
-        {
-          leftIcon: RcIconServerCC,
-          leftIconClassName: 'text-r-neutral-body',
-          content: 'DeFi Interactor Module',
-          description: defiInteractorSafe ? (
-            <span className="text-12 text-r-neutral-body">
-              Safe: {defiInteractorSafe.slice(0, 6)}...
-              {defiInteractorSafe.slice(-4)}
-            </span>
-          ) : undefined,
-          onClick: () => {
-            setIsShowDefiModuleModal(true);
-          },
-          rightIcon: (
-            <>
-              <span
-                className="text-14 mr-[8px] text-r-neutral-title-1 max-w-[120px] truncate"
-                role="button"
-                title={defiInteractorModule}
-              >
-                {defiInteractorModule || 'Not set'}
-              </span>
-              <ThemeIcon
-                src={RcIconArrowRight}
-                className="icon icon-arrow-right"
-              />
-            </>
           ),
         },
       ] as SettingItem[],

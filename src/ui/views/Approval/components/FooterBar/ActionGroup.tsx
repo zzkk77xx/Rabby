@@ -2,7 +2,7 @@ import { KEYRING_CLASS } from '@/constant';
 import React from 'react';
 import { ProcessActions } from './ProcessActions';
 import { SubmitActions } from './SubmitActions';
-export { Props } from './ActionsContainer';
+export type { Props } from './ActionsContainer';
 import { Props } from './ActionsContainer';
 import { WalletConnectProcessActions } from './WalletConnectProcessActions';
 import { GridPlusProcessActions } from './GridPlusProcessActions';
