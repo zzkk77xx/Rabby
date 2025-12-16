@@ -10,6 +10,7 @@ const ERC20_TRANSFER_SELECTOR = '0xa9059cbb';
 const DEFI_INTERACTOR_ABI = [
   'function transferToken(address token, address recipient, uint256 amount) returns (bool)',
   'function executeOnProtocol(address target, bytes calldata data) returns (bytes memory)',
+  'function executeOnProtocolWithValue(address target, bytes calldata data) payable returns (bytes memory)',
 ];
 
 export interface WrapTransactionParams {
@@ -96,8 +97,12 @@ export async function wrapTransaction(
       value: '0x0',
     };
   } else {
-    // Wrap with executeOnProtocol(target, data)
-    const wrappedData = iface.encodeFunctionData('executeOnProtocol', [
+    // Check if transaction includes native asset value
+    const hasValue = tx.value && ethers.BigNumber.from(tx.value).gt(0);
+
+    // Wrap with executeOnProtocolWithValue if value present, otherwise executeOnProtocol
+    const methodName = hasValue ? 'executeOnProtocolWithValue' : 'executeOnProtocol';
+    const wrappedData = iface.encodeFunctionData(methodName, [
       tx.to,
       tx.data,
     ]);
