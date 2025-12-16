@@ -1849,6 +1849,15 @@ export class WalletController extends BaseController {
   setDefiInteractorSafe = (address?: string) =>
     preferenceService.setDefiInteractorSafe(address);
 
+  getSafeMaskingDisabledOrigins = () =>
+    preferenceService.getSafeMaskingDisabledOrigins();
+  addSafeMaskingDisabledOrigin = (origin: string) =>
+    preferenceService.addSafeMaskingDisabledOrigin(origin);
+  removeSafeMaskingDisabledOrigin = (origin: string) =>
+    preferenceService.removeSafeMaskingDisabledOrigin(origin);
+  isSafeMaskingDisabledForOrigin = (origin: string) =>
+    preferenceService.isSafeMaskingDisabledForOrigin(origin);
+
   fetchDefiInteractorSafe = async (
     moduleAddress: string
   ): Promise<string | null> => {

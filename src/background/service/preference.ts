@@ -149,6 +149,7 @@ export interface PreferenceStore {
 
   defiInteractorModule?: string;
   defiInteractorSafe?: string;
+  safeMaskingDisabledOrigins?: string[];
 }
 
 export interface AddressSortStore {
@@ -228,6 +229,7 @@ class PreferenceService {
         desktopTabId: undefined,
         desktopTokensAllMode: false,
         defiInteractorModule: undefined,
+        safeMaskingDisabledOrigins: ['https://multisub.netlify.app'],
       },
     });
 
@@ -340,6 +342,10 @@ class PreferenceService {
 
     if (this.store.ga4EventTime) {
       this.store.ga4EventTime = 0;
+    }
+
+    if (!this.store.safeMaskingDisabledOrigins) {
+      this.store.safeMaskingDisabledOrigins = ['https://multisub.netlify.app'];
     }
   };
 
@@ -535,14 +541,37 @@ class PreferenceService {
     };
   };
 
+  private broadcastAccountsChangedPerOrigin = (account: Account) => {
+    const safeAddress = this.getDefiInteractorSafe();
+    const eoaAddress = account.address.toLowerCase();
+    const sessionMap = sessionService.getSessionMap();
+
+    sessionMap.forEach((session) => {
+      if (session && permissionService.hasPermission(session.origin)) {
+        // Check if Safe masking is disabled for this origin
+        const isMaskingDisabled = this.isSafeMaskingDisabledForOrigin(
+          session.origin
+        );
+
+        // Use EOA if masking disabled, otherwise use Safe address if configured
+        const addressToShow = isMaskingDisabled
+          ? eoaAddress
+          : safeAddress || eoaAddress;
+
+        try {
+          session.pushMessage('accountsChanged', [addressToShow]);
+        } catch (e) {
+          // Session cleanup handled by sessionService
+        }
+      }
+    });
+  };
+
   setCurrentAccount = (account: Account | null) => {
     this.store.currentAccount = account;
     if (account) {
       if (!this.store.isEnabledDappAccount) {
-        // Use Safe address if DeFiInteractorModule is configured
-        const safeAddress = this.getDefiInteractorSafe();
-        const addressToShow = safeAddress || account.address.toLowerCase();
-        sessionService.broadcastEvent('accountsChanged', [addressToShow]);
+        this.broadcastAccountsChangedPerOrigin(account);
       }
       syncStateToUI(BROADCAST_TO_UI_EVENTS.accountsChanged, account);
     }
@@ -963,10 +992,30 @@ class PreferenceService {
     if (!this.store.isEnabledDappAccount) {
       const currentAccount = this.getCurrentAccount();
       if (currentAccount) {
-        const addressToShow = address || currentAccount.address.toLowerCase();
-        sessionService.broadcastEvent('accountsChanged', [addressToShow]);
+        this.broadcastAccountsChangedPerOrigin(currentAccount);
       }
     }
+  };
+
+  getSafeMaskingDisabledOrigins = () => {
+    return this.store.safeMaskingDisabledOrigins || [];
+  };
+
+  addSafeMaskingDisabledOrigin = (origin: string) => {
+    const origins = this.getSafeMaskingDisabledOrigins();
+    if (!origins.includes(origin)) {
+      this.store.safeMaskingDisabledOrigins = [...origins, origin];
+    }
+  };
+
+  removeSafeMaskingDisabledOrigin = (origin: string) => {
+    const origins = this.getSafeMaskingDisabledOrigins();
+    this.store.safeMaskingDisabledOrigins = origins.filter((o) => o !== origin);
+  };
+
+  isSafeMaskingDisabledForOrigin = (origin: string) => {
+    const origins = this.getSafeMaskingDisabledOrigins();
+    return origins.includes(origin);
   };
 }
 
