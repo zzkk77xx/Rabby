@@ -294,9 +294,11 @@ export const SignTestnetTx = ({
   // For action parsing, use original transaction if wrapped by DefiInteractorModule
   const txForActionParsing = useMemo(() => {
     // If this is a converted Permit, use Safe address for simulation
-    const fromAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
-      ? (normalizedParams as any)._safeAddress
-      : tx.from;
+    const fromAddress =
+      (normalizedParams as any)._convertedPermit &&
+      (normalizedParams as any)._safeAddress
+        ? (normalizedParams as any)._safeAddress
+        : tx.from;
 
     if (currentOriginalTx) {
       return {
@@ -308,7 +310,12 @@ export const SignTestnetTx = ({
       };
     }
     return { ...tx, from: fromAddress };
-  }, [currentOriginalTx, tx, (normalizedParams as any)._convertedPermit, (normalizedParams as any)._safeAddress]);
+  }, [
+    currentOriginalTx,
+    tx,
+    (normalizedParams as any)._convertedPermit,
+    (normalizedParams as any)._safeAddress,
+  ]);
 
   const { data: recommendNonce, runAsync: runGetNonce } = useRequest(
     async () => {
@@ -562,9 +569,11 @@ export const SignTestnetTx = ({
         }
 
         // If this is a converted Permit, use Safe address
-        const addressForParsing = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
-          ? (normalizedParams as any)._safeAddress
-          : currentAccount.address;
+        const addressForParsing =
+          (normalizedParams as any)._convertedPermit &&
+          (normalizedParams as any)._safeAddress
+            ? (normalizedParams as any)._safeAddress
+            : currentAccount.address;
 
         // Use original transaction for parsing if wrapped
         const txForParsing =
@@ -613,9 +622,11 @@ export const SignTestnetTx = ({
 
         const cexInfo = await getCexInfo(parsed.send?.to || '', wallet);
         // Use Safe address for converted Permit, otherwise use current account
-        const senderAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
-          ? (normalizedParams as any)._safeAddress
-          : currentAccount.address;
+        const senderAddress =
+          (normalizedParams as any)._convertedPermit &&
+          (normalizedParams as any)._safeAddress
+            ? (normalizedParams as any)._safeAddress
+            : currentAccount.address;
         const requiredData = await fetchActionRequiredData({
           type: 'transaction',
           actionData: parsed,
@@ -771,10 +782,22 @@ export const SignTestnetTx = ({
 
         const DEFI_INTERACTOR_ABI = [
           'function executeOnProtocol(address target, bytes calldata data) returns (bytes memory)',
+          'function executeOnProtocolWithValue(address target, bytes calldata data) payable returns (bytes memory)',
         ];
 
         const iface = new ethers.utils.Interface(DEFI_INTERACTOR_ABI);
-        const wrappedData = iface.encodeFunctionData('executeOnProtocol', [
+
+        // Check if transaction includes native asset value
+        const hasValue =
+          newOriginalTx.value &&
+          ethers.BigNumber.from(newOriginalTx.value).gt(0);
+
+        // Wrap with executeOnProtocolWithValue if value present, otherwise executeOnProtocol
+        const methodName = hasValue
+          ? 'executeOnProtocolWithValue'
+          : 'executeOnProtocol';
+        console.log('Sign', methodName);
+        const wrappedData = iface.encodeFunctionData(methodName, [
           newOriginalTx.to,
           newOriginalTx.data,
         ]);
