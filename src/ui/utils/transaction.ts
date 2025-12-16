@@ -34,7 +34,31 @@ export function getCustomTxParamsData(
   }: { customPermissionAmount: string; decimals: number }
 ) {
   const methodId = data.substring(0, 10);
-  if (methodId === '0x39509351') {
+  if (methodId === '0x095ea7b3') {
+    // approve(address,uint256)
+    const iface = new ethers.utils.Interface([
+      {
+        inputs: [
+          { internalType: 'address', name: 'spender', type: 'address' },
+          { internalType: 'uint256', name: 'amount', type: 'uint256' },
+        ],
+        name: 'approve',
+        outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+    ]);
+    const [spender] = iface.decodeFunctionData('approve', data);
+    const customPermissionValue = calcTokenValue(
+      customPermissionAmount,
+      decimals
+    );
+    const calldata = iface.encodeFunctionData('approve', [
+      spender,
+      customPermissionValue.toFixed(),
+    ]);
+    return calldata;
+  } else if (methodId === '0x39509351') {
     // increaseAllowance
     const iface = new ethers.utils.Interface([
       {

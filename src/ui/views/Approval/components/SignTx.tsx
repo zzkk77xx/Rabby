@@ -623,6 +623,11 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
 
   // For action parsing, use original transaction if wrapped by DefiInteractorModule
   const txForActionParsing = useMemo(() => {
+    // If this is a converted Permit, use Safe address for simulation
+    const fromAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
+      ? (normalizedParams as any)._safeAddress
+      : from;
+
     if (_originalTx) {
       // Transaction was wrapped - use original for action parsing
       console.log(
@@ -632,11 +637,13 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
           wrappedTo: to,
           originalData: _originalTx.data?.slice(0, 10),
           wrappedData: data?.slice(0, 10),
+          convertedPermit: !!(normalizedParams as any)._convertedPermit,
+          fromAddress,
         }
       );
       return {
         chainId,
-        from,
+        from: fromAddress,
         to: _originalTx.to,
         data: _originalTx.data,
         value: _originalTx.value,
@@ -649,7 +656,7 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     // No wrapping - use current transaction
     return {
       chainId,
-      from,
+      from: fromAddress,
       to,
       data,
       value,
@@ -669,6 +676,8 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     gasPrice,
     nonce,
     maxFeePerGas,
+    (normalizedParams as any)._convertedPermit,
+    (normalizedParams as any)._safeAddress,
   ]);
 
   const is7702 = is7702Tx({ authorizationList } as any);
@@ -1157,7 +1166,17 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
   const explain = async () => {
     try {
       setIsReady(false);
-      await explainTx(currentAccount.address);
+      // If this is a converted Permit, use the Safe address for fetching balance
+      const addressForFetch = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
+        ? (normalizedParams as any)._safeAddress
+        : currentAccount.address;
+      console.log('[SignTx] Using address for explain:', {
+        convertedPermit: !!(normalizedParams as any)._convertedPermit,
+        addressForFetch,
+        eoaAddress: currentAccount.address,
+        safeAddress: (normalizedParams as any)._safeAddress
+      });
+      await explainTx(addressForFetch);
       setIsReady(true);
     } catch (e: any) {
       Modal.error({

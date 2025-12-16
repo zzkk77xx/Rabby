@@ -72,6 +72,7 @@ const ApproveAmountModal = ({
     new BigNumber(amount).times(token.price).toNumber()
   );
   const [canSubmit, setCanSubmit] = useState(false);
+
   const handleSubmit = () => {
     onChange(customAmount);
   };
@@ -82,15 +83,12 @@ const ApproveAmountModal = ({
   };
 
   useEffect(() => {
-    if (
-      !customAmount ||
-      Number(customAmount) <= 0 ||
-      Number.isNaN(Number(customAmount))
-    ) {
-      setCanSubmit(false);
-    } else {
-      setCanSubmit(true);
-    }
+    const isValid = !!(
+      customAmount &&
+      Number(customAmount) > 0 &&
+      !Number.isNaN(Number(customAmount))
+    );
+    setCanSubmit(isValid);
     setTokenPrice(Number(customAmount || 0) * token.price);
   }, [customAmount]);
 
@@ -240,6 +238,7 @@ const TokenApprove = ({
     onChange({
       data,
     });
+    setEditApproveModalVisible(false);
   };
 
   const [isHoverEdit, editHoverProps] = useHover();

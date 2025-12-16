@@ -96,10 +96,6 @@ export async function wrapTransaction(
       value: '0x0',
     };
   } else {
-    console.log('[wrapTransaction] Wrapping with executeOnProtocol', {
-      target: tx.to,
-    });
-
     // Wrap with executeOnProtocol(target, data)
     const wrappedData = iface.encodeFunctionData('executeOnProtocol', [
       tx.to,

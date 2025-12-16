@@ -212,12 +212,6 @@ export const SignTestnetTx = ({
   const { isGnosis } = params;
   const currentAccount = params.isGnosis ? params.account! : $account;
 
-  console.log('[SignTestnetTx] Component mounted', {
-    hasOriginalTx: !!params.data[0]._originalTx,
-    to: params.data[0].to,
-    data: params.data[0].data?.slice(0, 10),
-  });
-
   const normalizedParams = normalizeTxParams(params.data[0]);
   const {
     data = '0x',
@@ -299,20 +293,22 @@ export const SignTestnetTx = ({
 
   // For action parsing, use original transaction if wrapped by DefiInteractorModule
   const txForActionParsing = useMemo(() => {
+    // If this is a converted Permit, use Safe address for simulation
+    const fromAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
+      ? (normalizedParams as any)._safeAddress
+      : tx.from;
+
     if (currentOriginalTx) {
-      console.log('[SignTestnetTx] Using original tx for parsing', {
-        originalTo: currentOriginalTx.to,
-        wrappedTo: tx.to,
-      });
       return {
         ...tx,
+        from: fromAddress,
         to: currentOriginalTx.to,
         data: currentOriginalTx.data,
         value: currentOriginalTx.value,
       };
     }
-    return tx;
-  }, [currentOriginalTx, tx]);
+    return { ...tx, from: fromAddress };
+  }, [currentOriginalTx, tx, (normalizedParams as any)._convertedPermit, (normalizedParams as any)._safeAddress]);
 
   const { data: recommendNonce, runAsync: runGetNonce } = useRequest(
     async () => {
@@ -565,6 +561,11 @@ export const SignTestnetTx = ({
           return;
         }
 
+        // If this is a converted Permit, use Safe address
+        const addressForParsing = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
+          ? (normalizedParams as any)._safeAddress
+          : currentAccount.address;
+
         // Use original transaction for parsing if wrapped
         const txForParsing =
           currentOriginalTx &&
@@ -588,7 +589,7 @@ export const SignTestnetTx = ({
             to: txForParsing.to || '',
           },
           origin: origin || '',
-          addr: currentAccount.address,
+          addr: addressForParsing,
         });
 
         if (!actionData) {
@@ -611,12 +612,16 @@ export const SignTestnetTx = ({
         });
 
         const cexInfo = await getCexInfo(parsed.send?.to || '', wallet);
+        // Use Safe address for converted Permit, otherwise use current account
+        const senderAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
+          ? (normalizedParams as any)._safeAddress
+          : currentAccount.address;
         const requiredData = await fetchActionRequiredData({
           type: 'transaction',
           actionData: parsed,
           contractCall: actionData.contract_call,
           chainId: chain.serverId,
-          sender: currentAccount.address,
+          sender: senderAddress,
           walletProvider: {
             findChain,
             ALIAS_ADDRESS,
@@ -773,11 +778,6 @@ export const SignTestnetTx = ({
           newOriginalTx.to,
           newOriginalTx.data,
         ]);
-
-        console.log('[SignTestnetTx] Re-wrapped modified transaction', {
-          originalData: obj.data.slice(0, 10),
-          wrappedData: wrappedData.slice(0, 10),
-        });
 
         // Update the current original transaction state
         setCurrentOriginalTx(newOriginalTx);
