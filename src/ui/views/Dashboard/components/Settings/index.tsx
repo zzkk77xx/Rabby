@@ -1266,95 +1266,95 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
         },
       ] as SettingItem[],
     },
-    about: {
-      label: t('page.dashboard.settings.aboutUs'),
-      items: [
-        {
-          leftIcon: RcIconFeedback,
-          content: t('page.dashboard.home.panel.feedback'),
-          onClick: () => {
-            // Analytics removed
+    // about: {
+    //   label: t('page.dashboard.settings.aboutUs'),
+    //   items: [
+    //     {
+    //       leftIcon: RcIconFeedback,
+    //       content: t('page.dashboard.home.panel.feedback'),
+    //       onClick: () => {
+    //         // Analytics removed
 
-            reportSettings('feedback');
-            openInTab('https://debank.com/hi/0a110032');
-          },
-          rightIcon: (
-            <ThemeIcon
-              src={RcIconArrowRight}
-              className="icon icon-arrow-right"
-            />
-          ),
-        },
-        {
-          leftIcon: RcIconSettingsAboutVersion,
-          content: t('page.dashboard.settings.currentVersion'),
-          onClick: () => {
-            updateVersion();
-            // Analytics removed
+    //         reportSettings('feedback');
+    //         openInTab('https://debank.com/hi/0a110032');
+    //       },
+    //       rightIcon: (
+    //         <ThemeIcon
+    //           src={RcIconArrowRight}
+    //           className="icon icon-arrow-right"
+    //         />
+    //       ),
+    //     },
+    //     {
+    //       leftIcon: RcIconSettingsAboutVersion,
+    //       content: t('page.dashboard.settings.currentVersion'),
+    //       onClick: () => {
+    //         updateVersion();
+    //         // Analytics removed
 
-            reportSettings('Current Version');
-          },
-          rightIcon: (
-            <>
-              <span
-                className="text-14 mr-[8px] text-r-neutral-title-1"
-                role="button"
-                onClick={updateVersion}
-              >
-                {process.env.release}
-                <span
-                  className={clsx(
-                    'text-[#ec5151] ml-2',
-                    !hasNewVersion && 'hidden'
-                  )}
-                >
-                  (
-                  <span
-                    className={clsx('underline')}
-                    role="button"
-                    onClick={(evt) => {
-                      evt.stopPropagation();
-                      updateVersion();
-                    }}
-                  >
-                    {t('page.dashboard.settings.updateAvailable')}
-                  </span>
-                  )
-                </span>
-              </span>
-              <ThemeIcon
-                src={RcIconArrowRight}
-                className="icon icon-arrow-right"
-              />
-            </>
-          ),
-        },
-        {
-          leftIcon: RcIconSettingsAboutSupporetedChains,
-          content: t('page.dashboard.settings.supportedChains'),
-          onClick: () => {
-            history.push('/settings/chain-list');
-            // Analytics removed
+    //         reportSettings('Current Version');
+    //       },
+    //       rightIcon: (
+    //         <>
+    //           <span
+    //             className="text-14 mr-[8px] text-r-neutral-title-1"
+    //             role="button"
+    //             onClick={updateVersion}
+    //           >
+    //             {process.env.release}
+    //             <span
+    //               className={clsx(
+    //                 'text-[#ec5151] ml-2',
+    //                 !hasNewVersion && 'hidden'
+    //               )}
+    //             >
+    //               (
+    //               <span
+    //                 className={clsx('underline')}
+    //                 role="button"
+    //                 onClick={(evt) => {
+    //                   evt.stopPropagation();
+    //                   updateVersion();
+    //                 }}
+    //               >
+    //                 {t('page.dashboard.settings.updateAvailable')}
+    //               </span>
+    //               )
+    //             </span>
+    //           </span>
+    //           <ThemeIcon
+    //             src={RcIconArrowRight}
+    //             className="icon icon-arrow-right"
+    //           />
+    //         </>
+    //       ),
+    //     },
+    //     {
+    //       leftIcon: RcIconSettingsAboutSupporetedChains,
+    //       content: t('page.dashboard.settings.supportedChains'),
+    //       onClick: () => {
+    //         history.push('/settings/chain-list');
+    //         // Analytics removed
 
-            reportSettings('Supported Chains');
-          },
-          rightIcon: (
-            <>
-              <span
-                className="text-14 mr-[8px] text-r-neutral-title-1"
-                role="button"
-              >
-                {getChainList('mainnet').length}
-              </span>
-              <ThemeIcon
-                src={RcIconArrowRight}
-                className="icon icon-arrow-right"
-              />
-            </>
-          ),
-        },
-      ] as SettingItem[],
-    },
+    //         reportSettings('Supported Chains');
+    //       },
+    //       rightIcon: (
+    //         <>
+    //           <span
+    //             className="text-14 mr-[8px] text-r-neutral-title-1"
+    //             role="button"
+    //           >
+    //             {getChainList('mainnet').length}
+    //           </span>
+    //           <ThemeIcon
+    //             src={RcIconArrowRight}
+    //             className="icon icon-arrow-right"
+    //           />
+    //         </>
+    //       ),
+    //     },
+    //   ] as SettingItem[],
+    // },
   };
 
   if (!process.env.DEBUG) {
