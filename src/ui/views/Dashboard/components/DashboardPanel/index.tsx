@@ -5,7 +5,6 @@ import { useRabbySelector } from '@/ui/store';
 import { usePerpsHomePnl } from '@/ui/views/Perps/hooks/usePerpsHomePnl';
 import { findChainByID } from '@/utils/chain';
 import { appIsDev } from '@/utils/env';
-import { ga4 } from '@/utils/ga4';
 import { Badge, Col, Row, Skeleton, Tooltip } from 'antd';
 import clsx from 'clsx';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
@@ -408,10 +407,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
                   key={index}
                   onClick={(evt) => {
                     // Analytics removed
-
-                    ga4.fireEvent(`Entry_${item.eventKey}`, {
-                      event_category: 'Dashboard',
-                    });
 
                     item?.onClick(evt);
                   }}

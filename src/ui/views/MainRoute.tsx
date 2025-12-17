@@ -82,7 +82,6 @@ import {
   MetamaskModeDappsList,
 } from './MetamaskModeDapps';
 import { NewUserSelectAddress } from './NewUserImport/SelectAddress';
-import { ga4 } from '@/utils/ga4';
 import { ConnectApproval } from './Approval/components/Connect/SelectWalletApproval';
 import { SyncToMobile } from '../utils/SyncToMobile/SyncToMobile';
 import dayjs from 'dayjs';
@@ -102,9 +101,6 @@ declare global {
 const LogPageView = () => {
   const path = window.location.hash.replace(/#/, '');
 
-  ga4.firePageViewEvent({
-    pageLocation: path,
-  });
   if (window._paq) {
     window._paq.push(['setCustomUrl', path]);
     window._paq.push(['trackPageView']);
@@ -122,14 +118,6 @@ const Main = () => {
       if (UIType.isNotification || UIType.isPop) {
         const hasOtherProvider = await wallet.getHasOtherProvider();
 
-        ga4.fireEvent(
-          UIType.isPop
-            ? `Popup_${hasOtherProvider ? 'HasMM' : 'NoMM'}`
-            : `Request_${hasOtherProvider ? 'HasMM' : 'NoMM'}`,
-          {
-            event_category: 'User Active',
-          }
-        );
         const preference: PreferenceStore = await wallet.getPreference();
         if (
           dayjs(preference.ga4EventTime || 0)
@@ -138,25 +126,9 @@ const Main = () => {
         ) {
           return;
         }
-        ga4.fireEvent(
-          `ThemeMode_${
-            preference.themeMode === DARK_MODE_TYPE.dark ? 'Dark' : 'Light'
-          }`,
-          {
-            event_category: 'Settings Snapshot',
-          }
-        );
-        ga4.fireEvent(
-          `DappAccount_${preference.isEnabledDappAccount ? 'On' : 'Off'}`,
-          {
-            event_category: 'Settings Snapshot',
-          }
-        );
 
         const isEnabledWhiteList = await wallet.isWhitelistEnabled();
-        ga4.fireEvent(`Whitelist_${isEnabledWhiteList ? 'On' : 'Off'}`, {
-          event_category: 'Settings Snapshot',
-        });
+
         wallet.updateGa4EventTime(Date.now());
       }
     })();

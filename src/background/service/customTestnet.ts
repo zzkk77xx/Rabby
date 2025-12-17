@@ -5,7 +5,6 @@ import {
 } from '@/constant/custom-testnet';
 import { customTestnetTokenToTokenItem } from '@/ui/utils/token';
 import { findChain, isSameTesnetToken, updateChainStore } from '@/utils/chain';
-import { ga4 } from '@/utils/ga4';
 import { CHAINS_ENUM } from '@debank/common';
 import { intToHex } from '@ethereumjs/util';
 import { abiERC1155, abiERC721 } from '@metamask/metamask-eth-abis';
@@ -231,10 +230,6 @@ class CustomTestnetService {
 
     if (this.getList().length) {
       // Analytics removed
-
-      ga4.fireEvent('Has_CustomNetwork', {
-        event_category: 'Custom Network',
-      });
     }
     return this.store.customTestnet[chain.id];
   };
@@ -250,10 +245,6 @@ class CustomTestnetService {
     this.syncChainList();
     if (this.getList().length) {
       // Analytics removed
-
-      ga4.fireEvent('Has_CustomNetwork', {
-        event_category: 'Custom Network',
-      });
     }
   };
 

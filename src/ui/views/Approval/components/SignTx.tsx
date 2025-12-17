@@ -89,7 +89,6 @@ import {
   ActionRequireData,
   ParsedTransactionActionData,
 } from '@rabby-wallet/rabby-action';
-import { ga4 } from '@/utils/ga4';
 import { EIP7702Warning } from './EIP7702Warning';
 import { getEIP7702MiniGasLimit } from '@/background/utils/7702';
 import { MultiActionProps } from './TypedDataActions';

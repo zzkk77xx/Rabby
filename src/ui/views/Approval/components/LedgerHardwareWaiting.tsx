@@ -22,7 +22,6 @@ import {
   Props as ApprovalPopupContainerProps,
 } from './Popup/ApprovalPopupContainer';
 import { isLedgerLockError } from '@/ui/utils/ledger';
-import { ga4 } from '@/utils/ga4';
 import { useGetTxFailedResultInWaiting } from '@/ui/hooks/useMiniApprovalDirectSign';
 
 interface ApprovalParams {
@@ -205,10 +204,6 @@ const LedgerHardwareWaiting = ({
           setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
           return;
         }
-
-        ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-          event_category: 'Transaction',
-        });
 
         setSignFinishedData({
           data: sig,

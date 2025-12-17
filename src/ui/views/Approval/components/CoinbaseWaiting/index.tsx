@@ -16,7 +16,6 @@ import { useSessionStatus } from '@/ui/component/WalletConnect/useSessionStatus'
 import { adjustV } from '@/ui/utils/gnosis';
 import { findChain, findChainByEnum } from '@/utils/chain';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
-import { ga4 } from '@/utils/ga4';
 
 interface ApprovalParams {
   address: string;

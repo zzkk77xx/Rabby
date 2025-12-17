@@ -61,7 +61,6 @@ import FeedbackPopup from '../Feedback';
 import { getChainList } from '@/utils/chain';
 import { SvgIconCross } from '@/ui/assets';
 import { sendPersonalMessage } from '@/ui/utils/sendPersonalMessage';
-import { ga4 } from '@/utils/ga4';
 import { EcosystemBanner } from './components/EcosystemBanner';
 import { useMemoizedFn } from 'ahooks';
 import RateModalTriggerOnSettings from '@/ui/component/RateModal/RateModalTriggerOnSettings';
@@ -840,10 +839,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
   const handleEnableDappAccount = useMemoizedFn(() => {
     // Analytics removed
 
-    ga4.fireEvent('Dapp_Account', {
-      event_category: 'Click More',
-    });
-
     reportSettings('DappAccount');
 
     if (isEnabledDappAccount) {
@@ -936,10 +931,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             lockWallet();
             // Analytics removed
 
-            ga4.fireEvent('More_LockWallet', {
-              event_category: 'Click More',
-            });
-
             reportSettings('Lock Wallet');
           },
         },
@@ -950,10 +941,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             history.push('/activities');
             // Analytics removed
 
-            ga4.fireEvent('More_SignatureRecord', {
-              event_category: 'Click More',
-            });
-
             reportSettings('Signature Record');
           },
         },
@@ -963,10 +950,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             history.push('/settings/address');
             // Analytics removed
-
-            ga4.fireEvent('More_ManageAddress', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Manage Address');
           },
@@ -984,10 +967,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             // Analytics removed
 
-            ga4.fireEvent('More_SearchDapps', {
-              event_category: 'Click More',
-            });
-
             reportSettings('Search Dapps');
             openInternalPageInTab('dapp-search');
           },
@@ -998,10 +977,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             setConnectedDappsVisible(true);
             // Analytics removed
-
-            ga4.fireEvent('More_ConnectedDapps', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Connected Dapps');
           },
@@ -1058,10 +1033,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             history.push('/custom-testnet');
             // Analytics removed
 
-            ga4.fireEvent('More_CustomTestnet', {
-              event_category: 'Click More',
-            });
-
             reportSettings('Custom Testnet');
           },
         },
@@ -1072,10 +1043,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             history.push('/custom-rpc');
             // Analytics removed
 
-            ga4.fireEvent('More_CustomRPC', {
-              event_category: 'Click More',
-            });
-
             reportSettings('Custom RPC');
           },
         },
@@ -1084,10 +1051,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.settings.currentLanguage'),
           onClick: () => {
             // Analytics removed
-
-            ga4.fireEvent('More_CurrentLanguage', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Current Language');
             setIsShowLangModal(true);
@@ -1112,10 +1075,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.settings.toggleThemeMode'),
           onClick: () => {
             // Analytics removed
-
-            ga4.fireEvent('More_ThemeMode', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Theme Mode');
             setIsShowThemeModeModal(true);
@@ -1147,10 +1106,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
             history.push('/metamask-mode-dapps');
             // Analytics removed
 
-            ga4.fireEvent('More_MetaMaskModeDapps', {
-              event_category: 'Click More',
-            });
-
             reportSettings('MetaMask Mode Dapps');
           },
         },
@@ -1159,10 +1114,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.autoLockTime'),
           onClick: () => {
             // Analytics removed
-
-            ga4.fireEvent('More_AutoLockTime', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Auto lock time');
             setIsShowAutoLockModal(true);
@@ -1187,10 +1138,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.clearPending'),
           onClick: () => {
             // Analytics removed
-
-            ga4.fireEvent('More_ResetAccount', {
-              event_category: 'Click More',
-            });
 
             setShowResetAccountModal(true);
             reportSettings('Reset Account');
@@ -1328,10 +1275,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             // Analytics removed
 
-            ga4.fireEvent('More_Feedback', {
-              event_category: 'Click More',
-            });
-
             reportSettings('feedback');
             openInTab('https://debank.com/hi/0a110032');
           },
@@ -1348,10 +1291,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             updateVersion();
             // Analytics removed
-
-            ga4.fireEvent('More_CurrentVersion', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Current Version');
           },
@@ -1396,10 +1335,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           onClick: () => {
             history.push('/settings/chain-list');
             // Analytics removed
-
-            ga4.fireEvent('More_SupportedChains', {
-              event_category: 'Click More',
-            });
 
             reportSettings('Supported Chains');
           },

@@ -28,7 +28,6 @@ import { pickKeyringThemeIcon } from '@/utils/account';
 import { id } from 'ethers/lib/utils';
 import { findChain } from '@/utils/chain';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
-import { ga4 } from '@/utils/ga4';
 import { useAsync } from 'react-use';
 import type { RetryUpdateType } from '@/background/utils/errorTxRetry';
 import { useGetTxFailedResultInWaiting } from '@/ui/hooks/useMiniApprovalDirectSign';
@@ -215,10 +214,6 @@ export const PrivatekeyWaiting = ({
           console.error(e);
           return;
         }
-
-        ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-          event_category: 'Transaction',
-        });
 
         setSignFinishedData({
           data: sig,

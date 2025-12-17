@@ -13,7 +13,6 @@ import {
   useRateModal,
   useTotalBalanceTextForRate,
 } from './hooks';
-import { ga4 } from '@/utils/ga4';
 
 const StarLayoutSizes = {
   size: 32,
@@ -52,8 +51,6 @@ export default function RateModalTriggerOnSettings({
 
   useEffect(() => {
     if (!shouldShowRateGuideOnHome) return;
-
-    ga4.fireEvent('Rate_Show', { event_category: 'Rate MultiSub' });
   }, [shouldShowRateGuideOnHome]);
 
   const {
@@ -118,10 +115,6 @@ export default function RateModalTriggerOnSettings({
               evt.stopPropagation();
               toggleShowRateModal(true, {
                 starCountOnOpen: index + 1,
-              });
-
-              ga4.fireEvent(`Rate_Star_${starToText(userSelectedStar)}`, {
-                event_category: 'Rate MultiSub',
               });
             }}
           />

@@ -2,7 +2,6 @@ import { EVENTS, INTERNAL_REQUEST_SESSION } from '@/constant';
 import { WalletControllerType } from '@/ui/utils';
 import { getKRCategoryByType } from '@/utils/transaction';
 import eventBus from '@/eventBus';
-import { ga4 } from '@/utils/ga4';
 import { Account } from '@/background/service/preference';
 import { underline2Camelcase } from '@/background/utils';
 
@@ -33,16 +32,6 @@ const report = async ({
     return;
   }
   // Analytics removed
-
-  if (action === 'createSignText') {
-    ga4.fireEvent('Init_SignText', {
-      event_category: 'SignText',
-    });
-  } else if (action === 'startSignText') {
-    ga4.fireEvent('Submit_SignText', {
-      event_category: 'SignText',
-    });
-  }
 
   await wallet.reportStats(action, {
     type: currentAccount.brandName,

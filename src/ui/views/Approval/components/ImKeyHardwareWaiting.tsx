@@ -28,7 +28,6 @@ import { useImKeyStatus } from '@/ui/component/ConnectStatus/useImKeyStatus';
 import * as Sentry from '@sentry/browser';
 import { findChain } from '@/utils/chain';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
-import { ga4 } from '@/utils/ga4';
 import { useGetTxFailedResultInWaiting } from '@/ui/hooks/useMiniApprovalDirectSign';
 
 interface ApprovalParams {
@@ -208,10 +207,6 @@ export const ImKeyHardwareWaiting = ({
           setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
           return;
         }
-
-        ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-          event_category: 'Transaction',
-        });
 
         setSignFinishedData({
           data: sig,

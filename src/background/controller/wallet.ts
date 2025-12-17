@@ -147,7 +147,6 @@ import Browser from 'webextension-polyfill';
 import { hashSafeMessage } from '@safe-global/protocol-kit';
 import { userGuideService } from '../service/userGuide';
 import { metamaskModeService } from '../service/metamaskModeService';
-import { ga4 } from '@/utils/ga4';
 import { bgRetryTxMethods } from '../utils/errorTxRetry';
 import {
   BridgeTxHistoryItem,
@@ -5391,10 +5390,6 @@ export class WalletController extends BaseController {
     const res = await customTestnetService.add(chain);
     if (!('error' in res)) {
       // Analytics removed
-
-      ga4.fireEvent('Add_CustomNetwork', {
-        event_category: 'Custom Network',
-      });
     }
     return res;
   };

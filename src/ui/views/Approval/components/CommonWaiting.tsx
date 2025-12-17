@@ -26,7 +26,6 @@ import { adjustV } from '@/ui/utils/gnosis';
 import { message } from 'antd';
 import { findChain } from '@/utils/chain';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
-import { ga4 } from '@/utils/ga4';
 import { useGetTxFailedResultInWaiting } from '@/ui/hooks/useMiniApprovalDirectSign';
 
 interface ApprovalParams {
@@ -210,10 +209,6 @@ export const CommonWaiting = ({
           setErrorMessage(e.message);
           return;
         }
-
-        ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-          event_category: 'Transaction',
-        });
 
         setSignFinishedData({
           data: sig,
