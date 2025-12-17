@@ -54,7 +54,7 @@
       "gasPriceTitle": "Gas Ücreti (Gwei)",
       "maxPriorityFee": "Maksimum Öncelik Ücreti (Gwei)",
       "eip1559Desc1": "EIP-1559'u destekleyen zincirlerde, Öncelik Ücreti işleminizi işlemek için madencilere olan bahşiştir. Öncelik Ücretini düşürerek Gas ücretinden tasarruf edebilirsiniz, bu işlemin işlenmesinin daha fazla zaman almasına yol açabilir.",
-      "eip1559Desc2": "Rabby'de, Öncelik Ücreti (Bahşiş) = Maksimum Ücret - Baz Ücret olarak hesaplanır. Maksimum Öncelik Ücretini ayarladıktan sonra, Baz Ücret bundan düşülür ve geri kalan madencilere bahşiş olarak verilir.",
+      "eip1559Desc2": "MultiSub'de, Öncelik Ücreti (Bahşiş) = Maksimum Ücret - Baz Ücret olarak hesaplanır. Maksimum Öncelik Ücretini ayarladıktan sonra, Baz Ücret bundan düşülür ve geri kalan madencilere bahşiş olarak verilir.",
       "hardwareSupport1559Alert": "Donanım cüzdanı yazılımının EIP 1559'u destekleyen bir sürüme yükseltildiğinden emin olun",
       "gasLimitTitle": "Gas limiti",
       "recommendGasLimitTip": "Tahmini {{est}}. Mevcut {{current}}x, önerilen ",
@@ -127,7 +127,7 @@
         "trustValueLessThan": "Güven değeri ≤ {{value}}",
         "deployTimeLessThan": "Yayınlama süresi < {{value}} gün",
         "amountPopupTitle": "Miktar",
-        "flagByRabby": "Rabby tarafından işaretlendi",
+        "flagByRabby": "MultiSub tarafından işaretlendi",
         "contractTrustValueTip": "Güven değeri, bu kontrat için onaylanan ve kontrata maruz kalan toplam tokeni ifade eder. Düşük bir güven değeri, ya riski ya da 180 gün boyunca hareketsizliği gösterir.",
         "amount": "Onay Tutarı:",
         "exceed": "Mevcut bakiyenizi aşıyor"
@@ -192,8 +192,8 @@
       "neverInteracted": "Daha önce hiç etkileşimde bulunulmadı",
       "transacted": "Daha önce işlem yapıldı",
       "neverTransacted": "Daha önce hiç işlem yapılmadı",
-      "fakeTokenAlert": "Bu, Rabby tarafından dolandırıcı olarak işaretlenmiş bir tokendir",
-      "scamTokenAlert": "Bu, Rabby'nin tespitine göre potansiyel olarak düşük kaliteli ve dolandırıcı bir tokendir",
+      "fakeTokenAlert": "Bu, MultiSub tarafından dolandırıcı olarak işaretlenmiş bir tokendir",
+      "scamTokenAlert": "Bu, MultiSub'nin tespitine göre potansiyel olarak düşük kaliteli ve dolandırıcı bir tokendir",
       "trusted": "Güvenilir",
       "blocked": "Engellendi",
       "noMark": "İşaret yok",
@@ -202,7 +202,7 @@
       "signTransactionOnChain": "{{chain}} İşlemi İmzala",
       "viewRaw": "Hamı Görüntüle",
       "unknownActionType": "Bilinmeyen işlem türü",
-      "sigCantDecode": "Bu imza Rabby tarafından çözülemez",
+      "sigCantDecode": "Bu imza MultiSub tarafından çözülemez",
       "nftCollection": "NFT Koleksiyonu",
       "floorPrice": "Taban fiyat",
       "contractAddress": "Kontrat adresi",
@@ -232,7 +232,7 @@
       "customRPCErrorModal": {
         "title": "Özel RPC Hatası",
         "button": "Özel RPC'yi Devre Dışı Bırak",
-        "content": "Özel RPC'niz şu anda kullanılamıyor. Onu devre dışı bırakabilir ve Rabby'nin resmi RPC'sini kullanarak imzalamaya devam edebilirsiniz."
+        "content": "Özel RPC'niz şu anda kullanılamıyor. Onu devre dışı bırakabilir ve MultiSub'nin resmi RPC'sini kullanarak imzalamaya devam edebilirsiniz."
       },
       "transferOwner": {
         "transferTo": "Transfer to",
@@ -330,7 +330,7 @@
       "gasAccountForGas": "Gas ödemesi yapmak için GasAccount'ımdaki USD'yi kullan",
       "chain": "Zincir",
       "importedAddress": "İthal edilen adres",
-      "decodedTooltip": "Bu imza Rabby Wallet tarafından çözüldü",
+      "decodedTooltip": "Bu imza MultiSub Wallet tarafından çözüldü",
       "address": "Adres",
       "typedDataMessage": "Imzalı Tip Verileri",
       "amount": "Miktar",
@@ -350,8 +350,8 @@
       "safeTx": {
         "selfHostConfirm": {
           "button": "OK",
-          "title": "Rabby'nin Safe Servisi'ne Geç",
-          "content": "Safe API kullanılamıyor. Safe'inizin işlevselliğini sürdürmek için Rabby tarafından dağıtılan Safe hizmetine geçin. <strong>Tüm Safe imzalayıcılarının işlemleri yetkilendirmek için Rabby Wallet kullanması gerekiyor.<strong>"
+          "title": "MultiSub'nin Safe Servisi'ne Geç",
+          "content": "Safe API kullanılamıyor. Safe'inizin işlevselliğini sürdürmek için MultiSub tarafından dağıtılan Safe hizmetine geçin. <strong>Tüm Safe imzalayıcılarının işlemleri yetkilendirmek için MultiSub Wallet kullanması gerekiyor.<strong>"
         }
       },
       "errorRetry": {
@@ -394,7 +394,7 @@
         "connected": "Bağlandı ve imzalamaya hazır",
         "howToSwitch": "Nasıl değiştirilir",
         "wrongAddressAlert": "Mobil cüzdanınızda farklı bir adrese geçtiniz. Lütfen mobil cüzdanınızda doğru adrese geçin",
-        "connectBeforeSign": "{{0}} Rabby'ye bağlı değil, imzalamadan önce lütfen bağlanın",
+        "connectBeforeSign": "{{0}} MultiSub'ye bağlı değil, imzalamadan önce lütfen bağlanın",
         "chainSwitched": "Mobil cüzdanınızda farklı bir zincire geçtiniz. Lütfen mobil cüzdanınızda {{0}}'e geçin",
         "latency": "Gecikme",
         "requestSuccessToast": "Talep başarıyla gönderildi.",
@@ -454,7 +454,7 @@
       "mainnet": "Ana ağ",
       "gasless": {
         "watchUnavailableTip": "Sadece izleme adresi Free Gas için desteklenmez.",
-        "rabbyPayGas": "Rabby, gerekli gaz ücretini karşılayacak – sadece imzalayın",
+        "rabbyPayGas": "MultiSub, gerekli gaz ücretini karşılayacak – sadece imzalayın",
         "GetFreeGasToSign": "Ücretsiz Gas Al",
         "notEnough": "Gas bakiyesi yeterli değil",
         "customRpcUnavailableTip": "Özel RPC'ler Free Gas için desteklenmemektedir.",
@@ -547,7 +547,7 @@
         "label": "İşlemler",
         "empty": {
           "title": "Henüz imzalanmış işlem yok",
-          "desc": "Rabby aracılığıyla imzalanan tüm işlemler burada listelenecektir."
+          "desc": "MultiSub aracılığıyla imzalanan tüm işlemler burada listelenecektir."
         },
         "common": {
           "unlimited": "sınırsız",
@@ -645,7 +645,7 @@
         "label": "Metin",
         "empty": {
           "title": "Henüz imzalanmış metin yok",
-          "desc": "Rabby aracılığıyla imzalanan tüm metinler burada listelenecektir."
+          "desc": "MultiSub aracılığıyla imzalanan tüm metinler burada listelenecektir."
         }
       }
     },
@@ -928,14 +928,14 @@
       "topUpChain": "Yükleme Zinciri",
       "Amount": "Miktar",
       "Continue": "Devam",
-      "InsufficientBalance": "Rabby'nin kontrat adresinde bu zincir için yeterli bakiye yok. Lütfen daha sonra tekrar deneyin.",
+      "InsufficientBalance": "MultiSub'nin kontrat adresinde bu zincir için yeterli bakiye yok. Lütfen daha sonra tekrar deneyin.",
       "hightGasFees": "Bu yükleme miktarı çok küçük, hedef ağ yüksek gaz ücretleri gerektiriyor.",
       "No_Tokens": "Token Yok",
       "InsufficientBalanceTips": "Yetersiz bakiye",
       "payment": "Gas Yükleme Ödemesi",
       "Loading_Tokens": "Tokenler Yükleniyor...",
       "Including-service-fee": "{{fee}} dahil hizmet ücreti",
-      "service-fee-tip": "Gas Yükleme hizmeti için Rabby, token değişimindeki kaybı ve yükleme için gas ücretini karşılamak zorundadır. Bu nedenle %20 hizmet ücreti alınır.",
+      "service-fee-tip": "Gas Yükleme hizmeti için MultiSub, token değişimindeki kaybı ve yükleme için gas ücretini karşılamak zorundadır. Bu nedenle %20 hizmet ücreti alınır.",
       "Confirm": "Onayla",
       "Deposit-tip": "USDC/USDT ile Depozito Yapın",
       "Value": "Değer",
@@ -970,7 +970,7 @@
       "amount-in": "Girdi miktarı {{symbol}}",
       "unlimited-allowance": "Sınırsız izin",
       "insufficient-balance": "Yetersiz bakiye",
-      "rabby-fee": "Rabby ücreti",
+      "rabby-fee": "MultiSub ücreti",
       "minimum-received": "Minimum alınacak",
       "there-is-no-fee-and-slippage-for-this-trade": "Bu alım-satım için ücret ve kayma yoktur",
       "approve-tips": "1.Onayla → 2.Takas",
@@ -982,7 +982,7 @@
       "this-exchange-is-not-enabled-to-trade-by-you": "Bu takas platformu sizin için ticarete açık değil.",
       "enable-it": "Etkinleştir",
       "this-token-pair-is-not-supported": "Bu token çifti desteklenmiyor",
-      "QuoteLessWarning": "Alınacak miktar Rabby işlem simülasyonundan tahmin edilir. Dex tarafından sağlanan teklif {{receive}}. Beklenen tekliften {{diff}} daha az alacaksınız.",
+      "QuoteLessWarning": "Alınacak miktar MultiSub işlem simülasyonundan tahmin edilir. Dex tarafından sağlanan teklif {{receive}}. Beklenen tekliften {{diff}} daha az alacaksınız.",
       "by-transaction-simulation-the-quote-is-valid": "İşlem simülasyonuna göre teklif geçerli",
       "wrap-contract": "Kontratı Sar",
       "directlySwap": "Akıllı kontratla {{symbol}} tokenlerini doğrudan sarın",
@@ -1010,17 +1010,17 @@
       "i-understand-and-accept-it": "Anlıyorum ve kabul ediyorum",
       "confirm": "Onayla",
       "tradingSettingTip1": "1. Etkinleştirildiğinde, doğrudan borsanın sözleşmesiyle etkileşimde bulunacaksınız",
-      "tradingSettingTip2": "2. Rabby, borsaların sözleşmesinden kaynaklanan risklerden sorumlu değildir",
+      "tradingSettingTip2": "2. MultiSub, borsaların sözleşmesinden kaynaklanan risklerden sorumlu değildir",
       "gas-fee": "Gas Ücreti: {{gasUsed}}",
       "estimate": "Tahmin:",
       "actual": "Gerçek:",
       "rabbyFee": {
         "rate": "Ücret oranı",
-        "title": "Rabby ücreti",
+        "title": "MultiSub ücreti",
         "wallet": "Cüzdan",
-        "swapDesc": "Rabby Cüzdan, her zaman en iyi oranı üst düzey toplayıcılardan bulur ve tekliflerinin güvenilirliğini doğrular. Rabby %0.25 ücret (sararken %0) alır, bu ücret otomatik olarak teklife dahil edilir.",
+        "swapDesc": "MultiSub Cüzdan, her zaman en iyi oranı üst düzey toplayıcılardan bulur ve tekliflerinin güvenilirliğini doğrular. MultiSub %0.25 ücret (sararken %0) alır, bu ücret otomatik olarak teklife dahil edilir.",
         "button": "Anladım",
-        "bridgeDesc": "Rabby Wallet, en iyi toplayıcılardan en iyi mümkün olan oranı her zaman bulacak ve tekliflerinin güvenilirliğini doğrulayacaktır. Rabby, otomatik olarak teklife dahil edilen %0.25 ücret alır."
+        "bridgeDesc": "MultiSub Wallet, en iyi toplayıcılardan en iyi mümkün olan oranı her zaman bulacak ve tekliflerinin güvenilirliğini doğrulayacaktır. MultiSub, otomatik olarak teklife dahil edilen %0.25 ücret alır."
       },
       "lowCreditModal": {
         "title": "Bu tokenin düşük bir kredi değeri var",
@@ -1040,10 +1040,10 @@
       "sort-with-gas": "Gaz ile sırala",
       "usd-after-fees": "≈ {{usd}}",
       "preferMEV": "MEV Korumalı Tercih Et",
-      "no-fee-for-wrap": "Wrap için Rabby ücreti yok",
+      "no-fee-for-wrap": "Wrap için MultiSub ücreti yok",
       "process-with-two-step-approve": "İki adımlı onayla devam et",
       "loss-tips": "{{usd}} kaybediyorsunuz. Küçük bir pazarda daha küçük bir miktar deneyin.",
-      "no-fees-for-wrap": "Wrap için Rabby ücreti yok",
+      "no-fees-for-wrap": "Wrap için MultiSub ücreti yok",
       "fetch-best-quote": "En iyi teklifi getiriliyor",
       "two-step-approve": "2 işlemi imzalayarak izni değiştirin",
       "hidden-no-quote-rates_one": "{{count}} oranı kullanılamıyor",
@@ -1065,7 +1065,7 @@
       "whitelisted-address": "Beyaz Listeye alınmış adres",
       "addressTypeTip": "{{type}} tarafından içe aktarıldı",
       "delete-desc": "Silmedan önce, varlıklarınızı nasıl koruyacağınızı anlamak için şu noktaları aklınızda bulundurun.",
-      "delete-checklist-1": "Bu adresi silersem, bu adresin Özel Anahtarının & Seed Phrase'inin de silineceğini ve Rabby'nin bunu kurtaramayacağını anlıyorum.",
+      "delete-checklist-1": "Bu adresi silersem, bu adresin Özel Anahtarının & Seed Phrase'inin de silineceğini ve MultiSub'nin bunu kurtaramayacağını anlıyorum.",
       "delete-checklist-2": "Özel Anahtarı veya Seed Phrase'i yedeklediğimi onaylıyorum ve şimdi silmeye hazırım.",
       "confirm": "Onayla",
       "cancel": "İptal",
@@ -1115,7 +1115,7 @@
           "more": "Daha Fazla",
           "manageAddress": "Adresi Yönet",
           "nft": "NFT",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "ecology": "Ekosistem",
           "bridge": "Köprü",
           "mobile": "Mobile Sync",
@@ -1129,9 +1129,9 @@
         "comingSoon": "Çok Yakında",
         "soon": "Yakında",
         "refreshTheWebPageToTakeEffect": "Etkili olması için web sayfasını yenileyin",
-        "rabbyIsInUseAndMetamaskIsBanned": "Rabby kullanımda ve Metamask yasaklandı",
+        "rabbyIsInUseAndMetamaskIsBanned": "MultiSub kullanımda ve Metamask yasaklandı",
         "flip": "Çevir",
-        "metamaskIsInUseAndRabbyIsBanned": "MetaMask kullanımda ve Rabby yasaklandı",
+        "metamaskIsInUseAndRabbyIsBanned": "MetaMask kullanımda ve MultiSub yasaklandı",
         "transactionNeedsToSign": "işlem imzalanmalı",
         "transactionsNeedToSign": "işlemler imzalanmalı",
         "view": "Görüntüle",
@@ -1157,7 +1157,7 @@
         "metamaskTooltip": "Bu dApp ile MetaMask'ı kullanmayı tercih ediyorsunuz. Bu ayarı Ayarlar > MetaMask Tercih Edilen Dapps'ten istediğiniz zaman güncelleyin",
         "connected": "Bağlandı",
         "notConnected": "Bağlı değil",
-        "connectedDapp": "Rabby, şu anki Dapp'a bağlı değil. Bağlanmak için Dapp'ın web sayfasında bağlan butonunu bulup tıklayın.",
+        "connectedDapp": "MultiSub, şu anki Dapp'a bağlı değil. Bağlanmak için Dapp'ın web sayfasında bağlan butonunu bulup tıklayın.",
         "noDappFound": "Dapp bulunamadı",
         "disconnectAll": "Tüm Bağlantıları Kes",
         "disconnectRecentlyUsed": {
@@ -1174,17 +1174,17 @@
         "noRecentlyConnectedDapps": "Son bağlanılan Dapp yok",
         "noConnectedDapps": "Bağlı Dapp yok",
         "dapps": "Dapps",
-        "metamaskModeTooltip": "Bu Dapp'te Rabby bağlanamıyor mu? <1>MetaMask Modu</1>'nu etkinleştirmeyi deneyin.",
-        "metamaskModeTooltipNew": "Rabby Wallet, Dapp'ta \"MetaMask\" seçtiğinizde bağlanacaktır. Bunu Daha Fazla > MetaMask olarak Gizlenerek Rabby Bağlan'da yönetebilirsiniz"
+        "metamaskModeTooltip": "Bu Dapp'te MultiSub bağlanamıyor mu? <1>MetaMask Modu</1>'nu etkinleştirmeyi deneyin.",
+        "metamaskModeTooltipNew": "MultiSub Wallet, Dapp'ta \"MetaMask\" seçtiğinizde bağlanacaktır. Bunu Daha Fazla > MetaMask olarak Gizlenerek MultiSub Bağlan'da yönetebilirsiniz"
       },
       "feedback": {
         "directMessage": {
           "content": "Doğrudan Mesaj",
-          "description": "Rabby Wallet Official ile DeBank'ta sohbet edin"
+          "description": "MultiSub Wallet Official ile DeBank'ta sohbet edin"
         },
         "proposal": {
           "content": "Öneri",
-          "description": "Rabby Wallet için DeBank'ta bir öneri sunun"
+          "description": "MultiSub Wallet için DeBank'ta bir öneri sunun"
         },
         "title": "Geri Bildirim"
       },
@@ -1210,21 +1210,21 @@
       },
       "rabbyBadge": {
         "imageLabel": "rabby rozeti",
-        "title": "İçin Rabby Rozeti Talep Et",
+        "title": "İçin MultiSub Rozeti Talep Et",
         "enterClaimCode": "Talep kodunu girin",
-        "swapTip": "Önce Rabby Cüzdanı ile tanınmış bir dex'te takas yapmanız gerekiyor.",
+        "swapTip": "Önce MultiSub Cüzdanı ile tanınmış bir dex'te takas yapmanız gerekiyor.",
         "goToSwap": "Takasa Git",
         "claim": "Talep Et",
         "viewYourClaimCode": "Talep kodunuzu görüntüleyin",
         "noCode": "Bu adres için talep kodunu aktive etmediniz",
         "learnMoreOnDebank": "DeBank'ta daha fazla bilgi edinin",
-        "rabbyValuedUserNo": "Rabby Valued User No.{{num}}",
+        "rabbyValuedUserNo": "MultiSub Valued User No.{{num}}",
         "claimSuccess": "Talep Başarılı",
         "viewOnDebank": "DeBank'ta Görüntüle",
         "learnMore": "Daha Fazla Bilgi Edinin",
         "freeGasTitle": "Bedava Gas Rozeti Talep Et",
         "freeGasNoCode": "Lütfen aşağıdaki düğmeye tıklayarak DeBank'i ziyaret edin ve ilk önce mevcut adresinizi kullanarak talep kodunu alın.",
-        "rabbyFreeGasUserNo": "Rabby Free Gas Kullanıcısı No.{{num}}",
+        "rabbyFreeGasUserNo": "MultiSub Free Gas Kullanıcısı No.{{num}}",
         "freeGasTip": "Ücretsiz Gas kullanarak bir işlem imzalayın. Gas'ınız yeterli olmadığında 'Ücretsiz Gas' düğmesi otomatik olarak görünecektir."
       },
       "contacts": {
@@ -1259,16 +1259,16 @@
         "clearPendingTip1": "Bu eylem, bekleyen işlemi arayüzünüzden kaldırarak, ağda uzun bekleme sürelerinden kaynaklanan sorunları çözmenize yardımcı olur.",
         "clearPendingTip2": "Bu, hesap bakiyelerinizi etkilemez veya seed phrase'inizi yeniden girmenizi gerektirmez. Tüm varlıklar ve hesap detayları güvende kalır.",
         "autoLockTime": "Otomatik kilitlenme süresi",
-        "claimRabbyBadge": "Rabby Rozetini Talep Edin!",
+        "claimRabbyBadge": "MultiSub Rozetini Talep Edin!",
         "cancel": "İptal",
         "enableWhitelist": "Beyaz Listeyi Etkinleştir",
         "disableWhitelist": "Beyaz Listeyi Devre Dışı Bırak",
-        "enableWhitelistTip": "Etkinleştirildiğinde, Rabby kullanarak sadece beyaz listedeki adreslere varlık gönderebilirsiniz.",
+        "enableWhitelistTip": "Etkinleştirildiğinde, MultiSub kullanarak sadece beyaz listedeki adreslere varlık gönderebilirsiniz.",
         "disableWhitelistTip": "Devre dışı bırakıldığında herhangi bir adrese varlık gönderebilirsiniz",
         "warning": "Uyarı",
         "clearWatchAddressContent": "Tüm İzleme Modu adreslerini silmek istediğinizden emin misiniz?",
         "updateVersion": {
-          "content": "Rabby Cüzdanı için yeni bir güncelleme mevcut. Manuel olarak nasıl güncelleneceğini kontrol etmek için tıklayın.",
+          "content": "MultiSub Cüzdanı için yeni bir güncelleme mevcut. Manuel olarak nasıl güncelleneceğini kontrol etmek için tıklayın.",
           "okText": "Eğiticiye Bak",
           "successTip": "En güncel sürümü kullanıyorsunuz",
           "title": "Güncelleme Mevcut"
@@ -1281,7 +1281,7 @@
           "connectedDapp": "Bağlı Dapp'ler",
           "gasTopUp": "Gas Yüklemesi",
           "searchDapps": "Dapp'leri Ara",
-          "rabbyPoints": "Rabby Puanları",
+          "rabbyPoints": "MultiSub Puanları",
           "ecosystem": "Ekosistem"
         },
         "settings": {
@@ -1294,7 +1294,7 @@
           "customTestnet": "Özel Ağ Ekle",
           "themeMode": "Tema Modu",
           "toggleThemeMode": "Tema Modu",
-          "metamaskMode": "MetaMask gibi Gizlenerek Rabby'yi Bağla",
+          "metamaskMode": "MetaMask gibi Gizlenerek MultiSub'yi Bağla",
           "enableDappAccount": "Dapp Adreslerini Bağımsız Olarak Değiştirin\n"
         },
         "aboutUs": "Hakkımızda",
@@ -1312,7 +1312,7 @@
           "desc": "Etkinleştirildikten sonra, her bir Dapp'e bağımsız olarak hangi adresi bağlayacağınızı seçebilirsiniz. Ana adresinizi değiştirmek, her Dapp'e bağlı adresi etkilemez.\n"
         },
         "rateModalTriggerOnHome": {
-          "description": "Rabby Wallet'ı nasıl değerlendiriyorsunuz?"
+          "description": "MultiSub Wallet'ı nasıl değerlendiriyorsunuz?"
         },
         "rateModal": {
           "submitFeedbackButton": "Gönder",
@@ -1320,15 +1320,15 @@
           "feedbackDesc": "Geri bildiriminiz var mı? Biz dinliyoruz.",
           "rateOnChromeStoreButton": "Chrome Web Store'da Derecelendir",
           "thxTitle": "Teşekkür ederim!",
-          "feedbackPlaceholder": "Rabby geri bildiriminizi değerlendirir!",
-          "thxDesc": "Eğer Rabby'yi beğendiyseniz, Chrome Mağazası'na yapacağınız hızlı bir değerlendirme çok şey ifade eder."
+          "feedbackPlaceholder": "MultiSub geri bildiriminizi değerlendirir!",
+          "thxDesc": "Eğer MultiSub'yi beğendiyseniz, Chrome Mağazası'na yapacağınız hızlı bir değerlendirme çok şey ifade eder."
         }
       },
       "tokenDetail": {
         "blockedTip": "Engellenen token, token listesinde gösterilmeyecek",
         "blocked": "Engellendi",
-        "selectedCustom": "Bu token Rabby tarafından listelenmemiş. Özel olarak token listesine eklediniz.",
-        "notSelectedCustom": "Bu token Rabby tarafından listelenmemiş. Aktif ederseniz token listesine eklenecek.",
+        "selectedCustom": "Bu token MultiSub tarafından listelenmemiş. Özel olarak token listesine eklediniz.",
+        "notSelectedCustom": "Bu token MultiSub tarafından listelenmemiş. Aktif ederseniz token listesine eklenecek.",
         "customized": "Özelleştirilmiş",
         "scamTx": "Sahte işlem",
         "txFailed": "Başarısız",
@@ -1361,7 +1361,7 @@
         "maybeScamTips": "Bu düşük kaliteli bir token ve dolandırıcılık olabilir.",
         "BridgeIssue": "Üçüncü taraf tarafından köprülenmiş token",
         "SupportedExchanges": "Desteklenen Borsalar",
-        "customizedHasAddedTips": "Token Rabby tarafından listelenmemiştir. Bunu token listesine manuel olarak eklediniz.",
+        "customizedHasAddedTips": "Token MultiSub tarafından listelenmemiştir. Bunu token listesine manuel olarak eklediniz.",
         "IssuerWebsite": "Yayımcının Web Sitesi",
         "blockedListTitle": "blokajlı token",
         "fdvTips": "Piyasa değeri, maksimum arz dolaşımdayken. Tam Sulandırılmış Değerlendirme (FDV) = Fiyat x Maksimum Arz. Eğer Maksimum Arz yoksa, FDV = Fiyat x Toplam Arz. Eğer ne Maksimum Arz ne de Toplam Arz tanımlı veya sonsuzsa, FDV gösterilmez.",
@@ -1499,7 +1499,7 @@
         "enableDesc": "Dapp yalnızca MetaMask ile çalışıyorsa etkinleştirin",
         "footerText": "Daha fazla Dapp eklemek için Daha Fazla > MetaMask Modu altında MetaMask Modu",
         "toastSuccess": "Etkinleştirildi. Yeniden bağlanmak için sayfayı yenileyin.",
-        "desc": "Dapp'te Rabby'yi bağlayamıyorsanız, MetaMask Modunu etkinleştirin ve MetaMask seçeneğini seçerek bağlanın."
+        "desc": "Dapp'te MultiSub'yi bağlayamıyorsanız, MetaMask Modunu etkinleştirin ve MetaMask seçeneğini seçerek bağlanın."
       },
       "offlineChain": {
         "chain": "{{chain}} yakında entegre edilmeyecek.",
@@ -1510,8 +1510,8 @@
         "title": "Dapp bağlantısı için burada adres değiştirin.\n"
       },
       "rabbyPointsPopup": {
-        "desc": "Rabby Mobile'de puanlarınızı kontrol edin.",
-        "title": "Rabby Puanları",
+        "desc": "MultiSub Mobile'de puanlarınızı kontrol edin.",
+        "title": "MultiSub Puanları",
         "downloadIntro": "Uygulamayı henüz indirmediniz mi? Şimdi indirin."
       }
     },
@@ -1562,11 +1562,11 @@
           "answer": "Varlıklarınızı kontrol etmek için kullanılan 12, 18 veya 24 kelimelik bir dizidir."
         },
         "isItSafeToImportItInRabby": {
-          "question": "Rabby'e aktarmak güvenli mi?",
+          "question": "MultiSub'e aktarmak güvenli mi?",
           "answer": "Evet, yalnızca tarayıcınızda yerel olarak saklanır ve sadece sizin tarafınızdan erişilebilir."
         },
         "importError": "[CreateMnemonics] beklenmeyen adım {{0}}",
-        "importQuestion4": "Seed Phrase yedeğini almadan Rabby'yi kaldırırsam, Rabby bunu benim için geri alamaz.",
+        "importQuestion4": "Seed Phrase yedeğini almadan MultiSub'yi kaldırırsam, MultiSub bunu benim için geri alamaz.",
         "riskTips": "Başlamadan önce, lütfen aşağıdaki güvenlik ipuçlarını okuyun ve aklınızda bulundurun.",
         "showSeedPhrase": "Seed Phrase'i Göster",
         "backup": "Seed Phrase'i Yedekleyin",
@@ -1592,20 +1592,20 @@
         "slip39SeedPhrasePlaceholder_few": "{{count}}. tohum cümlesi paylarınızı buraya girin",
         "passphrase": "Parola cümlesi",
         "inputInvalidCount_one": "1 giriş Seed Phrase normlarına uymuyor, lütfen kontrol edin.",
-        "importQuestion3": "Eğer Rabby'yi seed ifademi yedeklemeden kaldırırsam, Rabby tarafından kurtarılamaz.",
+        "importQuestion3": "Eğer MultiSub'yi seed ifademi yedeklemeden kaldırırsam, MultiSub tarafından kurtarılamaz.",
         "importQuestion1": "Eğer kurtarma kelimelerimi kaybeder veya paylaşırsam, varlıklarıma kalıcı olarak erişimimi kaybedeceğim.",
-        "importQuestion2": "Kıdemli kelime ifadem yalnızca cihazımda saklanıyor. Rabby buna erişemez.",
+        "importQuestion2": "Kıdemli kelime ifadem yalnızca cihazımda saklanıyor. MultiSub buna erişemez.",
         "showMoreOptions": "Daha Fazla Seçenek Göster",
         "inputInvalid": "Geçersiz kelimeler tespit edildi. Lütfen vurgulananları gözden geçirin."
       },
       "metamask": {
         "step1": "MetaMask'tan seed phrase'i veya özel anahtarı dışa aktarın <1>Rehber <2/></1>",
-        "step2": "Seed phrase'i veya özel anahtarı Rabby'de içe aktarın",
+        "step2": "Seed phrase'i veya özel anahtarı MultiSub'de içe aktarın",
         "step3": "İçe aktarma tamamlandı ve tüm varlıklarınız otomatik olarak görünecek",
         "how": "MetaMask Hesabımı Nasıl İçe Aktarırım?",
         "step": "Adım",
         "importSeedPhrase": "Seed phrase'i veya özel anahtarı içe aktar",
-        "importSeedPhraseTips": "Sadece tarayıcıda yerel olarak saklanır. Rabby, özel bilgilerinize asla erişemez.",
+        "importSeedPhraseTips": "Sadece tarayıcıda yerel olarak saklanır. MultiSub, özel bilgilerinize asla erişemez.",
         "tips": "İpuçları:",
         "tipsDesc": "Tohum cümleniz/özel anahtarınız MetaMask veya herhangi bir belirli cüzdana ait değildir; yalnızca size aittir."
       },
@@ -1617,7 +1617,7 @@
           "answer": "Varlıklarınızı kontrol etmek için kullanılan harf ve sayılardan oluşan bir dizedir."
         },
         "isItSafeToImportItInRabby": {
-          "question": "Onu Rabby'e aktarmak güvenli mi?",
+          "question": "Onu MultiSub'e aktarmak güvenli mi?",
           "answer": "Evet, yalnızca tarayıcınızda yerel olarak saklanır ve sadece sizin tarafınızdan erişilebilir."
         },
         "isItPossibleToImportKeystore": {
@@ -1633,9 +1633,9 @@
       "importedSuccessfully": "Başarıyla İçe Aktarıldı",
       "ledger": {
         "title": "Ledger'a Bağlan",
-        "cameraPermissionTitle": "Rabby'nin kameraya erişimine izin ver",
-        "cameraPermission1": "Tarayıcı açılır penceresinde Rabby'nin kameraya erişimine izin ver",
-        "allowRabbyPermissionsTitle": "Rabby'nin aşağıdaki yetkilere sahip olmasını izin ver:",
+        "cameraPermissionTitle": "MultiSub'nin kameraya erişimine izin ver",
+        "cameraPermission1": "Tarayıcı açılır penceresinde MultiSub'nin kameraya erişimine izin ver",
+        "allowRabbyPermissionsTitle": "MultiSub'nin aşağıdaki yetkilere sahip olmasını izin ver:",
         "ledgerPermission1": "Bir HID cihazına bağlan",
         "ledgerPermissionTip": "Lütfen aşağıda \"İzin Ver\"i tıklayın ve sonraki açılır pencerede Ledger'a erişimi onaylayın.",
         "permissionsAuthorized": "İzinler Onaylandı",
@@ -1689,14 +1689,14 @@
       },
       "hd": {
         "tooltip": {
-          "removed": "Adres Rabby'den kaldırıldı",
-          "added": "Adres Rabby'ye eklendi",
+          "removed": "Adres MultiSub'den kaldırıldı",
+          "added": "Adres MultiSub'ye eklendi",
           "connectError": "Bağlantı durdu. Lütfen sayfayı yenileyerek tekrar bağlanmayı deneyin.",
           "disconnected": "Donanım cüzdanına bağlanılamıyor. Lütfen yeniden bağlanmayı deneyin."
         },
         "waiting": "Bekleniyor",
         "clickToGetInfo": "Zincirden bilgi almak için tıklayın",
-        "addToRabby": "Rabby'ye Ekle",
+        "addToRabby": "MultiSub'ye Ekle",
         "basicInformation": "Temel bilgiler",
         "addresses": "Adresler",
         "loadingAddress": "{{0}}/{{1}} adres yükleniyor",
@@ -1810,7 +1810,7 @@
         "manageNgraveZero": "NGRAVE ZERO'u Yönet",
         "done": "Tamam",
         "addressesIn": "{{0}} içindeki Adresler",
-        "addressesInRabby": "Rabby'deki Adresler{{0}}",
+        "addressesInRabby": "MultiSub'deki Adresler{{0}}",
         "qrCode": {
           "switch": {
             "title": "Yeni bir {{0}} cihazına geçin",
@@ -1847,9 +1847,9 @@
         "deviceIsBusy": "Cihaz meşgul",
         "keystonePermission1": "Bir USB cihazına bağlan",
         "exportAddressJustAllowedOnHomePage": "Adres yalnızca ana sayfada dışa aktarılmasına izin verildi",
-        "allowRabbyPermissionsTitle": "Rabby izinlerini ver:",
+        "allowRabbyPermissionsTitle": "MultiSub izinlerini ver:",
         "unknowError": "Bilinmeyen hata, lütfen tekrar deneyin",
-        "deviceRejectedExportAddress": "Rabby ile bağlantıyı onayla",
+        "deviceRejectedExportAddress": "MultiSub ile bağlantıyı onayla",
         "deviceIsLockedError": "Şifreyi girerek kilidi açın",
         "noDeviceFoundError": "Tek bir Keystone takın",
         "keystonePermissionTip": "Lütfen aşağıdaki açılır pencerede Keystone erişimini yetkilendirmek için \"İzin Ver\" düğmesine tıklayın ve Keystone 3 Pro'nuzun ana sayfada olduğundan emin olun.",
@@ -1857,7 +1857,7 @@
       },
       "onekey": {
         "onekeyPermission1": "Bir USB cihazına bağlan",
-        "allowRabbyPermissionsTitle": "Rabby izinlerini ver:",
+        "allowRabbyPermissionsTitle": "MultiSub izinlerini ver:",
         "onekeyPermissionTip": "Lütfen aşağıdaki açılır pencerede OneKey erişimini yetkilendirmek için \"İzin Ver\" düğmesine tıklayın ve OneKey 'nuzun ana sayfada olduğundan emin olun.",
         "whyOneKey": "Neden OneKey?",
         "buyOneKey": "OneKey Satın Al",
@@ -1879,33 +1879,33 @@
         "error": "yanlış şifre"
       },
       "btnForgotPassword": "Şifrenizi mi unuttunuz?",
-      "title": "Rabby Cüzdan",
+      "title": "MultiSub Cüzdan",
       "description": "Ethereum ve EVM için tercih ettiğiniz cüzdan"
     },
     "addToken": {
       "noTokenFound": "Token bulunamadı",
-      "tokenSupported": "Token, Rabby tarafından destekleniyor",
+      "tokenSupported": "Token, MultiSub tarafından destekleniyor",
       "tokenCustomized": "Mevcut token zaten özel olarak eklendi",
       "tokenNotFound": "Bu kontrat adresinden token bulunamadı",
-      "title": "Rabby'ye özel token ekleyin",
+      "title": "MultiSub'ye özel token ekleyin",
       "balance": "Bakiye",
       "tokenOnMultiChains": "Token adresi birden fazla zincirde bulunuyor. Lütfen bir tanesini seçin",
       "noTokenFoundOnThisChain": "Bu zincirde token bulunamadı",
       "hasAdded": "Bu token eklendi."
     },
     "switchChain": {
-      "title": "Rabby'ye Özel Ağ Ekle",
-      "chainNotSupport": "İstenen zincir Rabby tarafından henüz desteklenmiyor",
+      "title": "MultiSub'ye Özel Ağ Ekle",
+      "chainNotSupport": "İstenen zincir MultiSub tarafından henüz desteklenmiyor",
       "testnetTip": "Testnet'lere bağlanmadan önce \"Daha Fazla\" altında \"Testnet'leri Etkinleştir\" seçeneğini açın",
       "requestsReceived": "1 request received",
       "unknownChain": "Bilinmeyen zincir",
       "requestsReceivedPlural": "{{count}} istek alındı",
-      "chainNotSupportYet": "İstenen zincir henüz Rabby tarafından desteklenmiyor.",
+      "chainNotSupportYet": "İstenen zincir henüz MultiSub tarafından desteklenmiyor.",
       "addChain": "Testnet Ekle",
-      "requestRabbyToSupport": "Rabby'den Destek İsteyin",
+      "requestRabbyToSupport": "MultiSub'den Destek İsteyin",
       "chainId": "Zincir Kimliği:",
-      "chainNotSupportAddChain": "İstenen zincir Rabby tarafından henüz entegre edilmedi. Bunu Özel Testnet olarak ekleyebilirsiniz.",
-      "desc": "İstenen ağ henüz Rabby tarafından entegre edilmedi. Manuel olarak özel bir ağ olarak ekleyebilirsiniz."
+      "chainNotSupportAddChain": "İstenen zincir MultiSub tarafından henüz entegre edilmedi. Bunu Özel Testnet olarak ekleyebilirsiniz.",
+      "desc": "İstenen ağ henüz MultiSub tarafından entegre edilmedi. Manuel olarak özel bir ağ olarak ekleyebilirsiniz."
     },
     "signText": {
       "title": "Metni İmzala",
@@ -1938,10 +1938,10 @@
       "listedBy": "Listeleyen",
       "sitePopularity": "Site Popülerliği",
       "myMark": "Benim İşaretim",
-      "flagByRabby": "Rabby Tarafından İşaretlendi",
+      "flagByRabby": "MultiSub Tarafından İşaretlendi",
       "flagByMM": "MetaMask Tarafından İşaretlendi",
       "flagByScamSniffer": "ScamSniffer Tarafından İşaretlendi",
-      "verifiedByRabby": "Rabby Tarafından Doğrulandı",
+      "verifiedByRabby": "MultiSub Tarafından Doğrulandı",
       "foundForbiddenRisk": "Yasaklı riskler bulundu. Bağlantı engellendi.",
       "markAsTrustToast": "\"Güvenilir\" olarak işaretle",
       "markAsBlockToast": "\"Engellenmiş\" olarak işaretle",
@@ -1984,7 +1984,7 @@
       "backup-seed-phrase": "Seed Phrase'i Yedekle",
       "delete-address": "Adresi Sil",
       "delete-desc": "Silmeden önce, varlıklarınızı nasıl koruyacağınızı anlamak için aşağıdaki noktaları göz önünde bulundurun.",
-      "direct-delete-desc": "Bu adres bir {{renderBrand}} adresidir, Rabby bu adres için özel anahtarınızı veya seed phrase'inizi saklamaz, sadece silebilirsiniz",
+      "direct-delete-desc": "Bu adres bir {{renderBrand}} adresidir, MultiSub bu adres için özel anahtarınızı veya seed phrase'inizi saklamaz, sadece silebilirsiniz",
       "admins": "Yöneticiler",
       "tx-requires": "Herhangi bir işlem için <2>{{num}}</2> onay gereklidir",
       "edit-memo-title": "Adres notunu düzenle",
@@ -2014,7 +2014,7 @@
       "closed": "Kapalı",
       "empty": "Özel RPC URL yok",
       "title": "RPC URL'sini Değiştir",
-      "desc": "Değiştirildiğinde, özel RPC Rabby'nin düğümünü değiştirecektir. Rabby'nin düğümünü kullanmaya devam etmek için özel RPC'yi silin.",
+      "desc": "Değiştirildiğinde, özel RPC MultiSub'nin düğümünü değiştirecektir. MultiSub'nin düğümünü kullanmaya devam etmek için özel RPC'yi silin.",
       "add": "RPC URL'yi Değiştir",
       "EditRPCModal": {
         "invalidRPCUrl": "Geçersiz RPC URL'i",
@@ -2031,9 +2031,9 @@
     },
     "requestDebankTestnetGasToken": {
       "title": "DeBank Testnet Gas Tokeni İste",
-      "mintedTip": "Rabby Rozeti sahipleri günde bir kez istekte bulunabilir",
-      "notMintedTip": "Sadece Rabby Rozeti sahipleri talep edebilir",
-      "claimBadgeBtn": "Rabby Rozetini Talep Et",
+      "mintedTip": "MultiSub Rozeti sahipleri günde bir kez istekte bulunabilir",
+      "notMintedTip": "Sadece MultiSub Rozeti sahipleri talep edebilir",
+      "claimBadgeBtn": "MultiSub Rozetini Talep Et",
       "time": "Günde bir kez",
       "requested": "Bugün talepte bulundunuz",
       "requestBtn": "İstek"
@@ -2088,7 +2088,7 @@
       "clickToShowQr": "Özel anahtar QR Kodunu göstermek için tıklayın"
     },
     "ethSign": {
-      "alert": "'eth_sign' ile imzalama varlık kaybına yol açabilir. Güvenliğiniz için             Rabby bu yöntemi desteklememektedir."
+      "alert": "'eth_sign' ile imzalama varlık kaybına yol açabilir. Güvenliğiniz için             MultiSub bu yöntemi desteklememektedir."
     },
     "createPassword": {
       "title": "Şifre Oluştur",
@@ -2103,7 +2103,7 @@
     "welcome": {
       "step1": {
         "title": "Tüm Dapp'lara Eriş",
-        "desc": "Rabby, MetaMask'ın desteklediği tüm Dapp'lere bağlanır"
+        "desc": "MultiSub, MetaMask'ın desteklediği tüm Dapp'lere bağlanır"
       },
       "step2": {
         "title": "Kendi Gözetiminiz Altında",
@@ -2134,7 +2134,7 @@
         "confirmModal": {
           "title": "Bu Toplayıcı ile Ticaret Yapmayı Etkinleştir",
           "tip1": "Etkinleştirildiğinde, bu toplayıcıdan doğrudan sözleşmeyle etkileşime gireceksiniz.",
-          "tip2": "2. Rabby, bu toplayıcının sözleşmesinden kaynaklanan herhangi bir riskten sorumlu değildir.",
+          "tip2": "2. MultiSub, bu toplayıcının sözleşmesinden kaynaklanan herhangi bir riskten sorumlu değildir.",
           "i-understand-and-accept-it": "Anladım ve kabul ediyorum"
         },
         "confirm": "Onayla",
@@ -2176,7 +2176,7 @@
       "approve-and-bridge": "Onayla ve Bridge",
       "completedTip": "Zincir üzerinde işlem, kaydı oluşturmak için verileri çözme",
       "bridge-cost": "Bridge cost",
-      "rabby-fee": "Rabby ücreti",
+      "rabby-fee": "MultiSub ücreti",
       "est-difference": "Tahmini Fark:",
       "duration": "{{duration}} dk",
       "aggregator-not-enabled": "Bu toplayıcı, sizin tarafınızdan ticaret yapmak için etkinleştirilmedi.",
@@ -2317,10 +2317,10 @@
         "earnTip": "Günde bir kez sınır. Lütfen puanları 00:00 UTC+0'dan sonra kazanın."
       },
       "claimModal": {
-        "rabbyValuedUserBadge": "Rabby Değerli Kullanıcı Rozeti",
+        "rabbyValuedUserBadge": "MultiSub Değerli Kullanıcı Rozeti",
         "invalid-code": "geçersiz kod",
         "claim": "Talep",
-        "rabbyDesktopGenesisNft": "Rabby Desktop Genesis NFT",
+        "rabbyDesktopGenesisNft": "MultiSub Desktop Genesis NFT",
         "cantUseOwnCode": "Kendi referral kodunuzu kullanamazsınız.",
         "title": "Başlangıç Puanlarını Talep Edin",
         "addressBalance": "Cüzdan bakiyesi",
@@ -2328,7 +2328,7 @@
         "MetaMaskSwap": "MetaMask Swap",
         "activeStats": "Aktif Durum",
         "season2": "Season 2",
-        "rabbyUser": "Rabby Aktif Kullanıcı",
+        "rabbyUser": "MultiSub Aktif Kullanıcı",
         "placeholder": "Ekstra puanlar için Tavsiye Kodunu girin (isteğe bağlı)",
         "snapshotTime": "Anlık görüntü zamanı: {{time}}",
         "referral-code": "Referans Kodu"
@@ -2355,11 +2355,11 @@
       "earn-points": "Puan Kazanın",
       "referral-code-copied": "Referans kodu kopyalandı",
       "top-100": "İlk 100",
-      "title": "Rabby Puanları",
+      "title": "MultiSub Puanları",
       "share-on": "Paylaş",
       "out-of-x-current-total-points": "Toplam Dağıtılan Puanlardan {{total}}",
-      "secondRoundEnded": "🎉 Rabby Points ikinci turu sona erdi",
-      "firstRoundEnded": "🎉 İlk Rabby Puanı turu sona erdi",
+      "secondRoundEnded": "🎉 MultiSub Points ikinci turu sona erdi",
+      "firstRoundEnded": "🎉 İlk MultiSub Puanı turu sona erdi",
       "initialPointsClaimEnded": "İlk Puanlar talep süresi sona erdi",
       "code-set-successfully": "Referans kodu başarıyla ayarlandı"
     },
@@ -2378,7 +2378,7 @@
       "AddFromChainList": {
         "tips": {
           "added": "Bu zinciri zaten eklediniz",
-          "supported": "Zincir halihazırda Rabby Wallet tarafından entegre edilmiştir."
+          "supported": "Zincir halihazırda MultiSub Wallet tarafından entegre edilmiştir."
         },
         "empty": "Zincir bulunamadı",
         "search": "Özel ağ adı veya ID ara",
@@ -2388,18 +2388,18 @@
         "title": "İşlem Verileri"
       },
       "ConfirmModifyRpcModal": {
-        "desc": "Zincir zaten Rabby tarafından entegre edilmiştir. RPC URL'sini değiştirmek istiyor musunuz?"
+        "desc": "Zincir zaten MultiSub tarafından entegre edilmiştir. RPC URL'sini değiştirmek istiyor musunuz?"
       },
       "title": "Özel Ağ",
       "add": "Özel Ağ Ekle",
       "empty": "Özel Ağ Yok",
       "currency": "Para Birimi",
       "id": "ID",
-      "desc": "Rabby, özel ağların güvenliğini doğrulayamaz. Lütfen yalnızca güvenilir ağlar ekleyin."
+      "desc": "MultiSub, özel ağların güvenliğini doğrulayamaz. Lütfen yalnızca güvenilir ağlar ekleyin."
     },
     "addChain": {
-      "desc": "Rabby özel ağların güvenliğini doğrulayamaz. Lütfen yalnızca güvenilir ağlar ekleyin.",
-      "title": "Rabby'ye Özel Ağ Ekle"
+      "desc": "MultiSub özel ağların güvenliğini doğrulayamaz. Lütfen yalnızca güvenilir ağlar ekleyin.",
+      "title": "MultiSub'ye Özel Ağ Ekle"
     },
     "sign": {
       "transactionSpeed": "İşlem Hızı"
@@ -2542,7 +2542,7 @@
         "selectToken": "Mevduat İçin Token Seçin",
         "token": "Token",
         "amount": "Miktar",
-        "desc": "Rabby'nin DeBank L2 Hesabına ekstra ücret ödemeden para yatırın—istediğiniz zaman çekin.",
+        "desc": "MultiSub'nin DeBank L2 Hesabına ekstra ücret ödemeden para yatırın—istediğiniz zaman çekin.",
         "title": "Para Yatırma",
         "invalidAmount": "500'ün altında olmalı",
         "paymentAddr": "Ödeme Adresi"
@@ -2604,9 +2604,9 @@
         "title4": "GasAccount güvende mi",
         "title1": "GasAccount nedir",
         "title3": "GasAccount'ın ek ücretleri var mı?",
-        "desc3": "Rabby Wallet ek ücret talep etmez. Sadece işleminiz için gaz ödersiniz ve bu gazı GasAccount'tan adresinize göndermek için küçük bir gaz ücreti ödersiniz.",
+        "desc3": "MultiSub Wallet ek ücret talep etmez. Sadece işleminiz için gaz ödersiniz ve bu gazı GasAccount'tan adresinize göndermek için küçük bir gaz ücreti ödersiniz.",
         "desc2": "GasAccount'unuza fon ekleyin ve bunu herhangi bir işlem için kullanın. İmzalama sırasında, gazı yerel token'larla veya GasAccount ile ödeme seçeneğini belirleyin, istediğiniz zaman geçiş yapın.",
-        "desc4": "GasAccount, herhangi bir sözleşme onayı veya izni gerektirmez. Rabby’nin GasAccount adresine para yatırırsınız ve ihtiyaç duyulduğunda Rabby, adresinize gaz gönderir. Tasarımı gereği tamamen güvenlidir.",
+        "desc4": "GasAccount, herhangi bir sözleşme onayı veya izni gerektirmez. MultiSub’nin GasAccount adresine para yatırırsınız ve ihtiyaç duyulduğunda MultiSub, adresinize gaz gönderir. Tasarımı gereği tamamen güvenlidir.",
         "desc1": "GasAccount, gaz ücretlerini ödemenin yeni bir yoludur. Her bir zincirde yerel token'lar kullanmak yerine, tüm zincirlerdeki tüm adresleriniz için gaz ödemek üzere tek bir hesap kullanabilirsiniz. Basit, isteğe bağlı ve asla gazsız kalmaz."
       }
     },
@@ -2618,15 +2618,15 @@
       "guide": {
         "importAddress": "Zaten bir adresim var",
         "createNewAddress": "Yeni bir adres oluştur",
-        "title": "Rabby Wallet'e Hoş Geldiniz",
+        "title": "MultiSub Wallet'e Hoş Geldiniz",
         "desc": "Ethereum ve EVM için vazgeçilmez cüzdanınız"
       },
       "createNewAddress": {
         "showSeedPhrase": "Tohum İfadesini Göster",
         "title": "Başlamadan Önce",
-        "tip2": "Kök ifadem yalnızca cihazımda saklanır. Rabby buna erişemez.",
+        "tip2": "Kök ifadem yalnızca cihazımda saklanır. MultiSub buna erişemez.",
         "desc": "Lütfen aşağıdaki güvenlik ipuçlarını okuyun ve aklınızda bulundurun.",
-        "tip3": "Eğer seed phrase’imı yedeklemeden Rabby'yi kaldırırsam, Rabby tarafından kurtarılamaz.",
+        "tip3": "Eğer seed phrase’imı yedeklemeden MultiSub'yi kaldırırsam, MultiSub tarafından kurtarılamaz.",
         "tip1": "Eğer tohum cümlemi kaybeder veya paylaşırsam, varlıklarıma kalıcı olarak erişimimi kaybedeceğim."
       },
       "importList": {
@@ -2663,12 +2663,12 @@
         "create": "Başarıyla Oluşturuldu"
       },
       "readyToUse": {
-        "pin": "Rabby Wallet'i Sabitle",
+        "pin": "MultiSub Wallet'i Sabitle",
         "guides": {
           "step1": "Tarayıcı uzantısı simgesine tıklayın",
-          "step2": "Pin Rabby Wallet"
+          "step2": "Pin MultiSub Wallet"
         },
-        "desc": "Rabby Cüzdanını Bul ve Sabitle",
+        "desc": "MultiSub Cüzdanını Bul ve Sabitle",
         "extensionTip": "Tıkla <1/> ve ardından <3/>",
         "title": "Cüzdanınız hazır!"
       },
@@ -2735,15 +2735,15 @@
     },
     "metamaskModeDapps": {
       "title": "İzin Verilen Dapp'leri Yönet",
-      "desc": "MetaMask Modu aşağıdaki Dapp’ler için etkinleştirildi. MetaMask seçeneğini seçerek Rabby bağlanabilirsiniz."
+      "desc": "MetaMask Modu aşağıdaki Dapp’ler için etkinleştirildi. MetaMask seçeneğini seçerek MultiSub bağlanabilirsiniz."
     },
     "forgotPassword": {
       "home": {
         "button": "Sıfırlama İşlemine Başla",
         "buttonNoData": "Şifre Belirle",
         "title": "Şifre Unutuldu",
-        "description": "Rabby Wallet şifrenizi saklamaz ve size geri getirmede yardımcı olamaz. Yeni bir cüzdan kurmak için cüzdanınızı sıfırlayın.",
-        "descriptionNoData": "Rabby Cüzdanı, şifrenizi saklamaz ve onu geri almanıza yardımcı olamaz. Unuttuysanız yeni bir şifre belirleyin."
+        "description": "MultiSub Wallet şifrenizi saklamaz ve size geri getirmede yardımcı olamaz. Yeni bir cüzdan kurmak için cüzdanınızı sıfırlayın.",
+        "descriptionNoData": "MultiSub Cüzdanı, şifrenizi saklamaz ve onu geri almanıza yardımcı olamaz. Unuttuysanız yeni bir şifre belirleyin."
       },
       "reset": {
         "alert": {
@@ -2759,7 +2759,7 @@
           "safe": "İthal Edilen Safe Cüzdanlar",
           "watch": "Rehber ve Sadece İzlenen Adresler"
         },
-        "title": "Rabby Wallet'i Sıfırla",
+        "title": "MultiSub Wallet'i Sıfırla",
         "button": "Sıfırlamayı Onayla",
         "confirm": "Kutuyu onaylamak ve devam etmek için <1>RESET</1> yazın"
       },
@@ -2768,12 +2768,12 @@
         "button": "Şifre Belirle",
         "descriptionNoData": "Adresinizi ekleyerek başlayın",
         "description": "Yeni bir parola oluşturun ve devam edin",
-        "title": "Rabby Wallet Sıfırlama Tamamlandı"
+        "title": "MultiSub Wallet Sıfırlama Tamamlandı"
       },
       "success": {
         "button": "Tamamlandı",
         "title": "Şifre Başarıyla Ayarlandı",
-        "description": "Rabby Wallet kullanmaya hazırsınız."
+        "description": "MultiSub Wallet kullanmaya hazırsınız."
       }
     },
     "eip7702": {
@@ -2785,11 +2785,11 @@
         "enabled": "Kılık etkinleştirildi. Yeniden bağlanmak için Dapp'i yenileyin."
       },
       "step2": "Adım 2",
-      "step1Desc": "Rabby'nin mevcut Dapp'te MetaMask gibi görünmesine izin ver",
+      "step1Desc": "MultiSub'nin mevcut Dapp'te MetaMask gibi görünmesine izin ver",
       "step1": "Adım 1",
-      "title": "MetaMask gibi görünerek Rabby'yi Bağla",
+      "title": "MetaMask gibi görünerek MultiSub'yi Bağla",
       "step2Desc": "MetaMask ile yenileyin ve bağlanın",
-      "alert": "Bir Dapp'e bağlanamıyor musunuz çünkü Rabby Wallet bir seçenek olarak gözükmüyor mu?",
+      "alert": "Bir Dapp'e bağlanamıyor musunuz çünkü MultiSub Wallet bir seçenek olarak gözükmüyor mu?",
       "noDappFound": "Dapp bulunamadı",
       "manage": "İzin Verilen Dapp'leri Yönet"
     },
@@ -2797,11 +2797,11 @@
       "downloadGooglePlay": "Google Play",
       "downloadAppleStore": "App Store",
       "clickToShowQr": "Adresi seçmek ve QR kodunu göstermek için tıklayın",
-      "steps1": "1. Rabby Mobil'i indir",
+      "steps1": "1. MultiSub Mobil'i indir",
       "description": "Adres verileriniz tamamen çevrimdışı kalır, şifrelenir ve güvenli bir şekilde bir QR kodu aracılığıyla aktarılır.",
-      "steps2": "2. Rabby Mobil ile tarayın",
+      "steps2": "2. MultiSub Mobil ile tarayın",
       "steps2Description": "QR kodunuz hassas veriler içerir. Gizli tutun ve asla kimseyle paylaşmayın.",
-      "title": "Rabby Uzantısından Mobil Cihaza Cüzdan Adresini Senkronize Et",
+      "title": "MultiSub Uzantısından Mobil Cihaza Cüzdan Adresini Senkronize Et",
       "disableSelectAddress": "{{Type}} adresi için desteklenmeyen senkronizasyon",
       "disableSelectAddressWithPassphrase": "Passfrase ile {{type}} adresi için desteklenmiyor senkronizasyon",
       "disableSelectAddressWithSlip39": "Slip39 ile {{type}} adresi için desteklenmiyor",
@@ -2861,7 +2861,7 @@
           "risks": {
             "contractAddress": "Kontrat adresi tespit edildi, fonlar kaybolabilir.",
             "dexNoDeposite": "CEX depozit adresi değil, fonlar kaybolabilir",
-            "scamAddress": "Rabby tarafından işaretlenmiş dolandırıcılık adresi",
+            "scamAddress": "MultiSub tarafından işaretlenmiş dolandırıcılık adresi",
             "noSend": "Bu adrese son 180 gündür göndermediniz."
           }
         },
@@ -3036,8 +3036,8 @@
       "stopLoss": "zarar durdurma",
       "insufficientBalance": "Yetersiz bakiyeniz var",
       "takeProfitTipsLong": "Kar alım fiyatı mevcut fiyatın üzerinde olmalıdır.",
-      "rabbyFeeTips": "Rabby ücreti: 0.04%",
-      "rabbyFeeTipsZero": "Rabby ücreti: %0",
+      "rabbyFeeTips": "MultiSub ücreti: 0.04%",
+      "rabbyFeeTipsZero": "MultiSub ücreti: %0",
       "sizeTips": "İşleminizin toplam değeri veya miktarı, marjin ve kaldıraç tarafından belirlenir.",
       "stopLossTipsLong": "Zararı durdurma fiyatı mevcut fiyatın altında olmalıdır.",
       "stopLossTipsLongLiquidation": "Fiyat likidite fiyatından ({{price}}) daha düşük.",
@@ -3230,7 +3230,7 @@
         "takeProfitWhenPriceBelow": "Fiyat Altında Kar Al",
         "providerFee": "Hyperliquid Ücreti",
         "maximumOrderSize": "Maksimum emir boyutu {{amount}}'dir",
-        "rabbyFee": "Rabby Ücreti",
+        "rabbyFee": "MultiSub Ücreti",
         "takeProfitWhenPriceAbove": "Kar Al, Fiyat Üstünde Olduğunda",
         "minimumOrderSize": "Minimum sipariş büyüklüğü 10$'dır.",
         "stopLossWhenPriceAbove": "Fiyat Üstünde Stop Loss",
@@ -3443,7 +3443,7 @@
     },
     "EcologyNoticeModal": {
       "notRemind": "Bir daha bana hatırlatma",
-      "desc": "Aşağıdaki hizmetler doğrudan üçüncü taraf Ekosistem Ortağı tarafından sağlanacaktır. Rabby Wallet, bu hizmetlerin güvenliğinden sorumlu değildir.",
+      "desc": "Aşağıdaki hizmetler doğrudan üçüncü taraf Ekosistem Ortağı tarafından sağlanacaktır. MultiSub Wallet, bu hizmetlerin güvenliğinden sorumlu değildir.",
       "title": "Dikkat"
     },
     "ReserveGasPopup": {
@@ -3455,8 +3455,8 @@
     },
     "OpenExternalWebsiteModal": {
       "button": "Devam Et",
-      "title": "Rabby Wallet'ten Ayrılıyorsunuz",
-      "content": "Harici bir web sitesini ziyaret etmek üzeresiniz. Rabby Wallet, bu sitenin içeriğinden veya güvenliğinden sorumlu değildir."
+      "title": "MultiSub Wallet'ten Ayrılıyorsunuz",
+      "content": "Harici bir web sitesini ziyaret etmek üzeresiniz. MultiSub Wallet, bu sitenin içeriğinden veya güvenliğinden sorumlu değildir."
     },
     "TokenChart": {
       "holding": "Değer Tutma",

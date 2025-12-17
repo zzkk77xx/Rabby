@@ -501,7 +501,7 @@ export const WALLETCONNECT_STATUS_MAP = {
 export const INTERNAL_REQUEST_ORIGIN = location.origin;
 
 export const INTERNAL_REQUEST_SESSION = {
-  name: 'Rabby',
+  name: 'MultiSub',
   origin: INTERNAL_REQUEST_ORIGIN,
   icon: RabbyChainLogo,
 };
@@ -1460,6 +1460,7 @@ export const BRAND_ALIAN_TYPE_TEXT = {
 };
 
 export const GNOSIS_SUPPORT_CHAINS = [
+  CHAINS_ENUM.SETH,
   CHAINS_ENUM.ETH,
   CHAINS_ENUM.BSC,
   CHAINS_ENUM.POLYGON,

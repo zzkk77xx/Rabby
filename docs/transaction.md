@@ -1,10 +1,10 @@
 # Transaction
 
-Rabby **absolutely respect and use tx params set by DApp, but sometimes DApp will not set some params**, this doc will tell you when and how Rabby change these params.
+MultiSub **absolutely respect and use tx params set by DApp, but sometimes DApp will not set some params**, this doc will tell you when and how MultiSub change these params.
 
 ## gas
 
-gas means gas limit for this transaction, if DApp haven't set it, we will set it an empty string (`''`) for explain (not execute actually, just for explain how this tx execute), after explain, API will tell us gas limit of this transaction (`1.5  * result of web3.eth_estimateGas()` currently).
+gas means gas limit for this transaction, if DApp haven't set it, we will set it an empty string (`''`) for explain (not execute actually, just for explain how this tx execute), after explain, API will tell us gas limit of this transaction (`1.5 * result of web3.eth_estimateGas()` currently).
 
 ## gasPrice
 

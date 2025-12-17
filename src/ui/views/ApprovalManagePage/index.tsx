@@ -1240,7 +1240,7 @@ const ApprovalManagePage = ({
   desktopChain?: CHAINS_ENUM;
 }) => {
   if (!isDesktop) {
-    useTitle('Approvals - Rabby Wallet');
+    useTitle('Approvals - MultiSub Wallet');
     useReloadPageOnCurrentAccountChanged();
   }
 

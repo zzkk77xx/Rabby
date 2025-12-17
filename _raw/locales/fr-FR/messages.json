@@ -195,7 +195,7 @@
     "EcologyNoticeModal": {
       "notRemind": "Ne plus me le rappeler",
       "title": "Avis",
-      "desc": "Les services suivants seront fournis directement par un partenaire de l'écosystème tiers. Rabby Wallet n'assume pas la responsabilité de la sécurité de ces services."
+      "desc": "Les services suivants seront fournis directement par un partenaire de l'écosystème tiers. MultiSub Wallet n'assume pas la responsabilité de la sécurité de ces services."
     },
     "ReserveGasPopup": {
       "title": "Réserve de Gas",
@@ -206,8 +206,8 @@
     },
     "OpenExternalWebsiteModal": {
       "button": "Continuer",
-      "title": "Vous quittez Rabby Wallet",
-      "content": "Vous êtes sur le point de visiter un site web externe. Rabby Wallet n'est pas responsable du contenu ou de la sécurité de ce site."
+      "title": "Vous quittez MultiSub Wallet",
+      "content": "Vous êtes sur le point de visiter un site web externe. MultiSub Wallet n'est pas responsable du contenu ou de la sécurité de ce site."
     },
     "TokenChart": {
       "holding": "Valeur de détention",
@@ -307,7 +307,7 @@
     "activities": {
       "signedText": {
         "empty": {
-          "desc": "Tous les textes signés via Rabby seront répertoriés ici.",
+          "desc": "Tous les textes signés via MultiSub seront répertoriés ici.",
           "title": "Pas encore de texte signé"
         },
         "label": "Texte"
@@ -322,7 +322,7 @@
           "unlimited": "illimité"
         },
         "empty": {
-          "desc": "Toutes les transactions signées via Rabby seront répertoriées ici.",
+          "desc": "Toutes les transactions signées via MultiSub seront répertoriées ici.",
           "title": "Aucune transaction signée pour le moment"
         },
         "explain": {
@@ -416,11 +416,11 @@
       "balance": "Solde",
       "noTokenFound": "Aucun token trouvé",
       "noTokenFoundOnThisChain": "Aucun token trouvé sur cette chaîne",
-      "title": "Ajouter un token personnalisé sur Rabby",
+      "title": "Ajouter un token personnalisé sur MultiSub",
       "tokenCustomized": "Le token actuel a déjà été ajouté en tant que token personnalisé",
       "tokenNotFound": "Token introuvable à partir de cette adresse de contrat",
       "tokenOnMultiChains": "Adresse du token présente sur plusieurs chaînes. Veuillez en choisir une",
-      "tokenSupported": "Le token a été pris en charge sur Rabby",
+      "tokenSupported": "Le token a été pris en charge sur MultiSub",
       "hasAdded": "Ce jeton a été ajouté à votre keyring."
     },
     "addressDetail": {
@@ -435,7 +435,7 @@
       "coboSafeErrorModule": "L'adresse a expiré, veuillez supprimer et importer à nouveau celle-ci.",
       "delete-address": "Supprimer l'adresse",
       "delete-desc": "Avant de supprimer, gardez les points suivants à l'esprit pour comprendre comment protéger vos actifs.",
-      "direct-delete-desc": "Cette adresse est une adresse {{renderBrand}}, Rabby ne stocke pas la clé privée ou la seed phrase pour celle-ci, vous pouvez simplement la supprimer",
+      "direct-delete-desc": "Cette adresse est une adresse {{renderBrand}}, MultiSub ne stocke pas la clé privée ou la seed phrase pour celle-ci, vous pouvez simplement la supprimer",
       "edit-memo-title": "Modifier la note d'adresse",
       "hd-path": "HD Path",
       "importedDelegatedAddress": "Adresse déléguée importée",
@@ -602,7 +602,7 @@
       "blocked": "Bloqué",
       "connectBtn": "Connecter",
       "flagByMM": "Signalé par MetaMask",
-      "flagByRabby": "Signalé par Rabby",
+      "flagByRabby": "Signalé par MultiSub",
       "flagByScamSniffer": "Signalé par ScamSniffer",
       "foundForbiddenRisk": "Risques détectés. La connexion est bloquée.",
       "ignoreAll": "Ignorer tout",
@@ -627,7 +627,7 @@
       "sitePopularity": "Popularité du site",
       "title": "Se connecter à la DApp",
       "trusted": "Fiable",
-      "verifiedByRabby": "Vérifié par Rabby",
+      "verifiedByRabby": "Vérifié par MultiSub",
       "SelectWallet": {
         "title": "Sélectionnez un portefeuille à connecter",
         "desc": "Choisissez parmi les portefeuilles que vous avez installés"
@@ -656,7 +656,7 @@
       },
       "add": "Ajouter un RPC",
       "closed": "Fermé",
-      "desc": "L'activation du RPC personnalisé remplacera Rabby comme nœud par défaut. Pour continuer à utiliser Rabby, veuillez désactiver ou supprimer le nœud RPC personnalisé.",
+      "desc": "L'activation du RPC personnalisé remplacera MultiSub comme nœud par défaut. Pour continuer à utiliser MultiSub, veuillez désactiver ou supprimer le nœud RPC personnalisé.",
       "empty": "Aucun RPC personnalisé",
       "opened": "Ouvert",
       "title": "RPC personnalisé",
@@ -758,11 +758,11 @@
       "feedback": {
         "directMessage": {
           "content": "Message direct",
-          "description": "Discuter avec Rabby Wallet Official sur DeBank"
+          "description": "Discuter avec MultiSub Wallet Official sur DeBank"
         },
         "proposal": {
           "content": "Proposition",
-          "description": "Soumettre une proposition pour Rabby Wallet sur DeBank"
+          "description": "Soumettre une proposition pour MultiSub Wallet sur DeBank"
         },
         "title": "Feedback"
       },
@@ -806,7 +806,7 @@
         "comingSoon": "À venir",
         "flip": "Retourner",
         "importType": "Importé par {{type}}",
-        "metamaskIsInUseAndRabbyIsBanned": "MetaMask est utilisé et Rabby est banni",
+        "metamaskIsInUseAndRabbyIsBanned": "MetaMask est utilisé et MultiSub est banni",
         "offline": "Le réseau est déconnecté et aucune donnée n'est obtenue",
         "panel": {
           "approvals": "Approbations",
@@ -822,7 +822,7 @@
           "transactions": "Transactions",
           "ecology": "Écosystème",
           "bridge": "Bridger",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "mobile": "Mobile Sync",
           "perps": "Perps",
           "gasAccount": "GasAccount",
@@ -837,7 +837,7 @@
           "count": "{{count}} dans",
           "title": "File d'attente"
         },
-        "rabbyIsInUseAndMetamaskIsBanned": "Rabby est utilisé et Metamask est banni",
+        "rabbyIsInUseAndMetamaskIsBanned": "MultiSub est utilisé et Metamask est banni",
         "refreshTheWebPageToTakeEffect": "Actualiser la page Web pour prendre en compte les changements",
         "rejectAll": "Tout rejeter",
         "soon": "Bientôt",
@@ -880,20 +880,20 @@
         "imageLabel": "badge rabby",
         "learnMoreOnDebank": "En savoir plus sur DeBank",
         "noCode": "Vous n'avez pas activé le code de réclamation pour cette adresse",
-        "rabbyValuedUserNo": "Utilisateur Rabby estimé n°{{num}}",
-        "swapTip": "Vous devez d'abord effectuer un échange avec un DEX notable dans Rabby Wallet.",
-        "title": "Réclamer le badge Rabby pour",
+        "rabbyValuedUserNo": "Utilisateur MultiSub estimé n°{{num}}",
+        "swapTip": "Vous devez d'abord effectuer un échange avec un DEX notable dans MultiSub Wallet.",
+        "title": "Réclamer le badge MultiSub pour",
         "viewOnDebank": "Voir sur DeBank",
         "viewYourClaimCode": "Afficher votre code de réclamation",
         "freeGasTitle": "Obtenez le Badge de Gas Gratuit pour",
         "freeGasTip": "Veuillez signer une transaction en utilisant Free Gas. Le bouton 'Free Gas' apparaîtra automatiquement lorsque votre gas n'est pas suffisant.",
         "learnMore": "En savoir plus",
-        "rabbyFreeGasUserNo": "Utilisateur Rabby Free Gas n°{{num}}",
+        "rabbyFreeGasUserNo": "Utilisateur MultiSub Free Gas n°{{num}}",
         "freeGasNoCode": "Veuillez cliquer sur le bouton ci-dessous pour visiter DeBank et obtenir le code de réclamation en utilisant d'abord votre adresse actuelle."
       },
       "recentConnection": {
         "connected": "Connecté",
-        "connectedDapp": "Rabby n'est pas connecté à la dApp actuelle. Pour vous connecter, recherchez et cliquez sur le bouton de connexion sur la page Web de la dApp.",
+        "connectedDapp": "MultiSub n'est pas connecté à la dApp actuelle. Pour vous connecter, recherchez et cliquez sur le bouton de connexion sur la page Web de la dApp.",
         "disconnectAll": "Tout déconnecter",
         "disconnectRecentlyUsed": {
           "description": "Les dApps épinglées resteront connectées",
@@ -914,8 +914,8 @@
         "title": "DApps connectées",
         "dapps": "DApps",
         "noConnectedDapps": "Aucune dApp connectée",
-        "metamaskModeTooltip": "Impossible de connecter Rabby sur cette dApp ? Essayez d'activer le <1>Mode MetaMask</1>",
-        "metamaskModeTooltipNew": "Rabby Wallet se connectera lorsque vous sélectionnez \"MetaMask\" sur le Dapp. Vous pouvez gérer cela dans Plus > Connecter Rabby en se déguisant en MetaMask"
+        "metamaskModeTooltip": "Impossible de connecter MultiSub sur cette dApp ? Essayez d'activer le <1>Mode MetaMask</1>",
+        "metamaskModeTooltipNew": "MultiSub Wallet se connectera lorsque vous sélectionnez \"MetaMask\" sur le Dapp. Vous pouvez gérer cela dans Plus > Connecter MultiSub en se déguisant en MetaMask"
       },
       "security": {
         "comingSoon": "Plus de fonctionnalités à venir",
@@ -933,7 +933,7 @@
         "autoLockTime": "Temps avant verrouillage auto",
         "backendServiceUrl": "URL du service backend",
         "cancel": "Annuler",
-        "claimRabbyBadge": "Réclamer le badge Rabby !",
+        "claimRabbyBadge": "Réclamer le badge MultiSub !",
         "clearPending": "Effacer en attente localement",
         "clearPendingTip1": "Cette action supprime la transaction en attente de votre interface, aidant ainsi à résoudre les problèmes causés par des durées d'attente prolongées sur le réseau.",
         "clearPendingTip2": "Cela n'affecte pas les soldes de votre compte ni ne nécessite une nouvelle saisie de votre phrase de récupération. Tous les actifs et les détails du compte restent sécurisés.",
@@ -943,14 +943,14 @@
         "disableWhitelist": "Désactiver la liste blanche",
         "disableWhitelistTip": "Vous pouvez envoyer des actifs vers n'importe quelle adresse une fois désactivé",
         "enableWhitelist": "Activer la liste blanche",
-        "enableWhitelistTip": "Une fois activée, vous ne pouvez envoyer des actifs, via Rabby, qu'aux adresses de la liste blanche.",
+        "enableWhitelistTip": "Une fois activée, vous ne pouvez envoyer des actifs, via MultiSub, qu'aux adresses de la liste blanche.",
         "features": {
           "connectedDapp": "DApps connectées",
           "label": "Fonctionnalités",
           "lockWallet": "Verrouiller le wallet",
           "manageAddress": "Gérer les adresses",
           "signatureRecord": "Journal des signatures",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "searchDapps": "Rechercher des dApps",
           "gasTopUp": "Recharge de Gas",
           "ecosystem": "Écosystème"
@@ -976,14 +976,14 @@
           "themeMode": "Thème",
           "toggleThemeMode": "Thème",
           "customTestnet": "Ajouter un réseau personnalisé",
-          "metamaskMode": "Connectez Rabby en se faisant passer pour MetaMask",
+          "metamaskMode": "Connectez MultiSub en se faisant passer pour MetaMask",
           "enableDappAccount": "Changer indépendamment l'adresse du DApp\n"
         },
         "supportedChains": "Chaînes prises en charge",
         "testnetBackendServiceUrl": "URL du service backend testnet",
         "updateAvailable": "Mise à jour disponible",
         "updateVersion": {
-          "content": "Une nouvelle mise à jour pour Rabby Wallet est disponible. Cliquer pour voir comment mettre à jour manuellement.",
+          "content": "Une nouvelle mise à jour pour MultiSub Wallet est disponible. Cliquer pour voir comment mettre à jour manuellement.",
           "okText": "Voir Tutoriel",
           "successTip": "Vous utilisez la dernière version",
           "title": "Mise à jour disponible"
@@ -996,7 +996,7 @@
           "desc": "Une fois activé, vous pouvez choisir l'adresse à connecter à chaque Dapp indépendamment. Le changement de votre adresse principale n'affectera pas l'adresse connectée à chaque Dapp.\n"
         },
         "rateModalTriggerOnHome": {
-          "description": "Comment évaluez-vous Rabby Wallet ?"
+          "description": "Comment évaluez-vous MultiSub Wallet ?"
         },
         "rateModal": {
           "thxTitle": "Merci !",
@@ -1004,8 +1004,8 @@
           "feedbackDesc": "Avez-vous des retours ? Nous écoutons.",
           "feedbackSuccess": "Merci pour vos retours !",
           "rateOnChromeStoreButton": "Évaluez sur le Chrome Web Store",
-          "feedbackPlaceholder": "Rabby apprécie vos retours !",
-          "thxDesc": "Si vous aimez Rabby, un rapide avis sur le Chrome Store serait très apprécié."
+          "feedbackPlaceholder": "MultiSub apprécie vos retours !",
+          "thxDesc": "Si vous aimez MultiSub, un rapide avis sur le Chrome Store serait très apprécié."
         }
       },
       "tokenDetail": {
@@ -1015,11 +1015,11 @@
         "customized": "Personnalisé",
         "customizedButton": "personnalisé",
         "noTransactions": "Aucune transaction",
-        "notSelectedCustom": "Le token n'est pas répertorié par Rabby. Il sera ajouté à la liste des tokens si vous activez.",
+        "notSelectedCustom": "Le token n'est pas répertorié par MultiSub. Il sera ajouté à la liste des tokens si vous activez.",
         "notSupported": "Le token sur cette chaîne n'est pas pris en charge",
         "receive": "Recevoir",
         "scamTx": "Transaction frauduleuse",
-        "selectedCustom": "Le token n'est pas répertorié par Rabby. Vous l'avez ajouté à la liste des tokens personnalisés.",
+        "selectedCustom": "Le token n'est pas répertorié par MultiSub. Vous l'avez ajouté à la liste des tokens personnalisés.",
         "send": "Envoyer",
         "swap": "Échanger",
         "txFailed": "Échoué",
@@ -1041,7 +1041,7 @@
         "NoListedBy": "Aucune information de liste disponible",
         "OriginIssue": "Émis nativement sur cette blockchain",
         "ListedBy": "Répertorié par",
-        "customizedHasAddedTips": "Le jeton n'est pas listé par Rabby. Vous l'avez ajouté à la liste des jetons manuellement.",
+        "customizedHasAddedTips": "Le jeton n'est pas listé par MultiSub. Vous l'avez ajouté à la liste des jetons manuellement.",
         "ContractAddress": "Adresse du contrat",
         "maybeScamTips": "Ceci est un token de faible qualité et peut être une arnaque.",
         "TokenName": "Nom du Token",
@@ -1062,7 +1062,7 @@
       "MetamaskModePopup": {
         "title": "Mode MetaMask",
         "enableDesc": "Activez si dApp fonctionne uniquement avec MetaMask",
-        "desc": "Si vous ne pouvez pas connecter Rabby sur une dApp, activez le Mode MetaMask et connectez-vous en sélectionnant l'option MetaMask.",
+        "desc": "Si vous ne pouvez pas connecter MultiSub sur une dApp, activez le Mode MetaMask et connectez-vous en sélectionnant l'option MetaMask.",
         "toastSuccess": "Activé. Actualisez la page pour vous reconnecter.",
         "footerText": "Ajoutez plus de dApps au Mode MetaMask dans Plus > Mode MetaMask"
       },
@@ -1075,13 +1075,13 @@
         "button": "Compris"
       },
       "rabbyPointsPopup": {
-        "title": "Rabby Points",
-        "desc": "Vérifiez vos points dans Rabby Mobile.",
+        "title": "MultiSub Points",
+        "desc": "Vérifiez vos points dans MultiSub Mobile.",
         "downloadIntro": "Vous n'avez pas encore l'application ? Téléchargez-la maintenant."
       }
     },
     "ethSign": {
-      "alert": "Signer avec \"eth_sign\" peut entraîner une perte d'actifs. Pour votre sécurité, Rabby ne prend pas en charge cette méthode."
+      "alert": "Signer avec \"eth_sign\" peut entraîner une perte d'actifs. Pour votre sécurité, MultiSub ne prend pas en charge cette méthode."
     },
     "gasTopUp": {
       "Amount": "Quantité",
@@ -1089,7 +1089,7 @@
       "Confirm": "Confirmer",
       "Continue": "Continuer",
       "Including-service-fee": "Y compris {{fee}} de frais de service",
-      "InsufficientBalance": "Solde insuffisant dans le contrat Rabby lié à la chaîne actuelle. Veuillez réessayer plus tard.",
+      "InsufficientBalance": "Solde insuffisant dans le contrat MultiSub lié à la chaîne actuelle. Veuillez réessayer plus tard.",
       "InsufficientBalanceTips": "Solde insuffisant",
       "Loading_Tokens": "Chargement des tokens...",
       "No_Tokens": "Aucun token",
@@ -1101,7 +1101,7 @@
       "description": "Faites le plein de gaz en nous envoyant des tokens disponibles sur une autre chaîne. Virement instantané dès confirmation de votre paiement (sans attendre qu'il soit irréversible).",
       "hightGasFees": "Ce montant de recharge est trop faible car le réseau cible nécessite des frais de gaz élevés.",
       "payment": "Paiement de recharge de gaz",
-      "service-fee-tip": "En fournissant le service de recharge de gaz, Rabby doit supporter la perte liée à la fluctuation des tokens et les frais de gaz pour la recharge. Des frais de service de 20% sont donc facturés.",
+      "service-fee-tip": "En fournissant le service de recharge de gaz, MultiSub doit supporter la perte liée à la fluctuation des tokens et les frais de gaz pour la recharge. Des frais de service de 20% sont donc facturés.",
       "title": "Recharge de gaz instantanée",
       "topUpChain": "Chaîne pour la recharge"
     },
@@ -1135,7 +1135,7 @@
       "current-address": "Adresse actuelle",
       "delete-all-addresses-and-the-seed-phrase": "Supprimer toutes les adresses et la seed phrase",
       "delete-all-addresses-but-keep-the-seed-phrase": "Supprimer toutes les adresses, mais conserver la seed phrase",
-      "delete-checklist-1": "Je comprends que si je supprime cette adresse, la clé privée et la seed phrase correspondantes seront supprimées et Rabby ne pourra PAS les récupérer.",
+      "delete-checklist-1": "Je comprends que si je supprime cette adresse, la clé privée et la seed phrase correspondantes seront supprimées et MultiSub ne pourra PAS les récupérer.",
       "delete-checklist-2": "Je confirme que j'ai sauvegardé la clé privée ou la seed phrase et que je suis prêt pour la suppression.",
       "delete-desc": "Avant de supprimer, gardez les points suivants à l'esprit pour comprendre comment protéger vos actifs.",
       "delete-empty-seed-phrase": "Supprimer la seed phrase et son adresse 0",
@@ -1198,10 +1198,10 @@
       "connectMobileWalletApps": "Connecter des applications de wallet mobile",
       "createNewSeedPhrase": "Créer une nouvelle seed phrase",
       "hd": {
-        "addToRabby": "Ajouter à Rabby",
+        "addToRabby": "Ajouter à MultiSub",
         "addresses": "Adresses",
         "addressesIn": "Adresses dans {{0}}",
-        "addressesInRabby": "Adresses dans Rabby {{0}}",
+        "addressesInRabby": "Adresses dans MultiSub {{0}}",
         "advancedSettings": "Paramètres avancés",
         "balance": "Solde",
         "basicInformation": "Informations de base",
@@ -1303,10 +1303,10 @@
         "selectHdPath": "Sélectionner le HD path :",
         "selectIndexTip": "Sélectionner le numéro de série des adresses à partir desquelles commencer :",
         "tooltip": {
-          "added": "L'adresse est ajoutée à Rabby",
+          "added": "L'adresse est ajoutée à MultiSub",
           "connectError": "La connexion s'est arrêtée. Veuillez actualiser la page pour vous reconnecter.",
           "disconnected": "Impossible de se connecter au wallet matériel. Veuillez essayer de vous reconnecter.",
-          "removed": "L'adresse est supprimée de Rabby"
+          "removed": "L'adresse est supprimée de MultiSub"
         },
         "trezor": {
           "hdPathType": {
@@ -1345,9 +1345,9 @@
       },
       "ledger": {
         "allow": "Permettre",
-        "allowRabbyPermissionsTitle": "Autorisez Rabby à :",
-        "cameraPermission1": "Autoriser Rabby à accéder à la caméra dans la fenêtre contextuelle du navigateur",
-        "cameraPermissionTitle": "Autoriser Rabby à accéder à la caméra",
+        "allowRabbyPermissionsTitle": "Autorisez MultiSub à :",
+        "cameraPermission1": "Autoriser MultiSub à accéder à la caméra dans la fenêtre contextuelle du navigateur",
+        "cameraPermissionTitle": "Autoriser MultiSub à accéder à la caméra",
         "ledgerPermission1": "Se connecter à un appareil HID",
         "ledgerPermissionTip": "Veuillez cliquer sur \\\"Autoriser\\\" ci-dessous et autoriser l'accès à votre Ledger dans la fenêtre contextuelle suivante.",
         "nowYouCanReInitiateYourTransaction": "Vous pouvez maintenant relancer votre transaction.",
@@ -1363,10 +1363,10 @@
       "metamask": {
         "how": "Comment importer mon compte MetaMask ?",
         "importSeedPhrase": "Importer la seed phrase ou la clé privée",
-        "importSeedPhraseTips": "Ce sera uniquement stocké localement sur le navigateur. Rabby n'aura jamais accès à vos informations privées.",
+        "importSeedPhraseTips": "Ce sera uniquement stocké localement sur le navigateur. MultiSub n'aura jamais accès à vos informations privées.",
         "step": "Étape",
         "step1": "Exporter la seed phrase ou la clé privée depuis MetaMask <br /> <1>Cliquer pour voir le tutoriel <1/></1>",
-        "step2": "Importer la seed phrase ou la clé privée dans Rabby",
+        "step2": "Importer la seed phrase ou la clé privée dans MultiSub",
         "step3": "L'importation est terminée et l'ensemble de vos actifs <br /> apparaîtront automatiquement",
         "tips": "Conseils:",
         "tipsDesc": "Votre seed phrase/clé privée n'appartient pas à MetaMask ou à un autre wallet; cela n'appartient qu'à vous."
@@ -1378,7 +1378,7 @@
         },
         "isItSafeToImportItInRabby": {
           "answer": "Oui, elle sera stockée localement sur votre navigateur et uniquement accessible par vous.",
-          "question": "Est-il sécurisé de l'importer dans Rabby ?"
+          "question": "Est-il sécurisé de l'importer dans MultiSub ?"
         },
         "notAValidPrivateKey": "N'est pas une clé privée valide",
         "placeholder": "Entrer votre clé privée",
@@ -1400,11 +1400,11 @@
         "createdSuccessfully": "Créé avec succès",
         "fillInTheBackupSeedPhraseInOrder": "Remplir la seed phrase dans l'ordre",
         "importError": "[CreateMnemonics] étape inattendue {{0}}",
-        "importQuestion4": "Si je désinstalle Rabby sans sauvegarder la seed phrase, Rabby ne pourra pas la récupérer pour moi.",
+        "importQuestion4": "Si je désinstalle MultiSub sans sauvegarder la seed phrase, MultiSub ne pourra pas la récupérer pour moi.",
         "importTips": "Vous pouvez coller l'intégralité de votre seed phrase dans le 1er champ",
         "isItSafeToImportItInRabby": {
           "answer": "Oui, elle sera stockée localement sur votre navigateur et uniquement accessible par vous.",
-          "question": "Est-il sécurisé de l'importer dans Rabby ?"
+          "question": "Est-il sécurisé de l'importer dans MultiSub ?"
         },
         "pleaseSelectWords": "Veuillez sélectionner les mots",
         "riskTips": "Avant de commencer, veuillez lire et garder à l'esprit les conseils de sécurité suivants.",
@@ -1430,8 +1430,8 @@
         "slip39SeedPhrase": "J'ai une phrase de récupération <0>{{SLIP39}}</0>",
         "slip39SeedPhraseWithPassphrase": "J'ai une phrase secrète <0>{{SLIP39}}</0> avec une phrase de passe",
         "importQuestion1": "Si je perds ou partage ma phrase secrète, je perdrai l'accès à mes actifs de manière permanente.",
-        "importQuestion2": "Ma phrase de récupération est uniquement stockée sur mon appareil. Rabby ne peut pas y accéder.",
-        "importQuestion3": "Si je désinstalle Rabby sans sauvegarder ma phrase de récupération, elle ne pourra pas être restaurée par Rabby.",
+        "importQuestion2": "Ma phrase de récupération est uniquement stockée sur mon appareil. MultiSub ne peut pas y accéder.",
+        "importQuestion3": "Si je désinstalle MultiSub sans sauvegarder ma phrase de récupération, elle ne pourra pas être restaurée par MultiSub.",
         "showMoreOptions": "Afficher plus d'options",
         "inputInvalid": "Mots invalides détectés. Veuillez examiner ceux surlignés."
       },
@@ -1482,10 +1482,10 @@
         "viaWalletConnect": "via Wallet Connect"
       },
       "keystone": {
-        "allowRabbyPermissionsTitle": "Autoriser Rabby à :",
+        "allowRabbyPermissionsTitle": "Autoriser MultiSub à :",
         "deviceIsBusy": "Le périphérique est occupé",
         "deviceIsLockedError": "Saisir le mot de passe pour déverrouiller",
-        "deviceRejectedExportAddress": "Approuver la connexion à Rabby",
+        "deviceRejectedExportAddress": "Approuver la connexion à MultiSub",
         "exportAddressJustAllowedOnHomePage": "Adresse d'exportation uniquement autorisée sur la page d'accueil",
         "keystonePermission1": "Se connecter à un périphérique USB",
         "keystonePermissionTip": "Veuillez cliquer sur « Autoriser » ci-dessous pour autoriser l'accès à votre Keystone dans la fenêtre pop-up suivante, et assurez-vous que votre Keystone 3 Pro est sur la page d'accueil.",
@@ -1495,7 +1495,7 @@
       },
       "onekey": {
         "onekeyPermission1": "Se connecter à un périphérique USB",
-        "allowRabbyPermissionsTitle": "Autoriser Rabby à :",
+        "allowRabbyPermissionsTitle": "Autoriser MultiSub à :",
         "onekeyPermissionTip": "Veuillez cliquer sur « Autoriser » ci-dessous pour autoriser l'accès à votre OneKey dans la fenêtre pop-up suivante. Si OneKey n'apparaît pas dans la fenêtre pop-up, veuillez vérifier si votre appareil est correctement connecté à l'ordinateur.",
         "whyOneKey": "Pourquoi OneKey ?",
         "buyOneKey": "Acheter OneKey",
@@ -1535,9 +1535,9 @@
       "watchModeAlert2": "Êtes-vous sûr de vouloir l'utiliser pour recevoir des actifs ?"
     },
     "requestDebankTestnetGasToken": {
-      "claimBadgeBtn": "Réclamer le badge Rabby",
-      "mintedTip": "Les détenteurs du badge Rabby peuvent en faire la demande une fois par jour",
-      "notMintedTip": "Demande disponible uniquement pour les détenteurs du badge Rabby",
+      "claimBadgeBtn": "Réclamer le badge MultiSub",
+      "mintedTip": "Les détenteurs du badge MultiSub peuvent en faire la demande une fois par jour",
+      "notMintedTip": "Demande disponible uniquement pour les détenteurs du badge MultiSub",
       "requestBtn": "Demande",
       "requested": "Vous avez déjà demandé aujourd'hui",
       "time": "Par jour",
@@ -1797,7 +1797,7 @@
       "testnet": "Testnet",
       "walletConnect": {
         "chainSwitched": "Vous êtes passé sur une autre chaîne sur le wallet mobile. Veuillez passer sur {{0}} dans le wallet mobile",
-        "connectBeforeSign": "{{0}} n'est pas connecté à Rabby, veuillez vous connecter avant de signer",
+        "connectBeforeSign": "{{0}} n'est pas connecté à MultiSub, veuillez vous connecter avant de signer",
         "connected": "Connecté et prêt à signer",
         "connectedButCantSign": "Connecté mais impossible de signer.",
         "howToSwitch": "Comment changer",
@@ -1840,7 +1840,7 @@
         "customRpcUnavailableTip": "Les RPC personnalisés ne sont pas pris en charge pour Free Gas",
         "walletConnectUnavailableTip": "Le portefeuille mobile connecté via WalletConnect n'est pas pris en charge pour Free Gas.",
         "unavailable": "Votre solde de Gas n'est pas suffisant",
-        "rabbyPayGas": "Rabby paiera le gas nécessaire – il vous suffit de signer"
+        "rabbyPayGas": "MultiSub paiera le gas nécessaire – il vous suffit de signer"
       },
       "gasAccount": {
         "WalletConnectTips": "GasAccount ne prend pas en charge WalletConnect",
@@ -1911,10 +1911,10 @@
       },
       "deployTimeTitle": "Heure du déploiement",
       "eip1559Desc1": "Sur les chaînes prenant en charge l'EIP-1559, les frais prioritaires sont le pourboire permettant aux mineurs de traiter votre transaction. Vous pouvez économiser votre coût final en gaz en réduisant les frais de priorité, ce qui peut rallonger la durée de traitement de la transaction.",
-      "eip1559Desc2": "Dans Rabby, frais prioritaires (pourboire) = frais maximum - frais de base. Après avoir configuré les frais de priorité maximum, les frais de base en seront déduits et le reste sera reversé aux mineurs.",
+      "eip1559Desc2": "Dans MultiSub, frais prioritaires (pourboire) = frais maximum - frais de base. Après avoir configuré les frais de priorité maximum, les frais de base en seront déduits et le reste sera reversé aux mineurs.",
       "enoughSafeSigCollected": "Assez de signatures collectées",
       "failToFetchGasCost": "Impossible de récupérer le coût du gaz",
-      "fakeTokenAlert": "Il s'agit d'un token scam signalé par Rabby",
+      "fakeTokenAlert": "Il s'agit d'un token scam signalé par MultiSub",
       "firstOnChain": "Première transaction on-chain",
       "floorPrice": "Floor price",
       "gasLimitEmptyAlert": "Veuillez saisir la limite de gaz",
@@ -1983,7 +1983,7 @@
       },
       "safeAddressNotSupportChain": "L'adresse sécurisée actuelle n'est pas prise en charge sur la chaîne {{0}}",
       "safeAdminSigned": "Signé",
-      "scamTokenAlert": "Il s'agit potentiellement d'un token de mauvaise qualité et frauduleux, basé sur la détection de Rabby.",
+      "scamTokenAlert": "Il s'agit potentiellement d'un token de mauvaise qualité et frauduleux, basé sur la détection de MultiSub.",
       "send": {
         "addressBalanceTitle": "Solde d'adresse",
         "cexAddress": "Adresse CEX",
@@ -2006,7 +2006,7 @@
         "nftNotSupport": "NFT non pris en charge",
         "title": "Envoyer un NFT"
       },
-      "sigCantDecode": "Cette signature ne peut pas être décodée par Rabby",
+      "sigCantDecode": "Cette signature ne peut pas être décodée par MultiSub",
       "signTransactionOnChain": "Signer la transaction sur {{chain}}",
       "speedUpTooltip": "Cette transaction est à la fois accélérée et initiale, une seule sera finalisée",
       "submitMultisig": {
@@ -2038,7 +2038,7 @@
         "contractTrustValueTip": "La valeur de confiance fait référence au total de tokens approuvés et exposés à ce contrat. Une valeur de confiance faible indique soit un risque, soit une inactivité pendant 180 jours.",
         "deployTimeLessThan": "Date de déploiement < {{value}} jours",
         "eoaAddress": "Adresse EOA",
-        "flagByRabby": "Signalé par Rabby",
+        "flagByRabby": "Signalé par MultiSub",
         "myBalance": "Mon solde",
         "title": "Approbation de token",
         "trustValueLessThan": "Valeur de confiance ≤ {{value}}",
@@ -2117,7 +2117,7 @@
         "safeWalletTitle": "Safe{Wallet}",
         "title": "Soumettre la modification d'approbation du token"
       },
-      "decodedTooltip": "Cette signature est décodée par Rabby Wallet",
+      "decodedTooltip": "Cette signature est décodée par MultiSub Wallet",
       "importedAddress": "Adresse importée",
       "l2GasEstimateTooltip": "L'estimation du gaz pour la chaîne L2 n'inclut pas les frais de gaz L1. Les frais réels seront plus élevés que l'estimation actuelle.",
       "gasAccount": {
@@ -2131,7 +2131,7 @@
       },
       "customRPCErrorModal": {
         "button": "Désactiver Custom RPC",
-        "content": "Votre RPC personnalisé est actuellement indisponible. Vous pouvez le désactiver et continuer à signer en utilisant le RPC officiel de Rabby.",
+        "content": "Votre RPC personnalisé est actuellement indisponible. Vous pouvez le désactiver et continuer à signer en utilisant le RPC officiel de MultiSub.",
         "title": "Erreur RPC personnalisée"
       },
       "transferOwner": {
@@ -2182,8 +2182,8 @@
       "safeServiceNotAvailable": "Le service Safe n'est pas disponible pour le moment, veuillez réessayer plus tard.",
       "safeTx": {
         "selfHostConfirm": {
-          "title": "Passer au service Safe de Rabby",
-          "content": "L'API Safe est indisponible. Passez au service Safe déployé par Rabby pour que votre Safe reste fonctionnel. <strong>Tous les signataires Safe doivent utiliser Rabby Wallet pour autoriser les transactions.<strong>",
+          "title": "Passer au service Safe de MultiSub",
+          "content": "L'API Safe est indisponible. Passez au service Safe déployé par MultiSub pour que votre Safe reste fonctionnel. <strong>Tous les signataires Safe doivent utiliser MultiSub Wallet pour autoriser les transactions.<strong>",
           "button": "OK"
         }
       },
@@ -2253,7 +2253,7 @@
       "Completed": "Complété",
       "InSufficientTip": "Solde insuffisant pour effectuer une simulation de transaction et une estimation du gaz. Les cotations originales de l'agrégateur sont affichées",
       "Pending": "En attente",
-      "QuoteLessWarning": "Le montant reçu est estimé à partir de la simulation de transaction Rabby. L'offre communiquée par le DEX est {{receive}}. Vous recevrez {{diff}} de moins que l'offre prévue.",
+      "QuoteLessWarning": "Le montant reçu est estimé à partir de la simulation de transaction MultiSub. L'offre communiquée par le DEX est {{receive}}. Vous recevrez {{diff}} de moins que l'offre prévue.",
       "actual": "Réel:",
       "actual-slippage": "Slippage réel :",
       "amount-in": "Quantité en {{symbol}}",
@@ -2289,7 +2289,7 @@
       "not-supported": "Non supporté",
       "pendingTip": "Tx soumise. Si la transmission est en attente pendant de longues heures, vous pouvez essayer d'effacer les transactions en attente dans les paramètres.",
       "price-expired-refresh-quote": "Prix ​​expiré. Actualiser la cotation.",
-      "rabby-fee": "Frais de Rabby",
+      "rabby-fee": "Frais de MultiSub",
       "rate": "Taux",
       "rates-from-cex": "Taux depuis les CEX",
       "recommend-slippage": "Pour éviter le front-running, nous recommandons un slippage de <2>{{ slippage }}</2>%",
@@ -2312,7 +2312,7 @@
       "to": "Vers",
       "trade": "Échanger",
       "tradingSettingTip1": "1. Une fois activé, vous interagirez directement avec le contrat de l'exchange",
-      "tradingSettingTip2": "2. Rabby n'est pas responsable des risques découlant des contrats des exchanges",
+      "tradingSettingTip2": "2. MultiSub n'est pas responsable des risques découlant des contrats des exchanges",
       "tradingSettingTips": "{{viewCount}} exchanges proposent des cotations et {{tradeCount}} permettent le trading",
       "transaction-might-be-frontrun-because-of-high-slippage-tolerance": "La transaction peut être \"frontrun\" en raison d'une tolérance élevée au slippage",
       "unable-to-fetch-the-price": "Impossible de récupérer le prix",
@@ -2325,10 +2325,10 @@
       "rabbyFee": {
         "wallet": "Portefeuille",
         "rate": "Taux de frais",
-        "title": "Frais Rabby",
+        "title": "Frais MultiSub",
         "button": "Compris",
-        "bridgeDesc": "Rabby Wallet trouvera toujours le meilleur taux possible parmi les meilleurs agrégateurs et vérifiera la fiabilité de leurs offres. Rabby facture des frais de 0,25 %, qui sont automatiquement inclus dans le devis.",
-        "swapDesc": "Le portefeuille Rabby trouvera toujours le meilleur taux possible parmi les principaux agrégateurs et vérifiera la fiabilité de leurs offres. Rabby prélève des frais de 0,25 % (0 % pour l'emballage), qui sont automatiquement inclus dans le devis."
+        "bridgeDesc": "MultiSub Wallet trouvera toujours le meilleur taux possible parmi les meilleurs agrégateurs et vérifiera la fiabilité de leurs offres. MultiSub facture des frais de 0,25 %, qui sont automatiquement inclus dans le devis.",
+        "swapDesc": "Le portefeuille MultiSub trouvera toujours le meilleur taux possible parmi les principaux agrégateurs et vérifiera la fiabilité de leurs offres. MultiSub prélève des frais de 0,25 % (0 % pour l'emballage), qui sont automatiquement inclus dans le devis."
       },
       "lowCreditModal": {
         "desc": "Une faible valeur de crédit indique souvent un risque élevé, comme un token piège ou une très faible liquidité.",
@@ -2337,7 +2337,7 @@
       "from": "De",
       "approve-swap": "Approuver et Échanger",
       "no-slippage-for-wrap": "Pas de slippage pour Wrap",
-      "no-fee-for-wrap": "Pas de frais Rabby pour Wrap",
+      "no-fee-for-wrap": "Pas de frais MultiSub pour Wrap",
       "hidden-no-quote-rates_other": "{{count}} taux non disponibles",
       "approve-and-swap": "Approuver et échanger via {{name}}",
       "two-step-approve-details": "Le jeton USDT nécessite 2 transactions pour modifier l'autorisation. Vous devez d'abord réinitialiser l'autorisation à zéro, puis définir la nouvelle valeur de l'autorisation.",
@@ -2351,7 +2351,7 @@
       "No-available-quote": "Aucune cotation disponible",
       "loss-tips": "Vous perdez {{usd}}. Essayez un montant plus petit sur un petit marché.",
       "usd-after-fees": "≈ {{usd}}",
-      "no-fees-for-wrap": "Pas de frais Rabby pour Wrap",
+      "no-fees-for-wrap": "Pas de frais MultiSub pour Wrap",
       "price-impact": "Impact sur le prix",
       "source": "Source",
       "max": "MAX",
@@ -2359,18 +2359,18 @@
       "approve": "Approuver"
     },
     "switchChain": {
-      "chainNotSupport": "La chaîne demandée n'est pas encore prise en charge par Rabby",
+      "chainNotSupport": "La chaîne demandée n'est pas encore prise en charge par MultiSub",
       "testnetTip": "Veuillez activer « Activer les testnets » dans « Plus » avant de vous connecter aux testnets",
       "title": "Passer sur {{chain}}",
       "chainId": "ID chaîne :",
-      "chainNotSupportYet": "La chaîne demandée n'est pas encore prise en charge par Rabby",
-      "requestRabbyToSupport": "Demander de l'aide à Rabby",
+      "chainNotSupportYet": "La chaîne demandée n'est pas encore prise en charge par MultiSub",
+      "requestRabbyToSupport": "Demander de l'aide à MultiSub",
       "requestsReceivedPlural": "{{count}} demandes reçues",
       "unknownChain": "Chaîne inconnue",
       "requestsReceived": "1 demande reçue",
       "addChain": "Ajouter Testnet",
-      "chainNotSupportAddChain": "La chaîne demandée n'est pas encore intégrée par Rabby. Vous pouvez l'ajouter en tant que réseau de test personnalisé.",
-      "desc": "Le réseau demandé n'est pas encore intégré par Rabby. Vous pouvez l'ajouter manuellement en tant que réseau personnalisé."
+      "chainNotSupportAddChain": "La chaîne demandée n'est pas encore intégrée par MultiSub. Vous pouvez l'ajouter en tant que réseau de test personnalisé.",
+      "desc": "Le réseau demandé n'est pas encore intégré par MultiSub. Vous pouvez l'ajouter manuellement en tant que réseau personnalisé."
     },
     "transactions": {
       "empty": {
@@ -2411,13 +2411,13 @@
         "placeholder": "Entrer le mot de passe pour déverrouiller",
         "required": "Entrer le mot de passe pour déverrouiller"
       },
-      "title": "Rabby Wallet",
+      "title": "MultiSub Wallet",
       "btnForgotPassword": "Mot de passe oublié ?",
       "description": "Votre portefeuille incontournable pour Ethereum et EVM"
     },
     "welcome": {
       "step1": {
-        "desc": "Rabby se connecte à toutes les DApps prises en charge par MetaMask",
+        "desc": "MultiSub se connecte à toutes les DApps prises en charge par MetaMask",
         "title": "Accéder à toutes les DApps"
       },
       "step2": {
@@ -2515,7 +2515,7 @@
           "i-understand-and-accept-it": "Je comprends et j'accepte",
           "title": "Activez le trading avec cet agrégateur",
           "tip1": "Une fois activé, vous interagirez directement avec le contrat depuis cet agrégateur.",
-          "tip2": "2. Rabby n'est pas responsable des risques découlant du contrat de cet agrégateur"
+          "tip2": "2. MultiSub n'est pas responsable des risques découlant du contrat de cet agrégateur"
         },
         "SupportedBridge": "Bridge pris en charge :",
         "confirm": "Confirmer",
@@ -2555,7 +2555,7 @@
       "BridgeTokenPair": "Bridger paire de tokens",
       "no-quote-found": "Aucune cotation trouvée. Veuillez essayer d'autres paires de jetons.",
       "via-bridge": "via {{bridge}}",
-      "rabby-fee": "Frais Rabby",
+      "rabby-fee": "Frais MultiSub",
       "slippage-adjusted-refresh-quote": "Glissement ajusté. Rafraîchir l'itinéraire.",
       "estimate": "Estimation :",
       "bridgeTo": "Passerelle vers",
@@ -2620,12 +2620,12 @@
       "claimModal": {
         "walletBalance": "Solde du portefeuille",
         "title": "Réclamer des Points Initiaux",
-        "rabbyDesktopGenesisNft": "Rabby Desktop Genesis NFT",
-        "rabbyValuedUserBadge": "Badge Utilisateur Précieux Rabby",
+        "rabbyDesktopGenesisNft": "MultiSub Desktop Genesis NFT",
+        "rabbyValuedUserBadge": "Badge Utilisateur Précieux MultiSub",
         "addressBalance": "Solde du wallet",
         "season2": "Saison 2",
         "cantUseOwnCode": "Vous ne pouvez pas utiliser votre propre code de parrainage.",
-        "rabbyUser": "Utilisateur Actif Rabby",
+        "rabbyUser": "Utilisateur Actif MultiSub",
         "invalid-code": "code invalide",
         "referral-code": "Code de Parrainage",
         "claim": "Réclamer",
@@ -2653,16 +2653,16 @@
         "once-set-this-referral-code-is-permanent-and-cannot-change": "Une fois défini, ce code de parrainage est permanent et ne peut pas être modifié.",
         "set-my-code": "Définir mon code"
       },
-      "title": "Rabby Points",
+      "title": "MultiSub Points",
       "share-on": "Partager sur",
       "top-100": "Top 100",
       "earn-points": "Gagner des points",
       "out-of-x-current-total-points": "Sur un total de {{total}} points distribués",
       "referral-code-copied": "Code de parrainage copié",
       "code-set-successfully": "Code de parrainage défini avec succès",
-      "secondRoundEnded": "🎉 La deuxième ronde de Rabby Points est terminée",
+      "secondRoundEnded": "🎉 La deuxième ronde de MultiSub Points est terminée",
       "initialPointsClaimEnded": "La période initiale de réclamation des Points est terminée",
-      "firstRoundEnded": "🎉 La première ronde de Rabby Points est terminée"
+      "firstRoundEnded": "🎉 La première ronde de MultiSub Points est terminée"
     },
     "customTestnet": {
       "CustomTestnetForm": {
@@ -2678,7 +2678,7 @@
       },
       "AddFromChainList": {
         "tips": {
-          "supported": "La chaîne déjà intégrée par Rabby Wallet",
+          "supported": "La chaîne déjà intégrée par MultiSub Wallet",
           "added": "Vous avez déjà ajouté cette chaîne."
         },
         "title": "Ajout rapide depuis Chainlist",
@@ -2689,18 +2689,18 @@
         "title": "Données de transaction"
       },
       "ConfirmModifyRpcModal": {
-        "desc": "La chaîne est déjà intégrée par Rabby. Souhaitez-vous modifier son URL RPC ?"
+        "desc": "La chaîne est déjà intégrée par MultiSub. Souhaitez-vous modifier son URL RPC ?"
       },
       "id": "ID",
       "title": "Réseau personnalisé",
       "currency": "Devise",
       "empty": "Aucun réseau personnalisé",
       "add": "Ajouter un réseau personnalisé",
-      "desc": "Rabby ne peut pas vérifier la sécurité des réseaux personnalisés. Veuillez ajouter uniquement des réseaux de confiance."
+      "desc": "MultiSub ne peut pas vérifier la sécurité des réseaux personnalisés. Veuillez ajouter uniquement des réseaux de confiance."
     },
     "addChain": {
-      "title": "Ajouter un réseau personnalisé à Rabby",
-      "desc": "Rabby ne peut pas vérifier la sécurité des réseaux personnalisés. Veuillez ajouter uniquement des réseaux de confiance."
+      "title": "Ajouter un réseau personnalisé à MultiSub",
+      "desc": "MultiSub ne peut pas vérifier la sécurité des réseaux personnalisés. Veuillez ajouter uniquement des réseaux de confiance."
     },
     "sign": {
       "transactionSpeed": "Vitesse de transaction"
@@ -2845,7 +2845,7 @@
         "invalidAmount": "Doit être inférieur à 500",
         "title": "Dépôt",
         "selectToken": "Sélectionnez le Token à Déposer",
-        "desc": "Faites un dépôt sur le compte DeBank L2 de Rabby sans frais supplémentaires—retirez à tout moment.",
+        "desc": "Faites un dépôt sur le compte DeBank L2 de MultiSub sans frais supplémentaires—retirez à tout moment.",
         "paymentAddr": "Adresse de paiement"
       },
       "withdrawPopup": {
@@ -2906,8 +2906,8 @@
         "title4": "GasAccount est-il sûr",
         "title3": "GasAccount a-t-il des frais supplémentaires ?",
         "desc2": "Ajoutez des fonds à votre GasAccount et utilisez-le pour toute transaction. Lors de la signature, choisissez de payer le gaz avec des tokens natifs ou GasAccount, changez à tout moment.",
-        "desc3": "Rabby Wallet ne facture aucun frais supplémentaire. Vous ne payez que le gaz pour votre transaction et une petite quantité de gaz pour envoyer ce gaz de GasAccount à votre adresse.",
-        "desc4": "GasAccount ne nécessite aucune approbation ou permission de contrat. Vous déposez sur l'adresse GasAccount de Rabby, et Rabby envoie du gaz à votre adresse si nécessaire. Entièrement sécurisé par conception.",
+        "desc3": "MultiSub Wallet ne facture aucun frais supplémentaire. Vous ne payez que le gaz pour votre transaction et une petite quantité de gaz pour envoyer ce gaz de GasAccount à votre adresse.",
+        "desc4": "GasAccount ne nécessite aucune approbation ou permission de contrat. Vous déposez sur l'adresse GasAccount de MultiSub, et MultiSub envoie du gaz à votre adresse si nécessaire. Entièrement sécurisé par conception.",
         "desc1": "GasAccount est une nouvelle façon de payer les frais de gaz. Au lieu d'utiliser des jetons natifs sur chaque chaîne, vous pouvez utiliser un seul compte pour couvrir le gaz pour toutes vos adresses sur toutes les chaînes. Simple, optionnel et jamais à court de gaz."
       }
     },
@@ -2917,7 +2917,7 @@
     },
     "newUserImport": {
       "guide": {
-        "title": "Bienvenue sur Rabby Wallet",
+        "title": "Bienvenue sur MultiSub Wallet",
         "importAddress": "J'ai déjà une adresse",
         "createNewAddress": "Créer une nouvelle adresse",
         "desc": "Votre portefeuille indispensable pour Ethereum et EVM"
@@ -2926,8 +2926,8 @@
         "showSeedPhrase": "Afficher la phrase secrète",
         "title": "Avant de commencer",
         "desc": "Veuillez lire et garder à l'esprit les conseils de sécurité suivants.",
-        "tip3": "Si je désinstalle Rabby sans sauvegarder ma phrase de récupération, elle ne peut pas être récupérée par Rabby.",
-        "tip2": "Ma phrase secrète est stockée uniquement sur mon appareil. Rabby ne peut pas y accéder.",
+        "tip3": "Si je désinstalle MultiSub sans sauvegarder ma phrase de récupération, elle ne peut pas être récupérée par MultiSub.",
+        "tip2": "Ma phrase secrète est stockée uniquement sur mon appareil. MultiSub ne peut pas y accéder.",
         "tip1": "Si je perds ou partage ma seed phrase, je perds l'accès à mes actifs de manière permanente."
       },
       "importList": {
@@ -2964,14 +2964,14 @@
         "addMoreAddr": "Ajoutez plus d'adresses à partir de cette Seed Phrase"
       },
       "readyToUse": {
-        "pin": "Épingler Rabby Wallet",
+        "pin": "Épingler MultiSub Wallet",
         "guides": {
-          "step2": "Épingler Rabby Wallet",
+          "step2": "Épingler MultiSub Wallet",
           "step1": "Cliquez sur l'icône de l'extension du navigateur"
         },
-        "desc": "Trouvez Rabby Wallet et épinglez-le",
+        "desc": "Trouvez MultiSub Wallet et épinglez-le",
         "extensionTip": "Cliquez sur <1/> puis sur <3/>",
-        "title": "Votre portefeuille Rabby est prêt !"
+        "title": "Votre portefeuille MultiSub est prêt !"
       },
       "importSeedPhrase": {
         "title": "Importer Seed Phrase"
@@ -3036,15 +3036,15 @@
     },
     "metamaskModeDapps": {
       "title": "Gérer les Dapps autorisées",
-      "desc": "Mode MetaMask activé pour les dApps suivantes. Vous pouvez connecter Rabby en sélectionnant l'option MetaMask."
+      "desc": "Mode MetaMask activé pour les dApps suivantes. Vous pouvez connecter MultiSub en sélectionnant l'option MetaMask."
     },
     "forgotPassword": {
       "home": {
         "title": "Mot de passe oublié",
         "buttonNoData": "Définir le mot de passe",
         "button": "Commencer le processus de réinitialisation",
-        "description": "Rabby Wallet ne stocke pas votre mot de passe et ne peut pas vous aider à le récupérer. Réinitialisez votre portefeuille pour en configurer un nouveau.",
-        "descriptionNoData": "Rabby Wallet ne stocke pas votre mot de passe et ne peut pas vous aider à le récupérer. Définissez un nouveau mot de passe si vous l'avez oublié."
+        "description": "MultiSub Wallet ne stocke pas votre mot de passe et ne peut pas vous aider à le récupérer. Réinitialisez votre portefeuille pour en configurer un nouveau.",
+        "descriptionNoData": "MultiSub Wallet ne stocke pas votre mot de passe et ne peut pas vous aider à le récupérer. Définissez un nouveau mot de passe si vous l'avez oublié."
       },
       "reset": {
         "alert": {
@@ -3061,12 +3061,12 @@
           "hardware": "Portefeuilles Matériels Importés"
         },
         "button": "Confirmer la réinitialisation",
-        "title": "Réinitialiser le portefeuille Rabby",
+        "title": "Réinitialiser le portefeuille MultiSub",
         "confirm": "Tapez <1>RESET</1> dans la boîte pour confirmer et continuer"
       },
       "tip": {
         "button": "Définir le mot de passe",
-        "title": "Réinitialisation du Rabby Wallet terminée",
+        "title": "Réinitialisation du MultiSub Wallet terminée",
         "buttonNoData": "Ajouter une adresse",
         "description": "Créez un nouveau mot de passe pour continuer",
         "descriptionNoData": "Ajoutez votre adresse pour commencer"
@@ -3074,7 +3074,7 @@
       "success": {
         "button": "Terminé",
         "title": "Mot de passe défini avec succès",
-        "description": "Vous êtes prêt à utiliser Rabby Wallet."
+        "description": "Vous êtes prêt à utiliser MultiSub Wallet."
       }
     },
     "eip7702": {
@@ -3088,21 +3088,21 @@
       "step2Desc": "Actualiser et se connecter via MetaMask",
       "step1": "Étape 1",
       "noDappFound": "Aucune Dapp trouvée",
-      "alert": "Impossible de se connecter à un Dapp car il ne propose pas Rabby Wallet comme option ?",
-      "step1Desc": "Permettre à Rabby de se déguiser en MetaMask sur le Dapp actuel",
-      "title": "Connecter Rabby en se faisant passer pour MetaMask",
+      "alert": "Impossible de se connecter à un Dapp car il ne propose pas MultiSub Wallet comme option ?",
+      "step1Desc": "Permettre à MultiSub de se déguiser en MetaMask sur le Dapp actuel",
+      "title": "Connecter MultiSub en se faisant passer pour MetaMask",
       "manage": "Gérer les Dapps autorisées",
       "step2": "Étape 2"
     },
     "syncToMobile": {
-      "steps1": "Téléchargez Rabby Mobile",
-      "title": "Synchroniser l'adresse du portefeuille de l'extension Rabby vers le mobile",
+      "steps1": "Téléchargez MultiSub Mobile",
+      "title": "Synchroniser l'adresse du portefeuille de l'extension MultiSub vers le mobile",
       "clickToShowQr": "Cliquez pour sélectionner l'adresse et afficher le code QR",
       "steps2Description": "Votre code QR contient des données sensibles. Gardez-le privé et ne le partagez jamais avec quiconque.",
       "downloadGooglePlay": "Google Play",
       "downloadAppleStore": "App Store",
       "description": "Vos données d'adresse restent complètement hors ligne, cryptées et transférées en toute sécurité via un code QR.",
-      "steps2": "2. Scanner avec Rabby Mobile",
+      "steps2": "2. Scanner avec MultiSub Mobile",
       "disableSelectAddress": "Synchronisation non pris en charge pour {{type}} adresse",
       "disableSelectAddressWithPassphrase": "Synchronisation non pris en charge pour l'adresse {{type}} avec une phrase de passe",
       "disableSelectAddressWithSlip39": "Synchronisation non prise en charge pour l'adresse {{type}} avec SLIP39",
@@ -3160,7 +3160,7 @@
       "riskAlert": {
         "riskType": {
           "risks": {
-            "scamAddress": "Adresse de scam signalée par Rabby",
+            "scamAddress": "Adresse de scam signalée par MultiSub",
             "contractAddress": "Adresse de contrat détectée, des fonds pourraient être perdus.",
             "dexNoDeposite": "Pas une adresse de dépôt CEX, les fonds peuvent être perdus.",
             "noSend": "Vous n'avez pas envoyé d'argent à cette adresse depuis 180 jours."
@@ -3336,13 +3336,13 @@
       "stopLossTipsLong": "Le prix de stop loss doit être inférieur au prix actuel.",
       "stopLossTipsShort": "Le prix de stop loss doit être supérieur au prix actuel.",
       "stopLossWhen": "Fixer le prix de stop-loss",
-      "rabbyFeeTipsZero": "Frais de Rabby : 0%",
+      "rabbyFeeTipsZero": "Frais de MultiSub : 0%",
       "stopLossTipsShortLiquidation": "Le prix est supérieur au prix de liquidation ({{price}})",
       "stopLossTipsLongLiquidation": "Le prix est inférieur au prix de liquidation ({{price}})",
       "takeProfitTipsLong": "Le prix de prise de profit doit être supérieur au prix actuel.",
       "deleteAgentModal": "Vous avez atteint le nombre maximum d'agents. Voulez-vous supprimer un agent existant pour en créer un nouveau ?",
       "sizeTips": "La valeur totale ou la quantité de votre trade, déterminée par la marge et l'effet de levier.",
-      "rabbyFeeTips": "Frais de Rabby : 0,04 %",
+      "rabbyFeeTips": "Frais de MultiSub : 0,04 %",
       "liquidationPriceTips": "Le prix auquel votre position est automatiquement fermée par l'échange pour éviter d'autres pertes lorsque votre marge tombe en dessous du niveau de marge de maintenance.",
       "estimatedLiquidationPrice": "Prix de liquidation estimé",
       "fee": "Frais",
@@ -3529,7 +3529,7 @@
         "free": "Gratuit",
         "providerFee": "Frais Hyperliquid",
         "available": "Disponible",
-        "rabbyFee": "Frais de Rabby",
+        "rabbyFee": "Frais de MultiSub",
         "takeProfitWhenPriceAbove": "Prenez des bénéfices lorsque le prix est supérieur à",
         "stopLossWhenPriceBelow": "Stop Loss Lorsque le Prix Est Inférieur à",
         "minimumOrderSize": "La taille minimale de commande est de 10 $.",

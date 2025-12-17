@@ -29,7 +29,7 @@ let callStackCounter = 0;
 
 class LatticeKeyring extends OldLatticeKeyring {
   [x: string]: any;
-  appName = 'Rabby';
+  appName = 'MultiSub';
   static type = keyringType;
   type = keyringType;
 

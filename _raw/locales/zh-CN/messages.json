@@ -70,11 +70,11 @@
       "feedback": {
         "directMessage": {
           "content": "发送私信",
-          "description": "在 DeBank 上与 Rabby Wallet 官方1v1联系"
+          "description": "在 DeBank 上与 MultiSub Wallet 官方1v1联系"
         },
         "proposal": {
           "content": "发起提案",
-          "description": "在 DeBank 上发布对 Rabby Wallet 的提案"
+          "description": "在 DeBank 上发布对 MultiSub Wallet 的提案"
         },
         "title": "反馈"
       },
@@ -112,7 +112,7 @@
           "more": "更多",
           "manageAddress": "管理地址",
           "nft": "NFT",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "ecology": "生态系统",
           "bridge": "Bridge",
           "mobile": "Mobile Sync",
@@ -126,8 +126,8 @@
         "comingSoon": "即将推出",
         "soon": "很快",
         "flip": "切换",
-        "metamaskIsInUseAndRabbyIsBanned": "正在使用 MetaMask，禁用 Rabby",
-        "rabbyIsInUseAndMetamaskIsBanned": "正在使用 Rabby，禁用 Metamask",
+        "metamaskIsInUseAndRabbyIsBanned": "正在使用 MetaMask，禁用 MultiSub",
+        "rabbyIsInUseAndMetamaskIsBanned": "正在使用 MultiSub，禁用 Metamask",
         "refreshTheWebPageToTakeEffect": "刷新网页即可生效",
         "transactionNeedsToSign": "笔交易需要签名",
         "transactionsNeedToSign": "笔交易需要签名",
@@ -154,7 +154,7 @@
         "metamaskTooltip": "你选择在该 Dapp 优先使用 MetaMask。\n你可在 “更多” > “优先使用MetaMask连接的Dapp” 中更新此设置",
         "notConnected": "未连接",
         "connected": "已连接",
-        "connectedDapp": "Rabby 未连接到当前 Dapp。请在 Dapp 网页上单击连接按钮",
+        "connectedDapp": "MultiSub 未连接到当前 Dapp。请在 Dapp 网页上单击连接按钮",
         "noDappFound": "未找到 Dapp",
         "disconnectAll": "全部断开",
         "disconnectRecentlyUsed": {
@@ -171,8 +171,8 @@
         "recentlyConnected": "最近连接",
         "noConnectedDapps": "没有已连接的 Dapps",
         "dapps": "Dapps",
-        "metamaskModeTooltip": "无法在此 Dapp 上连接 Rabby？尝试启用 <1>MetaMask 模式</1>。",
-        "metamaskModeTooltipNew": "Rabby Wallet将在您在Dapp中选择“MetaMask”时连接。您可以在更多 > 通过伪装为MetaMask连接Rabby中进行管理。"
+        "metamaskModeTooltip": "无法在此 Dapp 上连接 MultiSub？尝试启用 <1>MetaMask 模式</1>。",
+        "metamaskModeTooltipNew": "MultiSub Wallet将在您在Dapp中选择“MetaMask”时连接。您可以在更多 > 通过伪装为MetaMask连接Rabby中进行管理。"
       },
       "contacts": {
         "noData": "没有数据",
@@ -185,19 +185,19 @@
         "claimSuccess": "领取成功",
         "enterClaimCode": "输入邀请码",
         "goToSwap": "完成兑换",
-        "imageLabel": "Rabby Badge",
+        "imageLabel": "MultiSub Badge",
         "learnMoreOnDebank": "跳转至 DeBank 领取",
         "noCode": "你尚未激活该地址的邀请码",
-        "rabbyValuedUserNo": "Rabby Valued User No.{{num}}",
-        "swapTip": "你需要先在 Rabby Wallet 中完成一笔与知名dex的兑换",
-        "title": "领取 Rabby Badge",
+        "rabbyValuedUserNo": "MultiSub Valued User No.{{num}}",
+        "swapTip": "你需要先在 MultiSub Wallet 中完成一笔与知名dex的兑换",
+        "title": "领取 MultiSub Badge",
         "viewOnDebank": "在 DeBank 上查看",
         "viewYourClaimCode": "查看你的邀请码",
         "freeGasTitle": "领取免费 Gas 徽章",
         "freeGasTip": "请使用免费 Gas 签署交易。当您的 Gas 不足时，“免费 Gas”按钮将自动出现。",
         "learnMore": "了解更多",
         "freeGasNoCode": "请点击下方按钮访问 DeBank，并首先使用您当前的地址获取领取代码。",
-        "rabbyFreeGasUserNo": "Rabby Free Gas 用户 No.{{num}}"
+        "rabbyFreeGasUserNo": "MultiSub Free Gas 用户 No.{{num}}"
       },
       "security": {
         "comingSoon": "更多功能即将推出",
@@ -215,7 +215,7 @@
         "autoLockTime": "自动锁定时间",
         "backendServiceUrl": "后端服务网址",
         "cancel": "取消",
-        "claimRabbyBadge": "领取 Rabby Badge",
+        "claimRabbyBadge": "领取 MultiSub Badge",
         "clearPending": "清除本地挂起",
         "clearPendingTip1": "此操作将从您的界面中移除待处理交易，帮助解决网络上长时间待处理引起的问题。",
         "clearPendingTip2": "它不会影响您的账户余额，也不需要重新输入您的助记词。所有资产和账户信息仍然安全。",
@@ -225,7 +225,7 @@
         "disableWhitelist": "关闭转账白名单",
         "disableWhitelistTip": "关闭后你可以将资产发送到任何地址",
         "enableWhitelist": "启用转账白名单",
-        "enableWhitelistTip": "启用后，你只能使用 Rabby 向白名单中的地址发送资产",
+        "enableWhitelistTip": "启用后，你只能使用 MultiSub 向白名单中的地址发送资产",
         "features": {
           "connectedDapp": "已连接的 Dapp",
           "label": "功能",
@@ -234,7 +234,7 @@
           "signatureRecord": "签名记录",
           "searchDapps": "搜索 Dapp",
           "gasTopUp": "Gas Top Up",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "ecosystem": "生态系统"
         },
         "followUs": "关注我们",
@@ -257,20 +257,20 @@
           "toggleThemeMode": "主题模式",
           "themeMode": "主题模式",
           "customTestnet": "添加自定义网络",
-          "metamaskMode": "通过伪装成 MetaMask 连接 Rabby",
+          "metamaskMode": "通过伪装成 MetaMask 连接 MultiSub",
           "enableDappAccount": "独立切换 Dapp 地址\n"
         },
         "testnetBackendServiceUrl": "测试网后端服务 URL",
         "updateAvailable": "更新版本",
         "updateVersion": {
-          "content": "检测到 Rabby Wallet 更新版本\n点击查看如何手动更新",
+          "content": "检测到 MultiSub Wallet 更新版本\n点击查看如何手动更新",
           "okText": "查看教程",
           "successTip": "你正在使用最新版本",
           "title": "有更新可用"
         },
         "warning": "警告",
         "requestDeBankTestnetGasToken": "获取 DeBank Testnet Gas Token",
-        "claimFreeGasBadge": "领取 Rabby Free Gas 徽章！",
+        "claimFreeGasBadge": "领取 MultiSub Free Gas 徽章！",
         "clearPendingWarningTip": "被移除的交易可能仍然会在链上确认，除非它被替换。",
         "supportedChains": "集成链",
         "DappAccount": {
@@ -279,23 +279,23 @@
           "desc": "启用后，您可以独立选择连接到每个 Dapp 的地址。切换您的主地址不会影响连接到每个 Dapp 的地址。\n"
         },
         "rateModalTriggerOnHome": {
-          "description": "您如何评价 Rabby Wallet？"
+          "description": "您如何评价 MultiSub Wallet？"
         },
         "rateModal": {
           "feedbackDesc": "有反馈吗？我们在倾听。",
           "feedbackSuccess": "感谢您的反馈！",
           "thxTitle": "谢谢！",
           "rateOnChromeStoreButton": "在 Chrome 网上商店评估",
-          "thxDesc": "如果你喜欢 Rabby，在 Chrome 商店给个快速评分会对我们意义重大。",
-          "feedbackPlaceholder": "Rabby 重视您的反馈！",
+          "thxDesc": "如果你喜欢 MultiSub，在 Chrome 商店给个快速评分会对我们意义重大。",
+          "feedbackPlaceholder": "MultiSub 重视您的反馈！",
           "submitFeedbackButton": "提交"
         }
       },
       "tokenDetail": {
         "blockedTip": "已隐藏的代币将不会显示在代币列表中",
         "blocked": "隐藏",
-        "selectedCustom": "Rabby 未支持该代币。\n你已手动添加该代币",
-        "notSelectedCustom": "Rabby 未支持该代币。\n你可以手动添加该代币",
+        "selectedCustom": "MultiSub 未支持该代币。\n你已手动添加该代币",
+        "notSelectedCustom": "MultiSub 未支持该代币。\n你可以手动添加该代币",
         "customized": "添加",
         "scamTx": "诈骗交易",
         "txFailed": "失败",
@@ -322,7 +322,7 @@
         "TokenName": "代币名称",
         "maybeScamTips": "这是一个低质量的代币，可能是一个诈骗。",
         "blockedListTitles": "被阻止的代币",
-        "customizedHasAddedTips": "该代币未在 Rabby 上列出。您已手动将其添加到代币列表中。",
+        "customizedHasAddedTips": "该代币未在 MultiSub 上列出。您已手动将其添加到代币列表中。",
         "ContractAddress": "合约地址",
         "blockedTips": "被阻止的令牌将不会显示在令牌列表中",
         "IssuerWebsite": "发行者的网站",
@@ -465,7 +465,7 @@
         "title": "MetaMask 模式",
         "toastSuccess": "已启用。刷新页面以重新连接。",
         "enableDesc": "如果 Dapp 仅与 MetaMask 一起使用，请启用",
-        "desc": "如果无法在 Dapp 上连接 Rabby，请启用 MetaMask 模式并通过选择 MetaMask 选项进行连接。",
+        "desc": "如果无法在 Dapp 上连接 MultiSub，请启用 MetaMask 模式并通过选择 MetaMask 选项进行连接。",
         "footerText": "在“更多 > MetaMask 模式”中的 MetaMask 模式中添加更多 Dapps"
       },
       "offlineChain": {
@@ -477,8 +477,8 @@
         "title": "此处切换用于 Dapp 连接的地址\n"
       },
       "rabbyPointsPopup": {
-        "desc": "在 Rabby Mobile 中查看您的积分。",
-        "title": "Rabby 积分",
+        "desc": "在 MultiSub Mobile 中查看您的积分。",
+        "title": "MultiSub 积分",
         "downloadIntro": "还没有这个应用吗？现在就下载吧。"
       }
     },
@@ -535,11 +535,11 @@
           "answer": "用于控制你的资产的 12、18 或 24 个单词的短语。"
         },
         "isItSafeToImportItInRabby": {
-          "question": "在 Rabby 中导入它安全吗？",
+          "question": "在 MultiSub 中导入它安全吗？",
           "answer": "是的，它将存储在你本地的浏览器上，并且只有你可以访问。"
         },
         "importError": "[CreateMnemonics] 意外步骤 {{0}}",
-        "importQuestion4": "如果我在未备份助记词的情况下卸载 Rabby，Rabby 无法为我找回助记词。",
+        "importQuestion4": "如果我在未备份助记词的情况下卸载 MultiSub，MultiSub 无法为我找回助记词。",
         "riskTips": "在开始之前，请阅读并牢记以下安全提示",
         "showSeedPhrase": "创建助记词",
         "backup": "备份助记词",
@@ -567,14 +567,14 @@
         "inputInvalidCount_other": "{{count}} 个输入不符合种子短语规范，请检查。",
         "passphrase": "密码",
         "importQuestion1": "如果我丢失或分享我的种子短语，我将永久失去对我的资产的访问权限。",
-        "importQuestion3": "如果我在没有备份我的种子短语的情况下卸载 Rabby，将无法通过 Rabby 恢复。",
-        "importQuestion2": "我的助记词仅存储在我的设备上。Rabby 无法访问它。",
+        "importQuestion3": "如果我在没有备份我的种子短语的情况下卸载 MultiSub，将无法通过 MultiSub 恢复。",
+        "importQuestion2": "我的助记词仅存储在我的设备上。MultiSub 无法访问它。",
         "showMoreOptions": "显示更多选项",
         "inputInvalid": "检测到无效单词。请检查标记的单词。"
       },
       "metamask": {
         "step1": "从 MetaMask 导出助记词或私钥  <br/><1>查看操作指南<1/></1>",
-        "step2": "在 Rabby 中导入助记词或私钥",
+        "step2": "在 MultiSub 中导入助记词或私钥",
         "step3": "导入完成，你的所有资产将自动展示<br />",
         "how": "如何导入我的 MetaMask 帐户？",
         "step": "步骤",
@@ -591,7 +591,7 @@
           "answer": "用于控制你的资产的一串字符。"
         },
         "isItSafeToImportItInRabby": {
-          "question": "在 Rabby 中导入它安全吗？",
+          "question": "在 MultiSub 中导入它安全吗？",
           "answer": "是的，它将存储在你本地的浏览器上，并且只有你可以访问。"
         },
         "isItPossibleToImportKeystore": {
@@ -609,7 +609,7 @@
         "title": "连接Ledger",
         "cameraPermissionTitle": "允许Rabby访问相机",
         "cameraPermission1": "在浏览器弹出窗口中允许Rabby访问摄像头",
-        "allowRabbyPermissionsTitle": "允许 Rabby 获取以下权限：",
+        "allowRabbyPermissionsTitle": "允许 MultiSub 获取以下权限：",
         "ledgerPermission1": "连接到 HID 设备",
         "ledgerPermissionTip": "请点击下面的“允许”，并在弹出窗口中授权访问你的 Ledger",
         "permissionsAuthorized": "权限已授权",
@@ -629,7 +629,7 @@
         "keystonePermissionTip": "请在下方点击“允许”，以在弹出窗口中授权访问您的Keystone，并确保您的Keystone 3 Pro位于首页。",
         "noDeviceFoundError": "请插入一个Keystone",
         "deviceIsLockedError": "输入密码以解锁",
-        "deviceRejectedExportAddress": "请批准与 Rabby 的连接",
+        "deviceRejectedExportAddress": "请批准与 MultiSub 的连接",
         "deviceIsBusy": "设备正在忙碌中",
         "exportAddressJustAllowedOnHomePage": "仅在 Keystone 主页上允许导出地址",
         "unknowError": "未知错误，请再试一次"
@@ -683,14 +683,14 @@
       },
       "hd": {
         "tooltip": {
-          "removed": "该地址已从 Rabby 中删除",
+          "removed": "该地址已从 MultiSub 中删除",
           "added": "地址已添加至Rabby",
           "connectError": "连接已停止\n请刷新页面以重新连接",
           "disconnected": "无法连接到硬件钱包\n请尝试重新连接"
         },
         "waiting": "加载中",
         "clickToGetInfo": "点击获取链上信息",
-        "addToRabby": "添加到 Rabby",
+        "addToRabby": "添加到 MultiSub",
         "basicInformation": "基本信息",
         "addresses": "地址",
         "loadingAddress": "正在加载 {{0}}/{{1}} 地址",
@@ -802,7 +802,7 @@
         "manageNgraveZero": "管理 NGRAVE ZERO",
         "done": "完成",
         "addressesIn": "{{0}} 中的地址",
-        "addressesInRabby": "Rabby 中的地址{{0}}",
+        "addressesInRabby": "MultiSub 中的地址{{0}}",
         "qrCode": {
           "switch": {
             "title": "切换到新的 {{0}} 设备",
@@ -842,7 +842,7 @@
     "activities": {
       "signedText": {
         "empty": {
-          "desc": "所有通过 Rabby 签署的文本都将在此展示",
+          "desc": "所有通过 MultiSub 签署的文本都将在此展示",
           "title": "尚未签署文本"
         },
         "label": "签署文本"
@@ -857,7 +857,7 @@
           "unlimited": "无限"
         },
         "empty": {
-          "desc": "所有通过 Rabby 签署的交易都将在此展示",
+          "desc": "所有通过 MultiSub 签署的交易都将在此展示",
           "title": "尚未签署交易"
         },
         "explain": {
@@ -951,11 +951,11 @@
       "balance": "余额",
       "noTokenFound": "未找到代币",
       "noTokenFoundOnThisChain": "该链上未找到代币",
-      "title": "添加代币至 Rabby",
+      "title": "添加代币至 MultiSub",
       "tokenCustomized": "当前代币已手动添加",
       "tokenNotFound": "该合约地址上未找到代币",
       "tokenOnMultiChains": "多链上的代币地址，\n请选择一个",
-      "tokenSupported": "Rabby 已支持该代币",
+      "tokenSupported": "MultiSub 已支持该代币",
       "hasAdded": "你已添加此代币。"
     },
     "approvals": {
@@ -1088,7 +1088,7 @@
       "blocked": "黑名单",
       "connectBtn": "连接",
       "flagByMM": "被 MetaMask 标记为风险网址",
-      "flagByRabby": "被 Rabby 标记为风险网址",
+      "flagByRabby": "被 MultiSub 标记为风险网址",
       "flagByScamSniffer": "被 ScamSniffer 标记为风险网址",
       "foundForbiddenRisk": "检测到高危风险，\n无法连接",
       "listedBy": "收录于",
@@ -1112,7 +1112,7 @@
       "sitePopularity": "网站热度",
       "title": "连接 Dapp",
       "trusted": "白名单",
-      "verifiedByRabby": "经 Rabby 验证",
+      "verifiedByRabby": "经 MultiSub 验证",
       "SignTestnetPermission": {
         "title": "签名权限"
       },
@@ -1130,7 +1130,7 @@
       "Confirm": "确认",
       "Continue": "继续",
       "Including-service-fee": "包含 {{fee}} 服务费",
-      "InsufficientBalance": "当前链的 Rabby 合约地址余额不足，\n请稍后再试",
+      "InsufficientBalance": "当前链的 MultiSub 合约地址余额不足，\n请稍后再试",
       "InsufficientBalanceTips": "余额不足",
       "Loading_Tokens": "正在加载代币...",
       "No_Tokens": "没有代币",
@@ -1142,7 +1142,7 @@
       "description": "你可以向任意链上充值 Gas， 只需要支付已有链上的可用代币。\n付款一经确认立即到账，无需等待，不可撤销",
       "hightGasFees": "该充值金额太小，目标网络需要较高的 Gas 费",
       "payment": "Gas 充值付款",
-      "service-fee-tip": "Rabby 通过提供 Gas 充值服务，需要承担代币波动的损失以及充值的 Gas 费用。\n因此要收取20%的服务费",
+      "service-fee-tip": "MultiSub 通过提供 Gas 充值服务，需要承担代币波动的损失以及充值的 Gas 费用。\n因此要收取20%的服务费",
       "title": "极速充值 Gas",
       "topUpChain": "充值链"
     },
@@ -1157,7 +1157,7 @@
       "current-address": "当前地址",
       "delete-all-addresses-and-the-seed-phrase": "删除所有地址和助记词",
       "delete-all-addresses-but-keep-the-seed-phrase": "删除所有地址，但保留助记词",
-      "delete-checklist-1": "我明白如果我删除这个地址，对应的私钥及助记词都将被删除，Rabby 无法为我找回",
+      "delete-checklist-1": "我明白如果我删除这个地址，对应的私钥及助记词都将被删除，MultiSub 无法为我找回",
       "delete-checklist-2": "我确认我已备份私钥或助记词，现在已准备好进行删除",
       "delete-desc": "删除前，请记住以下几点，以了解如何保护你的资产",
       "delete-empty-seed-phrase": "删除助记词及其 0 个地址",
@@ -1390,7 +1390,7 @@
       "signAndSubmitButton": "签名并提交",
       "walletConnect": {
         "chainSwitched": "你已在移动钱包上切换到不同的链\n请在手机钱包中切换到{{0}}",
-        "connectBeforeSign": "{{0}}未连接到 Rabby，请在签名前连接",
+        "connectBeforeSign": "{{0}}未连接到 MultiSub，请在签名前连接",
         "connected": "已连接并准备好签名",
         "connectedButCantSign": "已连接但无法签名",
         "howToSwitch": "如何切换",
@@ -1535,11 +1535,11 @@
       },
       "deployTimeTitle": "部署时间",
       "eip1559Desc1": "在支持 EIP-1559 的链上，Priority Fee 是给处理你的交易的矿工的小费。\n你可以通过降低 Max Priority Fee 来节省最终的矿工费，这可能会导致完成交易需要耗费更长时间",
-      "eip1559Desc2": "在 Rabby 中，Priority Fee（小费）= Max Fee - Base Fee。\n设置 Max Priority Fee 后，将从中扣除 Base Fee，剩下的部分将作为小费给予矿工",
+      "eip1559Desc2": "在 MultiSub 中，Priority Fee（小费）= Max Fee - Base Fee。\n设置 Max Priority Fee 后，将从中扣除 Base Fee，剩下的部分将作为小费给予矿工",
       "enoughSafeSigCollected": "已收集到足够的签名",
       "failToFetchGasCost": "无法估计矿工费",
       "importedAddress": "已导入地址",
-      "fakeTokenAlert": "这是由 Rabby 标记的诈骗代币",
+      "fakeTokenAlert": "这是由 MultiSub 标记的诈骗代币",
       "firstOnChain": "首次链上交易",
       "floorPrice": "地板价",
       "gasLimitEmptyAlert": "请输入 Gas limit",
@@ -1605,7 +1605,7 @@
       },
       "safeAddressNotSupportChain": "{{0}} 链不支持当前 Safe 地址",
       "safeAdminSigned": "已签",
-      "scamTokenAlert": "根据 Rabby 的检测，这可能是一个低质量的诈骗代币",
+      "scamTokenAlert": "根据 MultiSub 的检测，这可能是一个低质量的诈骗代币",
       "send": {
         "addressBalanceTitle": "地址余额",
         "cexAddress": "中心化交易所地址",
@@ -1628,10 +1628,10 @@
         "nftNotSupport": "不支持 NFT",
         "title": "发送 NFT"
       },
-      "sigCantDecode": "该签名无法被 Rabby 解码",
+      "sigCantDecode": "该签名无法被 MultiSub 解码",
       "signTransactionOnChain": "签署 {{chain}} 交易",
       "speedUpTooltip": "本次加速交易和原交易，最终只会完成其中一项",
-      "decodedTooltip": "该签名已被 Rabby Wallet 解析",
+      "decodedTooltip": "该签名已被 MultiSub Wallet 解析",
       "submitMultisig": {
         "multisigAddress": "多签地址",
         "title": "提交多签交易"
@@ -1661,7 +1661,7 @@
         "contractTrustValueTip": "信任值是指授权并暴露给该合约的资产总价值，\n信任值低表示该合约存在风险或 180 天内不活跃",
         "deployTimeLessThan": "< {{value}} 天",
         "eoaAddress": "EOA",
-        "flagByRabby": "被 Rabby 标记为风险",
+        "flagByRabby": "被 MultiSub 标记为风险",
         "myBalance": "我的余额",
         "title": "代币授权",
         "trustValueLessThan": "≤ {{value}}",
@@ -1808,9 +1808,9 @@
       "safeServiceNotAvailable": "当前无法提供安全服务，请稍后再试。",
       "safeTx": {
         "selfHostConfirm": {
-          "title": "切换到 Rabby 的 Safe Service",
+          "title": "切换到 MultiSub 的 Safe Service",
           "button": "OK",
-          "content": "Safe API 暂不可用。切换到由 Rabby 部署的 Safe 服务以保持您的 Safe 功能正常。<strong>所有 Safe 签署者必须使用 Rabby Wallet 授权交易。</strong>"
+          "content": "Safe API 暂不可用。切换到由 MultiSub 部署的 Safe 服务以保持您的 Safe 功能正常。<strong>所有 Safe 签署者必须使用 MultiSub Wallet 授权交易。</strong>"
         }
       },
       "errorRetry": {
@@ -1938,7 +1938,7 @@
       "to": "买入",
       "trade": "交易",
       "tradingSettingTip1": "1. 开启后，你将直接与交易所合约进行交互",
-      "tradingSettingTip2": "2. Rabby 不承担因交易所合约产生的任何风险",
+      "tradingSettingTip2": "2. MultiSub 不承担因交易所合约产生的任何风险",
       "tradingSettingTips": "共 {{viewCount}} 个交易所提供报价，{{tradeCount}} 个允许直接交易",
       "transaction-might-be-frontrun-because-of-high-slippage-tolerance": "由于滑点较高，交易可能会被抢先交易",
       "unable-to-fetch-the-price": "无法获取价格",
@@ -1952,10 +1952,10 @@
       "rabbyFee": {
         "wallet": "钱包",
         "rate": "费率",
-        "title": "Rabby fee",
+        "title": "MultiSub fee",
         "button": "知道了",
-        "bridgeDesc": "Rabby Wallet将始终从顶级聚合器中找到最佳汇率，并验证其报价的可靠性。Rabby收取0.25%的费用，该费用会自动包含在报价中。",
-        "swapDesc": "Rabby Wallet将始终从顶级聚合器中找到最佳汇率，并验证其报价的可靠性。Rabby收取0.25%的费用（包装不收取费用），该费用已自动包含在报价中。"
+        "bridgeDesc": "MultiSub Wallet将始终从顶级聚合器中找到最佳汇率，并验证其报价的可靠性。Rabby收取0.25%的费用，该费用会自动包含在报价中。",
+        "swapDesc": "MultiSub Wallet将始终从顶级聚合器中找到最佳汇率，并验证其报价的可靠性。Rabby收取0.25%的费用（包装不收取费用），该费用已自动包含在报价中。"
       },
       "lowCreditModal": {
         "title": "该代币的信用价值较低",
@@ -1968,14 +1968,14 @@
       "Gas-fee-too-high": "Gas fee 太高",
       "source": "来源",
       "from": "从",
-      "no-fee-for-wrap": "Wrap 操作不收取 Rabby 费用",
+      "no-fee-for-wrap": "Wrap 操作不收取 MultiSub 费用",
       "no-quote-found": "未找到报价",
       "process-with-two-step-approve": "进行两步批准",
       "approve-and-swap": "通过 {{name}} 批准并兑换",
       "hidden-no-quote-rates_one": "{{count}} rate unavailable",
       "two-step-approve": "签署 2 笔交易以更改授权额度",
       "loss-tips": "您正在亏损 {{usd}}。尝试在小市场中使用较小的金额吧。",
-      "no-fees-for-wrap": "Wrap 不收取 Rabby 费用",
+      "no-fees-for-wrap": "Wrap 不收取 MultiSub 费用",
       "max": "最大值",
       "hidden-no-quote-rates_other": "{{count}} 费率不可用",
       "No-available-quote": "暂无报价",
@@ -1986,7 +1986,7 @@
     },
     "switchChain": {
       "chainNotSupport": "Rabby尚不支持请求的链",
-      "title": "向 Rabby 添加自定义网络",
+      "title": "向 MultiSub 添加自定义网络",
       "testnetTip": "请在\"更多\"中打开“开启测试网”后再发起测试网连接",
       "chainNotSupportYet": "Rabby尚未支持请求的链",
       "chainId": "链 ID：",
@@ -2008,7 +2008,7 @@
         "required": "输入密码解锁"
       },
       "btnForgotPassword": "忘记密码？",
-      "title": "Rabby Wallet",
+      "title": "MultiSub Wallet",
       "description": "你首选的以太坊和 EVM 钱包"
     },
     "addressDetail": {
@@ -2046,7 +2046,7 @@
     },
     "customRpc": {
       "title": "修改 RPC URL",
-      "desc": "一旦修改，自定义 RPC 将替换 Rabby 的节点。要继续使用 Rabby 的节点，请删除自定义 RPC。",
+      "desc": "一旦修改，自定义 RPC 将替换 MultiSub 的节点。要继续使用 MultiSub 的节点，请删除自定义 RPC。",
       "add": "修改 RPC URL",
       "empty": "没有自定义 RPC URL",
       "opened": "已打开",
@@ -2066,9 +2066,9 @@
     },
     "requestDebankTestnetGasToken": {
       "title": "获取 DeBank Testnet Gas Token",
-      "mintedTip": "Rabby Badge持有者可以每天获取一次",
-      "notMintedTip": "仅 Rabby Badge持有者可以获取",
-      "claimBadgeBtn": "领取 Rabby Badge",
+      "mintedTip": "MultiSub Badge持有者可以每天获取一次",
+      "notMintedTip": "仅 MultiSub Badge持有者可以获取",
+      "claimBadgeBtn": "领取 MultiSub Badge",
       "time": "每日额度",
       "requested": "你今日已获取过",
       "requestBtn": "获取"
@@ -2123,7 +2123,7 @@
       "qrCodePopupTips": "永远不要与任何其他人分享种子短语的二维码。请在安全的环境中查看并小心保管。"
     },
     "ethSign": {
-      "alert": " 'eth_sign' 类型签名会导致资产损失。为了你的安全， Rabby 不支持此类签名"
+      "alert": " 'eth_sign' 类型签名会导致资产损失。为了你的安全， MultiSub 不支持此类签名"
     },
     "createPassword": {
       "agree": "我已阅读并同意 <1/> <2>Terms of Use</2>",
@@ -2143,7 +2143,7 @@
       },
       "step1": {
         "title": "访问所有 Dapp",
-        "desc": "Rabby 可连接到 MetaMask 支持的所有 Dapp"
+        "desc": "MultiSub 可连接到 MetaMask 支持的所有 Dapp"
       }
     },
     "importQrBase": {
@@ -2254,7 +2254,7 @@
       "searchPlaceholder": "搜索 Dapp 名称"
     },
     "rabbyPoints": {
-      "title": "Rabby 积分",
+      "title": "MultiSub 积分",
       "out-of-x-current-total-points": "在{{total}}总分发积分中",
       "share-on": "分享到",
       "referral-code-copied": "已复制推荐码",
@@ -2274,9 +2274,9 @@
         "claim": "认领",
         "addressBalance": "钱包余额",
         "MetaMaskSwap": "MetaMask 交换",
-        "rabbyUser": "Rabby 活跃用户",
-        "rabbyValuedUserBadge": "Rabby 重要用户徽章",
-        "rabbyDesktopGenesisNft": "Rabby 桌面起源NFT",
+        "rabbyUser": "MultiSub 活跃用户",
+        "rabbyValuedUserBadge": "MultiSub 重要用户徽章",
+        "rabbyDesktopGenesisNft": "MultiSub 桌面起源NFT",
         "walletBalance": "钱包余额",
         "activeStats": "活跃状态",
         "referral-code": "推荐码",
@@ -2310,7 +2310,7 @@
     },
     "customTestnet": {
       "title": "自定义网络",
-      "desc": "Rabby 无法验证自定义网络的安全性，请仅添加信任的网络。",
+      "desc": "MultiSub 无法验证自定义网络的安全性，请仅添加信任的网络。",
       "add": "添加自定义网络",
       "empty": "没有自定义网络",
       "currency": "货币",
@@ -2344,7 +2344,7 @@
     },
     "addChain": {
       "title": "将自定义网络添加到Rabby",
-      "desc": "Rabby 无法验证自定义网络的安全性，请仅添加信任的网络。"
+      "desc": "MultiSub 无法验证自定义网络的安全性，请仅添加信任的网络。"
     },
     "sign": {
       "transactionSpeed": "交易速度"
@@ -2358,7 +2358,7 @@
         "descriptionNoData": "Rabby不会保存你的密码,因此丢失密码无法找回 如果忘记密码只能重新设置密码"
       },
       "reset": {
-        "title": "重置 Rabby Wallet",
+        "title": "重置 MultiSub Wallet",
         "alert": {
           "title": "重置后会清除以下数据,且无法帮你找回",
           "seed": "助记词",
@@ -2377,11 +2377,11 @@
       },
       "success": {
         "title": "密码创建成功",
-        "description": "请继续使用 Rabby",
+        "description": "请继续使用 MultiSub",
         "button": "完成"
       },
       "tip": {
-        "title": "Rabby Wallet 已经重置",
+        "title": "MultiSub Wallet 已经重置",
         "button": "设置新密码",
         "buttonNoData": "重新导入地址",
         "description": "请设定一个新的密码继续使用钱包",
@@ -2398,7 +2398,7 @@
           "i-understand-and-accept-it": "我理解并接受",
           "tip1": "一旦启用，您将直接从此聚合器与合约交互。",
           "title": "使用此 Aggregator 启用交易",
-          "tip2": "2. Rabby 不对该聚合器的合约相关风险承担任何责任。"
+          "tip2": "2. MultiSub 不对该聚合器的合约相关风险承担任何责任。"
         },
         "title": "启用 Bridge Aggregators 进行交易",
         "SupportedBridge": "支持的桥：",
@@ -2441,7 +2441,7 @@
       "approve-x-symbol": "批准 {{symbol}}",
       "the-following-bridge-route-are-found": "找到以下路线",
       "estimate": "估算：",
-      "rabby-fee": "Rabby fee",
+      "rabby-fee": "MultiSub fee",
       "best": "最佳",
       "via-bridge": "通过 {{bridge}}",
       "bridge-cost": "Bridge cost",
@@ -2617,7 +2617,7 @@
         "selectToken": "选择代币进行存款",
         "invalidAmount": "必须在 500 以下",
         "token": "Token",
-        "desc": "无需额外费用即可向 Rabby 的 DeBank L2 账户存款—随时提款。",
+        "desc": "无需额外费用即可向 MultiSub 的 DeBank L2 账户存款—随时提款。",
         "amount": "金额",
         "paymentAddr": "支付地址"
       },
@@ -2678,8 +2678,8 @@
         "title3": "GasAccount 有额外费用吗？",
         "title4": "GasAccount安全吗",
         "title2": "如何使用 Gas Account",
-        "desc4": "GasAccount 无需合同批准或权限。您将资金存入 Rabby 的 GasAccount 地址，Rabby 在需要时向您的地址发送 gas。设计上完全安全。",
-        "desc3": "Rabby Wallet 不收取额外费用。您只需支付交易的 gas 费用，以及从 GasAccount 发送 gas 到您地址的少量 gas 费用。",
+        "desc4": "GasAccount 无需合同批准或权限。您将资金存入 MultiSub 的 GasAccount 地址，MultiSub 在需要时向您的地址发送 gas。设计上完全安全。",
+        "desc3": "MultiSub Wallet 不收取额外费用。您只需支付交易的 gas 费用，以及从 GasAccount 发送 gas 到您地址的少量 gas 费用。",
         "desc1": "GasAccount 是一种新的支付燃料费的方式。您可以使用一个账户为您在所有链上的所有地址支付燃料，而不必在每个链上使用本地代币。简单、可选，从不耗尽燃料。",
         "desc2": "将资金添加到您的 GasAccount，并将其用于任何交易。在签名时，可以选择使用原生代币或 GasAccount 来支付手续费，随时切换。"
       }
@@ -2691,7 +2691,7 @@
     "newUserImport": {
       "guide": {
         "importAddress": "我已经有一个地址",
-        "title": "欢迎使用 Rabby Wallet",
+        "title": "欢迎使用 MultiSub Wallet",
         "createNewAddress": "创建一个新地址",
         "desc": "你首选的以太坊和 EVM 钱包"
       },
@@ -2699,9 +2699,9 @@
         "showSeedPhrase": "显示 Seed Phrase",
         "title": "在开始之前",
         "desc": "请阅读并牢记以下安全提示",
-        "tip2": "我的种子短语仅存储在我的设备上。Rabby 无法访问它。",
+        "tip2": "我的种子短语仅存储在我的设备上。MultiSub 无法访问它。",
         "tip1": "如果我丢失或分享我的种子短语，我将永久失去对我的资产的访问权限。",
-        "tip3": "如果我在没有备份我的种子短语的情况下卸载 Rabby，则无法通过 Rabby 恢复。"
+        "tip3": "如果我在没有备份我的种子短语的情况下卸载 MultiSub，则无法通过 MultiSub 恢复。"
       },
       "importList": {
         "title": "选择导入方式"
@@ -2737,14 +2737,14 @@
         "addMoreFrom": "从 {{name}} 添加更多地址"
       },
       "readyToUse": {
-        "pin": "固定 Rabby 钱包",
+        "pin": "固定 MultiSub 钱包",
         "guides": {
-          "step2": "固定 Rabby Wallet",
+          "step2": "固定 MultiSub Wallet",
           "step1": "点击浏览器扩展图标"
         },
-        "desc": "找到 Rabby Wallet 并将其固定",
+        "desc": "找到 MultiSub Wallet 并将其固定",
         "extensionTip": "点击 <1/> 然后 <3/>",
-        "title": "您的 Rabby Wallet 已准备就绪！"
+        "title": "您的 MultiSub Wallet 已准备就绪！"
       },
       "importSeedPhrase": {
         "title": "导入助记词"
@@ -2809,7 +2809,7 @@
     },
     "metamaskModeDapps": {
       "title": "管理已授权的 Dapps",
-      "desc": "MetaMask 模式已为以下 Dapps 启用。您可以通过选择 MetaMask 选项连接 Rabby。"
+      "desc": "MetaMask 模式已为以下 Dapps 启用。您可以通过选择 MetaMask 选项连接 MultiSub。"
     },
     "eip7702": {
       "alert": "EIP-7702 尚未支持"
@@ -2821,22 +2821,22 @@
       },
       "step1": "第 1 步",
       "noDappFound": "未找到 Dapp",
-      "step1Desc": "允许 Rabby 在当前 Dapp 上伪装成 MetaMask",
-      "alert": "无法连接到 Dapp，因为它未显示 Rabby Wallet 作为选项？",
+      "step1Desc": "允许 MultiSub 在当前 Dapp 上伪装成 MetaMask",
+      "alert": "无法连接到 Dapp，因为它未显示 MultiSub Wallet 作为选项？",
       "step2": "步骤 2",
-      "title": "通过伪装成 MetaMask 来连接 Rabby",
+      "title": "通过伪装成 MetaMask 来连接 MultiSub",
       "step2Desc": "刷新并通过 MetaMask 连接",
       "manage": "管理 Allowed Dapps"
     },
     "syncToMobile": {
-      "steps2": "2. 使用 Rabby Mobile 扫描",
+      "steps2": "2. 使用 MultiSub Mobile 扫描",
       "clickToShowQr": "单击选择地址并显示QR代码",
       "description": "您的地址数据始终完全离线、加密，并通过二维码安全传输。",
       "downloadGooglePlay": "Google Play",
       "steps2Description": "您的二维码包含敏感数据。请保管好，绝不要与他人分享。",
-      "steps1": "下载 Rabby Mobile",
+      "steps1": "下载 MultiSub Mobile",
       "downloadAppleStore": "App Store",
-      "title": "从 Rabby 扩展同步钱包地址到移动端",
+      "title": "从 MultiSub 扩展同步钱包地址到移动端",
       "disableSelectAddress": "不支持{{type}}地址的同步",
       "disableSelectAddressWithPassphrase": "与密码不支持{{type}}地址的同步",
       "disableSelectAddressWithSlip39": "不支持{{type}}地址的同步39",
@@ -3072,7 +3072,7 @@
       "timeAgo": "{{time}} 之前",
       "takeProfitTipsLong": "止盈价格必须高于当前价格",
       "providerFeeTips": "Hyperliquid 费用：{{fee}}",
-      "rabbyFeeTips": "Rabby 费用：0.04%",
+      "rabbyFeeTips": "MultiSub 费用：0.04%",
       "deleteAgentModal": "您已达到代理的最大数量。是否要删除现有的代理以创建一个新代理？",
       "liquidationPriceTips": "当您的保证金低于维持保证金水平时，交易所自动关闭您的持仓以防止进一步损失的价格。",
       "fee": "费用",
@@ -3258,7 +3258,7 @@
         "short": "做空",
         "insufficientBalance": "余额不足",
         "available": "可用",
-        "rabbyFee": "Rabby 费用",
+        "rabbyFee": "MultiSub 费用",
         "size": "规模",
         "free": "免费",
         "invalidNumber": "无效的数字",
@@ -3478,7 +3478,7 @@
     },
     "EcologyNoticeModal": {
       "notRemind": "不再提醒我",
-      "desc": "以下服务将由第三方生态合作伙伴直接提供。Rabby Wallet 不对这些服务的安全性承担责任。",
+      "desc": "以下服务将由第三方生态合作伙伴直接提供。MultiSub Wallet 不对这些服务的安全性承担责任。",
       "title": "注意事项"
     },
     "ReserveGasPopup": {
@@ -3490,8 +3490,8 @@
     },
     "OpenExternalWebsiteModal": {
       "button": "继续",
-      "content": "您即将访问一个外部网站。Rabby Wallet 不对该网站的内容或安全性负责。",
-      "title": "您将离开 Rabby 钱包"
+      "content": "您即将访问一个外部网站。MultiSub Wallet 不对该网站的内容或安全性负责。",
+      "title": "您将离开 MultiSub 钱包"
     },
     "TokenChart": {
       "price": "价格",

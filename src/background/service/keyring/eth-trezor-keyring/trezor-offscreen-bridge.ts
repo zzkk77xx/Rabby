@@ -30,7 +30,7 @@ export default class TrezorOffscreenBridge implements TrezorBridgeInterface {
         connectSrc: 'https://connect.trezor.io/9/',
         manifest: {
           email: 'support@rabby.io',
-          appName: 'Rabby Wallet',
+          appName: 'MultiSub Wallet',
           appUrl: 'https://rabby.io/',
         },
       });

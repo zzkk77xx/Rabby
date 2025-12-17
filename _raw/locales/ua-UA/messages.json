@@ -54,7 +54,7 @@
       "gasPriceTitle": "Ціна газу (Gwei)",
       "maxPriorityFee": "Максимальна комісія за пріоритет (Gwei)",
       "eip1559Desc1": "У мережах, які підтримують EIP-1559, плата за пріоритет - це комісія для майнерів за обробку вашої транзакції. Ви можете заощадити кінцеву вартість газу, знизивши плату за першочергове обслуговування, що може коштувати більше часу на обробку транзакції.",
-      "eip1559Desc2": "Тут, у Rabby, плата за пріоритет (чайові) = максимальна плата - базова плата. Після того, як ви встановите максимальну плату за пріоритет, з неї буде вирахувано базову плату, а решту буде віддано на чай майнерам.",
+      "eip1559Desc2": "Тут, у MultiSub, плата за пріоритет (чайові) = максимальна плата - базова плата. Після того, як ви встановите максимальну плату за пріоритет, з неї буде вирахувано базову плату, а решту буде віддано на чай майнерам.",
       "hardwareSupport1559Alert": "Переконайтеся, що прошивка вашого апаратного гаманця оновлена до версії, яка підтримує EIP 1559",
       "gasLimitTitle": "Ліміт газу",
       "recommendGasLimitTip": "Est. {{est}}. Поточний {{current}}x, рекомендовано",
@@ -127,7 +127,7 @@
         "trustValueLessThan": "Цінність контракту ≤ {{value}}",
         "deployTimeLessThan": "Час розгортання < {{value}} днів",
         "amountPopupTitle": "Сума",
-        "flagByRabby": "Позначено Rabby",
+        "flagByRabby": "Позначено MultiSub",
         "contractTrustValueTip": "Значення рівня безпеки відноситься до загальної суми токенів, схвалених і підданих ризику в цьому контракті. Низький рівень довіри вказує або на ризик, або на бездіяльність протягом 180 днів.",
         "amount": "Затвердити суму:",
         "exceed": "Перевищує ваш поточний баланс"
@@ -192,8 +192,8 @@
       "neverInteracted": "Ніколи не взаємодіяли раніше",
       "transacted": "Здійснювали транзакції раніше",
       "neverTransacted": "Ніколи раніше не проводились транзакції",
-      "fakeTokenAlert": "Це шахрайський токен, позначений Rabby",
-      "scamTokenAlert": "Це потенційно неякісний та шахрайський токен, заснований на виявленні Rabby",
+      "fakeTokenAlert": "Це шахрайський токен, позначений MultiSub",
+      "scamTokenAlert": "Це потенційно неякісний та шахрайський токен, заснований на виявленні MultiSub",
       "trusted": "Затвердити",
       "blocked": "Заблоковано",
       "noMark": "Без позначки",
@@ -202,7 +202,7 @@
       "signTransactionOnChain": "Підписати {{chain}} Транзакцію",
       "viewRaw": "Переглянути Raw",
       "unknownActionType": "Невідомий тип дії",
-      "sigCantDecode": "Цей підпис не може бути розшифрований Rabby",
+      "sigCantDecode": "Цей підпис не може бути розшифрований MultiSub",
       "nftCollection": "NFT Колекція",
       "floorPrice": "Мінімальна ціна",
       "contractAddress": "Адреса контракту",
@@ -232,7 +232,7 @@
       "customRPCErrorModal": {
         "button": "Вимкнути Custom RPC",
         "title": "Настроювана помилка RPC",
-        "content": "Ваша користувацька RPC наразі недоступна. Ви можете вимкнути її та продовжити підписання, використовуючи офіційну RPC Rabby."
+        "content": "Ваша користувацька RPC наразі недоступна. Ви можете вимкнути її та продовжити підписання, використовуючи офіційну RPC MultiSub."
       },
       "transferOwner": {
         "description": "Опис",
@@ -344,13 +344,13 @@
       "addressSource": "Джерело адреси",
       "typedDataMessage": "Підписати Типізовані Дані",
       "advancedSettings": "Розширені налаштування",
-      "decodedTooltip": "Цей підпис розшифровано Rabby Wallet",
+      "decodedTooltip": "Цей підпис розшифровано MultiSub Wallet",
       "primaryType": "Первинний тип",
       "safeServiceNotAvailable": "Вибачте, служба Safe зараз недоступна, спробуйте пізніше.",
       "safeTx": {
         "selfHostConfirm": {
-          "content": "API Safe недоступний. Переключіться на службу Safe, розгорнуту Rabby, щоб ваш Safe залишався функціональним. <strong>Усі підписувачі Safe повинні використовувати Rabby Wallet для авторизації транзакцій.<strong>",
-          "title": "Переключитися на службу безпеки Rabby",
+          "content": "API Safe недоступний. Переключіться на службу Safe, розгорнуту MultiSub, щоб ваш Safe залишався функціональним. <strong>Усі підписувачі Safe повинні використовувати MultiSub Wallet для авторизації транзакцій.<strong>",
+          "title": "Переключитися на службу безпеки MultiSub",
           "button": "OK"
         }
       },
@@ -394,7 +394,7 @@
         "connected": "Підключений і готовий до підписання",
         "howToSwitch": "Як переключитися",
         "wrongAddressAlert": "Ви перейшли на іншу адресу в мобільному гаманці. Будь ласка, перейдіть на правильну адресу в мобільному гаманці",
-        "connectBeforeSign": "{{0}} не підключений до Rabby, будь ласка, підключіться перед підписанням",
+        "connectBeforeSign": "{{0}} не підключений до MultiSub, будь ласка, підключіться перед підписанням",
         "chainSwitched": "Ви переключилися до іншої мережі на мобільному гаманці. Будь ласка, перейдіть на {{0}} в мобільному гаманці",
         "latency": "Затримка",
         "requestSuccessToast": "Запит успішно відправлено",
@@ -458,7 +458,7 @@
         "notEnough": "Баланс Gas недостатній",
         "watchUnavailableTip": "Перегляд тільки адреси не підтримується для Free Gas",
         "customRpcUnavailableTip": "Користувацькі RPC не підтримуються для Free Gas",
-        "rabbyPayGas": "Rabby покриє витрати на газ – просто підпишіть",
+        "rabbyPayGas": "MultiSub покриє витрати на газ – просто підпишіть",
         "GetFreeGasToSign": "Отримайте безкоштовний Gas",
         "walletConnectUnavailableTip": "Мобільний гаманець, підключений через WalletConnect, не підтримується для Free Gas"
       },
@@ -548,7 +548,7 @@
         "label": "Транзакції",
         "empty": {
           "title": "Ще немає підписаних транзакцій",
-          "desc": "Всі транзакції, підписані через Rabby, будуть перераховані тут."
+          "desc": "Всі транзакції, підписані через MultiSub, будуть перераховані тут."
         },
         "common": {
           "unlimited": "без обмежень",
@@ -646,7 +646,7 @@
         "label": "Text",
         "empty": {
           "title": "Ще немає підписаних текстів",
-          "desc": "Всі тексти, підписані через Rabby, будуть перераховані тут."
+          "desc": "Всі тексти, підписані через MultiSub, будуть перераховані тут."
         }
       }
     },
@@ -930,14 +930,14 @@
       "topUpChain": "Мережа поповнення",
       "Amount": "Сума",
       "Continue": "Продовжити",
-      "InsufficientBalance": "На контрактній адресі Rabby недостатньо коштів для поточної мережі. Будь ласка, повторіть спробу пізніше.",
+      "InsufficientBalance": "На контрактній адресі MultiSub недостатньо коштів для поточної мережі. Будь ласка, повторіть спробу пізніше.",
       "hightGasFees": "Ця сума поповнення занадто мала, тому що у ції мережі високі тарифи на газ.",
       "No_Tokens": "Немає токенів",
       "InsufficientBalanceTips": "Недостатній баланс",
       "payment": "Платіж за газ",
       "Loading_Tokens": "Завантаження токенів...",
       "Including-service-fee": "У тому числі {{fee}} комісія за обслуговування",
-      "service-fee-tip": "Надаючи послугу поповнення запасу газу, Rabby має нести втрати від коливання курсу токенів і плату за газ для поповнення запасу. Тому стягується комісія у розмірі 20%.",
+      "service-fee-tip": "Надаючи послугу поповнення запасу газу, MultiSub має нести втрати від коливання курсу токенів і плату за газ для поповнення запасу. Тому стягується комісія у розмірі 20%.",
       "Підтвердити": "Підтвердити",
       "Deposit-tip": "Депозит з USDC/USDT",
       "Value": "Значення",
@@ -973,7 +973,7 @@
       "amount-in": "Сума в {{symbol}}",
       "unlimited-allowance": "Необмежений ліміт",
       "insufficient-balance": "Недостатній баланс",
-      "rabby-fee": "Rabby комісія",
+      "rabby-fee": "MultiSub комісія",
       "minimum-received": "Мінімум отримано",
       "there-is-no-fee-and-slippage-for-this-trade": "Для цієї угоди немає комісії та прослизання",
       "approve-tips": "1.Схвалити → 2.Обміняти",
@@ -985,7 +985,7 @@
       "this-exchange-is-not-enabled-to-trade-by-you": "Ця біржа не увімкнена для торгівлі вами.",
       "enable-it": "Увімкніть її",
       "this-token-pair-is-not-supported": "Ця пара токенів не підтримується",
-      "QuoteLessWarning": "Сума отримання розрахована на основі симуляції транзакції Rabby. Пропозиція, надана dex, становить {{receive}}. Ви отримаєте {{diff}} менше, ніж очікувана пропозиція.",
+      "QuoteLessWarning": "Сума отримання розрахована на основі симуляції транзакції MultiSub. Пропозиція, надана dex, становить {{receive}}. Ви отримаєте {{diff}} менше, ніж очікувана пропозиція.",
       "by-transaction-simulation-the-quote-is-valid": "При симуляції угоди котирування дійсне",
       "wrap-contract": "Контракт з обгортанням",
       "directlySwap": "Обернути токени {{symbol}} з допомогую смарт-контрактом",
@@ -1013,16 +1013,16 @@
       "i-understand-and-accept-it": "Я розумію і приймаю це",
       "confirm": "Підтверджую",
       "tradingSettingTip1": "1. після ввімкнення ви будете взаємодіяти з контрактом безпосередньо з біржі",
-      "tradingSettingTip2": "2. Rabby не несе відповідальності за будь-які ризики, що випливають з контракту біржі",
+      "tradingSettingTip2": "2. MultiSub не несе відповідальності за будь-які ризики, що випливають з контракту біржі",
       "gas-fee": "GasFee: {{gasUsed}}",
       "estimate": "Розрахункова:",
       "actual": "Фактично:",
       "rabbyFee": {
         "rate": "Комісійна ставка",
-        "title": "Rabby комісія",
+        "title": "MultiSub комісія",
         "wallet": "Гаманець",
-        "swapDesc": "Гаманець Rabby завжди знаходить найкращі можливі тарифи від провідних агрегаторів і перевіряє надійність їхніх пропозицій. Rabby стягує комісію 0.25% (0% за обгортання), яка автоматично включається у вартість.",
-        "bridgeDesc": "Гаманець Rabby завжди знайде найкращий можливий курс від найкращих агрегаторів і перевірить надійність їхніх пропозицій. Rabby стягує комісію в розмірі 0,25%, яка автоматично включається у квоту.",
+        "swapDesc": "Гаманець MultiSub завжди знаходить найкращі можливі тарифи від провідних агрегаторів і перевіряє надійність їхніх пропозицій. MultiSub стягує комісію 0.25% (0% за обгортання), яка автоматично включається у вартість.",
+        "bridgeDesc": "Гаманець MultiSub завжди знайде найкращий можливий курс від найкращих агрегаторів і перевірить надійність їхніх пропозицій. MultiSub стягує комісію в розмірі 0,25%, яка автоматично включається у квоту.",
         "button": "Зрозуміло"
       },
       "lowCreditModal": {
@@ -1038,13 +1038,13 @@
       "approve-and-swap": "Затвердити та обміняти через {{name}}",
       "hidden-no-quote-rates_other": "{{count}} цін недоступно",
       "preferMEVTip": "Увімкніть функцію \"MEV Guarded\" для обмінів Ethereum, щоб знизити ризики атак типу \"бутерброд\". Примітка: ця функція не підтримується, якщо ви використовуєте користувацькі RPC або адресу підключення гаманця.",
-      "no-fee-for-wrap": "Wrap без комісії Rabby",
+      "no-fee-for-wrap": "Wrap без комісії MultiSub",
       "no-quote-found": "Не знайдено котирування",
       "Auto": "Авто",
       "price-impact": "Ціновий вплив",
       "process-with-two-step-approve": "Перейдіть до двоетапного затвердження",
       "usd-after-fees": "≈ {{usd}}",
-      "no-fees-for-wrap": "Без комісії Rabby за Wrap",
+      "no-fees-for-wrap": "Без комісії MultiSub за Wrap",
       "source": "Джерело",
       "fetch-best-quote": "Отримання найкращої пропозиції",
       "No-available-quote": "Недоступна котирування",
@@ -1068,7 +1068,7 @@
       "whitelisted-address": "Адреса в білому списку",
       "addressTypeTip": "Імпортовано за допомогою {{type}}",
       "delete-desc": "Перш ніж видалити, візьміть до уваги наступні пункти, щоб зрозуміти, як захистити свої активи.",
-      "delete-checklist-1": "Я розумію, що якщо я видалю цю адресу, відповідний приватний ключ та Seed Фраза цієї адреси буде видалено і Rabby НЕ зможе його відновити.",
+      "delete-checklist-1": "Я розумію, що якщо я видалю цю адресу, відповідний приватний ключ та Seed Фраза цієї адреси буде видалено і MultiSub НЕ зможе його відновити.",
       "delete-checklist-2": "Я підтверджую, що створив резервну копію приватного ключа або ключової фрази і готовий її видалити.",
       "confirm": "Підтвердити",
       "cancel": "Скасувати",
@@ -1120,7 +1120,7 @@
           "nft": "NFT",
           "bridge": "Міст",
           "ecology": "Екосистема",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "mobile": "Mobile Sync",
           "perps": "Перпси",
           "gasAccount": "GasAccount",
@@ -1132,9 +1132,9 @@
         "comingSoon": "Скоро",
         "soon": "Незабаром",
         "refreshTheWebPageToTakeEffect": "Оновити веб-сторінку, щоб зміни набули чинності",
-        "rabbyIsInUseAndMetamaskIsBanned": "Rabby використовується, а Metamask заборонений",
+        "rabbyIsInUseAndMetamaskIsBanned": "MultiSub використовується, а Metamask заборонений",
         "flip": "Перевернути",
-        "metamaskIsInUseAndRabbyIsBanned": "Metamask використовується, а Rabby заборонений",
+        "metamaskIsInUseAndRabbyIsBanned": "Metamask використовується, а MultiSub заборонений",
         "transactionNeedsToSign": "транзакцію потрібно підписати",
         "transactionsNeedToSign": "транзакції потрібно підписати",
         "view": "Перегляд",
@@ -1160,7 +1160,7 @@
         "metamaskTooltip": "Ви віддаєте перевагу використанню MetaMask з цим dapp. Оновіть ці налаштування будь-коли в Налаштуваннях > MetaMask Preferred Dapps",
         "connected": "Підключено",
         "notConnected": "Не підключено",
-        "connectedDapp": "Rabby не підключено до поточного Dapp'а. Щоб підключитися, знайдіть і натисніть кнопку підключитися на сторінці Dapp'а.",
+        "connectedDapp": "MultiSub не підключено до поточного Dapp'а. Щоб підключитися, знайдіть і натисніть кнопку підключитися на сторінці Dapp'а.",
         "noDappFound": "Dapp не знайдено",
         "disconnectAll": "Від'єднати всі",
         "disconnectRecentlyUsed": {
@@ -1177,17 +1177,17 @@
         "noRecentlyConnectedDapps": "Немає нещодавно підключених Dapps",
         "dapps": "Dapps",
         "noConnectedDapps": "Немає підключених Dapps",
-        "metamaskModeTooltip": "Не вдається підключити Rabby на цьому Dapp? Спробуйте увімкнути <1>режим MetaMask</1>",
-        "metamaskModeTooltipNew": "Гаманець Rabby підключиться, коли ви виберете \"MetaMask\" у Dapp. Ви можете керувати цим у Більше > Підключити Rabby, маскуючись під MetaMask"
+        "metamaskModeTooltip": "Не вдається підключити MultiSub на цьому Dapp? Спробуйте увімкнути <1>режим MetaMask</1>",
+        "metamaskModeTooltipNew": "Гаманець MultiSub підключиться, коли ви виберете \"MetaMask\" у Dapp. Ви можете керувати цим у Більше > Підключити MultiSub, маскуючись під MetaMask"
       },
       "feedback": {
         "directMessage": {
           "content": "Пряме повідомлення",
-          "description": "Поспілкуйтеся з представником Rabby Wallet на DeBank"
+          "description": "Поспілкуйтеся з представником MultiSub Wallet на DeBank"
         },
         "proposal": {
           "content": "Пропозиція",
-          "description": "Подати пропозицію для Rabby Wallet на DeBank"
+          "description": "Подати пропозицію для MultiSub Wallet на DeBank"
         },
         "title": "Зворотній зв'язок"
       },
@@ -1212,20 +1212,20 @@
         }
       },
       "rabbyBadge": {
-        "imageLabel": "Rabby Badge",
-        "title": "Вимагайте Rabby Badge для",
+        "imageLabel": "MultiSub Badge",
+        "title": "Вимагайте MultiSub Badge для",
         "enterClaimCode": "Введіть код вимоги",
-        "swapTip": "Спочатку вам потрібно виконати свап через DEX у гаманці Rabby Wallet.",
+        "swapTip": "Спочатку вам потрібно виконати свап через DEX у гаманці MultiSub Wallet.",
         "goToSwap": "Перейти до свапу",
         "claim": "Вимагати",
         "viewYourClaimCode": "Переглянути код вашої заявки",
         "noCode": "Ви не активували код претензії для цієї адреси",
         "learnMoreOnDebank": "Дізнатися більше на DeBank",
-        "rabbyValuedUserNo": "Rabby Valued User No.{{num}}",
+        "rabbyValuedUserNo": "MultiSub Valued User No.{{num}}",
         "claimSuccess": "Успіх заявки",
         "viewOnDebank": "Переглянути у DeBank",
         "learnMore": "Дізнатися більше",
-        "rabbyFreeGasUserNo": "Rabby Free Gas Користувач №{{num}}",
+        "rabbyFreeGasUserNo": "MultiSub Free Gas Користувач №{{num}}",
         "freeGasTitle": "Отримайте безкоштовний Gas Badge для",
         "freeGasTip": "Будь ласка, підпишіть транзакцію, використовуючи Free Gas. Кнопка 'Free Gas' з'явиться автоматично, коли вам не вистачає газу.",
         "freeGasNoCode": "Будь ласка, натисніть кнопку нижче, щоб відвідати DeBank і спочатку отримати код запиту, використовуючи вашу поточну адресу."
@@ -1262,16 +1262,16 @@
         "clearPendingTip1": "Ця дія видаляє транзакцію в очікуванні з вашого інтерфейсу, допомагаючи вирішити проблеми, викликані тривалими періодами очікування в мережі.",
         "clearPendingTip2": "Це не впливає на баланс ваших облікових записів і не вимагає повторного введення вашої seed phrase. Усі активи та дані облікового запису залишаються в безпеці.",
         "autoLockTime": "Час автоматичного блокування",
-        "claimRabbyBadge": "Отримати Rabby Badge!",
+        "claimRabbyBadge": "Отримати MultiSub Badge!",
         "cancel": "Скасувати",
         "enableWhitelist": "Увімкнути білий список",
         "disableWhitelist": "Вимкнути білий список",
-        "enableWhitelistTip": "Після увімкнення ви зможете надсилати ресурси лише на адреси з білого списку за допомогою Rabby.",
+        "enableWhitelistTip": "Після увімкнення ви зможете надсилати ресурси лише на адреси з білого списку за допомогою MultiSub.",
         "disableWhitelistTip": "Після вимкнення ви можете надсилати ресурси на будь-які адреси",
         "warning": "Попередження",
         "clearWatchAddressContent": "Ви хочете видалити всі адреси Режиму спостереження?",
         "updateVersion": {
-          "content": "Доступне нове оновлення для Rabby Wallet. Натисніть, щоб перевірити, як оновити вручну.",
+          "content": "Доступне нове оновлення для MultiSub Wallet. Натисніть, щоб перевірити, як оновити вручну.",
           "okText": "Дивіться інструкцію",
           "successTip": "Ви використовуєте останню версію",
           "title": "Доступно оновлення"
@@ -1282,7 +1282,7 @@
           "signatureRecord": "Ваші підписи",
           "manageAddress": "Керувати адресою",
           "connectedDapp": "Ваші підключення до dApp",
-          "rabbyPoints": "Rabby Points",
+          "rabbyPoints": "MultiSub Points",
           "searchDapps": "Пошук Dapps",
           "gasTopUp": "Поповнення Gas",
           "ecosystem": "Екосистема"
@@ -1297,7 +1297,7 @@
           "toggleThemeMode": "Тема режиму",
           "customTestnet": "Додати власну мережу",
           "themeMode": "Тема режиму",
-          "metamaskMode": "Підключіть Rabby, замаскувавшись під MetaMask",
+          "metamaskMode": "Підключіть MultiSub, замаскувавшись під MetaMask",
           "enableDappAccount": "Незалежно змінюйте адресу Dapp\n"
         },
         "aboutUs": "Про нас",
@@ -1315,23 +1315,23 @@
           "desc": "Увімкнувши, ви можете самостійно вибрати адресу підключення до кожного Dapp. Зміна основної адреси не вплине на адресу, підключену до кожного Dapp.\n"
         },
         "rateModalTriggerOnHome": {
-          "description": "Як би ви оцінили Rabby Wallet?"
+          "description": "Як би ви оцінили MultiSub Wallet?"
         },
         "rateModal": {
           "thxTitle": "Дякую!",
           "submitFeedbackButton": "Подати",
           "rateOnChromeStoreButton": "Оцінка в Chrome Web Store",
-          "feedbackPlaceholder": "Rabby цінує вашу думку!",
+          "feedbackPlaceholder": "MultiSub цінує вашу думку!",
           "feedbackDesc": "Є відгуки? Ми вас слухаємо.",
-          "thxDesc": "Якщо вам подобається Rabby, швидкий рейтинг у Chrome Store багато значив би.",
+          "thxDesc": "Якщо вам подобається MultiSub, швидкий рейтинг у Chrome Store багато значив би.",
           "feedbackSuccess": "Дякуємо за ваш відгук!"
         }
       },
       "tokenDetail": {
         "blockedTip": "Заблокований токен не буде показано у списку токенів",
         "blocked": "Заблоковано",
-        "selectedCustom": "Токен не внесено до списку Rabby. Ви додали його до списку токенів за власним бажанням.",
-        "notSelectedCustom": "Токен не внесено до списку Rabby. Його буде додано до списку токенів, якщо ви його увімкнете.",
+        "selectedCustom": "Токен не внесено до списку MultiSub. Ви додали його до списку токенів за власним бажанням.",
+        "notSelectedCustom": "Токен не внесено до списку MultiSub. Його буде додано до списку токенів, якщо ви його увімкнете.",
         "customized": "Кастомізований",
         "scamTx": "Шахрайський tx",
         "txFailed": "Не вдалося",
@@ -1353,7 +1353,7 @@
         "SupportedExchanges": "Підтримувані біржі",
         "OriginalToken": "Оригінальний токен",
         "blockedListTitles": "заблоковані токени",
-        "customizedHasAddedTips": "Токен не внесений до списку Rabby. Ви додали його до списку токенів вручну.",
+        "customizedHasAddedTips": "Токен не внесений до списку MultiSub. Ви додали його до списку токенів вручну.",
         "blockedTips": "Заблоковані токени не будуть відображатися в списку токенів.",
         "TokenName": "Назва токена",
         "myBalance": "Мій баланс",
@@ -1503,7 +1503,7 @@
         "enableDesc": "Увімкніть, якщо Dapp працює лише з MetaMask",
         "toastSuccess": "Увімкнено. Оновіть сторінку, щоб повторно підключитися.",
         "footerText": "Додати більше Dapps до MetaMask Mode в Більше > MetaMask Mode",
-        "desc": "Якщо ви не можете підключити Rabby на Dapp, увімкніть MetaMask Mode та підключіться, вибравши опцію MetaMask."
+        "desc": "Якщо ви не можете підключити MultiSub на Dapp, увімкніть MetaMask Mode та підключіться, вибравши опцію MetaMask."
       },
       "offlineChain": {
         "chain": "{{chain}} згодом не буде інтегровано.",
@@ -1514,8 +1514,8 @@
         "button": "Отримано\n"
       },
       "rabbyPointsPopup": {
-        "title": "Rabby Points",
-        "desc": "Перевірте свої бали в Rabby Mobile.",
+        "title": "MultiSub Points",
+        "desc": "Перевірте свої бали в MultiSub Mobile.",
         "downloadIntro": "Ще не маєте програми? Завантажте зараз."
       }
     },
@@ -1566,11 +1566,11 @@
           "answer": "Фраза з 12, 18 або 24 слів, яка використовується для контролю ваших активів."
         },
         "isSafeToImportItInRabby": {
-          "question": "Чи безпечно імпортувати його в Rabby?",
+          "question": "Чи безпечно імпортувати його в MultiSub?",
           "answer": "Так, він буде зберігатися локально у вашому браузері і буде доступний лише вам"
         },
         "importError": "[CreateMnemonics] неочікуваний крок {{0}}",
-        "importQuestion4": "Якщо я видалю Rabby, не створивши резервну копію ключової фрази, Rabby не зможе її відновити.",
+        "importQuestion4": "Якщо я видалю MultiSub, не створивши резервну копію ключової фрази, MultiSub не зможе її відновити.",
         "riskTips": "Перш ніж почати, будь ласка, прочитайте і пам'ятайте про наступні поради щодо безпеки.",
         "showSeedPhrase": "Показати ключову фразу",
         "backup": "Створити резервну копію ключової фрази",
@@ -1585,7 +1585,7 @@
         "wordPhrase": "У мене є <1>{{count}}</1>-словосполучення",
         "clearAll": "Очистити все",
         "isItSafeToImportItInRabby": {
-          "question": "Чи безпечно імпортувати його в Rabby?",
+          "question": "Чи безпечно імпортувати його в MultiSub?",
           "answer": "Так, він буде збережений локально у вашому браузері і доступний лише вам."
         },
         "slip39SeedPhrasePlaceholder_few": "Введіть вашу {{count}}-у частку seed фрази тут",
@@ -1600,20 +1600,20 @@
         "wordPhraseAndPassphrase": "У мене є фраза з <1>{{count}}</1> словами з Passphrase",
         "slip39SeedPhrasePlaceholder_other": "Введіть тут {{count}}-й частину вашої seed фрази",
         "inputInvalidCount_one": "Вхідні дані не відповідають нормам Seed Phrase, будь ласка, перевірте.",
-        "importQuestion2": "Моя семантична фраза зберігається лише на моєму пристрої. Rabby не може отримати до неї доступ.",
-        "importQuestion3": "Якщо я видалю Rabby без резервного копіювання своєї фрази відновлення, її не можна буде відновити через Rabby.",
+        "importQuestion2": "Моя семантична фраза зберігається лише на моєму пристрої. MultiSub не може отримати до неї доступ.",
+        "importQuestion3": "Якщо я видалю MultiSub без резервного копіювання своєї фрази відновлення, її не можна буде відновити через MultiSub.",
         "importQuestion1": "Якщо я втрачу або поділюся своєю seed-фразою, я втрачу доступ до своїх активів назавжди.",
         "showMoreOptions": "Показати більше параметрів",
         "inputInvalid": "Виявлено недійсні слова. Будь ласка, перегляньте виділені."
       },
       "metamask": {
         "step1": " Експортуйте сід фразу або приватний ключ з Metamask<br /> <1> Натисніть, щоб переглянути підручник <1/></1>",
-        "step2": " Імпортуйте сід фразу або приватний ключ до Rabby",
+        "step2": " Імпортуйте сід фразу або приватний ключ до MultiSub",
         "step3": "Імпорт завершено, і всі ваші активи <br /> з'являться автоматично",
         "how": "Як імпортувати мій обліковий запис MetaMask?",
         "step": "Крок",
         "importSeedPhrase": "Імпортувати ключову фразу або приватний ключ",
-        "importSeedPhraseTips": "Це буде збережено лише локально у браузері. Rabby ніколи не матиме доступу до вашої приватної інформації.",
+        "importSeedPhraseTips": "Це буде збережено лише локально у браузері. MultiSub ніколи не матиме доступу до вашої приватної інформації.",
         "tips": "Підказки:",
         "tipsDesc": "Ваша сід фраза/приватний ключ не належить MetaMask або якомусь конкретному гаманцю; він належить тільки вам."
       },
@@ -1625,7 +1625,7 @@
           "answer": "Рядок букв і цифр, який використовується для контролю ваших активів."
         },
         "isSafeToImportItInRabby": {
-          "question": "Чи безпечно імпортувати його в Rabby?",
+          "question": "Чи безпечно імпортувати його в MultiSub?",
           "answer": "Так, він буде зберігатися локально у вашому браузері і буде доступний лише вам"
         },
         "isItPossibleToImportKeystore": {
@@ -1638,16 +1638,16 @@
           "desc": "Ця адреса вже була імпортована."
         },
         "isItSafeToImportItInRabby": {
-          "question": "Чи безпечно імпортувати це в Rabby?",
+          "question": "Чи безпечно імпортувати це в MultiSub?",
           "answer": "Так, він буде зберігатися локально у вашому браузері і буде доступний тільки вам."
         }
       },
       "importedSuccessfully": "Імпортовано успішно",
       "ledger": {
         "title": "Підключити Ledger",
-        "cameraPermissionTitle": "Дозволити Rabby доступ до камери",
-        "cameraPermission1": "Дозволити Rabby доступ до камери у спливаючому вікні браузера",
-        "allowRabbyPermissionsTitle": "Дозволити Rabby доступ до:",
+        "cameraPermissionTitle": "Дозволити MultiSub доступ до камери",
+        "cameraPermission1": "Дозволити MultiSub доступ до камери у спливаючому вікні браузера",
+        "allowRabbyPermissionsTitle": "Дозволити MultiSub доступ до:",
         "ledgerPermission1": "Підключення до HID-пристрою",
         "ledgerPermissionTip": "Будь ласка, натисніть \\\"Дозволити\\\" нижче та авторизуйте доступ до вашого Ledger у наступному спливаючому вікні.",
         "permissionsAuthorized": "Дозволи авторизовано",
@@ -1701,14 +1701,14 @@
       },
       "hd": {
         "tooltip": {
-          "removed": "Адреса вилучена з Rabby",
-          "added": "Адреса додана до Rabby",
+          "removed": "Адреса вилучена з MultiSub",
+          "added": "Адреса додана до MultiSub",
           "connectError": "Підключення зупинено. Будь ласка, оновіть сторінку для повторного підключення.",
           "disconnected": "Не вдалося підключитися до апаратного гаманця. Будь ласка, спробуйте підключитися ще раз."
         },
         "waiting": "Очікує",
         "clickToGetInfo": "Натисніть, щоб отримати інформацію у мережі",
-        "addToRabby": "Додати в Rabby",
+        "addToRabby": "Додати в MultiSub",
         "basicInformation": "Основна інформація",
         "addresses": "Адреси",
         "loadingAddress": "Завантаження адрес {{0}}/{{1}}",
@@ -1819,7 +1819,7 @@
         "manageNgraveZero": "Керування NGRAVE ZERO",
         "done": "Виконано",
         "addressesIn": "Адреси в {{0}}",
-        "addressesInRabby": "Адреси в Rabby{{0}}",
+        "addressesInRabby": "Адреси в MultiSub{{0}}",
         "qrCode": {
           "switch": {
             "title": "Переключитися на новий пристрій {{0}}",
@@ -1858,15 +1858,15 @@
         "deviceIsLockedError": "Введіть пароль для розблокування",
         "noDeviceFoundError": "Підключіть один Keystone",
         "keystonePermission1": "Підключіться до USB пристрою",
-        "allowRabbyPermissionsTitle": "Дозволити Rabby дозволи на:",
-        "deviceRejectedExportAddress": "Підтвердити підключення до Rabby",
+        "allowRabbyPermissionsTitle": "Дозволити MultiSub дозволи на:",
+        "deviceRejectedExportAddress": "Підтвердити підключення до MultiSub",
         "deviceIsBusy": "Пристрій зайнятий",
         "unknowError": "Невідома помилка, будь ласка, спробуйте ще раз",
         "keystonePermissionTip": "Будь ласка, натисніть \"Дозволити\" нижче, щоб авторизувати доступ до вашого Keystone у наступному спливаючому вікні, та переконайтесь, що ваш Keystone 3 Pro знаходиться на головній сторінці."
       },
       "onekey": {
         "onekeyPermission1": "Підключіться до USB пристрою",
-        "allowRabbyPermissionsTitle": "Дозволити Rabby дозволи на:",
+        "allowRabbyPermissionsTitle": "Дозволити MultiSub дозволи на:",
         "onekeyPermissionTip": "Будь ласка, натисніть \"Дозволити\" нижче, щоб авторизувати доступ до вашого OneKey у наступному спливаючому вікні. Якщо OneKey не з'являється у спливаючому вікні, будь ласка, перевірте, чи ваш пристрій правильно підключений до комп'ютера.",
         "whyOneKey": "Чому OneKey?",
         "buyOneKey": "Купити OneKey",
@@ -1888,15 +1888,15 @@
         "error": "неправильний пароль"
       },
       "btnForgotPassword": "Забули пароль?",
-      "title": "Rabby Wallet",
+      "title": "MultiSub Wallet",
       "description": "Ваш невід'ємний гаманець для Ethereum та EVM"
     },
     "addToken": {
       "noTokenFound": "Токен не знайдено",
-      "tokenSupported": "Токен підтримується на Rabby",
+      "tokenSupported": "Токен підтримується на MultiSub",
       "tokenCustomized": "Поточний токен вже додано до налаштованих",
       "tokenNotFound": "Токен не знайдено за цією контрактною адресою",
-      "title": "Додати кастомний токен до Rabby",
+      "title": "Додати кастомний токен до MultiSub",
       "balance": "Баланс",
       "tokenOnMultiChains": "Адреса токена на декількох ланцюжках. Будь ласка, виберіть один",
       "noTokenFoundOnThisChain": "У цієї мережі токенів не знайдено",
@@ -1904,16 +1904,16 @@
     },
     "switchChain": {
       "title": "Перемикання на {{chain}}",
-      "chainNotSupport": "Запитуваний ланцюжок ще не підтримується Rabby",
+      "chainNotSupport": "Запитуваний ланцюжок ще не підтримується MultiSub",
       "testnetTip": "Будь ласка, увімкніть \"Увімкнути тестові мережі\" у розділі \"Більше\" перед підключенням до тестових мереж",
       "addChain": "Додати Testnet",
-      "chainNotSupportYet": "Запитаний ланцюжок ще не підтримується Rabby.",
+      "chainNotSupportYet": "Запитаний ланцюжок ще не підтримується MultiSub.",
       "unknownChain": "Невідома мережа",
       "requestsReceived": "Отримано 1 запит",
-      "requestRabbyToSupport": "Запросити підтримку Rabby",
-      "desc": "Запитувана мережа ще не інтегрована Rabby. Ви можете додати її як користувацьку мережу вручну.",
+      "requestRabbyToSupport": "Запросити підтримку MultiSub",
+      "desc": "Запитувана мережа ще не інтегрована MultiSub. Ви можете додати її як користувацьку мережу вручну.",
       "requestsReceivedPlural": "{{count}} запитів отримано",
-      "chainNotSupportAddChain": "Запитаний ланцюг ще не інтегрований Rabby. Ви можете додати його як Custom Testnet.",
+      "chainNotSupportAddChain": "Запитаний ланцюг ще не інтегрований MultiSub. Ви можете додати його як Custom Testnet.",
       "chainId": "Chain ID:"
     },
     "signText": {
@@ -1947,10 +1947,10 @@
       "listedBy": "Перераховано по",
       "sitePopularity": "Популярність сайту",
       "myMark": "Моя позначка",
-      "flagByRabby": "Позначено Rabby",
+      "flagByRabby": "Позначено MultiSub",
       "flagByMM": "Позначено Metamask",
       "flagByScamSniffer": "Позначено  ScamSniffer",
-      "verifiedByRabby": "Перевірено Rabby",
+      "verifiedByRabby": "Перевірено MultiSub",
       "foundForbiddenRisk": "Знайдено заборонені ризики. З'єднання заблоковано.",
       "markAsTrustToast": "Позначити як \"Довірені\"",
       "markAsBlockToast": "Позначити як \"Заблоковані\"",
@@ -1993,7 +1993,7 @@
       "backup-seed-phrase": "Резервна кодова фраза",
       "delete-address": "Видалити адресу",
       "delete-desc": "Перш ніж видалити, візьміть до уваги наступні моменти, щоб зрозуміти, як захистити свої активи.",
-      "direct-delete-desc": "Ця адреса є адресою {{renderBrand}}, Rabby не зберігає приватний ключ або ключову фразу для цієї адреси, ви можете просто видалити її",
+      "direct-delete-desc": "Ця адреса є адресою {{renderBrand}}, MultiSub не зберігає приватний ключ або ключову фразу для цієї адреси, ви можете просто видалити її",
       "admins": "Admins",
       "tx-requires": "Будь-яка транзакція вимагає <2>{{num}}</2> підтверджень",
       "edit-memo-title": "Редагувати адресну примітку",
@@ -2023,7 +2023,7 @@
       "closed": "Закрито",
       "empty": "Немає спеціальних RPC URL",
       "title": "Кастомний RPC",
-      "desc": "Увімкнення кастомного RPC замінить Rabby як вузол за замовчуванням. Щоб продовжити використання Rabby, будь ласка, вимкніть або видаліть кастомний RPC.",
+      "desc": "Увімкнення кастомного RPC замінить MultiSub як вузол за замовчуванням. Щоб продовжити використання MultiSub, будь ласка, вимкніть або видаліть кастомний RPC.",
       "add": "Додати RPC",
       "EditRPCModal": {
         "invalidRPCUrl": "Невірна URL-адреса RPC",
@@ -2040,9 +2040,9 @@
     },
     "requestDebankTestnetGasToken": {
       "title": "Запросити тестові токени для DeBank Testnet",
-      "mintedTip": "Власники бейджів Rabby можуть запитувати один раз на день",
-      "notMintedTip": "Запит доступний лише для власників бейджів Rabby",
-      "claimBadgeBtn": "Отримати бейдж Rabby",
+      "mintedTip": "Власники бейджів MultiSub можуть запитувати один раз на день",
+      "notMintedTip": "Запит доступний лише для власників бейджів MultiSub",
+      "claimBadgeBtn": "Отримати бейдж MultiSub",
       "time": "За день",
       "requested": "Ви запросили сьогодні",
       "requestBtn": "Запит"
@@ -2097,7 +2097,7 @@
       "clickToShowQr": "Натисніть, щоб показати QR-код приватного ключа"
     },
     "ethSign": {
-      "alert": "Підписання за допомогою 'eth_sign' може призвести до втрати активів. Задля вашої безпеки Rabby не підтримує цей метод."
+      "alert": "Підписання за допомогою 'eth_sign' може призвести до втрати активів. Задля вашої безпеки MultiSub не підтримує цей метод."
     },
     "createPassword": {
       "title": "Встановити пароль",
@@ -2112,7 +2112,7 @@
     "welcome": {
       "step1": {
         "title": "Доступ до всіх додатків",
-        "desc": "Rabby підключається до всіх Dapps, які підтримує MetaMask"
+        "desc": "MultiSub підключається до всіх Dapps, які підтримує MetaMask"
       },
       "step2": {
         "title": "Self-custodial",
@@ -2143,7 +2143,7 @@
         "confirmModal": {
           "i-understand-and-accept-it": "Я розумію і приймаю це",
           "title": "Увімкніть торгівлю з цим агрегатором",
-          "tip2": "2. Rabby не несе відповідальності за будь-які ризики, що виникають через контракт цього агрегатора.",
+          "tip2": "2. MultiSub не несе відповідальності за будь-які ризики, що виникають через контракт цього агрегатора.",
           "tip1": "Щойно ввімкнено, ви будете взаємодіяти безпосередньо з контрактом через цей агрегатор."
         },
         "title": "Увімкніть Bridge Aggregators для торгівлі",
@@ -2176,7 +2176,7 @@
       "insufficient-balance": "Недостатній баланс",
       "duration": "{{duration}} хвилин",
       "approve-x-symbol": "Схвалити {{symbol}}",
-      "rabby-fee": "Rabby комісія",
+      "rabby-fee": "MultiSub комісія",
       "via-bridge": "через {{bridge}}",
       "gas-x-price": "Ціна Gas: {{price}} Gwei.",
       "tokenPairPlaceholder": "Виберіть пару токенів",
@@ -2327,16 +2327,16 @@
       },
       "claimModal": {
         "walletBalance": "Баланс Wallet",
-        "rabbyDesktopGenesisNft": "Rabby Desktop Genesis NFT",
+        "rabbyDesktopGenesisNft": "MultiSub Desktop Genesis NFT",
         "snapshotTime": "Час знімка: {{time}}",
-        "rabbyUser": "Активний користувач Rabby",
+        "rabbyUser": "Активний користувач MultiSub",
         "MetaMaskSwap": "MetaMask Swap",
         "referral-code": "Реферальний код",
         "invalid-code": "недійсний код",
         "season2": "Сезон 2",
         "title": "Отримати початкові бали",
         "activeStats": "Активний статус",
-        "rabbyValuedUserBadge": "Значок поцінованого користувача Rabby",
+        "rabbyValuedUserBadge": "Значок поцінованого користувача MultiSub",
         "claim": "Вимога",
         "addressBalance": "Баланс гаманця",
         "cantUseOwnCode": "Ви не можете використовувати власний реферальний код.",
@@ -2362,15 +2362,15 @@
         "set-my-code": "Встановити мій код"
       },
       "top-100": "Топ 100",
-      "title": "Rabby Points",
+      "title": "MultiSub Points",
       "referral-code-copied": "Реферальний код скопійовано",
       "earn-points": "Заробляйте бали",
       "out-of-x-current-total-points": "З {{total}} усього розподілених балів",
       "share-on": "Поділитися на",
       "code-set-successfully": "Код запрошення встановлено успішно",
       "initialPointsClaimEnded": "Ініціальне нарахування балів завершено",
-      "secondRoundEnded": "🎉 Завершився другий раунд Rabby Points",
-      "firstRoundEnded": "🎉 Перше коло Rabby Points завершено"
+      "secondRoundEnded": "🎉 Завершився другий раунд MultiSub Points",
+      "firstRoundEnded": "🎉 Перше коло MultiSub Points завершено"
     },
     "customTestnet": {
       "CustomTestnetForm": {
@@ -2386,7 +2386,7 @@
       },
       "AddFromChainList": {
         "tips": {
-          "supported": "Ланцюг вже інтегровано Rabby Wallet",
+          "supported": "Ланцюг вже інтегровано MultiSub Wallet",
           "added": "Ви вже додали цей ланцюг"
         },
         "empty": "Ланцюгів не знайдено",
@@ -2397,18 +2397,18 @@
         "title": "Дані транзакції"
       },
       "ConfirmModifyRpcModal": {
-        "desc": "Ланцюг уже інтегрований Rabby. Потрібно змінити його URL RPC?"
+        "desc": "Ланцюг уже інтегрований MultiSub. Потрібно змінити його URL RPC?"
       },
       "id": "ІD",
       "currency": "Валюта",
       "title": "Власна мережа",
-      "desc": "Rabby не може перевірити безпеку користувацьких мереж. Будь ласка, додавайте тільки довірені мережі.",
+      "desc": "MultiSub не може перевірити безпеку користувацьких мереж. Будь ласка, додавайте тільки довірені мережі.",
       "add": "Додати власну мережу",
       "empty": "Немає спеціальної мережі"
     },
     "addChain": {
-      "desc": "Rabby не може перевірити безпеку користувацьких мереж. Будь ласка, додавайте лише надійні мережі.",
-      "title": "Додати користувацьку мережу до Rabby"
+      "desc": "MultiSub не може перевірити безпеку користувацьких мереж. Будь ласка, додавайте лише надійні мережі.",
+      "title": "Додати користувацьку мережу до MultiSub"
     },
     "sign": {
       "transactionSpeed": "Швидкість Transaction"
@@ -2553,7 +2553,7 @@
         "title": "Депозит",
         "selectToken": "Виберіть токен для депозиту",
         "invalidAmount": "Має бути менше 500",
-        "desc": "Здійсніть депозит на рахунок Rabby's DeBank L2 без додаткових зборів — виводьте кошти будь-коли.",
+        "desc": "Здійсніть депозит на рахунок MultiSub's DeBank L2 без додаткових зборів — виводьте кошти будь-коли.",
         "paymentAddr": "Адреса платежу"
       },
       "withdrawPopup": {
@@ -2613,9 +2613,9 @@
         "title2": "Як використовувати Gas Account",
         "title3": "Чи має GasAccount додаткові збори?",
         "title1": "Що таке GasAccount",
-        "desc3": "Rabby Wallet не стягує жодних додаткових зборів. Ви сплачуєте лише газ за вашу транзакцію та невелику кількість газу за передачу цього газу з GasAccount на вашу адресу.",
+        "desc3": "MultiSub Wallet не стягує жодних додаткових зборів. Ви сплачуєте лише газ за вашу транзакцію та невелику кількість газу за передачу цього газу з GasAccount на вашу адресу.",
         "desc2": "Додайте кошти до вашого GasAccount і використовуйте їх для будь-якої транзакції. При підписанні виберіть оплату газу за допомогою рідних токенів або GasAccount, перемикайте в будь-який час.",
-        "desc4": "GasAccount не потребує жодних схвалень контрактів або дозволів. Ви депозитуєте на адресу GasAccount Rabby, а Rabby надсилає газ на вашу адресу за потреби. Повністю безпечно за дизайном.",
+        "desc4": "GasAccount не потребує жодних схвалень контрактів або дозволів. Ви депозитуєте на адресу GasAccount MultiSub, а MultiSub надсилає газ на вашу адресу за потреби. Повністю безпечно за дизайном.",
         "desc1": "GasAccount — це новий спосіб оплати комісій за газ. Замість використання рідних токенів на кожному ланцюзі, ви можете використовувати один акаунт для покриття газу для всіх ваших адрес на всіх ланцюгах. Просто, за бажанням, і ніколи не без газу."
       }
     },
@@ -2626,7 +2626,7 @@
     "newUserImport": {
       "guide": {
         "createNewAddress": "Створити нову адресу",
-        "title": "Ласкаво просимо до Rabby Wallet",
+        "title": "Ласкаво просимо до MultiSub Wallet",
         "importAddress": "У мене вже є адреса",
         "desc": "Ваш улюблений гаманець для Ethereum та EVM"
       },
@@ -2634,9 +2634,9 @@
         "showSeedPhrase": "Показати Seed Phrase",
         "title": "Перед тим як почати",
         "tip1": "Якщо я втрачу або поділюсь своїм seed phrase, я назавжди втратю доступ до своїх активів.",
-        "tip2": "Моя сімейна фраза зберігається лише на моєму пристрої. Rabby не може отримати до неї доступ.",
+        "tip2": "Моя сімейна фраза зберігається лише на моєму пристрої. MultiSub не може отримати до неї доступ.",
         "desc": "Будь ласка, ознайомтеся з наведеними нижче порадами щодо безпеки та тримайте їх у пам'яті.",
-        "tip3": "Якщо я видалю Rabby, не зробивши резервну копію своєї seed-фрази, її не можна буде відновити за допомогою Rabby."
+        "tip3": "Якщо я видалю MultiSub, не зробивши резервну копію своєї seed-фрази, її не можна буде відновити за допомогою MultiSub."
       },
       "importList": {
         "title": "Виберіть метод імпорту"
@@ -2672,14 +2672,14 @@
         "addMoreFrom": "Додати більше адрес з {{name}}"
       },
       "readyToUse": {
-        "pin": "Закріпіть Rabby Wallet",
+        "pin": "Закріпіть MultiSub Wallet",
         "guides": {
-          "step2": "Закріпити Rabby Wallet",
+          "step2": "Закріпити MultiSub Wallet",
           "step1": "Натисніть на піктограму розширення браузера"
         },
-        "title": "Ваш Rabby Wallet готовий!",
+        "title": "Ваш MultiSub Wallet готовий!",
         "extensionTip": "Натисніть <1/> а потім <3/>",
-        "desc": "Знайдіть Rabby Wallet і закріпіть його"
+        "desc": "Знайдіть MultiSub Wallet і закріпіть його"
       },
       "importSeedPhrase": {
         "title": "Імпорт Seed Phrase"
@@ -2744,13 +2744,13 @@
     },
     "metamaskModeDapps": {
       "title": "Керування дозволеними Dapps",
-      "desc": "Увімкнено режим MetaMask для наступних Dapps. Ви можете підключити Rabby, вибравши опцію MetaMask."
+      "desc": "Увімкнено режим MetaMask для наступних Dapps. Ви можете підключити MultiSub, вибравши опцію MetaMask."
     },
     "forgotPassword": {
       "home": {
         "buttonNoData": "Встановити пароль",
-        "description": "Rabby Wallet не зберігає ваш пароль і не може допомогти вам його відновити. Скиньте гаманець, щоб налаштувати новий.",
-        "descriptionNoData": "Rabby Wallet не зберігає ваш пароль і не може допомогти вам його відновити. Встановіть новий пароль, якщо ви його забули.",
+        "description": "MultiSub Wallet не зберігає ваш пароль і не може допомогти вам його відновити. Скиньте гаманець, щоб налаштувати новий.",
+        "descriptionNoData": "MultiSub Wallet не зберігає ваш пароль і не може допомогти вам його відновити. Встановіть новий пароль, якщо ви його забули.",
         "button": "Почати процес скидання",
         "title": "Забули пароль"
       },
@@ -2768,7 +2768,7 @@
           "hardware": "Імпортовані апаратні гаманці",
           "safe": "Імпортовані Safe гаманці"
         },
-        "title": "Скинути Rabby Wallet",
+        "title": "Скинути MultiSub Wallet",
         "button": "Підтвердити Скидання",
         "confirm": "Введіть <1>RESET</1> у полі, щоб підтвердити і продовжити."
       },
@@ -2776,13 +2776,13 @@
         "button": "Встановити пароль",
         "buttonNoData": "Додати адресу",
         "description": "Створіть новий пароль, щоб продовжити",
-        "title": "Скидання Rabby Wallet завершено",
+        "title": "Скидання MultiSub Wallet завершено",
         "descriptionNoData": "Додайте вашу адресу, щоб почати"
       },
       "success": {
         "title": "Пароль успішно встановлено",
         "button": "Завершено",
-        "description": "Ви готові використовувати Rabby Wallet"
+        "description": "Ви готові використовувати MultiSub Wallet"
       }
     },
     "eip7702": {
@@ -2793,21 +2793,21 @@
         "enabled": "Маскування ввімкнено. Оновіть Dapp для повторного підключення.",
         "disabled": "Маскування вимкнено. Оновіть Dapp."
       },
-      "title": "Підключіть Rabby, замаскувавшись під MetaMask",
+      "title": "Підключіть MultiSub, замаскувавшись під MetaMask",
       "step1": "Крок 1",
       "manage": "Керувати дозволеними Dapps",
       "step2": "Крок 2",
       "step2Desc": "Оновіть і підключіться через MetaMask",
-      "alert": "Не можу підключитися до Dapp, тому що вона не відображає Rabby Wallet як опцію?",
+      "alert": "Не можу підключитися до Dapp, тому що вона не відображає MultiSub Wallet як опцію?",
       "noDappFound": "Жодного Dapp не знайдено",
-      "step1Desc": "Дозволити Rabby маскуватися під MetaMask на поточному Dapp"
+      "step1Desc": "Дозволити MultiSub маскуватися під MetaMask на поточному Dapp"
     },
     "syncToMobile": {
-      "steps2": "2. Сканувати за допомогою Rabby Mobile",
+      "steps2": "2. Сканувати за допомогою MultiSub Mobile",
       "clickToShowQr": "Click to Select Address  and Show QR Code",
       "downloadAppleStore": "App Store",
-      "steps1": "Завантажте Rabby Mobile",
-      "title": "Синхронізуйте адресу гаманця з розширення Rabby на мобільний пристрій",
+      "steps1": "Завантажте MultiSub Mobile",
+      "title": "Синхронізуйте адресу гаманця з розширення MultiSub на мобільний пристрій",
       "description": "Ваші дані адреси залишаються повністю офлайн, зашифрованими та безпечно передаються через QR-код.",
       "downloadGooglePlay": "Google Play",
       "steps2Description": "Ваш QR-код містить конфіденційні дані. Тримайте його в таємниці та ніколи не діліться ним із будь-ким.",
@@ -2868,7 +2868,7 @@
       "riskAlert": {
         "riskType": {
           "risks": {
-            "scamAddress": "Адреса шахрайства позначена Rabby",
+            "scamAddress": "Адреса шахрайства позначена MultiSub",
             "contractAddress": "Виявлена адреса контракту, кошти можуть бути втрачені.",
             "dexNoDeposite": "Не CEX адрес депозиту, кошти можуть бути втрачені",
             "noSend": "Ви не надсилали на цю адресу протягом 180 днів"
@@ -3032,7 +3032,7 @@
       "TakeProfit": "Взяти прибуток",
       "stopLoss": "стоп-лосс",
       "insufficientBalance": "Недостатньо коштів",
-      "rabbyFeeTipsZero": "Rabby комісія: 0%",
+      "rabbyFeeTipsZero": "MultiSub комісія: 0%",
       "long": "Довгий",
       "review": "Огляд",
       "deleteAgentSuccess": "Агента успішно видалено",
@@ -3047,7 +3047,7 @@
       "stopLossTipsLong": "Ціна стоп-лоссу повинна бути нижчою за поточну ціну.",
       "takeProfitTipsLong": "Ціна для фіксації прибутку повинна бути вищою за поточну ціну.",
       "takeProfitWhen": "Встановити ціну фіксації прибутку",
-      "rabbyFeeTips": "Rabby комісія: 0,04%",
+      "rabbyFeeTips": "MultiSub комісія: 0,04%",
       "stopLossTipsShort": "Ціна стоп-лосс повинна бути вищою за поточну ціну.",
       "StopLoss": "Стоп-лосс",
       "back": "Назад",
@@ -3236,7 +3236,7 @@
         "insufficientBalance": "Нехватка балансу",
         "invalidNumber": "Недійсне число",
         "size": "Розмір",
-        "rabbyFee": "Rabby Комісія",
+        "rabbyFee": "MultiSub Комісія",
         "providerFee": "Гіперліквідний збір",
         "stopLossWhenPriceBelow": "Стоп-лосс, коли ціна нижче",
         "takeProfitWhenPriceBelow": "Виводи прибуток, коли ціна нижча за",
@@ -3453,7 +3453,7 @@
     "EcologyNoticeModal": {
       "notRemind": "Не нагадувати мені знову",
       "title": "Сповіщення",
-      "desc": "Наступні послуги будуть надані безпосередньо стороннім партнером екосистеми. Rabby Wallet не несе відповідальності за безпеку цих послуг."
+      "desc": "Наступні послуги будуть надані безпосередньо стороннім партнером екосистеми. MultiSub Wallet не несе відповідальності за безпеку цих послуг."
     },
     "ReserveGasPopup": {
       "normal": "Повільно",
@@ -3464,8 +3464,8 @@
     },
     "OpenExternalWebsiteModal": {
       "button": "Продовжити",
-      "title": "Ви залишаєте Rabby Wallet",
-      "content": "Ви збираєтесь відвідати зовнішній вебсайт. Rabby Wallet не несе відповідальності за вміст або безпеку цього сайту."
+      "title": "Ви залишаєте MultiSub Wallet",
+      "content": "Ви збираєтесь відвідати зовнішній вебсайт. MultiSub Wallet не несе відповідальності за вміст або безпеку цього сайту."
     },
     "TokenChart": {
       "holding": "Тримання вартості",

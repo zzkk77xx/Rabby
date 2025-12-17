@@ -185,7 +185,7 @@ class CustomTestnetService {
         return {
           error: {
             key: 'id',
-            message: 'Chain already integrated by Rabby Wallet',
+            message: 'Chain already integrated by MultiSub Wallet',
             status: 'alreadySupported',
           },
         };
