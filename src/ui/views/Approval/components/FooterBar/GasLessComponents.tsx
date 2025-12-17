@@ -112,7 +112,7 @@ export function GasLessNotEnough({
             cursor: 'pointer',
             padding: '7px 8px',
             borderRadius: 6,
-            background: 'var(--r-blue-default, #7084FF)',
+            background: 'var(--r-blue-default, #239363)',
             boxShadow: '0px 1px 4px 0px rgba(65, 89, 188, 0.33)',
           }}
           className="text-r-neutral-title2"
@@ -255,7 +255,7 @@ function FreeGasReady({
       <span
         className="flex-1"
         style={{
-          color: color || 'var(--r-blue-default, #7084FF)',
+          color: color || 'var(--r-blue-default, #239363)',
           fontSize: '13px',
           fontWeight: '500',
         }}
@@ -283,7 +283,7 @@ export function GasLessActivityToSign({
 
   const themeColor = gasLessConfig
     ? (isDarkTheme ? gasLessConfig?.dark_color : gasLessConfig?.theme_color) ||
-      'var(--r-blue-default, #7084FF)'
+      'var(--r-blue-default, #239363)'
     : undefined;
 
   return (
@@ -368,8 +368,8 @@ export const GasLessAnimatedWrapper = styled.div`
     background-color: var(--r-blue-disable);
     background-image: url(${LogoImage}),
       linear-gradient(
-        var(--r-blue-default, #7084ff),
-        var(--r-blue-default, #7084ff)
+        var(--r-blue-default, #239363),
+        var(--r-blue-default, #239363)
       );
     background-repeat: no-repeat;
     background-size: 10%, 200%;

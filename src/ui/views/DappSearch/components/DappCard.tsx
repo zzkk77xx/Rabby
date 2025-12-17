@@ -18,7 +18,7 @@ const Wraper = styled.div`
   border: 1px solid transparent;
   position: relative;
   &:hover {
-    border: 1px solid var(--r-blue-default, #7084ff);
+    border: 1px solid var(--r-blue-default, #239363);
     box-shadow: 0px 4px 4px 0px rgba(112, 132, 255, 0.12);
   }
 `;

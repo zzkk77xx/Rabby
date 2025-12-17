@@ -75,7 +75,7 @@ const MatrixWrapper = styled.div.withConfig<{
         font-size: 22px;
         color: var(--r-neutral-title-1, #192945);
         &:hover {
-          border-color: var(--r-blue-default, #7084ff);
+          border-color: var(--r-blue-default, #239363);
         }
         &:focus,
         &.ant-input-focused {
@@ -85,7 +85,7 @@ const MatrixWrapper = styled.div.withConfig<{
 
       &:not(.invalid) {
         .mnemonics-input:hover {
-          border-color: var(--r-blue-default, #7084ff);
+          border-color: var(--r-blue-default, #239363);
           border-right-width: 1.5px !important;
         }
       }
@@ -183,7 +183,7 @@ const MatrixWrapper = styled.div.withConfig<{
 
     &:focus,
     &.ant-input-focused {
-      border-color: var(--r-blue-default, #7084ff);
+      border-color: var(--r-blue-default, #239363);
       border-width: 1.5px;
       border-right-width: 1.5px !important;
       background-color: var(--r-neutral-bg-1, #fff);
@@ -479,7 +479,7 @@ function MnemonicsInputs({
                         values={{ count }}
                       >
                         I have a
-                        <b style={{ color: 'var(--r-blue-default, #7084ff)' }}>
+                        <b style={{ color: 'var(--r-blue-default, #239363)' }}>
                           {{ count }}
                         </b>
                         -word phrase
@@ -512,7 +512,7 @@ function MnemonicsInputs({
                             I have a
                             <b
                               style={{
-                                color: 'var(--r-blue-default, #7084ff)',
+                                color: 'var(--r-blue-default, #239363)',
                               }}
                             >
                               {{ count }}
@@ -547,7 +547,7 @@ function MnemonicsInputs({
                           >
                             <b
                               style={{
-                                color: 'var(--r-blue-default, #7084ff)',
+                                color: 'var(--r-blue-default, #239363)',
                               }}
                             ></b>
                           </Trans>
@@ -594,7 +594,7 @@ function MnemonicsInputs({
                   values={{ count: mnemonicsCount }}
                 >
                   I have a
-                  <b style={{ color: 'var(--r-blue-default, #7084ff)' }}>
+                  <b style={{ color: 'var(--r-blue-default, #239363)' }}>
                     {{ mnemonicsCount }}
                   </b>
                   -word phrase and Passphrase

@@ -219,7 +219,7 @@ const Dashboard = () => {
                 marginTop: '8px',
                 background: 'none',
                 border: 'none',
-                color: '#7084FF',
+                color: '#239363',
                 cursor: 'pointer',
                 padding: 0,
                 fontSize: '13px'

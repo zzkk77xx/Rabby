@@ -26,12 +26,12 @@ const OptionsList = styled.div`
     }
 
     /* &.is-selected {
-      border: 1px solid var(--r-blue-default, #7084ff);
+      border: 1px solid var(--r-blue-default, #239363);
       background: var(--r-blue-light-1, #eef1ff);
     } */
 
     &:not(.is-disabled):hover {
-      border: 1px solid var(--r-blue-default, #7084ff);
+      border: 1px solid var(--r-blue-default, #239363);
       background: var(--r-blue-light-1, #eef1ff);
     }
 

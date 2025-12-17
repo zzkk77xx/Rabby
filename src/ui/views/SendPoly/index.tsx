@@ -34,7 +34,7 @@ const queue = new PQueue({ interval: 1000, intervalCap: 8, concurrency: 8 }); //
 const OuterInput = styled.div`
   border: 1px solid var(--r-neutral-line);
   &:hover {
-    border: 1px solid var(--r-blue-default, #7084ff);
+    border: 1px solid var(--r-blue-default, #239363);
     cursor: text;
   }
 `;

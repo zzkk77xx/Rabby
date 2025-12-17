@@ -112,7 +112,7 @@ export const SubmitActions: React.FC<Props> = ({
                       '--gas-theme-color': gasLessThemeColor,
                       '--gas-bg-color': isGasNotEnough
                         ? 'rgba(112, 132, 255,0.4)'
-                        : 'var(--r-blue-default, #7084ff)',
+                        : 'var(--r-blue-default, #239363)',
                     }
                   : {}
               }

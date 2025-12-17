@@ -87,21 +87,21 @@ const Wrap = styled.div`
     padding-bottom: 13px;
 
     &:hover {
-      color: var(--r-blue-default, #4c65ff);
+      color: var(--r-blue-default, #239363);
     }
   }
   .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
     padding-left: 20px;
   }
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: var(--r-blue-default, #4c65ff);
+    color: var(--r-blue-default, #239363);
     font-weight: 600;
     text-shadow: none;
   }
   .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar {
     height: 3px;
     border-radius: 2px 2px 0 0;
-    background-color: var(--r-blue-default, #4c65ff);
+    background-color: var(--r-blue-default, #239363);
   }
   .ant-tabs-top > .ant-tabs-nav {
     margin-bottom: 0;

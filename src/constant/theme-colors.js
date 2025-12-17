@@ -1,12 +1,12 @@
 const themeColors = {
   light: {
     /* -------------------- base define -------------------- */
-    'blue-default': 'rgba(76, 101, 255, 1)',
-    'blue-light1': 'rgba(237, 240, 255, 1)',
-    'blue-light-1': 'rgba(237, 240, 255, 1)',
-    'blue-light2': 'rgba(219, 224, 255, 1)',
-    'blue-light-2': 'rgba(219, 224, 255, 1)',
-    'blue-disable': 'rgba(165, 178, 255, 1)',
+    'blue-default': 'rgba(35, 147, 99, 1)',
+    'blue-light1': 'rgba(224, 244, 235, 1)',
+    'blue-light-1': 'rgba(224, 244, 235, 1)',
+    'blue-light2': 'rgba(193, 232, 213, 1)',
+    'blue-light-2': 'rgba(193, 232, 213, 1)',
+    'blue-disable': 'rgba(152, 201, 177, 1)',
     'green-default': 'rgba(42, 187, 127, 1)',
     'green-light': 'rgba(216, 242, 231, 1)',
     'orange-default': 'rgba(255, 176, 32, 1)',
@@ -53,12 +53,12 @@ const themeColors = {
   },
   dark: {
     /* -------------------- base define -------------------- */
-    'blue-default': 'rgba(76, 101, 255, 1)',
-    'blue-light1': 'rgba(33, 38, 64, 1)',
-    'blue-light-1': 'rgba(33, 38, 64, 1)',
-    'blue-light2': 'rgba(38, 45, 85, 1)',
-    'blue-light-2': 'rgba(38, 45, 85, 1)',
-    'blue-disable': 'rgba(47, 59, 128, 1)',
+    'blue-default': 'rgba(35, 147, 99, 1)',
+    'blue-light1': 'rgba(29, 51, 43, 1)',
+    'blue-light-1': 'rgba(29, 51, 43, 1)',
+    'blue-light2': 'rgba(33, 64, 50, 1)',
+    'blue-light-2': 'rgba(33, 64, 50, 1)',
+    'blue-disable': 'rgba(41, 94, 69, 1)',
     'green-default': 'rgba(42, 187, 127, 1)',
     'green-light': 'rgba(57, 90, 90, 1)',
     'orange-default': 'rgba(255, 198, 74, 1)',
@@ -107,14 +107,14 @@ const themeColors = {
 
 const appThemeColors = {
   light: {
-    'brand-default': 'rgba(76, 101, 255, 1)',
-    'brand-default-light': 'rgba(76, 101, 255, 0.7)',
-    'brand-default-icon': 'rgba(64, 86, 221, 1)',
+    'brand-default': 'rgba(35, 147, 99, 1)',
+    'brand-default-light': 'rgba(35, 147, 99, 0.7)',
+    'brand-default-icon': 'rgba(30, 125, 84, 1)',
 
-    'brand-light-1': 'rgba(76, 101, 255, 0.12)',
-    'brand-light-2': 'rgba(76, 101, 255, 0.25)',
-    'brand-disable': 'rgba(76, 101, 255, 0.4)',
-    'brand-light-4': 'rgba(112, 132, 255, 0.7)',
+    'brand-light-1': 'rgba(35, 147, 99, 0.12)',
+    'brand-light-2': 'rgba(35, 147, 99, 0.25)',
+    'brand-disable': 'rgba(35, 147, 99, 0.4)',
+    'brand-light-4': 'rgba(35, 147, 99, 0.7)',
 
     'red-dark': 'rgba(199, 21, 10, 1)',
     'red-default': 'rgba(255, 69, 58, 1)',
@@ -164,14 +164,14 @@ const appThemeColors = {
     'neutral-bg-gray': 'rgba(246, 247, 247, 1)',
   },
   dark: {
-    'brand-default': 'rgba(112, 132, 255, 1)',
-    'brand-default-light': 'rgba(112, 132, 255, 0.7)',
-    'brand-default-icon': 'rgba(82, 103, 232, 1)',
+    'brand-default': 'rgba(35, 147, 99, 1)',
+    'brand-default-light': 'rgba(35, 147, 99, 0.7)',
+    'brand-default-icon': 'rgba(30, 125, 84, 1)',
 
-    'brand-light-1': 'rgba(112, 132, 255, 0.12)',
-    'brand-light-2': 'rgba(112, 132, 255, 0.25)',
-    'brand-disable': 'rgba(112, 132, 255, 0.4)',
-    'brand-light-4': 'rgba(112, 132, 255, 0.7)',
+    'brand-light-1': 'rgba(35, 147, 99, 0.12)',
+    'brand-light-2': 'rgba(35, 147, 99, 0.25)',
+    'brand-disable': 'rgba(35, 147, 99, 0.4)',
+    'brand-light-4': 'rgba(35, 147, 99, 0.7)',
 
     'red-dark': 'rgba(199, 21, 10, 1)',
     'red-default': 'rgba(255, 69, 58, 1)',

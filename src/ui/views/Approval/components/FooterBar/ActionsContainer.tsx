@@ -68,7 +68,7 @@ export const ActionsContainer: React.FC<Pick<Props, 'onCancel'>> = ({
         type="ghost"
         className={clsx(
           'w-[102px] h-[48px] border-blue-light text-blue-light',
-          'hover:bg-[#8697FF1A] active:bg-[#0000001A]',
+          'hover:bg-[#2393631A] active:bg-[#0000001A]',
           'rounded-[8px]',
           'before:content-none',
           'z-10',

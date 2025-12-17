@@ -62,12 +62,12 @@
 <stop offset="1" stop-color="white"/>
 </linearGradient>
 <linearGradient id="paint2_linear_35805_10076" x1="127.494" y1="46.6271" x2="102.026" y2="21.1827" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8697FF"/>
-<stop offset="1" stop-color="#8697FF" stop-opacity="0"/>
+<stop stop-color="#239363"/>
+<stop offset="1" stop-color="#239363" stop-opacity="0"/>
 </linearGradient>
 <linearGradient id="paint3_linear_35805_10076" x1="114.388" y1="60.9086" x2="89.964" y2="46.9132" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8697FF"/>
-<stop offset="1" stop-color="#8697FF" stop-opacity="0"/>
+<stop stop-color="#239363"/>
+<stop offset="1" stop-color="#239363" stop-opacity="0"/>
 </linearGradient>
 <linearGradient id="paint4_linear_35805_10076" x1="100.34" y1="47.0352" x2="116.889" y2="67.9924" gradientUnits="userSpaceOnUse">
 <stop stop-color="white"/>

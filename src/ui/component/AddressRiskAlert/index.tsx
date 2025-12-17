@@ -86,7 +86,7 @@ const AuthFormItemWrapper = styled.div<{ $hasError?: boolean }>`
     }
     &:focus,
     &:hover {
-      border-color: var(--r-blue-default, #7084ff) !important;
+      border-color: var(--r-blue-default, #239363) !important;
     }
     ${({ $hasError }) =>
       $hasError && 'border-color: var(--r-red-default) !important;'}
@@ -203,7 +203,7 @@ export const AddressTypeCard = ({
                   'w-[200px]',
                   'text-blue-light',
                   'border-blue-light',
-                  'hover:bg-[#8697FF1A] active:bg-[#0000001A]',
+                  'hover:bg-[#2393631A] active:bg-[#0000001A]',
                   'before:content-none'
                 )}
               >

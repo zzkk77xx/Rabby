@@ -34,7 +34,7 @@ import { query2obj } from '@/ui/utils/url';
 const OuterInput = styled.div`
   border: 1px solid var(--r-neutral-line);
   &:hover {
-    border: 1px solid var(--r-blue-default, #7084ff);
+    border: 1px solid var(--r-blue-default, #239363);
     cursor: text;
   }
 `;

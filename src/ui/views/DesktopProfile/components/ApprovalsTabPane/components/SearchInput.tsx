@@ -24,7 +24,7 @@ const Container = styled.div`
 
   &.is-focusing,
   &:hover {
-    border-color: var(--r-blue-default, #7084ff);
+    border-color: var(--r-blue-default, #239363);
     border-width: 0.5px;
   }
 `;

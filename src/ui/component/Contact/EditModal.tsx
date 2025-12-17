@@ -109,7 +109,7 @@ const EditModal = ({
             'w-[200px]',
             'text-blue-light',
             'border-blue-light',
-            'hover:bg-[#8697FF1A] active:bg-[#0000001A]',
+            'hover:bg-[#2393631A] active:bg-[#0000001A]',
             'before:content-none'
           )}
         >

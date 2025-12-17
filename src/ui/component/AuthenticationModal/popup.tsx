@@ -28,7 +28,7 @@ const AuthFormItemWrapper = styled.div`
     }
     &:focus,
     &:hover {
-      border-color: var(--r-blue-default, #7084ff) !important;
+      border-color: var(--r-blue-default, #239363) !important;
     }
   }
 `;
@@ -74,7 +74,7 @@ const FieldList = styled.div`
 
     &:hover {
       background-color: rgba(134, 151, 255, 0.2);
-      border: 1px solid var(--r-blue-default, #7084ff);
+      border: 1px solid var(--r-blue-default, #239363);
     }
 
     &:nth-last-child(1) {

@@ -128,7 +128,7 @@ const Container = styled.div`
 
   .ant-badge {
     .ant-badge-count {
-      background-color: var(--r-blue-default, #7084ff);
+      background-color: var(--r-blue-default, #239363);
       padding: 2px 6px;
       font-size: 13px;
       line-height: 1;

@@ -249,7 +249,7 @@ export const DirectSignToConfirmBtn = ({
                     width="14"
                     height="14"
                     rx="2"
-                    fill="var(--r-blue-default, #4c65ff)"
+                    fill="var(--r-blue-default, #239363)"
                   />
                   <path
                     d="M3 7L5.66667 10L11 4"
