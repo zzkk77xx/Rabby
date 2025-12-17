@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import { useHistory } from 'react-router-dom';
 import remarkGfm from 'remark-gfm';
+import { Input } from 'antd';
 
 import { Modal } from 'ui/component';
 import { connectStore, useRabbyDispatch, useRabbySelector } from 'ui/store';
@@ -71,12 +72,95 @@ const Dashboard = () => {
 
   const { t } = useTranslation();
   const [currentConnectedSiteChain, setCurrentConnectedSiteChain] = useState(
-    CHAINS_ENUM.ETH
+    CHAINS_ENUM.SETH
   );
 
   const [settingVisible, setSettingVisible] = useState(false);
   const toggleShowMoreSettings = useMemoizedFn(() => {
     setSettingVisible(!settingVisible);
+  });
+
+  const [showDefiModulePrompt, setShowDefiModulePrompt] = useState(false);
+  const [defiModuleAddress, setDefiModuleAddress] = useState('');
+  const [showSafeInput, setShowSafeInput] = useState(false);
+  const [safeAddress, setSafeAddress] = useState('');
+  const [isLoadingModule, setIsLoadingModule] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const moduleAddress = await wallet.getDefiInteractorModule();
+      if (!moduleAddress) {
+        setShowDefiModulePrompt(true);
+      }
+    })();
+  }, []);
+
+  const handleSetDefiModule = useMemoizedFn(async () => {
+    const trimmedAddress = defiModuleAddress.trim();
+
+    // If showing Safe input, handle Safe address submission
+    if (showSafeInput) {
+      const trimmedSafeAddress = safeAddress.trim();
+      if (!trimmedSafeAddress || !/^0x[a-fA-F0-9]{40}$/.test(trimmedSafeAddress)) {
+        alert('Please enter a valid Safe address (0x followed by 40 hexadecimal characters)');
+        return;
+      }
+
+      try {
+        setIsLoadingModule(true);
+        await dispatch.preference.setDefiInteractorSafe(trimmedSafeAddress);
+        setShowDefiModulePrompt(false);
+        setShowSafeInput(false);
+      } catch (error) {
+        console.error('Failed to set Safe address:', error);
+        alert('Failed to save the Safe address. Please try again.');
+      } finally {
+        setIsLoadingModule(false);
+      }
+      return;
+    }
+
+    // Validate module address
+    if (!trimmedAddress) {
+      // Empty address - skip
+      setShowDefiModulePrompt(false);
+      return;
+    }
+
+    if (!/^0x[a-fA-F0-9]{40}$/.test(trimmedAddress)) {
+      alert('Please enter a valid Ethereum address (0x followed by 40 hexadecimal characters)');
+      return;
+    }
+
+    // Try to set module and auto-fetch Safe address
+    try {
+      setIsLoadingModule(true);
+      const result = await dispatch.preference.setDefiInteractorModule(trimmedAddress);
+
+      if (result?.success === false) {
+        // Auto-fetch failed, show manual Safe input
+        setShowSafeInput(true);
+      } else {
+        // Success
+        setShowDefiModulePrompt(false);
+      }
+    } catch (error) {
+      console.error('Failed to set DeFi module:', error);
+      // Show manual input on error
+      setShowSafeInput(true);
+    } finally {
+      setIsLoadingModule(false);
+    }
+  });
+
+  const handleSkipDefiModule = useMemoizedFn(() => {
+    setShowDefiModulePrompt(false);
+    setShowSafeInput(false);
+  });
+
+  const handleBackToModule = useMemoizedFn(() => {
+    setShowSafeInput(false);
+    setSafeAddress('');
   });
 
   return (
@@ -101,6 +185,49 @@ const Dashboard = () => {
         <div>
           <p className="mb-12">{version}</p>
           <ReactMarkdown children={updateContent} remarkPlugins={[remarkGfm]} />
+        </div>
+      </Modal>
+
+      <Modal
+        visible={showDefiModulePrompt}
+        title="Set DeFi Interactor Module"
+        className="defi-module-prompt modal-support-darkmode"
+        onCancel={showSafeInput ? handleBackToModule : handleSkipDefiModule}
+        okText={showSafeInput ? 'Save Safe Address' : 'Set Module'}
+        cancelText={showSafeInput ? 'Back' : 'Skip'}
+        onOk={handleSetDefiModule}
+        maxHeight="400px"
+        confirmLoading={isLoadingModule}
+      >
+        <div>
+          <p style={{ marginBottom: '12px' }}>
+            {showSafeInput
+              ? 'Could not automatically fetch Safe address from Sepolia or Ethereum Mainnet. Please enter it manually:'
+              : 'Would you like to set a DeFi Interactor Module address? This is recommended for Safe multisig wallets.'}
+          </p>
+          <Input
+            placeholder={showSafeInput ? 'Enter Safe address (0x...)' : 'Enter module address (0x...)'}
+            value={showSafeInput ? safeAddress : defiModuleAddress}
+            onChange={(e) => showSafeInput ? setSafeAddress(e.target.value) : setDefiModuleAddress(e.target.value)}
+            onPressEnter={handleSetDefiModule}
+            disabled={showSafeInput ? false : isLoadingModule}
+          />
+          {showSafeInput && (
+            <button
+              onClick={handleBackToModule}
+              style={{
+                marginTop: '8px',
+                background: 'none',
+                border: 'none',
+                color: '#7084FF',
+                cursor: 'pointer',
+                padding: 0,
+                fontSize: '13px'
+              }}
+            >
+              ← Back to module address
+            </button>
+          )}
         </div>
       </Modal>
 

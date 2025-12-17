@@ -2,6 +2,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import * as Sentry from '@sentry/browser';
 import eventBus from '@/eventBus';
 import { createPersistStore, isSameAddress } from 'background/utils';
+import { storage } from 'background/webapi';
 import {
   keyringService,
   sessionService,
@@ -977,8 +978,10 @@ class PreferenceService {
     return this.store.defiInteractorModule;
   };
 
-  setDefiInteractorModule = (address?: string) => {
+  setDefiInteractorModule = async (address?: string) => {
     this.store.defiInteractorModule = address;
+    // Ensure persistence completes
+    await storage.set('preference', this.store);
   };
 
   getDefiInteractorSafe = () => {

@@ -201,12 +201,12 @@ class ProviderController extends BaseController {
       origin = INTERNAL_REQUEST_ORIGIN;
     }
 
-    let chainServerId = CHAINS[CHAINS_ENUM.ETH].serverId;
+    let chainServerId = CHAINS[CHAINS_ENUM.SETH].serverId;
     if (site) {
       chainServerId =
         findChain({
           enum: site.chain,
-        })?.serverId || CHAINS[CHAINS_ENUM.ETH].serverId;
+        })?.serverId || CHAINS[CHAINS_ENUM.SETH].serverId;
     }
     if (forceChainServerId) {
       chainServerId = forceChainServerId;
@@ -351,7 +351,7 @@ class ProviderController extends BaseController {
     const origin = session.origin;
     const site = permissionService.getWithoutUpdate(origin);
 
-    return findChainByEnum(site?.chain, { fallback: CHAINS_ENUM.ETH })!.hex;
+    return findChainByEnum(site?.chain, { fallback: CHAINS_ENUM.SETH })!.hex;
   };
 
   @Reflect.metadata('APPROVAL', [
@@ -1065,7 +1065,7 @@ class ProviderController extends BaseController {
   @Reflect.metadata('APPROVAL', ['ETHSign', () => null, { height: 390 }])
   ethSign = () => {
     throw new Error(
-      "Signing with 'eth_sign' can lead to asset loss. For your safety, Rabby does not support this method."
+      "Signing with 'eth_sign' can lead to asset loss. For your safety, MultiSub does not support this method."
     );
   };
 
@@ -1420,7 +1420,7 @@ class ProviderController extends BaseController {
     });
 
     if (!chain) {
-      throw new Error('This chain is not supported by Rabby yet.');
+      throw new Error('This chain is not supported by MultiSub yet.');
     }
 
     if (approvalRes) {

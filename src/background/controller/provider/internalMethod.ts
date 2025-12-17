@@ -35,7 +35,7 @@ const getProviderState = async (req) => {
     session: { origin },
   } = req;
   const chainEnum =
-    permissionService.getWithoutUpdate(origin)?.chain || CHAINS_ENUM.ETH;
+    permissionService.getWithoutUpdate(origin)?.chain || CHAINS_ENUM.SETH;
   const isUnlocked = keyringService.memStore.getState().isUnlocked;
   let networkVersion = '1';
   if (networkIdMap[chainEnum]) {
