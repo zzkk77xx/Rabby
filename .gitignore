@@ -6,7 +6,7 @@ dist-*
 yarn-error
 .claude
 
-tmp/*.zip
+*.zip
 tmp/inv-batch.json
 tmp/styled-components-id-mappings.*
 

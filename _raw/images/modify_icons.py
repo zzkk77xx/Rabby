@@ -1,47 +1,62 @@
 #!/usr/bin/env python3
 """
-Script to modify icons in _raw/images/:
-1. Only process files with 'icon' in the name
+Script to modify SVG icons in src/ui/assets/:
+1. Only process SVG files with 'rabby', 'logo', or 'icon' in the name
 2. Rotate upside down (180 degrees)
 3. Apply green color filter
 """
 
 import os
-from PIL import Image, ImageEnhance
 import glob
+import xml.etree.ElementTree as ET
+import re
 
-def apply_green_filter(img):
-    """Apply a green color filter to the image."""
-    img = img.convert('RGBA')
-    pixels = img.load()
-    width, height = img.size
-
-    for x in range(width):
-        for y in range(height):
-            r, g, b, a = pixels[x, y]
-
-            # Apply green filter: boost green channel, reduce red and blue
-            if a > 0:
-                new_r = int(r * 0.4)
-                new_g = int(min(255, g * 1.5))
-                new_b = int(b * 0.4)
-                pixels[x, y] = (new_r, new_g, new_b, a)
-
-    return img
-
-def modify_image(file_path):
-    """Rotate image 180 degrees and apply green filter."""
+def modify_svg(file_path):
+    """Rotate SVG 180 degrees and apply green color filter."""
     try:
-        img = Image.open(file_path)
+        # Register SVG namespace to preserve it in output
+        ET.register_namespace('', 'http://www.w3.org/2000/svg')
 
-        # Rotate 180 degrees
-        img = img.rotate(180)
+        tree = ET.parse(file_path)
+        root = tree.getroot()
 
-        # Apply green filter
-        img = apply_green_filter(img)
+        # Get the SVG namespace
+        ns = {'svg': 'http://www.w3.org/2000/svg'}
 
-        # Save the modified image
-        img.save(file_path)
+        # Get viewBox or width/height to calculate center point for rotation
+        viewbox = root.get('viewBox')
+        if viewbox:
+            _, _, width, height = map(float, viewbox.split())
+            cx, cy = width / 2, height / 2
+        else:
+            width = float(root.get('width', '100').replace('px', ''))
+            height = float(root.get('height', '100').replace('px', ''))
+            cx, cy = width / 2, height / 2
+
+        # Wrap all content in a group with rotation and green filter
+        # Create a new group element
+        g = ET.Element('g')
+        g.set('transform', f'rotate(180 {cx} {cy})')
+        g.set('style', 'filter: url(#greenFilter)')
+
+        # Move all children to the group
+        for child in list(root):
+            root.remove(child)
+            g.append(child)
+
+        # Create green color matrix filter
+        defs = ET.Element('defs')
+        filter_elem = ET.SubElement(defs, 'filter', id='greenFilter')
+        color_matrix = ET.SubElement(filter_elem, 'feColorMatrix', type='matrix')
+        # Matrix that boosts green, reduces red and blue
+        color_matrix.set('values', '0.4 0 0 0 0  0 1.5 0 0 0  0 0 0.4 0 0  0 0 0 1 0')
+
+        # Add defs and group to root
+        root.insert(0, defs)
+        root.append(g)
+
+        # Write back to file
+        tree.write(file_path, encoding='utf-8', xml_declaration=True)
         print(f"✓ Modified: {os.path.basename(file_path)}")
 
     except Exception as e:
@@ -49,22 +64,41 @@ def modify_image(file_path):
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    # Navigate from _raw/images/ to project root, then to src/ui/assets/
+    project_root = os.path.join(script_dir, '..', '..')
+    assets_dir = os.path.join(project_root, 'src', 'ui', 'assets')
+    assets_dir = os.path.abspath(assets_dir)
 
-    print("Starting icon modification...")
+    print("Starting SVG icon modification...")
     print("=" * 50)
+    print(f"Searching in: {assets_dir}")
 
-    # Process only files with 'icon' in the name
-    all_files = glob.glob(os.path.join(script_dir, "*"))
-    icon_files = [f for f in all_files if 'icon' in os.path.basename(f).lower() and f.endswith(('.png', '.svg'))]
+    if not os.path.exists(assets_dir):
+        print(f"✗ Error: Directory not found: {assets_dir}")
+        return
 
-    print(f"\nProcessing {len(icon_files)} icon files...")
-    for icon_file in icon_files:
-        if icon_file.endswith('.png'):
-            modify_image(icon_file)
-        # Skip SVG for now since we're applying a basic filter
+    # Find all SVG files recursively
+    all_svg_files = glob.glob(os.path.join(assets_dir, "**", "*.svg"), recursive=True)
+
+    # Filter for files with 'rabby', 'logo', or 'icon' in the name
+    target_files = []
+    for f in all_svg_files:
+        basename = os.path.basename(f).lower()
+        if 'rabby' in basename or 'logo' in basename or 'icon' in basename:
+            target_files.append(f)
+
+    print(f"\nFound {len(target_files)} SVG files matching criteria...")
+    print("\nFiles to be modified:")
+    for f in target_files:
+        rel_path = os.path.relpath(f, assets_dir)
+        print(f"  - {rel_path}")
+
+    print("\nProcessing files...")
+    for svg_file in target_files:
+        modify_svg(svg_file)
 
     print("\n" + "=" * 50)
-    print("Icon modification complete!")
+    print(f"Icon modification complete! Modified {len(target_files)} files.")
 
 if __name__ == "__main__":
     main()
