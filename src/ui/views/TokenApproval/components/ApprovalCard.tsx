@@ -3,7 +3,6 @@ import { TokenWithChain } from '@/ui/component';
 import { Button, message } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import IconUnknown from 'ui/assets/icon-unknown-1.svg';
 import {
   numberWithCommasIsLtOne,
@@ -28,15 +27,6 @@ const ApprovalCard = ({ data }: ApprovalCardProps) => {
 
   const tokenApprove = async (item: TokenApproval['spenders'][0]) => {
     try {
-      matomoRequestEvent({
-        category: 'Security',
-        action: 'startDeclineTokenApproval',
-        label: [
-          getChain(data.chain)?.name,
-          getKRCategoryByType(currentAccount?.type),
-          currentAccount?.brandName,
-        ].join('|'),
-      });
       wallet.approveToken(data.chain, data.id, item.id, 0, {
         ga: {
           category: 'Security',

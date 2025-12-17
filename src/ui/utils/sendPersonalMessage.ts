@@ -2,7 +2,6 @@ import { EVENTS, INTERNAL_REQUEST_SESSION } from '@/constant';
 import { WalletControllerType } from '@/ui/utils';
 import { getKRCategoryByType } from '@/utils/transaction';
 import eventBus from '@/eventBus';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { ga4 } from '@/utils/ga4';
 import { Account } from '@/background/service/preference';
 
@@ -30,15 +29,7 @@ const report = async ({
   if (!currentAccount) {
     return;
   }
-  matomoRequestEvent({
-    category: 'SignText',
-    action: action,
-    label: [
-      getKRCategoryByType(currentAccount.type),
-      currentAccount.brandName,
-    ].join('|'),
-    transport: 'beacon',
-  });
+  // Analytics removed
 
   if (action === 'createSignText') {
     ga4.fireEvent('Init_SignText', {

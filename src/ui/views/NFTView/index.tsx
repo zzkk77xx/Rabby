@@ -6,7 +6,6 @@ import { CollectionCard } from './CollectionCard';
 import { Modal, Tabs } from 'antd';
 import { useRabbySelector } from '@/ui/store';
 import { NFTItem } from '@rabby-wallet/rabby-api/dist/types';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { getKRCategoryByType } from '@/utils/transaction';
 import NFTModal from '../Dashboard/components/NFT/NFTModal';
 import { CollectionListSkeleton } from './CollectionListSkeleton';
@@ -89,15 +88,6 @@ export const NFTView: React.FC<{
     setCollectionName(name);
     setNFTItem(item);
     setModalVisible(true);
-    matomoRequestEvent({
-      category: 'ViewAssets',
-      action: 'viewNFTDetail',
-      label: [
-        getKRCategoryByType(currentAccount?.type),
-        currentAccount?.brandName,
-        item?.collection ? 'true' : 'false',
-      ].join('|'),
-    });
   }, []);
 
   const handleHideModal = React.useCallback(() => {

@@ -38,7 +38,6 @@ import {
 } from 'consts';
 import { addHexPrefix, isHexString } from '@ethereumjs/util';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { useTranslation, Trans } from 'react-i18next';
 import { useScroll } from 'react-use';
 import { useSize, useDebounceFn, useRequest, useMemoizedFn } from 'ahooks';
@@ -515,59 +514,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
   }));
   const [footerShowShadow, setFooterShowShadow] = useState(false);
 
-  const gaEvent = async (type: 'allow' | 'cancel') => {
-    const ga:
-      | {
-          category: 'Send' | 'Security';
-          source: 'sendNFT' | 'sendToken' | 'nftApproval' | 'tokenApproval';
-          trigger: string;
-        }
-      | undefined = params?.$ctx?.ga;
-    if (!ga) {
-      return;
-    }
-    const { category, source, trigger } = ga;
-
-    if (category === 'Send') {
-      matomoRequestEvent({
-        category,
-        action: type === 'cancel' ? 'cancelSignTx' : 'signTx',
-        label: [
-          chain.name,
-          getKRCategoryByType(currentAccount.type),
-          currentAccount.brandName,
-          source === 'sendNFT' ? 'nft' : 'token',
-          trigger,
-        ].join('|'),
-        transport: 'beacon',
-      });
-    } else if (category === 'Security') {
-      let action = '';
-      if (type === 'cancel') {
-        if (source === 'nftApproval') {
-          action = 'cancelSignDeclineNFTApproval';
-        } else {
-          action = 'cancelSignDeclineTokenApproval';
-        }
-      } else {
-        if (source === 'nftApproval') {
-          action = 'signDeclineNFTApproval';
-        } else {
-          action = 'signDeclineTokenApproval';
-        }
-      }
-      matomoRequestEvent({
-        category,
-        action,
-        label: [
-          chain.name,
-          getKRCategoryByType(currentAccount.type),
-          currentAccount.brandName,
-        ].join('|'),
-        transport: 'beacon',
-      });
-    }
-  };
   const customRPCErrorModalRef = useRef(false);
   const triggerCustomRPCErrorModal = () => {
     if (customRPCErrorModalRef.current) return;
@@ -624,9 +570,11 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
   // For action parsing, use original transaction if wrapped by DefiInteractorModule
   const txForActionParsing = useMemo(() => {
     // If this is a converted Permit, use Safe address for simulation
-    const fromAddress = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
-      ? (normalizedParams as any)._safeAddress
-      : from;
+    const fromAddress =
+      (normalizedParams as any)._convertedPermit &&
+      (normalizedParams as any)._safeAddress
+        ? (normalizedParams as any)._safeAddress
+        : from;
 
     if (_originalTx) {
       // Transaction was wrapped - use original for action parsing
@@ -1167,14 +1115,16 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
     try {
       setIsReady(false);
       // If this is a converted Permit, use the Safe address for fetching balance
-      const addressForFetch = (normalizedParams as any)._convertedPermit && (normalizedParams as any)._safeAddress
-        ? (normalizedParams as any)._safeAddress
-        : currentAccount.address;
+      const addressForFetch =
+        (normalizedParams as any)._convertedPermit &&
+        (normalizedParams as any)._safeAddress
+          ? (normalizedParams as any)._safeAddress
+          : currentAccount.address;
       console.log('[SignTx] Using address for explain:', {
         convertedPermit: !!(normalizedParams as any)._convertedPermit,
         addressForFetch,
         eoaAddress: currentAccount.address,
-        safeAddress: (normalizedParams as any)._safeAddress
+        safeAddress: (normalizedParams as any)._safeAddress,
       });
       await explainTx(addressForFetch);
       setIsReady(true);
@@ -1438,7 +1388,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
       (transaction as Tx).gasPrice = tx.gasPrice;
     }
     const approval = await getApproval();
-    gaEvent('allow');
 
     approval.signingTxId &&
       (await wallet.updateSigningTx(approval.signingTxId, {
@@ -1498,16 +1447,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
       source: params?.$ctx?.ga?.source || '',
       trigger: params?.$ctx?.ga?.trigger || '',
       networkType: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-    });
-
-    matomoRequestEvent({
-      category: 'Transaction',
-      action: 'Submit',
-      label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-    });
-
-    ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-      event_category: 'Transaction',
     });
 
     resolveApproval({
@@ -1618,7 +1557,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
   };
 
   const handleCancel = () => {
-    gaEvent('cancel');
     rejectApproval('User rejected the request.');
   };
 
@@ -1930,16 +1868,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         trigger: params?.$ctx?.ga?.trigger || '',
         networkType: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
         swapUseSlider: params?.$ctx?.ga?.swapUseSlider ?? '',
-      });
-
-      matomoRequestEvent({
-        category: 'Transaction',
-        action: 'init',
-        label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-      });
-
-      ga4.fireEvent(`Init_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-        event_category: 'Transaction',
       });
 
       if (currentAccount.type === KEYRING_TYPE.GnosisKeyring) {

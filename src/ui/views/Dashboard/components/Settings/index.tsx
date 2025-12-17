@@ -1,4 +1,3 @@
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { Button, DrawerProps, Form, Input, message, Modal, Switch } from 'antd';
 import clsx from 'clsx';
 import {
@@ -839,11 +838,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
   }, [locale]);
 
   const handleEnableDappAccount = useMemoizedFn(() => {
-    matomoRequestEvent({
-      category: 'Setting',
-      action: 'clickToUse',
-      label: 'DappAccount',
-    });
+    // Analytics removed
 
     ga4.fireEvent('Dapp_Account', {
       event_category: 'Click More',
@@ -939,11 +934,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.features.lockWallet'),
           onClick: () => {
             lockWallet();
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Lock Wallet',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_LockWallet', {
               event_category: 'Click More',
@@ -957,11 +948,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.features.signatureRecord'),
           onClick: () => {
             history.push('/activities');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Signature Record',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_SignatureRecord', {
               event_category: 'Click More',
@@ -975,11 +962,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.features.manageAddress'),
           onClick: () => {
             history.push('/settings/address');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Manage Address',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_ManageAddress', {
               event_category: 'Click More',
@@ -999,11 +982,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconSettingsSearchDapps,
           content: t('page.dashboard.settings.features.searchDapps'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Search Dapps',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_SearchDapps', {
               event_category: 'Click More',
@@ -1018,11 +997,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.features.connectedDapp'),
           onClick: () => {
             setConnectedDappsVisible(true);
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Connected Dapps',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_ConnectedDapps', {
               event_category: 'Click More',
@@ -1081,11 +1056,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.settings.customTestnet'),
           onClick: () => {
             history.push('/custom-testnet');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Custom Testnet',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_CustomTestnet', {
               event_category: 'Click More',
@@ -1099,11 +1070,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.settings.customRpc'),
           onClick: () => {
             history.push('/custom-rpc');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Custom RPC',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_CustomRPC', {
               event_category: 'Click More',
@@ -1116,11 +1083,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconI18n,
           content: t('page.dashboard.settings.settings.currentLanguage'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Current Language',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_CurrentLanguage', {
               event_category: 'Click More',
@@ -1148,11 +1111,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconThemeMode,
           content: t('page.dashboard.settings.settings.toggleThemeMode'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Theme Mode',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_ThemeMode', {
               event_category: 'Click More',
@@ -1186,11 +1145,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           ),
           onClick: () => {
             history.push('/metamask-mode-dapps');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'MetaMask Mode Dapps',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_MetaMaskModeDapps', {
               event_category: 'Click More',
@@ -1203,11 +1158,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconAutoLock,
           content: t('page.dashboard.settings.autoLockTime'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Auto lock time',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_AutoLockTime', {
               event_category: 'Click More',
@@ -1235,11 +1186,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconClear,
           content: t('page.dashboard.settings.clearPending'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Reset Account',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_ResetAccount', {
               event_category: 'Click More',
@@ -1379,11 +1326,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           leftIcon: RcIconFeedback,
           content: t('page.dashboard.home.panel.feedback'),
           onClick: () => {
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'feedback',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_Feedback', {
               event_category: 'Click More',
@@ -1404,11 +1347,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.currentVersion'),
           onClick: () => {
             updateVersion();
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Current Version',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_CurrentVersion', {
               event_category: 'Click More',
@@ -1456,11 +1395,7 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           content: t('page.dashboard.settings.supportedChains'),
           onClick: () => {
             history.push('/settings/chain-list');
-            matomoRequestEvent({
-              category: 'Setting',
-              action: 'clickToUse',
-              label: 'Supported Chains',
-            });
+            // Analytics removed
 
             ga4.fireEvent('More_SupportedChains', {
               event_category: 'Click More',

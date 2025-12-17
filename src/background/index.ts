@@ -1,11 +1,9 @@
 import eventBus from '@/eventBus';
 import migrateData from '@/migrations';
 import { getOriginFromUrl, transformFunctionsToZero } from '@/utils';
-import { appIsDev, getSentryEnv, isManifestV3 } from '@/utils/env';
-import { matomoRequestEvent } from '@/utils/matomo-request';
+import { appIsDev, isManifestV3 } from '@/utils/env';
 import { Message, sendReadyMessageToTabs } from '@/utils/message';
 import Safe from '@rabby-wallet/gnosis-sdk';
-import * as Sentry from '@sentry/browser';
 import fetchAdapter from 'background/utils/fetchAdapter';
 import { WalletController } from 'background/controller/wallet';
 import {
@@ -57,7 +55,6 @@ import { isSameAddress } from './utils';
 import rpcCache from './utils/rpcCache';
 import { storage } from './webapi';
 import { metamaskModeService } from './service/metamaskModeService';
-import { ga4 } from '@/utils/ga4';
 import { ALARMS_SYNC_DEFAULT_RPC, ALARMS_USER_ENABLE } from './utils/alarms';
 import { subscribeTxCompleted } from './subscriptions/rateGuidance';
 
@@ -69,24 +66,6 @@ dayjs.extend(utc);
 const { PortMessage } = Message;
 
 let appStoreLoaded = false;
-
-Sentry.init({
-  dsn:
-    'https://f4a992c621c55f48350156a32da4778d@o4507018303438848.ingest.us.sentry.io/4507018389749760',
-  release: process.env.release,
-  environment: getSentryEnv(),
-  ignoreErrors: [
-    'Transport error: {"event":"transport_error","params":["Websocket connection failed"]}',
-    'Failed to fetch',
-    'TransportOpenUserCancelled',
-    'Non-Error promise rejection captured with keys: message, stack',
-    'Non-Error promise rejection captured with keys: message',
-    /Non-Error promise rejection captured with keys/,
-    /\[From .*\]/, // error from custom rpc
-    /AxiosError/,
-    /WebSocket connection failed/,
-  ],
-});
 
 async function restoreAppState() {
   await onInstall();
@@ -193,61 +172,7 @@ restoreAppState();
     if (interval) {
       clearInterval(interval);
     }
-    const sendEvent = async () => {
-      const time = preferenceService.getSendLogTime();
-      if (dayjs(time).utc().isSame(dayjs().utc(), 'day')) {
-        return;
-      }
-      const customTestnetLength = customTestnetService.getList()?.length;
-      if (customTestnetLength) {
-        matomoRequestEvent({
-          category: 'Custom Network',
-          action: 'Custom Network Status',
-          value: customTestnetLength,
-        });
-
-        ga4.fireEvent('Has_CustomNetwork', {
-          event_category: 'Custom Network',
-        });
-      }
-      const chains = preferenceService.getSavedChains();
-      matomoRequestEvent({
-        category: 'User',
-        action: 'pinnedChains',
-        label: chains.join(','),
-      });
-      const accounts = await walletController.getAccounts();
-      const list = accounts.map((account) => {
-        const category = KEYRING_CATEGORY_MAP[account.type];
-        const action = account.brandName;
-        const label =
-          (walletController.getAddressCacheBalance(account.address)
-            ?.total_usd_value || 0) <= 0;
-        return {
-          category,
-          action,
-          label: label ? 'empty' : 'notEmpty',
-        };
-      });
-      const groups = groupBy(list, (item) => {
-        return `${item.category}_${item.action}_${item.label}`;
-      });
-      Object.values(groups).forEach((group) => {
-        matomoRequestEvent({
-          category: 'UserAddress',
-          action: group[0].category,
-          label: [group[0].action, group[0].label, group.length].join('|'),
-          value: group.length,
-        });
-
-        ga4.fireEvent(`${group[0].category}_${group[0].label}`, {
-          event_category: 'UserAddress',
-        });
-      });
-      preferenceService.updateSendLogTime(Date.now());
-    };
-    sendEvent();
-    interval = setInterval(sendEvent, 5 * 60 * 1000);
+    // Analytics removed for privacy
   });
 
   keyringService.on('lock', () => {
@@ -474,19 +399,7 @@ declare global {
 }
 
 function startEnableUser() {
-  const time = preferenceService.getSendEnableTime();
-  if (dayjs(time).utc().isSame(dayjs().utc(), 'day')) {
-    return;
-  }
-  matomoRequestEvent({
-    category: 'User',
-    action: 'enable',
-  });
-
-  ga4.fireEvent('User_Enable', {
-    event_category: 'User Enable',
-  });
-  preferenceService.updateSendEnableTime(Date.now());
+  // Analytics removed for privacy
 }
 
 // On first install, open a new tab with Rabby

@@ -1,4 +1,3 @@
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { AuthorizationListItem, Common, Hardfork } from '@ethereumjs/common';
 import { FeeMarketEIP1559TxData, TransactionFactory } from '@ethereumjs/tx';
 import { ethers } from 'ethers';
@@ -85,15 +84,7 @@ const reportSignText = (params: {
   success: boolean;
 }) => {
   const { method, account, success } = params;
-  matomoRequestEvent({
-    category: 'SignText',
-    action: 'completeSignText',
-    label: [
-      KEYRING_CATEGORY_MAP[account.type],
-      account.brandName,
-      success,
-    ].join('|'),
-  });
+  // Analytics removed
   stats.report('completeSignText', {
     type: account.brandName,
     category: KEYRING_CATEGORY_MAP[account.type],

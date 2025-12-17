@@ -15,7 +15,6 @@ import { PageHeader, Popup } from 'ui/component';
 import { useWallet } from 'ui/utils';
 import { AddFromChainList } from './AddFromChainList';
 import { CustomTestnetForm } from './CustomTestnetForm';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { ConfirmModifyRpcModal } from './ConfirmModifyRpcModal';
 import { useHistory } from 'react-router-dom';
 import { usePopupContainer } from '@/ui/hooks/usePopupContainer';
@@ -158,12 +157,6 @@ export const EditCustomTestnetModal = ({
               )}
               onClick={() => {
                 setIsShowAddFromChainList(true);
-                const source = ctx?.ga?.source || 'setting';
-                matomoRequestEvent({
-                  category: 'Custom Network',
-                  action: 'Click Add From ChanList',
-                  label: source,
-                });
               }}
             >
               <ThemeIcon src={RcIconFlash}></ThemeIcon>
@@ -213,11 +206,6 @@ export const EditCustomTestnetModal = ({
           form.setFieldsValue(item);
           setIsShowAddFromChainList(false);
           const source = ctx?.ga?.source || 'setting';
-          matomoRequestEvent({
-            category: 'Custom Network',
-            action: 'Choose ChainList Network',
-            label: `${source}_${String(item.id)}`,
-          });
         }}
       />
       <ConfirmModifyRpcModal

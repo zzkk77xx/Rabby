@@ -2,7 +2,6 @@ import eventBus from '@/eventBus';
 import stats from '@/stats';
 import { useLedgerStatus } from '@/ui/component/ConnectStatus/useLedgerStatus';
 import { findChain } from '@/utils/chain';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
 import * as Sentry from '@sentry/browser';
 import { message } from 'antd';
@@ -206,11 +205,6 @@ const LedgerHardwareWaiting = ({
           setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
           return;
         }
-        matomoRequestEvent({
-          category: 'Transaction',
-          action: 'Submit',
-          label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-        });
 
         ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
           event_category: 'Transaction',

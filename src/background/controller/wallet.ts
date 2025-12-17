@@ -129,7 +129,6 @@ import {
 } from '../service/customTestnet';
 import { getKeyringBridge, hasBridge } from '../service/keyring/bridge';
 import { syncChainService } from '../service/syncChain';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { BALANCE_LOADING_CONFS } from '@/constant/timeout';
 import { IExtractFromPromise } from '@/ui/utils/type';
 import { Wallet, thirdparty } from '@ethereumjs/wallet';
@@ -5391,11 +5390,7 @@ export class WalletController extends BaseController {
 
     const res = await customTestnetService.add(chain);
     if (!('error' in res)) {
-      matomoRequestEvent({
-        category: 'Custom Network',
-        action: 'Success Add Network',
-        label: `${source}_${String(chain.id)}`,
-      });
+      // Analytics removed
 
       ga4.fireEvent('Add_CustomNetwork', {
         event_category: 'Custom Network',

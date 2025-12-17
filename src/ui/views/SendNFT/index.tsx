@@ -11,7 +11,6 @@ import clsx from 'clsx';
 import BigNumber from 'bignumber.js';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { Form, message, Button } from 'antd';
 import { isValidAddress } from '@ethereumjs/util';
 import abiCoderInst, { AbiCoder } from 'web3-eth-abi';
@@ -347,18 +346,6 @@ const SendNFT = () => {
       });
 
       try {
-        matomoRequestEvent({
-          category: 'Send',
-          action: 'createTx',
-          label: [
-            findChainByEnum(chain)?.name,
-            getKRCategoryByType(currentAccount?.type),
-            currentAccount?.brandName,
-            'nft',
-            filterRbiSource('sendNFT', rbisource) && rbisource,
-          ].join('|'),
-        });
-
         const params = getNFTTransferParams(amount);
         let shouldForceSignPage = !!forceSignPage;
         wallet.addCacheHistoryData(

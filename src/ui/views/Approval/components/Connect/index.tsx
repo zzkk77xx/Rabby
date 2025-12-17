@@ -1,5 +1,3 @@
-import { ga4 } from '@/utils/ga4';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { useMemoizedFn, useMount, useRequest } from 'ahooks';
 import { CHAINS_ENUM } from 'consts';
 import React, { useMemo, useState } from 'react';
@@ -58,31 +56,10 @@ const Connect = (props: ConnectProps) => {
         name,
         rdns: info.rdns,
       });
-      matomoRequestEvent({
-        category: 'Wallet Conflict',
-        action: `OtherWallet_${info.name.trim().replace(/\s+/g, '')}`,
-      });
-
-      ga4.fireEvent(`OtherWallet_${info.name.trim().replace(/\s+/g, '')}`, {
-        event_category: 'Wallet Conflict',
-      });
       await sleep(150);
       rejectApproval();
     }
   );
-
-  useMount(() => {
-    if ($ctx?.providers?.length) {
-      matomoRequestEvent({
-        category: 'Wallet Conflict',
-        action: 'OtherWallet_Show',
-      });
-
-      ga4.fireEvent('OtherWallet_Show', {
-        event_category: 'Wallet Conflict',
-      });
-    }
-  });
 
   return (
     <>

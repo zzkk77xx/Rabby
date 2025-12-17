@@ -8,7 +8,6 @@ import { useScroll } from 'react-use';
 import { useSize, useDebounceFn } from 'ahooks';
 import { cloneDeep } from 'lodash';
 import { underline2Camelcase } from '@/background/utils';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { getKRCategoryByType } from '@/utils/transaction';
 import {
   ALIAS_ADDRESS,
@@ -379,26 +378,6 @@ const SignTypedData = ({
     extra?: Record<string, any>
   ) => {
     if (currentAccount) {
-      matomoRequestEvent({
-        category: 'SignText',
-        action: action,
-        label: [
-          getKRCategoryByType(currentAccount.type),
-          currentAccount.brandName,
-        ].join('|'),
-        transport: 'beacon',
-      });
-
-      if (action === 'createSignText') {
-        ga4.fireEvent('Init_SignText', {
-          event_category: 'SignText',
-        });
-      } else if (action === 'startSignText') {
-        ga4.fireEvent('Submit_SignText', {
-          event_category: 'SignText',
-        });
-      }
-
       await wallet.reportStats(action, {
         type: currentAccount.brandName,
         category: getKRCategoryByType(currentAccount.type),

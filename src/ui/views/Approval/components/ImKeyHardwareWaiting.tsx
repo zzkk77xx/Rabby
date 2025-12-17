@@ -1,7 +1,6 @@
 import React from 'react';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { Account } from 'background/service/preference';
 import {
   CHAINS,
@@ -209,11 +208,6 @@ export const ImKeyHardwareWaiting = ({
           setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
           return;
         }
-        matomoRequestEvent({
-          category: 'Transaction',
-          action: 'Submit',
-          label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-        });
 
         ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
           event_category: 'Transaction',

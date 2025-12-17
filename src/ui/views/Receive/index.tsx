@@ -11,7 +11,6 @@ import {
 import QRCode from 'qrcode.react';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { ReactComponent as IconBack } from 'ui/assets/back.svg';
 import { ReactComponent as RcIconCopy } from 'ui/assets/icon-copy-1-cc.svg';
 import IconEyeHide from 'ui/assets/icon-eye-hide.svg';
@@ -91,16 +90,6 @@ const Receive = () => {
   const { t } = useTranslation();
 
   const handleCopyAddress = () => {
-    matomoRequestEvent({
-      category: 'Receive',
-      action: 'copyAddress',
-      label: [
-        chain,
-        getKRCategoryByType(account?.type),
-        account?.brandName,
-        filterRbiSource('Receive', rbisource) && rbisource,
-      ].join('|'),
-    });
     copyAddress(account.address!);
   };
 
@@ -115,20 +104,6 @@ const Receive = () => {
   useEffect(() => {
     init();
   }, []);
-  useEffect(() => {
-    if (account?.address) {
-      matomoRequestEvent({
-        category: 'Receive',
-        action: 'getQRCode',
-        label: [
-          chain,
-          getKRCategoryByType(account?.type),
-          account?.brandName,
-          filterRbiSource('Receive', rbisource) && rbisource,
-        ].join('|'),
-      });
-    }
-  }, [account?.address]);
   useEffect(() => {
     if (account?.type !== KEYRING_CLASS.WATCH) {
       return;

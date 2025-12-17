@@ -8,7 +8,6 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApproval, useWallet } from 'ui/utils';
 import { AddEthereumChainParams } from './type';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 
 interface AddChainProps {
   data: AddEthereumChainParams[];
@@ -37,13 +36,6 @@ const AddChain = ({ params }: { params: AddChainProps }) => {
       scanLink: addChainParams.blockExplorerUrls?.[0],
     });
   }, [form, addChainParams]);
-
-  useMount(() => {
-    matomoRequestEvent({
-      category: 'Custom Network',
-      action: 'Dapp Add Network',
-    });
-  });
 
   const { loading, runAsync: runAddChain } = useRequest(
     async () => {

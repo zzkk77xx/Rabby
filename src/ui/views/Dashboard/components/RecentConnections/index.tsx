@@ -3,7 +3,6 @@ import { Button, message } from 'antd';
 import { ConnectedSite } from 'background/service/permission';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { openInTab, useWallet } from 'ui/utils';
 import ConnectionList from './ConnectionList';
 import './style.less';
@@ -41,12 +40,7 @@ const RecentConnections = ({
   }, [connections]);
 
   const handleClick = (connection: ConnectedSite) => {
-    matomoRequestEvent({
-      category: 'Dapps',
-      action: 'openDapp',
-      label: connection.origin,
-      transport: 'beacon',
-    });
+    // Analytics removed
 
     openInTab(connection.origin);
   };
@@ -60,11 +54,7 @@ const RecentConnections = ({
   };
   const handleRemove = async (origin: string) => {
     await dispatch.permission.removeWebsite(origin);
-    matomoRequestEvent({
-      category: 'Dapps',
-      action: 'disconnectDapp',
-      label: origin,
-    });
+    // Analytics removed
     message.success({
       icon: <i />,
       content: (
@@ -78,10 +68,7 @@ const RecentConnections = ({
   const removeAll = async () => {
     try {
       await dispatch.permission.clearAll();
-      matomoRequestEvent({
-        category: 'Dapps',
-        action: 'disconnectAllDapps',
-      });
+      // Analytics removed
     } catch (e) {
       console.error(e);
     }

@@ -1,7 +1,6 @@
 import { customAlphabet, nanoid } from 'nanoid';
 import browser from 'webextension-polyfill';
 
-const ANALYTICS_PATH = 'https://matomo.debank.com/matomo.php';
 const genExtensionId = customAlphabet('1234567890abcdef', 16);
 
 async function postData(url = '', params: URLSearchParams) {
@@ -39,40 +38,4 @@ const getParams = async () => {
   gaParams.append('dimension1', process.env.release!);
 
   return gaParams;
-};
-
-export const matomoRequestEvent = async (data: {
-  category: string;
-  action: string;
-  label?: string;
-  value?: number;
-  transport?: any;
-}) => {
-  const params = await getParams();
-
-  if (data.category) {
-    params.append('e_c', data.category);
-  }
-
-  if (data.action) {
-    params.append('e_a', data.action);
-  }
-
-  if (data.label) {
-    params.append('e_n', data.label);
-  }
-
-  if (data.value) {
-    params.append('e_v', data.value.toString());
-  }
-
-  if (data.transport) {
-    params.append('e_i', data.transport);
-  }
-
-  try {
-    return postData(ANALYTICS_PATH, params);
-  } catch (e) {
-    // ignore
-  }
 };

@@ -41,7 +41,6 @@ import Swap from './Swap';
 import { getUiType, useWallet } from '../utils';
 import CustomRPC from './CustomRPC';
 import { ImportMyMetaMaskAccount } from './ImportMyMetaMaskAccount';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { CommonPopup } from './CommonPopup';
 import ManageAddress from './ManageAddress';
 import { NFTView } from './NFTView';
@@ -122,13 +121,6 @@ const Main = () => {
       const UIType = getUiType();
       if (UIType.isNotification || UIType.isPop) {
         const hasOtherProvider = await wallet.getHasOtherProvider();
-        matomoRequestEvent({
-          category: 'User',
-          action: 'active',
-          label: UIType.isPop
-            ? `popup|${hasOtherProvider ? 'hasMetaMask' : 'noMetaMask'}`
-            : `request|${hasOtherProvider ? 'hasMetaMask' : 'noMetaMask'}`,
-        });
 
         ga4.fireEvent(
           UIType.isPop

@@ -1,5 +1,4 @@
 import { Button, DrawerProps, Input, Skeleton, Tooltip } from 'antd';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { ValidateStatus } from 'antd/lib/form/FormItem';
 import { GasLevel, Tx, TxPushType } from 'background/service/openapi';
 import BigNumber from 'bignumber.js';
@@ -659,11 +658,6 @@ const GasSelectorHeader = ({
       setCustomNonce(Number(nonce));
       setIsSelectCustom(true);
     }
-    matomoRequestEvent({
-      category: 'Transaction',
-      action: 'EditGas',
-      label: chain?.serverId,
-    });
     setTimeout(
       () => {
         customerInputRef.current?.focus();

@@ -14,7 +14,6 @@ import { useApproval, useWallet } from 'ui/utils';
 import { SwitchEthereumChainParams } from './type';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useThemeMode } from '@/ui/hooks/usePreference';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 
 interface SwitchChainProps {
   data: SwitchEthereumChainParams[];
@@ -65,13 +64,6 @@ const SwitchChain = ({ params }: { params: SwitchChainProps }) => {
       },
     }
   );
-
-  useMount(() => {
-    matomoRequestEvent({
-      category: 'Custom Network',
-      action: 'Dapp Add Network',
-    });
-  });
 
   const { loading, runAsync: runAddChain } = useRequest(
     async () => {

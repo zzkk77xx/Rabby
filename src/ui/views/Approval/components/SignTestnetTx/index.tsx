@@ -29,7 +29,6 @@ import { normalizeTxParams } from '../SignTx';
 import { isHexString, toChecksumAddress } from '@ethereumjs/util';
 import { WaitingSignComponent } from '../map';
 import IconGnosis from 'ui/assets/walletlogo/safe.svg';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import i18n from '@/i18n';
 import GasSelectorHeader, {
   GasSelectorResponse,
@@ -39,7 +38,6 @@ import { Card } from '../Card';
 import { SignAdvancedSettings } from '../SignAdvancedSettings';
 import clsx from 'clsx';
 import { Modal } from 'antd';
-import { ga4 } from '@/utils/ga4';
 import { TestnetActions } from './Actions';
 import {
   ActionRequireData,
@@ -431,15 +429,6 @@ export const SignTestnetTx = ({
         trigger: params?.$ctx?.ga?.trigger || '',
         networkType: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
         swapUseSlider: params?.$ctx?.ga?.swapUseSlider ?? '',
-      });
-
-      matomoRequestEvent({
-        category: 'Transaction',
-        action: 'init',
-        label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-      });
-      ga4.fireEvent(`Init_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-        event_category: 'Transaction',
       });
 
       if (currentAccount.type === KEYRING_TYPE.GnosisKeyring) {
@@ -921,16 +910,6 @@ export const SignTestnetTx = ({
       source: params?.$ctx?.ga?.source || '',
       trigger: params?.$ctx?.ga?.trigger || '',
       networkType: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-    });
-
-    matomoRequestEvent({
-      category: 'Transaction',
-      action: 'Submit',
-      label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-    });
-
-    ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
-      event_category: 'Transaction',
     });
 
     resolveApproval({

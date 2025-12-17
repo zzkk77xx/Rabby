@@ -22,7 +22,6 @@ import {
 import { Account } from 'background/service/preference';
 import stats from '@/stats';
 import eventBus from '@/eventBus';
-import { matomoRequestEvent } from '@/utils/matomo-request';
 import { adjustV } from '@/ui/utils/gnosis';
 import { message } from 'antd';
 import { findChain } from '@/utils/chain';
@@ -211,11 +210,6 @@ export const CommonWaiting = ({
           setErrorMessage(e.message);
           return;
         }
-        matomoRequestEvent({
-          category: 'Transaction',
-          action: 'Submit',
-          label: chain?.isTestnet ? 'Custom Network' : 'Integrated Network',
-        });
 
         ga4.fireEvent(`Submit_${chain?.isTestnet ? 'Custom' : 'Integrated'}`, {
           event_category: 'Transaction',
