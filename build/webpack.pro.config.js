@@ -19,11 +19,18 @@ const config = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
+        parallel: 2, // Reduce parallelism to avoid hanging
         terserOptions: {
           compress: {
             pure_funcs: ['console.log', 'console.debug'],
+            drop_console: false, // Keep this false to avoid aggressive compression
+            passes: 1, // Limit compression passes
+          },
+          mangle: {
+            safari10: true, // Fix Safari 10 loop iterator bug
           },
         },
+        extractComments: false, // Don't extract comments to separate files
       }),
     ],
   },

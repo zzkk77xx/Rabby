@@ -111,11 +111,11 @@ class Uninstalled {
     if (this.store.local) {
       search += 'l';
     }
-    browser.runtime.setUninstallURL(
-      `https://rabby.io/uninstalled?r=${encodeURIComponent(search)}&v=${
-        browser.runtime.getManifest().version
-      }`
-    );
+    // browser.runtime.setUninstallURL(
+    //   `https://rabby.io/uninstalled?r=${encodeURIComponent(search)}&v=${
+    //     browser.runtime.getManifest().version
+    //   }`
+    // );
   };
 }
 
