@@ -19,7 +19,7 @@ import { updateChainStore } from '@/utils/chain';
 function initAppMeta() {
   const head = document.querySelector('head');
   const icon = document.createElement('link');
-  icon.href = 'https://rabby.io/assets/images/logo-128.png';
+  icon.href = 'https://multisubs.xyz/icon-128.png';
   icon.rel = 'icon';
   head?.appendChild(icon);
   const name = document.createElement('meta');

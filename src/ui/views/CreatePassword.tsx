@@ -66,11 +66,11 @@ const CreatePassword = () => {
   const disable = !agreeTerm || invalidForm;
 
   const gotoTermsOfUse = () => {
-    openInTab('https://rabby.io/docs/terms-of-use');
+    openInTab('https://multisubs.xyz/terms');
   };
 
   const gotoPrivacy = () => {
-    openInTab('https://rabby.io/docs/privacy');
+    openInTab('https://multisubs.xyz/privacy');
   };
 
   const drawClassName = useCss({

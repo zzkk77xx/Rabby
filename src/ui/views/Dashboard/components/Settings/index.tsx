@@ -1432,9 +1432,9 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
           <img
             className="inline-block cursor-pointer"
             src={LogoRabby}
-            alt="https://rabby.io"
+            alt="https://multisubs.xyz"
             onClick={() => {
-              openInTab('https://rabby.io', false);
+              openInTab('https://multisubs.xyz', false);
             }}
           />
         </div>

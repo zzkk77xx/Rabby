@@ -1,4 +1,4 @@
-# Last updated: July 8, 2024
+# Last updated: December 21, 2025
 DEBANK GLOBAL PTE. LTD. ("DEBANK" or "Rabby" or "we") respects and protects the privacy of Users (“you” or “users”). We will collect and use the information generated from your use of DeBank or Rabby, in accordance with the Terms of Use.
 
 # What information do we collect
@@ -46,4 +46,4 @@ In particular, if you do not accept the revised policies, please immediately sto
 Your continued use of our services confirms your acceptance of our terms of use, as amended. If you do not agree to our terms of use, as amended, you must stop using our services. 
 
 # Contact Us
-If you have any questions about our terms of use, please contact us at [support@rabby.io](mailto:support@rabby.io).
+If you have any questions about our terms of use, please contact us at [contact@multisubs.xyz](mailto:contact@multisubs.xyz).

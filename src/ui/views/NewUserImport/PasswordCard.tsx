@@ -130,11 +130,11 @@ export const PasswordCard: React.FC<Props> = ({ onSubmit, step, onBack }) => {
   });
 
   const gotoTermsOfUse = useMemoizedFn(() => {
-    openInTab('https://rabby.io/docs/terms-of-use', false);
+    openInTab('https://multisubs.xyz/terms', false);
   });
 
   const gotoPrivacy = useMemoizedFn(() => {
-    openInTab('https://rabby.io/docs/privacy', false);
+    openInTab('https://multisubs.xyz/privacy', false);
   });
 
   return (
