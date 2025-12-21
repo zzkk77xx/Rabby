@@ -1,6 +1,6 @@
 {
   "name": "multisub",
-  "version": "0.0.1-alpha",
+  "version": "0.0.1",
   "description": "A browser plugin for DeFi users",
   "scripts": {
     "clean": "node build/clean.js",
