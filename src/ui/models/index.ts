@@ -25,7 +25,6 @@ import { rateGuidance } from './rateGuidance';
 import { exchange } from './exchange';
 import { directSubmitTx } from './directSubmitTx';
 import { gift } from './gift';
-import { perps } from './perps';
 import { desktopProfile } from './desktopProfile';
 
 export interface RootModel extends Models<RootModel> {
@@ -54,7 +53,6 @@ export interface RootModel extends Models<RootModel> {
   exchange: typeof exchange;
   directSubmitTx: typeof directSubmitTx;
   gift: typeof gift;
-  perps: typeof perps;
   desktopProfile: typeof desktopProfile;
 }
 
@@ -84,7 +82,6 @@ export const models: RootModel = {
   exchange,
   directSubmitTx,
   gift,
-  perps,
   desktopProfile,
 };
 

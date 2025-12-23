@@ -1,5 +1,4 @@
 import { TestnetChainBase } from '@/background/service/customTestnet';
-import { CustomTestnetForm } from '@/ui/views/CustomTestnet/components/CustomTestnetForm';
 import { useMount, useRequest } from 'ahooks';
 import { Button } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
@@ -84,7 +83,6 @@ const AddChain = ({ params }: { params: AddChainProps }) => {
         <div className="text-center text-r-neutral-body text-[13px] leading-[16px] mb-[20px] p-[10px] bg-r-neutral-card2 rounded-[6px]">
           {t('page.addChain.desc')}
         </div>
-        <CustomTestnetForm form={form} idDisabled />
       </div>
       <div
         className={clsx(

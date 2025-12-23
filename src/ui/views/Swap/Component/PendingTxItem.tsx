@@ -36,7 +36,6 @@ import { TooltipWithMagnetArrow } from '@/ui/component/Tooltip/TooltipWithMagnet
 import { Image } from 'antd';
 import { BridgeHistory, TokenItem } from '@rabby-wallet/rabby-api/dist/types';
 import { getUiType } from '@/ui/utils';
-import NFTAvatar from '../../Dashboard/components/NFT/NFTAvatar';
 import { UI_TYPE } from '@/constant/ui';
 
 const isDesktop = getUiType().isDesktop;
@@ -334,11 +333,6 @@ export const PendingTxItem = forwardRef<
               <>
                 {type === 'sendNft' ? (
                   <div className="relative w-20 h-20">
-                    <NFTAvatar
-                      content={(data as SendNftTxHistoryItem)?.token?.content}
-                      type={(data as SendNftTxHistoryItem)?.token?.content_type}
-                      className="w-[20px] h-[20px]"
-                    />
                     <TooltipWithMagnetArrow
                       title={sendChainItem?.name}
                       className="rectangle w-[max-content]"

@@ -14,8 +14,6 @@ import {
 } from '@rabby-wallet/rabby-action';
 import { getActionTypeText } from './utils';
 import { ReactComponent as RcIconArrowRight } from 'ui/assets/approval/edit-arrow-right.svg';
-import BuyNFT from './BuyNFT';
-import SellNFT from './SellNFT';
 import Permit from './Permit';
 import Permit2 from './Permit2';
 import ContractCall from './ContractCall';
@@ -23,7 +21,6 @@ import SwapTokenOrder from './SwapTokenOrder';
 import SignMultisig from './SignMultisig';
 import CreateKey from '../TextActions/CreateKey';
 import VerifyAddress from '../TextActions/VerifyAddress';
-import BatchSellNFT from './BatchSellNFT';
 import BatchPermit2 from './BatchPermit2';
 import { TooltipWithMagnetArrow } from '@/ui/component/Tooltip/TooltipWithMagnetArrow';
 import { ReactComponent as IconQuestionMark } from 'ui/assets/sign/question-mark.svg';
@@ -196,33 +193,6 @@ const ActionItem = ({
                     requireData={requireData as SwapTokenOrderRequireData}
                     chain={chain}
                     engineResults={engineResults}
-                  />
-                )}
-                {data.buyNFT && chain && (
-                  <BuyNFT
-                    data={data.buyNFT}
-                    requireData={requireData as ContractRequireData}
-                    chain={chain}
-                    engineResults={engineResults}
-                    sender={data.sender}
-                  />
-                )}
-                {data.batchSellNFT && chain && (
-                  <BatchSellNFT
-                    data={data.batchSellNFT}
-                    requireData={requireData as ContractRequireData}
-                    chain={chain}
-                    engineResults={engineResults}
-                    sender={data.sender}
-                  />
-                )}
-                {data.sellNFT && chain && (
-                  <SellNFT
-                    data={data.sellNFT}
-                    requireData={requireData as ContractRequireData}
-                    chain={chain}
-                    engineResults={engineResults}
-                    sender={data.sender}
                   />
                 )}
                 {data.signMultiSig && (

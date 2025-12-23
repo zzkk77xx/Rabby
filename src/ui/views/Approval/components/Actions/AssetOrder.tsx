@@ -6,7 +6,6 @@ import { Result } from '@rabby-wallet/rabby-security-engine';
 import { isSameAddress } from 'ui/utils';
 import { useRabbyDispatch, useRabbySelector } from '@/ui/store';
 import { Table, Col, Row } from '../Actions/components/Table';
-import NFTWithName from '../Actions/components/NFTWithName';
 import * as Values from '../Actions/components/Values';
 import { SecurityListItem } from '../Actions/components/SecurityListItem';
 import ViewMore from '../Actions/components/ViewMore';
@@ -130,18 +129,6 @@ const AssetOrder = ({
                 logoRadius="100%"
               />
             ))}
-            {actionData.payNFTList.map((nft) => (
-              <ViewMore
-                key={nft.id}
-                type="nft"
-                data={{
-                  nft,
-                  chain,
-                }}
-              >
-                <NFTWithName hasHover nft={nft}></NFTWithName>
-              </ViewMore>
-            ))}
             {actionData.payNFTList.length <= 0 &&
               actionData.payTokenList.length <= 0 && <>-</>}
           </Row>
@@ -165,18 +152,6 @@ const AssetOrder = ({
                   }
                   logoRadius="100%"
                 />
-              ))}
-              {actionData.receiveNFTList.map((nft) => (
-                <ViewMore
-                  key={nft.id}
-                  type="nft"
-                  data={{
-                    nft,
-                    chain,
-                  }}
-                >
-                  <NFTWithName nft={nft}></NFTWithName>
-                </ViewMore>
               ))}
               {actionData.receiveTokenList.length <= 0 &&
                 actionData.receiveNFTList.length <= 0 && <>-</>}

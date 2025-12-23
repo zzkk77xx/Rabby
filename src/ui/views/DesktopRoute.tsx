@@ -4,7 +4,6 @@ import { PrivateRoute } from 'ui/component';
 
 import { PortalHost } from '../component/PortalHost';
 import { CommonPopup } from './CommonPopup';
-import { DesktopProfile } from './DesktopProfile';
 import { GlobalSignerPortal } from '../component/MiniSignV2/components/GlobalSignerPortal';
 
 declare global {
@@ -18,9 +17,6 @@ const Main = () => {
   return (
     <>
       <Switch>
-        <PrivateRoute exact path="/desktop/profile/:activeTab?">
-          <DesktopProfile />
-        </PrivateRoute>
       </Switch>
 
       {location.pathname !== '/unlock' ? (

@@ -1,6 +1,5 @@
 import {
   ActionRequireData,
-  ApproveNFTRequireData,
   ApproveTokenRequireData,
   AssetOrderRequireData,
   BatchRevokePermit2RequireData,
@@ -9,7 +8,6 @@ import {
   ContractRequireData,
   ParsedTransactionActionData,
   PushMultiSigRequireData,
-  RevokeNFTRequireData,
   RevokeTokenApproveRequireData,
   SendRequireData,
   SwapRequireData,
@@ -19,8 +17,6 @@ import {
 } from '@rabby-wallet/rabby-action';
 import React from 'react';
 import { CommonAction } from '../../CommonAction';
-import ApproveNFT from '../ApproveNFT';
-import ApproveNFTCollection from '../ApproveNFTCollection';
 import AssetOrder from '../AssetOrder';
 import { BatchRevokePermit2 } from '../BatchRevokePermit2';
 import CancelTx from '../CancelTx';
@@ -29,12 +25,9 @@ import CrossSwapToken from '../CrossSwapToken';
 import CrossToken from '../CrossToken';
 import DeployContract from '../DeployContract';
 import PushMultiSig from '../PushMultiSig';
-import RevokeNFT from '../RevokeNFT';
-import RevokeNFTCollection from '../RevokeNFTCollection';
 import RevokePermit2 from '../RevokePermit2';
 import RevokeTokenApprove from '../RevokeTokenApprove';
 import Send from '../Send';
-import SendNFT from '../SendNFT';
 import Swap from '../Swap';
 import TokenApprove from '../TokenApprove';
 import UnWrapToken from '../UnWrapToken';
@@ -152,46 +145,6 @@ const SingleAction: React.FC<{
           onChange={onChange}
           raw={raw}
         ></CancelTx>
-      )}
-      {data?.sendNFT && (
-        <SendNFT
-          data={data.sendNFT}
-          requireData={requireData as SendRequireData}
-          chain={chain}
-          engineResults={engineResults}
-        />
-      )}
-      {data?.approveNFT && (
-        <ApproveNFT
-          data={data.approveNFT}
-          requireData={requireData as ApproveNFTRequireData}
-          chain={chain}
-          engineResults={engineResults}
-        />
-      )}
-      {data?.revokeNFT && (
-        <RevokeNFT
-          data={data.revokeNFT}
-          requireData={requireData as RevokeNFTRequireData}
-          chain={chain}
-          engineResults={engineResults}
-        />
-      )}
-      {data?.revokeNFTCollection && (
-        <RevokeNFTCollection
-          data={data.revokeNFTCollection}
-          requireData={requireData as RevokeNFTRequireData}
-          chain={chain}
-          engineResults={engineResults}
-        />
-      )}
-      {data?.approveNFTCollection && (
-        <ApproveNFTCollection
-          data={data.approveNFTCollection}
-          requireData={requireData as RevokeNFTRequireData}
-          chain={chain}
-          engineResults={engineResults}
-        />
       )}
       {data?.deployContract && <DeployContract />}
       {data?.pushMultiSig && (

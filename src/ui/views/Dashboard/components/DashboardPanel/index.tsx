@@ -2,7 +2,6 @@ import { CHAINS_ENUM, KEYRING_TYPE, ThemeIconType } from '@/constant';
 import RateModal from '@/ui/component/RateModal/RateModal';
 import ThemeIcon from '@/ui/component/ThemeMode/ThemeIcon';
 import { useRabbySelector } from '@/ui/store';
-import { usePerpsHomePnl } from '@/ui/views/Perps/hooks/usePerpsHomePnl';
 import { findChainByID } from '@/utils/chain';
 import { appIsDev } from '@/utils/env';
 import { Badge, Col, Row, Skeleton, Tooltip } from 'antd';
@@ -42,10 +41,7 @@ import {
   splitNumberByStep,
   useWallet,
 } from 'ui/utils';
-import { ClaimRabbyFreeGasBadgeModal } from '../ClaimRabbyBadgeModal/freeGasBadgeModal';
-import { EcologyPopup } from '../EcologyPopup';
 import { Settings } from '../index';
-import { RabbyPointsPopup } from '../RabbyPointsPopup';
 import { RcIconExternal1CC, RcIconFullscreenCC } from '@/ui/assets/dashboard';
 import { RecentConnectionsPopup } from '../RecentConnections';
 import { useScroll, useSize } from 'ahooks';
@@ -150,7 +146,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
-  const { perpsPositionInfo, isFetching } = usePerpsHomePnl();
   // useCheckBridgePendingItem();
 
   const [badgeModalVisible, setBadgeModalVisible] = useState(false);
@@ -485,20 +480,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
         disabledTips={t('page.dashboard.GnosisWrongChainAlertBar.notDeployed')}
       />
 
-      <ClaimRabbyFreeGasBadgeModal
-        visible={badgeModalVisible}
-        onCancel={() => {
-          setBadgeModalVisible(false);
-        }}
-      />
-      <EcologyPopup
-        visible={isShowEcology}
-        onClose={() => setIsShowEcologyModal(false)}
-      />
-      <RabbyPointsPopup
-        visible={isShowRabbyPoints}
-        onClose={() => setIsShowRabbyPoints(false)}
-      />
       <RateModal />
 
       <RecentConnectionsPopup

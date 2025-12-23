@@ -44,7 +44,6 @@ import {
 } from '@/ui/component/ExternalSwapBridgeDappPopup';
 import { DirectSignToConfirmBtn } from '@/ui/component/ToConfirmButton';
 import { supportedDirectSign } from '@/ui/hooks/useMiniApprovalDirectSign';
-import { DbkButton } from '../../Ecology/dbk-chain/components/DbkButton';
 import { useMiniSigner } from '@/ui/hooks/useSigner';
 import { MINI_SIGN_ERROR } from '@/ui/component/MiniSignV2/state/SignatureManager';
 import { BridgePendingTxItem } from './PendingTxItem';
@@ -773,16 +772,7 @@ export const BridgeContent = () => {
           )}
         >
           {(fromChain as string) === 'DBK' ? (
-            <DbkButton
-              className="h-[48px] w-full text-[16px] font-medium bg-r-orange-DBK border-transparent rounded-[6px]"
-              onClick={() => {
-                history.push(
-                  `/ecology/${DBK_CHAIN_ID}/bridge?activeTab=withdraw`
-                );
-              }}
-            >
-              {t('page.bridge.bridgeDbkBtn')}
-            </DbkButton>
+            <></>
           ) : (
             <TooltipWithMagnetArrow
               overlayClassName="rectangle w-[max-content]"

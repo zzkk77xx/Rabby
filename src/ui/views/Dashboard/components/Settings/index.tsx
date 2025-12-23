@@ -61,7 +61,6 @@ import FeedbackPopup from '../Feedback';
 import { getChainList } from '@/utils/chain';
 import { SvgIconCross } from '@/ui/assets';
 import { sendPersonalMessage } from '@/ui/utils/sendPersonalMessage';
-import { EcosystemBanner } from './components/EcosystemBanner';
 import { useMemoizedFn } from 'ahooks';
 import RateModalTriggerOnSettings from '@/ui/component/RateModal/RateModalTriggerOnSettings';
 import { useMakeMockDataForRateGuideExposure } from '@/ui/component/RateModal/hooks';
@@ -1385,10 +1384,6 @@ const SettingsInner = ({ visible, onClose }: SettingsProps) => {
     <div className="popup-settings">
       <div className="content">
         {/* <ClaimRabbyBadge onClick={onOpenBadgeModal} /> */}
-        <EcosystemBanner
-          isVisible={isShowEcology}
-          onClose={() => setIsShowEcologyModal(false)}
-        />
         <RateModalTriggerOnSettings className="mb-[16px]" />
         {Object.values(renderData).map((group, idxl1) => {
           return (

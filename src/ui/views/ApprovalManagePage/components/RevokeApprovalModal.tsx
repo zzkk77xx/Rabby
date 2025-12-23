@@ -3,7 +3,6 @@ import { TokenWithChain } from '@/ui/component';
 import { Alert, Button, Modal, Tooltip } from 'antd';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import NFTAvatar from '../../Dashboard/components/NFT/NFTAvatar';
 import { ApprovalContractItem } from './ApprovalContractItem';
 import IconUnknownNFT from 'ui/assets/unknown-nft.svg';
 import { ReactComponent as RcIconCheckboxChecked } from '../icons/check-checked.svg';
@@ -285,17 +284,7 @@ export const RevokeApprovalModal = (props: {
                   token={(spenderHost as unknown) as TokenItem}
                 />
               ) : (
-                <NFTAvatar
-                  className="w-[24px] h-[24px]"
-                  type={(spenderHost as NFTApproval)?.content_type || 'image'}
-                  content={
-                    (spenderHost as NFTApproval)?.content ||
-                    (spenderHost as any)?.collection?.logo_url
-                  }
-                  thumbnail
-                  // chain={(spenderHost as NFTApproval)?.chain}
-                  unknown={IconUnknownNFT}
-                />
+                <></>
               )}
               {'spender' in spenderHost ? (
                 <div className="flex flex-col ml-[8px]">

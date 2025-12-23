@@ -26,7 +26,6 @@ import { HistoryPage } from './History';
 import AdvancedSettings from './AdvanceSettings';
 import RequestPermission from './RequestPermission';
 import SendToken from './SendToken';
-import SendNFT from './SendNFT';
 import Receive from './Receive/index';
 import WalletConnectTemplate from './WalletConnect';
 import AddressDetail from './AddressDetail';
@@ -332,9 +331,6 @@ const Main = () => {
         </PrivateRoute> */}
         <PrivateRoute exact path="/select-to-address">
           <SelectToAddress />
-        </PrivateRoute>
-        <PrivateRoute exact path="/send-nft">
-          <SendNFT />
         </PrivateRoute>
         <PrivateRoute exact path="/whitelist-input">
           <WhitelistInput />

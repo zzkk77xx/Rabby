@@ -3,7 +3,6 @@ import { TokenItem } from '@rabby-wallet/rabby-api/dist/types';
 import { getTokenSymbol } from 'ui/utils/token';
 import clsx from 'clsx';
 import React from 'react';
-import NFTModal from '@/ui/views/Dashboard/components/NFT/NFTModal';
 import { Modal } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -56,13 +55,6 @@ export const TokenLabel: React.FC<Props> = ({
           }}
           onCancel={() => setVisible(false)}
         >
-          <NFTModal
-            onClose={() => {
-              setVisible(false);
-              onClose?.();
-            }}
-            data={token as any}
-          />
         </Modal>
       ) : (
         <TokenDetailPopup

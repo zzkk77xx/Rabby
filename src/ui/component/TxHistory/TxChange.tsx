@@ -1,5 +1,4 @@
 import { TxDisplayItem, TxHistoryItem } from '@/background/service/openapi';
-import NFTAvatar from '@/ui/views/Dashboard/components/NFT/NFTAvatar';
 import React from 'react';
 import IconUnknown from 'ui/assets/token-default.svg';
 import { numberWithCommasIsLtOne } from 'ui/utils';
@@ -48,12 +47,8 @@ export const TokenChange = ({
             key={v.token_id}
           >
             {isNft ? (
-              <NFTAvatar
-                className="token-icon"
-                thumbnail
-                content={token?.content}
-                type={token?.content_type}
-              ></NFTAvatar>
+              <></>
+
             ) : (
               <img
                 className="token-icon"
@@ -103,12 +98,7 @@ export const TokenChange = ({
             key={v.token_id}
           >
             {isNft ? (
-              <NFTAvatar
-                className="token-icon"
-                thumbnail
-                content={token?.content}
-                type={token?.content_type}
-              ></NFTAvatar>
+              <></>
             ) : (
               <img
                 className="token-icon"

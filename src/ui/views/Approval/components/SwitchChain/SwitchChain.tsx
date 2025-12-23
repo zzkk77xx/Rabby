@@ -2,7 +2,6 @@ import {
   TestnetChainBase,
   createTestnetChain,
 } from '@/background/service/customTestnet';
-import { CustomTestnetForm } from '@/ui/views/CustomTestnet/components/CustomTestnetForm';
 import { useMount, useRequest } from 'ahooks';
 import { Button, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
@@ -116,7 +115,6 @@ const SwitchChain = ({ params }: { params: SwitchChainProps }) => {
         </div>
 
         <div className="py-[20px] relative">
-          <CustomTestnetForm form={form} />
           {isFetching ? (
             <div
               className={clsx(

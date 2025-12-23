@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import { TooltipWithMagnetArrow } from '@/ui/component/Tooltip/TooltipWithMagnetArrow';
 import { findChain } from '@/utils/chain';
 import { getTxScanLink } from '@/utils';
-import { DesktopTokenChange } from '@/ui/views/DesktopProfile/components/TransactionsTabPane/DesktopTokenChange';
 
 const isDesktop = getUiType().isDesktop;
 type HistoryItemProps = {
@@ -92,12 +91,6 @@ export const HistoryItem = ({
         ></TxInterAddressExplain>
         {needUseTokenDetailModal ? (
           <div className="flex justify-end flex-1">
-            <DesktopTokenChange
-              data={data}
-              tokenDict={tokenDict}
-              canClickToken={canClickToken}
-              onClose={onClose}
-            />
           </div>
         ) : (
           <TokenChange
