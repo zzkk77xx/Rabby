@@ -11,23 +11,18 @@ import ImportJson from './ImportJson';
 import ImportWatchAddress from './ImportWatchAddress';
 import SelectAddress from './SelectAddress';
 import ImportSuccess from './ImportSuccess';
-import ImportGnosis from './ImportGnosisAddress';
 import ConnectLedger from './ImportHardware/LedgerConnect';
 import ConnectTrezor from './ImportHardware/TrezorConnect';
 import ConnectOneKey from './ImportHardware/OneKeyConnect';
 import ConnectedSites from './ConnectedSites';
 import Approval from './Approval';
 import TokenApproval from './TokenApproval';
-import NFTApproval from './NFTApproval';
 import AddAddress from './AddAddress';
 import ChainList from './ChainList';
 import AddressManagement from './AddressManagement';
 import SwitchLang from './SwitchLang';
 import Activities from './Activities';
 import { HistoryPage } from './History';
-import PerpsSingleCoin from './Perps/screen/SingleCoin';
-import { HistoryPage as PerpsHistoryPage } from './Perps/screen/HistoryPage';
-import ExploreMore from './Perps/screen/ExploreMore';
 import AdvancedSettings from './AdvanceSettings';
 import RequestPermission from './RequestPermission';
 import SendToken from './SendToken';
@@ -43,25 +38,19 @@ import CustomRPC from './CustomRPC';
 import { ImportMyMetaMaskAccount } from './ImportMyMetaMaskAccount';
 import { CommonPopup } from './CommonPopup';
 import ManageAddress from './ManageAddress';
-import { NFTView } from './NFTView';
 import { QRCodeConnect } from './ImportHardware/QRCodeConnect';
 import { KeystoneConnect } from './ImportHardware/KeystoneConnect';
 import ApprovalManagePage from './ApprovalManagePage';
 import { ImportCoboArgus } from './ImportCoboArgus/ImportCoboArgus';
 import { ImportCoinbase } from './ImportCoinbase/ImportCoinbase';
 import { DappSearchPage } from './DappSearch';
-import RabbyPoints from './RabbyPoints';
 import { ImKeyConnect } from './ImportHardware/ImKeyConnect';
 import InputMnemonics from './ImportMnemonics/InputMnemonics';
 import CreateMnemonics from './CreateMnemonics';
 import ImportHardware from './ImportHardware';
-import { CustomTestnet } from './CustomTestnet';
 import { AddFromCurrentSeedPhrase } from './AddFromCurrentSeedPhrase';
-import { Ecology } from './Ecology';
 import { Bridge } from './Bridge';
 import { GasAccount } from './GasAccount';
-import { GnosisQueue } from './GnosisQueue';
-import Perps from './Perps/screen/home';
 import { Guide } from './NewUserImport/Guide';
 import { ImportWalletList } from './NewUserImport/ImportList';
 import { CreateSeedPhrase } from './NewUserImport/CreateSeedPhrase';
@@ -293,12 +282,6 @@ const Main = () => {
         <PrivateRoute exact path="/activities">
           <Activities />
         </PrivateRoute>
-        <PrivateRoute exact path="/gnosis-queue">
-          <GnosisQueue />
-        </PrivateRoute>
-        <PrivateRoute exact path="/import/gnosis">
-          <ImportGnosis />
-        </PrivateRoute>
         <PrivateRoute exact path="/import/cobo-argus">
           <ImportCoboArgus />
         </PrivateRoute>
@@ -313,9 +296,6 @@ const Main = () => {
         </PrivateRoute>
         <PrivateRoute exact path="/token-approval">
           <TokenApproval />
-        </PrivateRoute>
-        <PrivateRoute exact path="/nft-approval">
-          <NFTApproval />
         </PrivateRoute>
         <PrivateRoute exact path="/settings/address">
           <ManageAddress />
@@ -390,38 +370,14 @@ const Main = () => {
         <PrivateRoute exact path="/custom-rpc">
           <CustomRPC />
         </PrivateRoute>
-        <PrivateRoute exact path="/custom-testnet">
-          <CustomTestnet />
-        </PrivateRoute>
         <PrivateRoute exact path="/metamask-mode-dapps">
           <MetamaskModeDappsGuide />
         </PrivateRoute>
         <PrivateRoute exact path="/metamask-mode-dapps/list">
           <MetamaskModeDappsList />
         </PrivateRoute>
-        <PrivateRoute exact path="/nft">
-          <NFTView />
-        </PrivateRoute>
-        <PrivateRoute exact path="/rabby-points">
-          <RabbyPoints />
-        </PrivateRoute>
-        <PrivateRoute path="/ecology/:chainId">
-          <Ecology />
-        </PrivateRoute>
         <PrivateRoute path="/gas-account">
           <GasAccount />
-        </PrivateRoute>
-        <PrivateRoute exact path="/perps">
-          <Perps />
-        </PrivateRoute>
-        <PrivateRoute exact path="/perps/single-coin/:coin">
-          <PerpsSingleCoin />
-        </PrivateRoute>
-        <PrivateRoute exact path="/perps/explore">
-          <ExploreMore />
-        </PrivateRoute>
-        <PrivateRoute exact path="/perps/history/:coin">
-          <PerpsHistoryPage />
         </PrivateRoute>
       </Switch>
 
