@@ -17,7 +17,6 @@ import { useTranslation } from 'react-i18next';
 import { Copy, TokenWithChain } from 'ui/component';
 import { getUITypeName, openInTab } from '@/ui/utils';
 import { getAddressScanLink, getChain } from '@/utils';
-import ChainIcon from '../NFT/ChainIcon';
 import { ellipsis, ellipsisAddress } from '@/ui/utils/address';
 import { formatUsdValueKMB } from './utils';
 import ThemeIcon from '@/ui/component/ThemeMode/ThemeIcon';
