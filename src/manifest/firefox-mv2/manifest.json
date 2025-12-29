@@ -60,7 +60,6 @@
     "storage",
     "unlimitedStorage",
     "activeTab",
-    "contextMenus",
     "http://*/*",
     "https://*/*",
     "webRequest",
