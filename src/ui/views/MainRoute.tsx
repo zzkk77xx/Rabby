@@ -34,6 +34,7 @@ import AddressBackupPrivateKey from './AddressBackup/PrivateKey';
 import Swap from './Swap';
 import { getUiType, useWallet } from '../utils';
 import CustomRPC from './CustomRPC';
+import { CustomTestnet } from './CustomTestnet';
 import { ImportMyMetaMaskAccount } from './ImportMyMetaMaskAccount';
 import { CommonPopup } from './CommonPopup';
 import ManageAddress from './ManageAddress';
@@ -365,6 +366,9 @@ const Main = () => {
         </PrivateRoute>
         <PrivateRoute exact path="/custom-rpc">
           <CustomRPC />
+        </PrivateRoute>
+        <PrivateRoute exact path="/custom-testnet">
+          <CustomTestnet />
         </PrivateRoute>
         <PrivateRoute exact path="/metamask-mode-dapps">
           <MetamaskModeDappsGuide />
