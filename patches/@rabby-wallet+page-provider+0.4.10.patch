@@ -1,5 +1,5 @@
 diff --git a/node_modules/@rabby-wallet/page-provider/dist/index.js b/node_modules/@rabby-wallet/page-provider/dist/index.js
-index b2b6db9..15e99d5 100644
+index b2b6db9..0dce441 100644
 --- a/node_modules/@rabby-wallet/page-provider/dist/index.js
 +++ b/node_modules/@rabby-wallet/page-provider/dist/index.js
 @@ -550,9 +550,10 @@ class EthereumProvider extends events.EventEmitter {
@@ -26,7 +26,24 @@ index b2b6db9..15e99d5 100644
          });
          this.initialize = async () => {
              document.addEventListener("visibilitychange", this._requestPromiseCheckVisibility);
-@@ -825,15 +826,15 @@ const metamaskModeUuid = genUUID();
+@@ -645,7 +646,15 @@ class EthereumProvider extends events.EventEmitter {
+                 return promise;
+             }
+             if (this._isEip6963) {
+-                return this._dedupePromise.call(data.method, () => this._request(data));
++                // Always include providers context so wallet selector shows on reconnect
++                return this._dedupePromise.call(data.method, () => this._request({
++                    ...data,
++                    $ctx: {
++                        providers: this.eip6963ProviderDetails.map((item) => {
++                            return item.info;
++                        }),
++                    },
++                }));
+             }
+             return this._dedupePromise.call(data.method, () => this._request({
+                 ...data,
+@@ -825,15 +834,15 @@ const metamaskModeUuid = genUUID();
  const announceEip6963Provider = (provider, isMetamaskMode = false) => {
      let info = {
          uuid: uuid,
@@ -46,7 +63,7 @@ index b2b6db9..15e99d5 100644
              rdns: "io.metamask",
          };
      }
-@@ -849,11 +850,16 @@ const announceMetamaskMode = () => {
+@@ -849,11 +858,16 @@ const announceMetamaskMode = () => {
      announceEip6963Provider(rabbyProvider, true);
  };
  const initOperaProvider = () => {
@@ -66,7 +83,7 @@ index b2b6db9..15e99d5 100644
  };
  const initProvider = () => {
      rabbyProvider._isReady = true;
-@@ -869,7 +875,7 @@ const initProvider = () => {
+@@ -869,7 +883,7 @@ const initProvider = () => {
      }
      const descriptor = Object.getOwnPropertyDescriptor(window, "ethereum");
      const canDefine = !descriptor || descriptor.configurable;
@@ -75,7 +92,7 @@ index b2b6db9..15e99d5 100644
          value: {
              rabbyProvider,
              rabbyEthereumProvider,
-@@ -880,7 +886,7 @@ const initProvider = () => {
+@@ -880,7 +894,7 @@ const initProvider = () => {
          configurable: false,
          writable: false,
      });
@@ -84,7 +101,7 @@ index b2b6db9..15e99d5 100644
          value: rabbyProvider,
          configurable: false,
          writable: false,
-@@ -901,7 +907,13 @@ const initProvider = () => {
+@@ -901,7 +915,13 @@ const initProvider = () => {
          }
      }
      else {
@@ -99,7 +116,7 @@ index b2b6db9..15e99d5 100644
      }
  };
  if (isOpera) {
-@@ -912,7 +924,7 @@ else {
+@@ -912,14 +932,16 @@ else {
  }
  function onAnnounceProvider() {
      window.addEventListener("eip6963:announceProvider", (event) => {
@@ -108,7 +125,16 @@ index b2b6db9..15e99d5 100644
              event.detail.provider === rabbyProvider) {
              return;
          }
-@@ -962,7 +974,8 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
+         if (rabbyEthereumProvider.eip6963ProviderDetails.find((p) => p.provider === event.detail.provider)) {
+             return;
+         }
++        // Store on both providers so wallet selector works for both window.ethereum and EIP-6963 requests
+         rabbyEthereumProvider.eip6963ProviderDetails.push(event.detail);
++        provider.eip6963ProviderDetails.push(event.detail);
+     });
+     window.dispatchEvent(new Event("eip6963:requestProvider"));
+ }
+@@ -962,7 +984,8 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
  });
  window.addEventListener("eip6963:requestProvider", (event) => {
      announceEip6963Provider(rabbyProvider);
