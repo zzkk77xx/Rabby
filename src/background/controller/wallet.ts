@@ -1867,48 +1867,50 @@ export class WalletController extends BaseController {
     // Encode the call to avatar()
     const data = iface.encodeFunctionData('avatar', []);
 
-    // Try Sepolia first, then Ethereum mainnet as fallback
-    const chainsToTry = [CHAINS_ENUM.SETH, CHAINS_ENUM.ETH];
+    // Direct RPC endpoints for Sepolia and Mainnet
+    // Using direct fetch to bypass internal provider routing issues with testnets
+    const rpcEndpoints = [
+      { name: 'Sepolia', url: 'https://sepolia.drpc.org' },
+      { name: 'Ethereum', url: 'https://eth.llamarpc.com' },
+    ];
 
-    for (const chainEnum of chainsToTry) {
+    for (const rpc of rpcEndpoints) {
       try {
-        const chain = findChain({ enum: chainEnum });
-        if (!chain) {
-          console.log(`Chain ${chainEnum} not found, skipping`);
+        const response = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 1,
+            method: 'eth_call',
+            params: [{ to: moduleAddress, data }, 'latest'],
+          }),
+        });
+
+        const json = await response.json();
+
+        if (json.error) {
+          console.log(`RPC error on ${rpc.name}:`, json.error.message);
           continue;
         }
 
-        // Create a temporary provider for this chain
-        const currentProvider = new EthereumProvider();
-        const account = await preferenceService.getCurrentAccount();
-        if (account) {
-          currentProvider.currentAccount = account.address;
-          currentProvider.currentAccountType = account.type;
-          currentProvider.currentAccountBrand = account.brandName;
+        if (!json.result || json.result === '0x') {
+          console.log(`No contract at address on ${rpc.name}`);
+          continue;
         }
-        currentProvider.chainId = chain.network;
-
-        const provider = new ethers.providers.Web3Provider(
-          currentProvider as any
-        );
-
-        const result = await provider.call({
-          to: moduleAddress,
-          data,
-        });
 
         // Decode the result
-        const decoded = iface.decodeFunctionResult('avatar', result);
+        const decoded = iface.decodeFunctionResult('avatar', json.result);
         const safeAddress = decoded[0];
 
         console.log(
-          `Successfully fetched Safe address from module on ${chain.name}:`,
+          `Successfully fetched Safe address from module on ${rpc.name}:`,
           safeAddress
         );
         return safeAddress.toLowerCase();
       } catch (error) {
         console.error(
-          `Error fetching Safe address from module on ${chainEnum}:`,
+          `Error fetching Safe address from module on ${rpc.name}:`,
           error
         );
         // Continue to next chain
