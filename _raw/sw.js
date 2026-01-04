@@ -68,7 +68,7 @@ const registerInPageContentScript = async () => {
   try {
     await chrome.scripting.registerContentScripts([
       {
-        id: 'pageProvider',
+        id: 'multisubPageProvider',
         matches: ['file://*/*', 'http://*/*', 'https://*/*'],
         js: ['pageProvider.js'],
         runAt: 'document_start',
