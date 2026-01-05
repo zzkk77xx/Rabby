@@ -1,5 +1,5 @@
 diff --git a/node_modules/@rabby-wallet/page-provider/dist/index.js b/node_modules/@rabby-wallet/page-provider/dist/index.js
-index b2b6db9..8d48d76 100644
+index b2b6db9..50366d7 100644
 --- a/node_modules/@rabby-wallet/page-provider/dist/index.js
 +++ b/node_modules/@rabby-wallet/page-provider/dist/index.js
 @@ -550,9 +550,10 @@ class EthereumProvider extends events.EventEmitter {
@@ -26,7 +26,7 @@ index b2b6db9..8d48d76 100644
          });
          this.initialize = async () => {
              document.addEventListener("visibilitychange", this._requestPromiseCheckVisibility);
-@@ -645,7 +646,15 @@ class EthereumProvider extends events.EventEmitter {
+@@ -645,7 +646,28 @@ class EthereumProvider extends events.EventEmitter {
                  return promise;
              }
              if (this._isEip6963) {
@@ -39,11 +39,24 @@ index b2b6db9..8d48d76 100644
 +                            return item.info;
 +                        }),
 +                    },
++                }).then((r) => {
++                    /**
++                     * relay to selected wallet
++                     */
++                    if (this.currentProvider) {
++                        return this.currentProvider.request(data);
++                    }
++                    return r;
++                }, (e) => {
++                    if (this.currentProvider) {
++                        return this.currentProvider.request(data);
++                    }
++                    throw e;
 +                }));
              }
              return this._dedupePromise.call(data.method, () => this._request({
                  ...data,
-@@ -825,15 +834,15 @@ const metamaskModeUuid = genUUID();
+@@ -825,15 +847,15 @@ const metamaskModeUuid = genUUID();
  const announceEip6963Provider = (provider, isMetamaskMode = false) => {
      let info = {
          uuid: uuid,
@@ -63,7 +76,7 @@ index b2b6db9..8d48d76 100644
              rdns: "io.metamask",
          };
      }
-@@ -849,11 +858,16 @@ const announceMetamaskMode = () => {
+@@ -849,11 +871,16 @@ const announceMetamaskMode = () => {
      announceEip6963Provider(rabbyProvider, true);
  };
  const initOperaProvider = () => {
@@ -83,7 +96,7 @@ index b2b6db9..8d48d76 100644
  };
  const initProvider = () => {
      rabbyProvider._isReady = true;
-@@ -869,7 +883,7 @@ const initProvider = () => {
+@@ -869,7 +896,7 @@ const initProvider = () => {
      }
      const descriptor = Object.getOwnPropertyDescriptor(window, "ethereum");
      const canDefine = !descriptor || descriptor.configurable;
@@ -92,7 +105,7 @@ index b2b6db9..8d48d76 100644
          value: {
              rabbyProvider,
              rabbyEthereumProvider,
-@@ -880,7 +894,7 @@ const initProvider = () => {
+@@ -880,7 +907,7 @@ const initProvider = () => {
          configurable: false,
          writable: false,
      });
@@ -101,7 +114,7 @@ index b2b6db9..8d48d76 100644
          value: rabbyProvider,
          configurable: false,
          writable: false,
-@@ -901,7 +915,13 @@ const initProvider = () => {
+@@ -901,7 +928,13 @@ const initProvider = () => {
          }
      }
      else {
@@ -116,7 +129,7 @@ index b2b6db9..8d48d76 100644
      }
  };
  if (isOpera) {
-@@ -912,14 +932,16 @@ else {
+@@ -912,14 +945,16 @@ else {
  }
  function onAnnounceProvider() {
      window.addEventListener("eip6963:announceProvider", (event) => {
@@ -134,7 +147,7 @@ index b2b6db9..8d48d76 100644
      });
      window.dispatchEvent(new Event("eip6963:requestProvider"));
  }
-@@ -941,9 +963,25 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
+@@ -941,9 +976,27 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
      rabbyEthereumProvider._isReady = true;
      rabbyEthereumProvider.on("rabby:providerChanged", ({ rdns }) => {
          var _a;
@@ -144,6 +157,8 @@ index b2b6db9..8d48d76 100644
 -        })) === null || _a === void 0 ? void 0 : _a.provider);
 +        })) === null || _a === void 0 ? void 0 : _a.provider;
 +        rabbyEthereumProvider._switchCurrentProvider(newProvider);
++        // Also set currentProvider on the EIP-6963 provider so delegation works
++        provider.currentProvider = newProvider;
 +        // Trigger connection request on the new provider
 +        if (newProvider && newProvider.request) {
 +            newProvider.request({ method: 'eth_requestAccounts' }).then((accounts) => {
@@ -162,7 +177,7 @@ index b2b6db9..8d48d76 100644
      });
      rabbyEthereumProvider._cacheEventListenersBeforeReady.forEach(([event, handler]) => {
          window.ethereum.on(event, handler);
-@@ -962,7 +1000,8 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
+@@ -962,7 +1015,8 @@ requestProviderConfig().then(({ rdns, isMetamaskMode }) => {
  });
  window.addEventListener("eip6963:requestProvider", (event) => {
      announceEip6963Provider(rabbyProvider);

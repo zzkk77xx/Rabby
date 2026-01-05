@@ -41,6 +41,13 @@ const Connect = (props: ConnectProps) => {
   const handleSelectWallet = useMemoizedFn(
     async (info: EIP6963ProviderInfo) => {
       if (!info) {
+        // User selected MultiSub - clear any provider delegation
+        await wallet.changeDappProvider({
+          origin,
+          icon,
+          name,
+          rdns: undefined,
+        });
         if (await wallet.isUnlocked()) {
           setIsShowSelectWallet(false);
         } else {
