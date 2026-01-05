@@ -56,8 +56,9 @@ const Connect = (props: ConnectProps) => {
         name,
         rdns: info.rdns,
       });
-      await sleep(150);
-      rejectApproval();
+      // Close window immediately but don't reject - let the other wallet handle the connection
+      // The page provider will trigger eth_requestAccounts on the selected wallet
+      window.close();
     }
   );
 
