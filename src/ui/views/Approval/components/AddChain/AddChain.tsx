@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApproval, useWallet } from 'ui/utils';
 import { AddEthereumChainParams } from './type';
+import { CustomTestnetForm } from 'ui/views/CustomTestnet/components/CustomTestnetForm';
 
 interface AddChainProps {
   data: AddEthereumChainParams[];
@@ -83,6 +84,7 @@ const AddChain = ({ params }: { params: AddChainProps }) => {
         <div className="text-center text-r-neutral-body text-[13px] leading-[16px] mb-[20px] p-[10px] bg-r-neutral-card2 rounded-[6px]">
           {t('page.addChain.desc')}
         </div>
+        <CustomTestnetForm form={form} />
       </div>
       <div
         className={clsx(
