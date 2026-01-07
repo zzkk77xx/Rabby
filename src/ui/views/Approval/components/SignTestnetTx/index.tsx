@@ -439,9 +439,13 @@ export const SignTestnetTx = ({
       }
       checkCanProcess();
       try {
+        // Use DeFi Interactor Safe address if configured, otherwise use EOA address
+        const defiInteractorSafe = await wallet.getDefiInteractorSafe();
+        const addressForBalance = defiInteractorSafe || currentAccount.address;
+
         const balance = await wallet.getCustomTestnetToken({
           chainId,
-          address: currentAccount.address,
+          address: addressForBalance,
         });
 
         setNativeTokenBalance(balance.rawAmount);
@@ -557,12 +561,14 @@ export const SignTestnetTx = ({
           return;
         }
 
-        // If this is a converted Permit, use Safe address
+        // Use DeFi Interactor Safe address if configured, otherwise use EOA address
+        // Also check for converted Permit which may have a _safeAddress
+        const defiInteractorSafe = await wallet.getDefiInteractorSafe();
         const addressForParsing =
           (normalizedParams as any)._convertedPermit &&
           (normalizedParams as any)._safeAddress
             ? (normalizedParams as any)._safeAddress
-            : currentAccount.address;
+            : defiInteractorSafe || currentAccount.address;
 
         // Use original transaction for parsing if wrapped
         const txForParsing =
@@ -610,12 +616,12 @@ export const SignTestnetTx = ({
         });
 
         const cexInfo = await getCexInfo(parsed.send?.to || '', wallet);
-        // Use Safe address for converted Permit, otherwise use current account
+        // Use DeFi Interactor Safe address if configured, otherwise use EOA address
         const senderAddress =
           (normalizedParams as any)._convertedPermit &&
           (normalizedParams as any)._safeAddress
             ? (normalizedParams as any)._safeAddress
-            : currentAccount.address;
+            : defiInteractorSafe || currentAccount.address;
         const requiredData = await fetchActionRequiredData({
           type: 'transaction',
           actionData: parsed,

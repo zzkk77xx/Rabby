@@ -1113,17 +1113,20 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
   const explain = async () => {
     try {
       setIsReady(false);
-      // If this is a converted Permit, use the Safe address for fetching balance
+      // Use DeFi Interactor Safe address if configured, otherwise use EOA address
+      // Also check for converted Permit which may have a _safeAddress
+      const defiInteractorSafe = await wallet.getDefiInteractorSafe();
       const addressForFetch =
         (normalizedParams as any)._convertedPermit &&
         (normalizedParams as any)._safeAddress
           ? (normalizedParams as any)._safeAddress
-          : currentAccount.address;
+          : defiInteractorSafe || currentAccount.address;
       console.log('[SignTx] Using address for explain:', {
         convertedPermit: !!(normalizedParams as any)._convertedPermit,
         addressForFetch,
         eoaAddress: currentAccount.address,
         safeAddress: (normalizedParams as any)._safeAddress,
+        defiInteractorSafe,
       });
       await explainTx(addressForFetch);
       setIsReady(true);
