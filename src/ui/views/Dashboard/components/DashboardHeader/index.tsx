@@ -14,6 +14,7 @@ import WatchLogo from 'ui/assets/waitcup.svg';
 
 import { AddressViewer } from 'ui/component';
 import { useRabbyDispatch, useRabbySelector } from 'ui/store';
+import { useMemo } from 'react';
 import { useWallet } from 'ui/utils';
 
 import { getKRCategoryByType } from '@/utils/transaction';
@@ -60,6 +61,15 @@ export const DashboardHeader: React.FC<{ onSettingClick?(): void }> = ({
     ...s.transactions,
   }));
 
+  // Use Safe address for balance prefetch when DefiInteractorModule is configured
+  const defiInteractorSafe = useRabbySelector(
+    (state) => state.preference.defiInteractorSafe
+  );
+  const balanceAddress = useMemo(
+    () => defiInteractorSafe || currentAccount?.address,
+    [defiInteractorSafe, currentAccount?.address]
+  );
+
   const [displayName, setDisplayName] = useState<string>('');
   const isGnosis = currentAccount?.type === KEYRING_TYPE.GnosisKeyring;
 
@@ -86,7 +96,7 @@ export const DashboardHeader: React.FC<{ onSettingClick?(): void }> = ({
   }, [currentAccount]);
 
   const { dashboardBalanceCacheInited } = useHomeBalanceViewOuterPrefetch(
-    currentAccount?.address
+    balanceAddress
   );
 
   const handleSwitchAddress = useMemoizedFn(() => {

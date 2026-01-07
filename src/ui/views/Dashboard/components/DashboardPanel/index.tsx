@@ -258,19 +258,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
         history.push('/history');
       },
     } as IPanelItem,
-    security: {
-      icon: RcIconApprovalsCC,
-      eventKey: 'Approvals',
-      content: t('page.dashboard.home.panel.approvals'),
-      onClick: async (evt) => {
-        // openInternalPageInTab('approval-manage');
-        await wallet.openInDesktop('/desktop/profile/approvals');
-        window.close();
-      },
-      badge: approvalRiskAlert,
-      badgeAlert: approvalRiskAlert > 0,
-      isFullscreen: true,
-    } as IPanelItem,
     more: {
       icon: RcIconSettingCC,
       eventKey: 'More',
@@ -317,42 +304,12 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
       },
       isFullscreen: true,
     } as IPanelItem,
-    dapps: {
-      icon: RcIconDappsCC,
-      eventKey: 'Dapps ',
-      content: t('page.dashboard.home.panel.dapps'),
-      onClick: () => {
-        setIsShowDappsPopup(true);
-      },
-    } as IPanelItem,
-    manageAddress: {
-      icon: RcIconManageCC,
-      eventKey: 'Manage Address',
-      content: t('page.dashboard.home.panel.manageAddress'),
-      onClick: () => {
-        history.push('/settings/address');
-      },
-    } as IPanelItem,
   };
 
   const pickedPanelKeys = useMemo<(keyof typeof panelItems)[]>(() => {
     return isGnosis
-      ? [
-          'transactions',
-          'security',
-          'gasAccount',
-          'dapps',
-          'manageAddress',
-          'more',
-        ]
-      : [
-          'transactions',
-          'security',
-          'gasAccount',
-          'dapps',
-          'manageAddress',
-          'more',
-        ];
+      ? ['transactions', 'gasAccount', 'more']
+      : ['transactions', 'gasAccount', 'more'];
   }, [isGnosis]);
 
   const ref = useRef<HTMLDivElement | null>(null);

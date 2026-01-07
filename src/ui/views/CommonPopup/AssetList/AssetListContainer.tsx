@@ -36,9 +36,12 @@ export const AssetListContainer: React.FC<Props> = ({
     setSearch(value);
   }, []);
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
-  const { currentAccount } = useRabbySelector((s) => ({
+  const { currentAccount, defiInteractorSafe } = useRabbySelector((s) => ({
     currentAccount: s.account.currentAccount,
+    defiInteractorSafe: s.preference.defiInteractorSafe,
   }));
+  // Use Safe address for asset display when DefiInteractorModule is configured
+  const assetAddress = defiInteractorSafe || currentAccount?.address;
   const { setApps } = useCommonPopupView();
   const {
     isTokensLoading,
@@ -49,15 +52,15 @@ export const AssetListContainer: React.FC<Props> = ({
     blockedTokens,
     customizeTokens,
     removeProtocol,
-  } = useQueryProjects(currentAccount?.address, false, visible, isTestnet);
+  } = useQueryProjects(assetAddress, false, visible, isTestnet);
   const {
     data: appPortfolios,
     isLoading: isAppPortfoliosLoading,
-  } = useAppChain(currentAccount?.address, visible, isTestnet);
+  } = useAppChain(assetAddress, visible, isTestnet);
 
   const inputRef = React.useRef<Input>(null);
   const { isLoading: isSearching, list } = useSearchToken(
-    currentAccount?.address,
+    assetAddress,
     search,
     selectChainId ? selectChainId : undefined,
     true,

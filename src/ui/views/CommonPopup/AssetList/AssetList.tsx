@@ -137,34 +137,6 @@ export const AssetList = ({
           onClose={onClose}
         />
       </div>
-      <footer className="h-[72px]">
-        <div
-          className={clsx(
-            'fixed bottom-0 left-0 right-0 px-[20px] py-[14px]',
-            'border-t-[0.5px] border-solid border-rabby-neutral-line',
-            'bg-r-neutral-bg-2'
-          )}
-        >
-          <button
-            type="button"
-            className={clsx(
-              'w-full h-[44px] text-r-blue-default text-[15px] leading-[18px] font-medium',
-              'rounded-[8px]',
-              'border-[1px] border-solid border-rabby-blue-default',
-              'bg-r-neutral-bg-2 hover:bg-r-blue-light1'
-            )}
-            onClick={() => {
-              wallet.openInDesktop('/desktop/profile');
-              window.close();
-            }}
-          >
-            <div className="flex items-center justify-center gap-[4px]">
-              {t('page.dashboard.assets.openInTab')}
-              <RcIconExternalCC />
-            </div>
-          </button>
-        </div>
-      </footer>
     </div>
   );
 };

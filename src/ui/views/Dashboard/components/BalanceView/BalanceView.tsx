@@ -44,9 +44,13 @@ export const BalanceView = ({
 }) => {
   const { t } = useTranslation();
 
-  const { currentHomeBalanceCache } = useHomeBalanceView(
-    currentAccount?.address
+  // Use Safe address for balance display when DefiInteractorModule is configured
+  const defiInteractorSafe = useRabbySelector(
+    (state) => state.preference.defiInteractorSafe
   );
+  const balanceAddress = defiInteractorSafe || currentAccount?.address;
+
+  const { currentHomeBalanceCache } = useHomeBalanceView(balanceAddress);
 
   const initHasCacheRef = useRef(!!currentHomeBalanceCache?.balance);
   const [accountBalanceUpdateNonce, setAccountBalanceUpdateNonce] = useState(
@@ -76,7 +80,7 @@ export const BalanceView = ({
     isCurrentBalanceExpired,
     refreshBalance,
     missingList,
-  } = useCurrentBalance(currentAccount?.address, {
+  } = useCurrentBalance(balanceAddress, {
     update: true,
     noNeedBalance: false,
     nonce: accountBalanceUpdateNonce,
@@ -89,7 +93,7 @@ export const BalanceView = ({
     refresh: refreshCurve,
     isCurveCollectionExpired,
     isLoading: curveLoading,
-  } = useCurve(currentAccount?.address, {
+  } = useCurve(balanceAddress, {
     nonce: accountBalanceUpdateNonce,
     realtimeNetWorth: latestEvmBalance,
     initData: currentHomeBalanceCache?.originalCurveData,
