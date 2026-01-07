@@ -1233,10 +1233,12 @@ export const SWAP_FEE_PRECISION = 1e5;
 
 export const DEFAULT_GAS_LIMIT_RATIO = 1.5;
 
-export const SAFE_GAS_LIMIT_RATIO = {
-  '1284': 2,
-  '1285': 2,
-  '1287': 2,
+export const SAFE_GAS_LIMIT_RATIO: Record<string, number> = {
+  '1284': 2,   // Moonbeam
+  '1285': 2,   // Moonriver
+  '1287': 2,   // Moonbase Alpha
+  '137': 2.5,  // Polygon - needs higher buffer for variable gas
+  '8453': 2.5, // Base - L2 gas estimation often inaccurate for complex txs
 };
 
 export const SAFE_GAS_LIMIT_BUFFER = {
