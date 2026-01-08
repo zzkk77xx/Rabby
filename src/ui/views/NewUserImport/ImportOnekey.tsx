@@ -6,7 +6,6 @@ import Progress from '@/ui/component/Progress';
 import { useWallet } from '@/ui/utils';
 import { LedgerHDPathType as HDPathType } from '@/ui/utils/ledger';
 import { URDecoder } from '@ngraveio/bc-ur';
-import * as Sentry from '@sentry/browser';
 import { Button } from 'antd';
 import clsx from 'clsx';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
@@ -85,9 +84,6 @@ export const NewUserImportOneKey = () => {
             stashKeyringIdRef.current
           );
         } else {
-          Sentry.captureException(
-            new Error('QRCodeError ' + JSON.stringify(result))
-          );
           setErrorMessage(
             t(
               'Invalid QR code. Please scan the sync QR code of the hardware wallet.'
@@ -99,7 +95,6 @@ export const NewUserImportOneKey = () => {
         goToSelectAddress(stashKeyringIdRef.current);
       }
     } catch (e) {
-      Sentry.captureException(`QRCodeError ${e.message}`);
       setScan(false);
       setErrorMessage(
         t(

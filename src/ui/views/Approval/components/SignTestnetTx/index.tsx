@@ -45,7 +45,6 @@ import {
   parseAction,
   ParsedTransactionActionData,
 } from '@rabby-wallet/rabby-action';
-import * as Sentry from '@sentry/browser';
 import { getCexInfo } from '@/ui/models/exchange';
 
 const checkGasAndNonce = ({
@@ -528,7 +527,6 @@ export const SignTestnetTx = ({
           },
         });
       }
-      Sentry.captureException(e);
     }
   };
 
@@ -668,7 +666,6 @@ export const SignTestnetTx = ({
           content: e.message || JSON.stringify(e),
           className: 'modal-support-darkmode',
         });
-        Sentry.captureException(e);
       },
     }
   );

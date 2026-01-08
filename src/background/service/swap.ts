@@ -6,7 +6,6 @@ import { CEX, DEX } from '@/constant';
 import { OpenApiService } from '@rabby-wallet/rabby-api';
 import { openapiService } from 'background/service';
 import { TokenItem } from './openapi';
-import * as Sentry from '@sentry/browser';
 
 type ViewKey = keyof typeof CEX | keyof typeof DEX;
 
@@ -234,11 +233,7 @@ class SwapService {
         ...quoteInfo,
         tx,
         tx_id: hash,
-      }).catch((err) => {
-        Sentry.captureException(
-          `postSwap error: ${JSON.stringify(err)}| ${JSON.stringify(quoteInfo)}`
-        );
-      });
+      }).catch((err) => {});
     }
   };
 

@@ -25,7 +25,6 @@ import {
   Props as ApprovalPopupContainerProps,
 } from './Popup/ApprovalPopupContainer';
 import { useImKeyStatus } from '@/ui/component/ConnectStatus/useImKeyStatus';
-import * as Sentry from '@sentry/browser';
 import { findChain } from '@/utils/chain';
 import { emitSignComponentAmounted } from '@/utils/signEvent';
 import { useGetTxFailedResultInWaiting } from '@/ui/hooks/useMiniApprovalDirectSign';
@@ -203,7 +202,6 @@ export const ImKeyHardwareWaiting = ({
             }
           }
         } catch (e) {
-          Sentry.captureException(e);
           setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
           return;
         }
@@ -213,9 +211,6 @@ export const ImKeyHardwareWaiting = ({
           approvalId: approval.id,
         });
       } else {
-        Sentry.captureException(
-          new Error('imKey sign error: ' + JSON.stringify(data))
-        );
         setConnectStatus(WALLETCONNECT_STATUS_MAP.FAILED);
         setErrorMessage(data.errorMsg);
       }

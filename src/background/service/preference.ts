@@ -1,5 +1,4 @@
 import cloneDeep from 'lodash/cloneDeep';
-import * as Sentry from '@sentry/browser';
 import eventBus from '@/eventBus';
 import { createPersistStore, isSameAddress } from 'background/utils';
 import { storage } from 'background/webapi';
@@ -177,11 +176,7 @@ class PreferenceService {
     let defaultLang = 'en';
     try {
       defaultLang = await getFirstPreferredLangCode();
-    } catch (e) {
-      Sentry.captureException(
-        `i18n getFirstPreferredLangCode error: ${JSON.stringify(e)}`
-      );
-    }
+    } catch (e) {}
     this.store = await createPersistStore<PreferenceStore>({
       name: 'preference',
       template: {

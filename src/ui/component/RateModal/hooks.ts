@@ -1,6 +1,5 @@
 /* eslint-enable react-hooks/exhaustive-deps */
 import { useCallback, useMemo } from 'react';
-import * as Sentry from '@sentry/browser';
 
 import { getDefaultRateModalState } from '@/ui/models/rateGuidance';
 import { useRabbyDispatch, useRabbyGetter, useRabbySelector } from '@/ui/store';
@@ -253,12 +252,6 @@ export function useRateModal() {
           });
         }
       } catch (error) {
-        Sentry.captureException(error, {
-          extra: {
-            rateModalState,
-            feedbackContent,
-          },
-        });
         console.error('Failed to submit feedback:', error);
       } finally {
         rDispatch.rateGuidance.setField({ isSubmitting: false });

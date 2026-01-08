@@ -11,7 +11,6 @@ import {
   validateGasPriceRange,
 } from '@/utils/transaction';
 import Safe, { BasicSafeInfo } from '@rabby-wallet/gnosis-sdk';
-import * as Sentry from '@sentry/browser';
 import { Drawer, message, Modal } from 'antd';
 import { maxBy, omit } from 'lodash';
 import {
@@ -156,11 +155,7 @@ export const normalizeTxParams = (tx) => {
         return normalizeHex(item);
       });
     }
-  } catch (e) {
-    Sentry.captureException(
-      new Error(`normalizeTxParams failed, ${JSON.stringify(e)}`)
-    );
-  }
+  } catch (e) {}
   return copy;
 };
 
@@ -1136,7 +1131,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         content: e.message || JSON.stringify(e),
         className: 'modal-support-darkmode',
       });
-      Sentry.captureException(e);
     }
   };
 
@@ -1297,7 +1291,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         title: 'Error',
         content,
       });
-      Sentry.captureException(e);
       return;
     }
 
@@ -1351,7 +1344,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         title: 'Error',
         content: e.message || JSON.stringify(e),
       });
-      Sentry.captureException(e);
       return;
     }
 
@@ -1962,7 +1954,6 @@ const SignTx = ({ params, origin, account: $account }: SignTxProps) => {
         title: 'Error',
         content: e.message || JSON.stringify(e),
       });
-      Sentry.captureException(e);
     }
   };
 
