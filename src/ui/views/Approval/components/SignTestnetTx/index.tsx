@@ -554,7 +554,15 @@ export const SignTestnetTx = ({
   };
 
   const { data: explainResult, runAsync: explainTx } = useRequest(
-    async ({ gasUsed, tx }: { gasUsed?: string; tx: Tx }) => {
+    async ({
+      gasUsed,
+      tx,
+      originalTx,
+    }: {
+      gasUsed?: string;
+      tx: Tx;
+      originalTx?: { to: string; data: string; value: string } | null;
+    }) => {
       try {
         if (!chain) {
           return;
@@ -570,16 +578,18 @@ export const SignTestnetTx = ({
             : defiInteractorSafe || currentAccount.address;
 
         // Use original transaction for parsing if wrapped
+        // Use passed originalTx if provided, otherwise fall back to state
+        const effectiveOriginalTx = originalTx !== undefined ? originalTx : currentOriginalTx;
         const txForParsing =
-          currentOriginalTx &&
-          currentOriginalTx.to &&
+          effectiveOriginalTx &&
+          effectiveOriginalTx.to &&
           tx.to &&
-          currentOriginalTx.to.toLowerCase() !== tx.to.toLowerCase()
+          effectiveOriginalTx.to.toLowerCase() !== tx.to.toLowerCase()
             ? {
                 ...tx,
-                to: currentOriginalTx.to,
-                data: currentOriginalTx.data,
-                value: currentOriginalTx.value,
+                to: effectiveOriginalTx.to,
+                data: effectiveOriginalTx.data,
+                value: effectiveOriginalTx.value,
               }
             : tx;
 
@@ -828,13 +838,29 @@ export const SignTestnetTx = ({
       }
     }
 
+    // Track the new original tx to pass to explainTx (avoids stale closure issue)
+    let newOriginalTxForExplain: { to: string; data: string; value: string } | null = null;
+    if (_originalTx && obj.data) {
+      newOriginalTxForExplain = {
+        to: _originalTx.to,
+        data: obj.data,
+        value: _originalTx.value,
+      };
+    }
+
     setTx(updatedTx);
     try {
-      setIsReady(false);
-      // trigger explain
+      // Don't show loading for data-only changes (like approval amount edits)
+      // This prevents the component from unmounting and losing user interaction
+      const isDataOnlyChange = obj.data && Object.keys(obj).length === 1;
+      if (!isDataOnlyChange) {
+        setIsReady(false);
+      }
+      // trigger explain - pass originalTx directly to avoid stale closure
       await explainTx({
         gasUsed,
         tx: updatedTx,
+        originalTx: newOriginalTxForExplain,
       });
     } catch (e) {
       console.error(e);
