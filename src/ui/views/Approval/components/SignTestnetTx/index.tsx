@@ -245,6 +245,7 @@ export const SignTestnetTx = ({
   const [isLedger, setIsLedger] = useState(false);
   const [isHardware, setIsHardware] = useState(false);
   const [nativeTokenBalance, setNativeTokenBalance] = useState('0x0');
+  const [spendingLimit, setSpendingLimit] = useState<string | null>(null);
   const [canProcess, setCanProcess] = useState(true);
   const [
     cantProcessReason,
@@ -646,6 +647,25 @@ export const SignTestnetTx = ({
           apiProvider: (wallet.fakeTestnetOpenapi as unknown) as any,
         });
 
+        // Fetch spending limit for token approvals
+        if (parsed.approveToken) {
+          try {
+            const tokenAddress = parsed.approveToken.token.id;
+            const tokenDecimals = parsed.approveToken.token.decimals;
+            const limit = await wallet.getSpendingLimitInTokenAmount(
+              tokenAddress,
+              tokenDecimals,
+              chain.id
+            );
+            setSpendingLimit(limit);
+          } catch (e) {
+            console.error('[SignTestnetTx] Failed to fetch spending limit:', e);
+            setSpendingLimit(null);
+          }
+        } else {
+          setSpendingLimit(null);
+        }
+
         return {
           actionData: parsed,
           requiredData,
@@ -966,6 +986,7 @@ export const SignTestnetTx = ({
           originLogo={params.session.icon}
           origin={params.session.origin}
           onChange={handleTxChange}
+          spendingLimit={spendingLimit}
         />
 
         {isReady && (

@@ -184,6 +184,7 @@ const TokenApprove = ({
   engineResults,
   raw,
   onChange,
+  spendingLimit,
 }: {
   data: ParsedTransactionActionData['approveToken'];
   requireData: ApproveTokenRequireData;
@@ -191,6 +192,7 @@ const TokenApprove = ({
   raw: Record<string, string | number>;
   engineResults: Result[];
   onChange(tx: Record<string, any>): void;
+  spendingLimit?: string | null;
 }) => {
   const actionData = data!;
   const [editApproveModalVisible, setEditApproveModalVisible] = useState(false);
@@ -217,9 +219,23 @@ const TokenApprove = ({
       .toFixed();
   }, [actionData]);
 
+  // Convert spending limit from raw amount to display amount
+  const spendingLimitDisplay = useMemo(() => {
+    if (!spendingLimit) return null;
+    return new BigNumber(spendingLimit)
+      .div(10 ** actionData.token.decimals)
+      .toFixed();
+  }, [spendingLimit, actionData.token.decimals]);
+
   const handleClickTokenBalance = () => {
     if (new BigNumber(approveAmount).gt(tokenBalance)) {
       handleApproveAmountChange(tokenBalance);
+    }
+  };
+
+  const handleClickSpendingLimit = () => {
+    if (spendingLimitDisplay && new BigNumber(approveAmount).gt(spendingLimitDisplay)) {
+      handleApproveAmountChange(spendingLimitDisplay);
     }
   };
 
@@ -277,6 +293,24 @@ const TokenApprove = ({
               </span>
             </SubRow>
           </SubCol>
+          {spendingLimitDisplay && (
+            <SubCol>
+              <SubRow isTitle>Spending limit</SubRow>
+              <SubRow>
+                <span
+                  className={clsx(
+                    new BigNumber(approveAmount).gt(spendingLimitDisplay)
+                      ? 'underline cursor-pointer text-r-blue-default font-medium'
+                      : ''
+                  )}
+                  onClick={handleClickSpendingLimit}
+                >
+                  {formatAmount(spendingLimitDisplay)}{' '}
+                  {ellipsisTokenSymbol(getTokenSymbol(actionData.token))}
+                </span>
+              </SubRow>
+            </SubCol>
+          )}
         </SubTable>
 
         <Col>

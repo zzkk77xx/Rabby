@@ -63,6 +63,7 @@ export const TestnetActions = ({
   originLogo,
   origin,
   account,
+  spendingLimit,
 }: {
   data: ParsedTransactionActionData;
   requireData: ActionRequireData;
@@ -74,6 +75,7 @@ export const TestnetActions = ({
   originLogo?: string;
   origin: string;
   account: Account;
+  spendingLimit?: string | null;
 }) => {
   const actionName = useMemo(() => {
     return getActionTypeText(data);
@@ -178,6 +180,7 @@ export const TestnetActions = ({
                 engineResults={[]}
                 raw={raw}
                 onChange={onChange}
+                spendingLimit={spendingLimit}
               />
             )}
           </div>

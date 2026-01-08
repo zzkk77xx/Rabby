@@ -47,6 +47,7 @@ const SingleAction: React.FC<{
   raw: Record<string, string | number>;
   isTypedData?: boolean;
   onChange(tx: Record<string, any>): void;
+  spendingLimit?: string | null;
 }> = ({
   data,
   requireData,
@@ -55,6 +56,7 @@ const SingleAction: React.FC<{
   onChange,
   raw,
   isTypedData,
+  spendingLimit,
 }) => {
   return (
     <>
@@ -114,6 +116,7 @@ const SingleAction: React.FC<{
           engineResults={engineResults}
           onChange={onChange}
           raw={raw}
+          spendingLimit={spendingLimit}
         />
       )}
       {data.revokeToken && (
@@ -235,6 +238,7 @@ export const TransactionActionList: React.FC<{
   raw: Record<string, string | number>;
   isTypedData?: boolean;
   onChange(tx: Record<string, any>): void;
+  spendingLimit?: string | null;
 }> = ({
   data,
   requireData,
@@ -243,6 +247,7 @@ export const TransactionActionList: React.FC<{
   onChange,
   raw,
   isTypedData = false,
+  spendingLimit,
 }) => {
   return (
     <SingleAction
@@ -253,6 +258,7 @@ export const TransactionActionList: React.FC<{
       onChange={onChange}
       raw={raw}
       isTypedData={isTypedData}
+      spendingLimit={spendingLimit}
     />
   );
 };

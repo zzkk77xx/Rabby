@@ -1905,6 +1905,331 @@ export class WalletController extends BaseController {
     return null;
   };
 
+  /**
+   * Fetch spending limit in USD from DeFiInteractorModule for a subaccount
+   * Calculates: (safeValue * maxSpendingBps) / 10000
+   * Returns the spending limit in USD (18 decimals)
+   */
+  fetchSpendingLimitUsd = async (
+    subAccountAddress: string,
+    chainId?: number
+  ): Promise<string | null> => {
+    const moduleAddress = preferenceService.getDefiInteractorModule();
+    if (!moduleAddress) {
+      return null;
+    }
+
+    const abi = [
+      'function getSubAccountLimits(address subAccount) view returns (uint256 maxSpendingBps, uint256 windowDuration)',
+      'function getSafeValue() view returns (uint256 totalValueUSD, uint256 lastUpdated, uint256 updateCount)',
+    ];
+    const iface = new ethers.utils.Interface(abi);
+
+    // Use specific chain if provided, otherwise try multiple
+    const rpcEndpoints = chainId
+      ? this.getRpcEndpointsForChainId(chainId)
+      : [
+          { name: 'Sepolia', url: 'https://sepolia.drpc.org' },
+          { name: 'Ethereum', url: 'https://eth.llamarpc.com' },
+        ];
+
+    for (const rpc of rpcEndpoints) {
+      try {
+        // Fetch subaccount limits (BPS)
+        const limitsData = iface.encodeFunctionData('getSubAccountLimits', [
+          subAccountAddress,
+        ]);
+        const limitsResponse = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 1,
+            method: 'eth_call',
+            params: [{ to: moduleAddress, data: limitsData }, 'latest'],
+          }),
+        });
+
+        const limitsJson = await limitsResponse.json();
+
+        if (limitsJson.error || !limitsJson.result || limitsJson.result === '0x') {
+          console.log(
+            `[fetchSpendingLimitUsd] No limits result on ${rpc.name}`
+          );
+          continue;
+        }
+
+        const decodedLimits = iface.decodeFunctionResult(
+          'getSubAccountLimits',
+          limitsJson.result
+        );
+        const maxSpendingBps = decodedLimits.maxSpendingBps.toString();
+
+        // Fetch Safe total value in USD
+        const safeValueData = iface.encodeFunctionData('getSafeValue', []);
+        const safeValueResponse = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 2,
+            method: 'eth_call',
+            params: [{ to: moduleAddress, data: safeValueData }, 'latest'],
+          }),
+        });
+
+        const safeValueJson = await safeValueResponse.json();
+
+        if (safeValueJson.error || !safeValueJson.result || safeValueJson.result === '0x') {
+          console.log(
+            `[fetchSpendingLimitUsd] No safe value result on ${rpc.name}`
+          );
+          continue;
+        }
+
+        const decodedSafeValue = iface.decodeFunctionResult(
+          'getSafeValue',
+          safeValueJson.result
+        );
+        const totalValueUSD = decodedSafeValue.totalValueUSD.toString();
+
+        // Calculate spending limit: (totalValueUSD * maxSpendingBps) / 10000
+        const spendingLimitUsd = new BigNumber(totalValueUSD)
+          .times(maxSpendingBps)
+          .div(10000)
+          .toFixed(0);
+
+        console.log(
+          `[fetchSpendingLimitUsd] SafeValue: ${totalValueUSD}, BPS: ${maxSpendingBps}, Limit: ${spendingLimitUsd}`
+        );
+
+        return spendingLimitUsd;
+      } catch (error) {
+        console.error(
+          `[fetchSpendingLimitUsd] Error on ${rpc.name}:`,
+          error
+        );
+      }
+    }
+
+    return null;
+  };
+
+  /**
+   * Fetch token price from Chainlink price feed via DeFiInteractorModule
+   * Returns the token price in USD (with price feed decimals)
+   */
+  fetchTokenPriceFromModule = async (
+    tokenAddress: string,
+    chainId?: number
+  ): Promise<{ price: string; decimals: number } | null> => {
+    const moduleAddress = preferenceService.getDefiInteractorModule();
+    if (!moduleAddress) {
+      return null;
+    }
+
+    // First, get the price feed address for this token
+    const moduleAbi = [
+      'function tokenPriceFeeds(address token) view returns (address)',
+    ];
+    const moduleIface = new ethers.utils.Interface(moduleAbi);
+    const getPriceFeedData = moduleIface.encodeFunctionData('tokenPriceFeeds', [
+      tokenAddress,
+    ]);
+
+    const rpcEndpoints = chainId
+      ? this.getRpcEndpointsForChainId(chainId)
+      : [
+          { name: 'Sepolia', url: 'https://sepolia.drpc.org' },
+          { name: 'Ethereum', url: 'https://eth.llamarpc.com' },
+        ];
+
+    for (const rpc of rpcEndpoints) {
+      try {
+        // Get price feed address
+        const priceFeedResponse = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 1,
+            method: 'eth_call',
+            params: [{ to: moduleAddress, data: getPriceFeedData }, 'latest'],
+          }),
+        });
+
+        const priceFeedJson = await priceFeedResponse.json();
+
+        if (priceFeedJson.error || !priceFeedJson.result || priceFeedJson.result === '0x') {
+          continue;
+        }
+
+        const decodedPriceFeed = moduleIface.decodeFunctionResult(
+          'tokenPriceFeeds',
+          priceFeedJson.result
+        );
+        const priceFeedAddress = decodedPriceFeed[0];
+
+        // Check if price feed is set (not zero address)
+        if (priceFeedAddress === '0x0000000000000000000000000000000000000000') {
+          console.log(
+            `[fetchTokenPriceFromModule] No price feed set for token ${tokenAddress}`
+          );
+          return null;
+        }
+
+        // Now call the Chainlink price feed
+        const chainlinkAbi = [
+          'function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)',
+          'function decimals() view returns (uint8)',
+        ];
+        const chainlinkIface = new ethers.utils.Interface(chainlinkAbi);
+
+        // Get decimals
+        const decimalsData = chainlinkIface.encodeFunctionData('decimals', []);
+        const decimalsResponse = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 2,
+            method: 'eth_call',
+            params: [{ to: priceFeedAddress, data: decimalsData }, 'latest'],
+          }),
+        });
+        const decimalsJson = await decimalsResponse.json();
+
+        if (decimalsJson.error || !decimalsJson.result) {
+          continue;
+        }
+
+        const decodedDecimals = chainlinkIface.decodeFunctionResult(
+          'decimals',
+          decimalsJson.result
+        );
+        const decimals = decodedDecimals[0];
+
+        // Get latest price
+        const latestRoundData = chainlinkIface.encodeFunctionData(
+          'latestRoundData',
+          []
+        );
+        const priceResponse = await fetch(rpc.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 3,
+            method: 'eth_call',
+            params: [{ to: priceFeedAddress, data: latestRoundData }, 'latest'],
+          }),
+        });
+        const priceJson = await priceResponse.json();
+
+        if (priceJson.error || !priceJson.result) {
+          continue;
+        }
+
+        const decodedPrice = chainlinkIface.decodeFunctionResult(
+          'latestRoundData',
+          priceJson.result
+        );
+        const price = decodedPrice.answer.toString();
+
+        console.log(
+          `[fetchTokenPriceFromModule] Token ${tokenAddress} price: ${price} (${decimals} decimals)`
+        );
+
+        return { price, decimals };
+      } catch (error) {
+        console.error(
+          `[fetchTokenPriceFromModule] Error on ${rpc.name}:`,
+          error
+        );
+      }
+    }
+
+    return null;
+  };
+
+  /**
+   * Calculate spending limit in token amount
+   * @param tokenAddress - The token contract address
+   * @param tokenDecimals - The token's decimals
+   * @param chainId - Optional chain ID
+   * @returns The max token amount based on spending limit, or null if not available
+   */
+  getSpendingLimitInTokenAmount = async (
+    tokenAddress: string,
+    tokenDecimals: number,
+    chainId?: number
+  ): Promise<string | null> => {
+    const currentAccount = preferenceService.getCurrentAccount();
+    if (!currentAccount) {
+      return null;
+    }
+
+    // Get spending limit in USD (18 decimals) - calculated from BPS * SafeValue
+    const spendingLimitUsd = await this.fetchSpendingLimitUsd(
+      currentAccount.address,
+      chainId
+    );
+    if (!spendingLimitUsd || spendingLimitUsd === '0') {
+      return null;
+    }
+
+    // Get token price from Chainlink
+    const priceData = await this.fetchTokenPriceFromModule(tokenAddress, chainId);
+    if (!priceData || priceData.price === '0') {
+      return null;
+    }
+
+    // Calculate: tokenAmount = spendingLimitUsd / tokenPrice
+    // spendingLimitUsd is in 18 decimals, price is in priceData.decimals
+    // Result should be in tokenDecimals
+    const limitBN = new BigNumber(spendingLimitUsd);
+    const priceBN = new BigNumber(priceData.price);
+
+    // spendingLimitUsd (18 decimals) / price (priceData.decimals decimals) = USD / (USD/token) = token amount
+    // We need to adjust for decimals:
+    // tokenAmount = (spendingLimitUsd * 10^priceData.decimals) / (price * 10^18) * 10^tokenDecimals
+    const tokenAmount = limitBN
+      .times(new BigNumber(10).pow(priceData.decimals))
+      .times(new BigNumber(10).pow(tokenDecimals))
+      .div(priceBN)
+      .div(new BigNumber(10).pow(18))
+      .toFixed(0);
+
+    console.log(
+      `[getSpendingLimitInTokenAmount] Limit for ${tokenAddress}: ${tokenAmount} (${tokenDecimals} decimals)`
+    );
+
+    return tokenAmount;
+  };
+
+  /**
+   * Helper to get RPC endpoints for a specific chain ID
+   */
+  private getRpcEndpointsForChainId = (
+    chainId: number
+  ): { name: string; url: string }[] => {
+    const chainRpcs: Record<number, { name: string; url: string }[]> = {
+      1: [{ name: 'Ethereum', url: 'https://eth.llamarpc.com' }],
+      11155111: [{ name: 'Sepolia', url: 'https://sepolia.drpc.org' }],
+      137: [{ name: 'Polygon', url: 'https://polygon.llamarpc.com' }],
+      42161: [{ name: 'Arbitrum', url: 'https://arb1.arbitrum.io/rpc' }],
+      10: [{ name: 'Optimism', url: 'https://mainnet.optimism.io' }],
+      8453: [{ name: 'Base', url: 'https://mainnet.base.org' }],
+    };
+
+    return (
+      chainRpcs[chainId] || [
+        { name: 'Sepolia', url: 'https://sepolia.drpc.org' },
+        { name: 'Ethereum', url: 'https://eth.llamarpc.com' },
+      ]
+    );
+  };
+
   isReserveGasOnSendToken = () => preferenceService.isReserveGasOnSendToken();
   setReserveGasOnSendToken = (val: boolean) =>
     preferenceService.setPreferencePartials({ reserveGasOnSendToken: val });
