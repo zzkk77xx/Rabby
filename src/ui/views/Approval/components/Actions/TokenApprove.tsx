@@ -53,6 +53,7 @@ interface ApproveAmountModalProps {
   onChange(value: string): void;
   visible: boolean;
   onCancel(): void;
+  maxAmount?: string | null;
 }
 
 const ApproveAmountModal = ({
@@ -62,6 +63,7 @@ const ApproveAmountModal = ({
   visible,
   onChange,
   onCancel,
+  maxAmount,
 }: ApproveAmountModalProps) => {
   const inputRef = useRef<Input>(null);
   const { t } = useTranslation();
@@ -143,6 +145,17 @@ const ApproveAmountModal = ({
           >
             {t('global.Balance')}:{' '}
             {formatAmount(new BigNumber(balance).toFixed(4))}
+          </span>
+        )}
+        {maxAmount && (
+          <span
+            className="token-approve-balance truncate"
+            title={formatAmount(maxAmount)}
+            onClick={() => {
+              setCustomAmount(maxAmount);
+            }}
+          >
+            Spending limit: {formatAmount(new BigNumber(maxAmount).toFixed(4))}
           </span>
         )}
       </div>
@@ -228,13 +241,11 @@ const TokenApprove = ({
   }, [spendingLimit, actionData.token.decimals]);
 
   const handleClickTokenBalance = () => {
-    if (new BigNumber(approveAmount).gt(tokenBalance)) {
-      handleApproveAmountChange(tokenBalance);
-    }
+    handleApproveAmountChange(tokenBalance);
   };
 
   const handleClickSpendingLimit = () => {
-    if (spendingLimitDisplay && new BigNumber(approveAmount).gt(spendingLimitDisplay)) {
+    if (spendingLimitDisplay) {
       handleApproveAmountChange(spendingLimitDisplay);
     }
   };
@@ -272,6 +283,7 @@ const TokenApprove = ({
               logoUrl={actionData.token.logo_url}
               onEdit={() => setEditApproveModalVisible(true)}
               balance={tokenBalance}
+              maxAmount={spendingLimitDisplay || undefined}
             />
           </Row>
         </Col>
@@ -424,6 +436,7 @@ const TokenApprove = ({
       >
         <ApproveAmountModal
           balance={tokenBalance}
+          maxAmount={spendingLimitDisplay}
           amount={approveAmount}
           token={actionData.token}
           onChange={handleApproveAmountChange}

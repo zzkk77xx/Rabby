@@ -14,6 +14,7 @@ interface Props {
   logoUrl: string;
   onEdit?: () => void;
   balance?: string;
+  maxAmount?: string;
 }
 
 export const TokenAmountItem: React.FC<Props> = ({
@@ -21,9 +22,13 @@ export const TokenAmountItem: React.FC<Props> = ({
   logoUrl,
   onEdit,
   balance,
+  maxAmount,
 }) => {
   const hideTooltip = isNil(balance);
   const isExceed = hideTooltip ? false : new BigNumber(amount).gt(balance);
+  const isExceedMaxAmount = isNil(maxAmount)
+    ? false
+    : new BigNumber(amount).gt(maxAmount);
   const { t } = useTranslation();
 
   return (
@@ -44,6 +49,12 @@ export const TokenAmountItem: React.FC<Props> = ({
               <div className="flex items-center gap-x-4">
                 <WarningSVG />
                 <span>{t('page.signTx.tokenApprove.exceed')}</span>
+              </div>
+            )}
+            {isExceedMaxAmount && (
+              <div className="flex items-center gap-x-4">
+                <WarningSVG />
+                <span>Exceeds your spending limit</span>
               </div>
             )}
           </div>
@@ -68,7 +79,8 @@ export const TokenAmountItem: React.FC<Props> = ({
               <div
                 className={clsx(
                   'flex flex-1 overflow-hidden',
-                  isExceed && 'text-red-light'
+                  isExceed && 'text-red-light',
+                  isExceedMaxAmount && 'text-red-light'
                 )}
               >
                 <Values.TokenAmount hasTitle={hideTooltip} value={amount} />
