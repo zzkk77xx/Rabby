@@ -2310,7 +2310,7 @@
         "error": "incorrect password"
       },
       "title": "MultiSub Wallet",
-      "description": "Your go-to wallet for Ethereum and EVM",
+      "description": "A supercharged Rabby fork for multisig wallets",
       "btnForgotPassword": "Forgot Password?"
     },
     "addToken": {
@@ -2958,7 +2958,7 @@
     "newUserImport": {
       "guide": {
         "title": "Welcome to MultiSub Wallet",
-        "desc": "Your go-to wallet for Ethereum and EVM",
+        "desc": "A supercharged Rabby fork with built-in features for multisigs",
         "createNewAddress": "Create a new address",
         "importAddress": "I already have an address"
       },
@@ -3505,7 +3505,7 @@
   },
   "global": {
     "appName": "MultiSub Wallet",
-    "appDescription": "Your go-to wallet for Ethereum and EVM",
+    "appDescription": "A supercharged Rabby fork with built-in features for multisigs",
     "copied": "Copied",
     "confirm": "Confirm",
     "next": "Next",
