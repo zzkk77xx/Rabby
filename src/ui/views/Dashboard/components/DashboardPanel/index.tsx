@@ -32,6 +32,7 @@ import {
   RcIconDappsCC,
   RcIconManageCC,
 } from 'ui/assets/dashboard/panel';
+import { useGnosisPendingCount } from '@/ui/hooks/useGnosisPendingCount';
 
 import { useGasAccountInfo } from '@/ui/views/GasAccount/hooks';
 import ChainSelectorModal from 'ui/component/ChainSelector/Modal';
@@ -181,6 +182,20 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
     return account?.type === KEYRING_TYPE.GnosisKeyring;
   }, [account]);
 
+  // Use Safe address from DefiInteractor config if available
+  const defiInteractorSafe = useRabbySelector(
+    (state) => state.preference.defiInteractorSafe
+  );
+  const safeAddress = useMemo(
+    () => defiInteractorSafe || account?.address,
+    [defiInteractorSafe, account?.address]
+  );
+
+  const { data: gnosisPendingCount } = useGnosisPendingCount(
+    { address: safeAddress },
+    { ready: isGnosis || !!defiInteractorSafe }
+  );
+
   useEffect(() => {
     if (approvalState) {
       setApprovalRiskAlert(
@@ -196,8 +211,8 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
   }, [approvalState]);
 
   const getSafeNetworks = async () => {
-    if (!account) return;
-    const chainIds = await wallet.getGnosisNetworkIds(account.address);
+    if (!safeAddress) return;
+    const chainIds = await wallet.getGnosisNetworkIds(safeAddress);
     const chains: CHAINS_ENUM[] = [];
     chainIds.forEach((id) => {
       const chain = findChainByID(Number(id));
@@ -209,10 +224,10 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
   };
 
   useEffect(() => {
-    if (isGnosis) {
+    if (isGnosis || defiInteractorSafe) {
       getSafeNetworks();
     }
-  }, [isGnosis]);
+  }, [isGnosis, defiInteractorSafe, safeAddress]);
 
   type IPanelItem = {
     icon: ThemeIconType;
@@ -241,15 +256,15 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
   }, [giftUsdValue, hasClaimedGift]);
 
   const panelItems = {
-    // queue: {
-    //   icon: RcIconTransactionsCC,
-    //   eventKey: 'Queue',
-    //   content: t('page.dashboard.home.panel.queue'),
-    //   badge: gnosisPendingCount,
-    //   onClick: () => {
-    //     history.push('/gnosis-queue');
-    //   },
-    // } as IPanelItem,
+    queue: {
+      icon: RcIconTransactionsCC,
+      eventKey: 'Queue',
+      content: t('page.dashboard.home.panel.queue'),
+      badge: gnosisPendingCount || 0,
+      onClick: () => {
+        history.push('/gnosis-queue');
+      },
+    } as IPanelItem,
     transactions: {
       icon: RcIconTransactionsCC,
       eventKey: 'Transactions',
@@ -263,14 +278,6 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
       eventKey: 'More',
       content: t('page.dashboard.home.panel.settings'),
       onClick: onSettingClick,
-    } as IPanelItem,
-    ecology: {
-      icon: RcIconEco,
-      eventKey: 'Ecology',
-      content: t('page.dashboard.home.panel.ecology'),
-      onClick: () => {
-        setIsShowEcologyModal(true);
-      },
     } as IPanelItem,
     gasAccount: {
       icon: RcIconGasAccountCC,
@@ -295,22 +302,34 @@ export const DashboardPanel: React.FC<{ onSettingClick?(): void }> = ({
         </div>
       ) : null,
     } as IPanelItem,
-    mobile: {
-      icon: RcIconMobileSyncCC,
-      eventKey: 'Rabby Mobile',
-      content: t('page.dashboard.home.panel.mobile'),
+    safeModules: {
+      icon: RcIconDappsCC,
+      eventKey: 'SafeModules',
+      content: 'Safe Info',
       onClick: () => {
-        openInternalPageInTab('sync');
+        history.push('/safe-modules');
       },
-      isFullscreen: true,
+    } as IPanelItem,
+    manageAddress: {
+      icon: RcIconManageCC,
+      eventKey: 'Manage Address',
+      content: t('page.dashboard.home.panel.manageAddress'),
+      onClick: () => {
+        history.push('/settings/address');
+      },
     } as IPanelItem,
   };
 
   const pickedPanelKeys = useMemo<(keyof typeof panelItems)[]>(() => {
-    return isGnosis
-      ? ['transactions', 'gasAccount', 'more']
-      : ['transactions', 'gasAccount', 'more'];
-  }, [isGnosis]);
+    return [
+      'queue',
+      'transactions',
+      'gasAccount',
+      'safeModules',
+      'manageAddress',
+      'more',
+    ];
+  }, []);
 
   const ref = useRef<HTMLDivElement | null>(null);
   const scroll = useScroll(ref);

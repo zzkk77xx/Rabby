@@ -80,6 +80,8 @@ import WhitelistInput from './WhitelistInput';
 import { PortalHost } from '../component/PortalHost';
 import { GlobalSignerPortal } from '../component/MiniSignV2/components/GlobalSignerPortal';
 import SelectToAddress from './SelectToAddress';
+import GnosisQueue from './GnosisQueue';
+import SafeModules from './SafeModules';
 
 declare global {
   interface Window {
@@ -281,6 +283,12 @@ const Main = () => {
         </PrivateRoute>
         <PrivateRoute exact path="/activities">
           <Activities />
+        </PrivateRoute>
+        <PrivateRoute exact path="/gnosis-queue">
+          <GnosisQueue />
+        </PrivateRoute>
+        <PrivateRoute exact path="/safe-modules">
+          <SafeModules />
         </PrivateRoute>
         <PrivateRoute exact path="/import/cobo-argus">
           <ImportCoboArgus />
